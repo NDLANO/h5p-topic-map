@@ -1,14 +1,11 @@
-import * as React from "react"
-
+import * as React from "react";
 
 export type DialogTabProps = {
-    titles: string[];
-}
+  titles: string[];
+};
 
 export const DialogTab: React.FC<DialogTabProps> = ({
-    titles,
+  titles,
 }): JSX.Element => {
-    return(
-        <div> </div>
-    )
-}
+  return <div> </div>;
+};
