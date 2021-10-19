@@ -40,19 +40,13 @@ export const Tab: React.FC<TabProps> = ({ tabContents }): JSX.Element => {
   return (
     <StyledTabs defaultValue="tab1" orientation="vertical">
       <List className={styles.list} aria-label="tabs example">
-        <StyledTrigger value={tabContents[0].title}>
-          {tabContents[0].title}
-        </StyledTrigger>
-        <StyledTrigger value={tabContents[1].title}>
-          {tabContents[1].title}
-        </StyledTrigger>
-        <StyledTrigger value={tabContents[2].title}>
-          {tabContents[2].title}
-        </StyledTrigger>
+        {tabContents.map(el => (
+          <StyledTrigger value={el.title}> {el.title} </StyledTrigger>
+        ))}
       </List>
-      <Content value={tabContents[0].title}>{tabContents[0].content}</Content>
-      <Content value={tabContents[1].title}>{tabContents[1].content}</Content>
-      <Content value={tabContents[2].title}>{tabContents[2].content}</Content>
+      {tabContents.map(el => (
+        <Content value={el.title}> {el.content} </Content>
+      ))}
     </StyledTabs>
   );
 };
