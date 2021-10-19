@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Tabs } from "./tabs";
-//import { Notes } from "./DialogNotes";
+
 export default {
   title: "DialogContent/DialogTabs",
   component: Tabs,
