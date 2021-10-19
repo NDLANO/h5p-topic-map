@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Root, List, Trigger, Content } from "@radix-ui/react-tabs";
 import { styled } from "@stitches/react";
-import styles from "./tab.module.scss";
+import styles from "./tabs.module.scss";
 
 export type TabProps = {
   tabContents: { title: string; content: JSX.Element }[];
@@ -36,7 +36,7 @@ const StyledTrigger = styled(Trigger, {
   "&:focus": { position: "relative" },
 });
 
-export const Tab: React.FC<TabProps> = ({ tabContents }): JSX.Element => {
+export const Tabs: React.FC<TabProps> = ({ tabContents }): JSX.Element => {
   return (
     <StyledTabs defaultValue="tab1" orientation="vertical">
       <List className={styles.list} aria-label="tabs example">
