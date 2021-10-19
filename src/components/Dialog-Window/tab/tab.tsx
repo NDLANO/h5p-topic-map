@@ -10,13 +10,11 @@ export type TabProps = {
 const StyledTabs = styled(Root, {
   display: 'flex',
   flexDirection: 'column',
-  width: 300,
-  boxShadow: `0 2px 10px black`,
 });
 
 const StyledTrigger = styled(Trigger, {
   all: 'unset',
-  fontFamily: 'inherit',
+  fontFamily: 'sant-sherif',
   backgroundColor: 'white',
   padding: '0 20px',
   height: 45,
@@ -26,24 +24,27 @@ const StyledTrigger = styled(Trigger, {
   justifyContent: 'center',
   fontSize: 15,
   lineHeight: 1,
-  color: "Darkblue",
+  color: "black",
   userSelect: 'none',
+  cursor: 'pointer',
   '&:first-child': { borderTopLeftRadius: 6 },
   '&:last-child': { borderTopRightRadius: 6 },
-  '&:hover': { color: "Purple" },
   '&[data-state="active"]': {
-    color: "Violet",
-    boxShadow: 'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor',
+    fontWeight: 800,
+     boxShadow: 'inset 0 -1px 0 0 #59A0FF, 0 1px 0 0 #59A0FF',
   },
-  '&:focus': { position: 'relative', boxShadow: `0 0 0 2px black` },
+  '&:focus': { position: 'relative' },
 });
 
 export const Tab: React.FC<TabProps> = ({ titles }): JSX.Element => {
   return (
  <StyledTabs defaultValue="tab1" orientation="vertical">
     <List className={styles.list} aria-label="tabs example">
-        <StyledTrigger  value="tab1">Tab 1</StyledTrigger>
-        <StyledTrigger  value="tab2">Tab 2</StyledTrigger>
+        <StyledTrigger value="tab1">Tekst</StyledTrigger>
+        <StyledTrigger value="tab2">Fagartikkel</StyledTrigger>
+        <StyledTrigger value="tab3">Video</StyledTrigger>
+        <StyledTrigger value="tab4">Lyd</StyledTrigger>
+        <StyledTrigger value="tab5">Ressurser</StyledTrigger>
     </List>
   </StyledTabs>
   );
