@@ -10,9 +10,28 @@
   justify-content: center;
   font-size: 15;
   line-height: 1;
-  color: pink;
+  color: black;
   user-select: none;
   cursor: pointer;
+  padding-bottom: 5px;
+  max-width: 2em;
+
+  &:first-child {
+    border-top-left-radius: 6;
+  }
+
+  &:last-child {
+    border-top-left-radius: 6;
+  }
+
+  &[data-state="active"] {
+    font-weight: 800;
+    box-shadow: 0 2px 0 0 #59a0ff;
+  }
+
+  &:focus {
+    position: "relative";
+  }
 }
 
 .list {
@@ -25,5 +44,4 @@
   display: flex;
   flex-direction: column;
   width: 300;
-  //box-Shadow: 0 2px 10px black;
 }
