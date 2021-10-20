@@ -9,7 +9,11 @@ export type TabProps = {
 
 export const Tabs: React.FC<TabProps> = ({ tabContents }) => {
   return (
-    <Root className={styles.tabs} defaultValue={tabContents[0].title} orientation="vertical">
+    <Root
+      className={styles.tabs}
+      defaultValue={tabContents[0].title}
+      orientation="vertical"
+    >
       <List className={styles.list} aria-label="tabs example">
         {tabContents.map((el, i) => (
           <Trigger key={i} className={styles.trigger} value={el.title}>
@@ -18,7 +22,10 @@ export const Tabs: React.FC<TabProps> = ({ tabContents }) => {
         ))}
       </List>
       {tabContents.map((el, i) => (
-        <Content key={i} value={el.title}> {el.content} </Content>
+        <Content key={i} value={el.title}>
+          {" "}
+          {el.content}{" "}
+        </Content>
       ))}
     </Root>
   );
