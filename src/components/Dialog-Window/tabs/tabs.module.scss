@@ -14,7 +14,7 @@
   user-select: none;
   cursor: pointer;
   padding-bottom: 5px;
-  max-width: 2em;
+  max-width: min-content;
 
   &:first-child {
     border-top-left-radius: 6;
