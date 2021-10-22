@@ -1,13 +1,13 @@
 /* eslint-disable react/no-array-index-key */
 import * as React from "react";
 import { Root, List, Trigger, Content } from "@radix-ui/react-tabs";
-import styles from "./tabs.module.scss";
+import styles from "./DialogTabs.module.scss";
 
 export type TabProps = {
   tabContents: { title: string; content: JSX.Element }[];
 };
 
-export const Tabs: React.FC<TabProps> = ({ tabContents }) => {
+export const DialogTabs: React.FC<TabProps> = ({ tabContents }) => {
   return (
     <Root
       className={styles.tabs}

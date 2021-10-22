@@ -1,19 +1,19 @@
 import * as React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Tabs } from "./tabs";
+import { DialogTabs } from "./DialogTabs";
 
 export default {
-  title: "DialogContent/DialogTabs",
-  component: Tabs,
-} as ComponentMeta<typeof Tabs>;
+  title: "Molecules/Dialog Content/Dialog Tabs",
+  component: DialogTabs,
+} as ComponentMeta<typeof DialogTabs>;
 
-const Template: ComponentStory<typeof Tabs> = args => (
+const Template: ComponentStory<typeof DialogTabs> = args => (
   // eslint-disable-next-line react/jsx-props-no-spreading
-  <Tabs {...args} />
+  <DialogTabs {...args} />
 );
 
-export const TabSingular = Template.bind({});
-TabSingular.args = {
+export const Tabs = Template.bind({});
+Tabs.args = {
   tabContents: [
     { title: "Text", content: <h1>Content for text goes here!</h1> },
     { title: "Video", content: <h1>Content for video goes here!</h1> },
