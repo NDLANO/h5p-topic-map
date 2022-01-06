@@ -88,6 +88,16 @@ jobs:
         with:
           node-version: "16.x"
 
+      - name: Build main project
+        run: |
+          if test -f "h5p-topic-map/package.json"
+          then
+            pushd h5p-topic-map
+            npm install
+            npm run build --if-present
+            popd
+          fi
+
       - name: Get H5P dependencies
         run: |
           mkdir -p dist
@@ -102,16 +112,6 @@ jobs:
 
           cp -r ../h5p-topic-map .
           popd
-
-      - name: Build main project
-        run: |
-          if test -f "h5p-topic-map/package.json"
-          then
-            pushd h5p-topic-map
-            npm install
-            npm run build --if-present
-            popd
-          fi
 
       - name: Build dependencies
         run: |
