@@ -94,8 +94,9 @@ jobs:
           pushd dist
 
           while read -r repo
-          do git clone ${repo}
-          echo "Repo: ${repo}"
+          do
+            git clone ${repo}
+            echo "Repo: ${repo}"
 
           done < ../h5p-topic-map/build_info/repos
 
@@ -105,7 +106,10 @@ jobs:
       - name: Build main project
         run: |
           if test -f "h5p-topic-map/package.json"
-          then pushd h5p-topic-map && npm run build --if-present
+          then
+            pushd h5p-topic-map
+            npm install
+            npm run build --if-present
           fi
 
       - name: Build dependencies
@@ -114,13 +118,16 @@ jobs:
 
           while read -r repo
           do
+            repo_name = basename -s .git $(git --git-dir=${repo} remote get-url origin)
+            echo "Repo name: ${repo_name}"
 
-          repo_name = basename -s .git $(git --git-dir=${repo} remote get-url origin)
-          echo "Repo name: ${repo_name}"
-
-          if test -f "${repo_name}/package.json"
-          then pushd ${repo_name} && npm run build --if-present && popd
-          fi
+            if test -f "${repo_name}/package.json"
+            then 
+              pushd ${repo_name}
+              npm install
+              npm run build --if-present
+              popd
+            fi
 
           done < ../h5p-topic-map/build_info/repos
           popd dist
