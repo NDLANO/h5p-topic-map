@@ -88,11 +88,21 @@ jobs:
         with:
           node-version: "16.x"
 
+      - name: Build project
+        run: |
+          if test -f "package.json" then npm run build --if-present;
+
       - name: Get H5P dependencies
         run: |
           mkdir -p dist
           cd dist
-          while read -r repo; do git clone ${repo}; done < ../h5p-topic-map/build_info/repos
+          while read -r repo;
+
+          do git clone ${repo};
+          repo_name = basename -s .git $(git --git-dir=${repo} remote get-url origin);
+          if test -f "${repo_name}/package.json" then npm run build --if-present;
+
+          done < ../h5p-topic-map/build_info/repos
 
           cp -r ../h5p-topic-map .
 
