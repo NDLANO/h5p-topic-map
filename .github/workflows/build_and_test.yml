@@ -117,19 +117,17 @@ jobs:
         run: |
           pushd dist
 
-          while read -r repo
-          do
-            repo_name = basename -s .git $(git --git-dir=${repo} remote get-url origin)
-            echo "Repo name: ${repo_name}"
+          for dependency in */ ; do
+            echo "Dependency name: ${dependency}"
 
-            if test -f "${repo_name}/package.json"
+            if test -f "${dependency}package.json"
             then 
-              pushd ${repo_name}
+              pushd ${dependency}
               npm install
               npm run build --if-present
               popd
             fi
-          done < ../h5p-topic-map/build_info/repos
+          done
 
           popd
 
