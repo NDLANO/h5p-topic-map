@@ -88,28 +88,42 @@ jobs:
         with:
           node-version: "16.x"
 
-      - name: Build project
-        run: |
-          if test -f "package.json"
-          then npm run build --if-present
-          fi
-
       - name: Get H5P dependencies
         run: |
           mkdir -p dist
-          cd dist
-          while read -r repo;
+          pushd dist
 
-          do git clone ${repo};
-          repo_name = basename -s .git $(git --git-dir=${repo} remote get-url origin)
-
-          if test -f "${repo_name}/package.json"
-          then npm run build --if-present
-          fi
+          while read -r repo
+          do git clone ${repo}
+          echo "Repo: ${repo}"
 
           done < ../h5p-topic-map/build_info/repos
 
           cp -r ../h5p-topic-map .
+          popd
+
+      - name: Build main project
+        run: |
+          if test -f "h5p-topic-map/package.json"
+          then npm run build --if-present
+          fi
+
+      - name: Build dependencies
+        run: |
+          pushd dist
+
+          while read -r repo
+          do
+
+          repo_name = basename -s .git $(git --git-dir=${repo} remote get-url origin)
+          echo "Repo name: ${repo_name}"
+
+          if test -f "${repo_name}/package.json"
+          then popd ${repo_name} && npm run build --if-present && pushd
+          fi
+
+          done < ../h5p-topic-map/build_info/repos
+          popd dist
 
       - name: Load library.json
         id: set_library
