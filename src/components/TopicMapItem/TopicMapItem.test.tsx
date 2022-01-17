@@ -6,6 +6,7 @@ describe(TopicMapItem.name, () => {
   it("should render", () => {
     const topicMapItem = render(
       <TopicMapItem
+        id="1"
         backgroundImage={{ path: "", alt: "" }}
         title="Title"
         editAction={() => {
