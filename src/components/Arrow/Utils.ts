@@ -1,15 +1,4 @@
-export enum ArrowType {
-  Directional,
-  BiDirectional,
-  NonDirectional,
-}
-
-export enum ArrowDirection {
-  Up,
-  Down,
-  Left,
-  Right,
-}
+import { ArrowDirection } from "../../types/ArrowDirection";
 
 export enum ButtonIconState {
   Empty,

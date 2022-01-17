@@ -14,12 +14,12 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PWrapper {
 
     console.info({ params, contentId, extras });
 
-    const updatedTopicMapItems = makeBackgroundImagePathsAbsolute(
+    const topicMapItems = makeBackgroundImagePathsAbsolute(
       params.topicMap.topicMapItems,
       contentId,
     );
 
-    ReactDOM.render(<App items={updatedTopicMapItems ?? []} />, this.wrapper);
+    ReactDOM.render(<App items={topicMapItems ?? []} />, this.wrapper);
   }
 
   attach([containerElement]: JQuery<HTMLElement>): void {

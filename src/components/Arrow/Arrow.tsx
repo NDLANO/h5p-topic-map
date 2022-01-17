@@ -1,16 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
+import { ArrowDirection } from "../../types/ArrowDirection";
+import { ArrowType } from "../../types/ArrowType";
 import { Position } from "../../types/Position";
 import styles from "./Arrow.module.scss";
 import { ArrowBody, ArrowHead, MirroredArrowHead } from "./ArrowParts";
 import { ArrowButton } from "./Button";
-import {
-  ArrowDirection,
-  ArrowType,
-  ButtonIconState,
-  findDirection,
-  getButtonIconState,
-} from "./Utils";
+import { ButtonIconState, findDirection, getButtonIconState } from "./Utils";
 
 export type ArrowProps = {
   start: Position;

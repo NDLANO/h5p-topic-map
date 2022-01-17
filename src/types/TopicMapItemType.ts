@@ -1,16 +1,8 @@
-import { Image } from "./Image";
+import type { CommonItemType } from "./CommonItemType";
+import type { Image } from "./h5p/Image";
 
-export type TopicMapItemType = {
-  id: string;
-  backgroundImage?: Image | undefined;
+export type TopicMapItemType = CommonItemType & {
   label: string;
-  xPercentagePosition: number;
-  yPercentagePosition: number;
-  heightPercentage: number;
-  widthPercentage: number;
-  dialog?: {
-    links?: Array<string>;
-    video?: unknown;
-    text?: string;
-  };
+  description: string | undefined;
+  backgroundImage?: Image | undefined;
 };
