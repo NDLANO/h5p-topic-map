@@ -11,8 +11,8 @@ import {
 import styles from "./DialogWindow.module.scss";
 
 export type DialogWindowProps = {
-  title: string;
-  notes: string;
+  title: string | undefined;
+  notes: string | undefined;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 };

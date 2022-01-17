@@ -29,6 +29,9 @@ export const WithItems: ComponentStory<typeof Grid> = () => {
         heightPercentage: 25,
         xPercentagePosition: 3,
         yPercentagePosition: 5,
+        dialog: {
+          text: "Dialog text",
+        },
       },
       {
         id: "2",
@@ -42,6 +45,9 @@ export const WithItems: ComponentStory<typeof Grid> = () => {
         heightPercentage: 60,
         xPercentagePosition: 50,
         yPercentagePosition: 30,
+        dialog: {
+          text: "Dialog text",
+        },
       },
       {
         id: "3",
@@ -55,6 +61,9 @@ export const WithItems: ComponentStory<typeof Grid> = () => {
         heightPercentage: 10,
         xPercentagePosition: 20,
         yPercentagePosition: 40,
+        dialog: {
+          text: "Dialog text",
+        },
       },
     ],
   };
