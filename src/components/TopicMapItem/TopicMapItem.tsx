@@ -1,5 +1,5 @@
 import * as React from "react";
-import type { Image } from "../../types/H5P/Image";
+import type { Image } from "../../types/Image";
 import styles from "./TopicMapItem.module.scss";
 
 export type TopicMapItemProps = {
