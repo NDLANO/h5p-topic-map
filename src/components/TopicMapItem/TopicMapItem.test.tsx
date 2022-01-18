@@ -5,14 +5,7 @@ import { TopicMapItem } from "./TopicMapItem";
 describe(TopicMapItem.name, () => {
   it("should render", () => {
     const topicMapItem = render(
-      <TopicMapItem
-        id="1"
-        backgroundImage={{ path: "", alt: "" }}
-        title="Title"
-        editAction={() => {
-          /* Intentionally left empty */
-        }}
-      />,
+      <TopicMapItem backgroundImage={{ path: "", alt: "" }} title="Title" />,
     ).container;
 
     expect(topicMapItem.querySelector("button")).toBeTruthy();
