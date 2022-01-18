@@ -119,7 +119,9 @@ export const Arrow: React.FC<ArrowProps> = ({
     <>
       <div
         className={styles.shadow}
-        onKeyPress={() => setIsDialogueShown(true)}
+        onKeyDown={e =>
+          ["Space", "Enter"].includes(e.code) && setIsDialogueShown
+        }
         onClick={() => setIsDialogueShown(true)}
         role="button"
         tabIndex={0}
