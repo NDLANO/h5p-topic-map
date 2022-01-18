@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import * as React from "react";
+import { ArrowType } from "../../types/ArrowType";
 import { Arrow } from "./Arrow";
-import { ArrowType } from "./Utils";
 
 describe(Arrow.name, () => {
   it("should have a body and an arrow head if the arrow is directional.", () => {

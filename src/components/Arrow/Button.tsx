@@ -1,8 +1,10 @@
 /* eslint-disable react/destructuring-assignment */
 import * as React from "react";
-import { ArrowDirection, ArrowType, ButtonIconState } from "./Utils";
+import { ArrowDirection } from "../../types/ArrowDirection";
+import { ArrowType } from "../../types/ArrowType";
 import styles from "./Button.module.scss";
 import { CompletedIcon, EditIcon, NoteIcon } from "./Icons";
+import { ButtonIconState } from "./Utils";
 
 const renderIcon = (state: ButtonIconState, iconColor: string): JSX.Element => {
   switch (state) {

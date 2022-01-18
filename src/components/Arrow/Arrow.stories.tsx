@@ -1,9 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import * as React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-
+import { ArrowType } from "../../types/ArrowType";
 import { Arrow } from "./Arrow";
-import { ArrowType } from "./Utils";
 
 const blue = "#59A0FF";
 const white = "#FFFFFF";
