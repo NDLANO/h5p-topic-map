@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ArrowDirection } from "../../types/ArrowDirection";
 import { ArrowType } from "../../types/ArrowType";
 import { Position } from "../../types/Position";
+import { DialogWindow } from "../Dialog-Window/DialogWindow";
 import styles from "./Arrow.module.scss";
 import { ArrowBody, ArrowHead, MirroredArrowHead } from "./ArrowParts";
 import { ArrowButton } from "./Button";
@@ -29,6 +30,11 @@ export const Arrow: React.FC<ArrowProps> = ({
   notes,
   completed,
 }) => {
+  const [isDialogueShown, setIsDialogueShown] = React.useState<boolean>(false);
+  const closeItemDialogueWindow = (): void => {
+    setIsDialogueShown(false);
+  };
+
   // find angle and direction of arrow
   let angle = Math.atan2(start.y - end.y, end.x - start.x) * (180 / Math.PI);
   if (angle < 0) angle = 360 + angle;
@@ -112,7 +118,25 @@ export const Arrow: React.FC<ArrowProps> = ({
   }
 
   // apply shadow around arrow
-  arrow = <div className={styles.shadow}>{arrow}</div>;
+  arrow = (
+    <>
+      <div
+        className={styles.shadow}
+        onKeyPress={() => setIsDialogueShown(true)}
+        onClick={() => setIsDialogueShown(true)}
+        role="button"
+        tabIndex={0}
+      >
+        {arrow}
+      </div>
+      <DialogWindow
+        title=""
+        notes={notes}
+        open={isDialogueShown}
+        onOpenChange={closeItemDialogueWindow}
+      />
+    </>
+  );
 
   return arrow;
 };

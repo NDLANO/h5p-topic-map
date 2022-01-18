@@ -37,7 +37,7 @@ RightDirectionalEmptyArrow.args = {
   circleColor: white,
   iconColor: black,
   type: ArrowType.Directional,
-  notes: "",
+  notes: "Test note 1",
   completed: false,
 };
 
@@ -73,7 +73,7 @@ BidirectionalHorizontalEmptyArrow.args = {
   circleColor: white,
   iconColor: black,
   type: ArrowType.BiDirectional,
-  notes: "",
+  notes: "Test note 2",
   completed: false,
 };
 
