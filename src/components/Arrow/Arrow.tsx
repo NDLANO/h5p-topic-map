@@ -31,9 +31,6 @@ export const Arrow: React.FC<ArrowProps> = ({
   completed,
 }) => {
   const [isDialogueShown, setIsDialogueShown] = React.useState<boolean>(false);
-  const closeItemDialogueWindow = (): void => {
-    setIsDialogueShown(false);
-  };
 
   // find angle and direction of arrow
   let angle = Math.atan2(start.y - end.y, end.x - start.x) * (180 / Math.PI);
@@ -133,7 +130,7 @@ export const Arrow: React.FC<ArrowProps> = ({
         title=""
         notes={notes}
         open={isDialogueShown}
-        onOpenChange={closeItemDialogueWindow}
+        onOpenChange={setIsDialogueShown}
       />
     </>
   );
