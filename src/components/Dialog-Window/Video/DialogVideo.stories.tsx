@@ -15,5 +15,6 @@ const Template: ComponentStory<typeof DialogVideo> = args => (
 export const SimpleVideo = Template.bind({});
 SimpleVideo.args = {
   video: { path: "https://www.w3schools.com/html/mov_bbb.mp4" },
-  description: "Video: Klipp fra dokumentar om den franske revolusjonen 1789-1799"
+  description:
+    "Video: Klipp fra dokumentar om den franske revolusjonen 1789-1799",
 };

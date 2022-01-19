@@ -7,7 +7,10 @@ export type DialogVideoProps = {
   description: string;
 };
 
-export const DialogVideo: React.FC<DialogVideoProps> = ({ video, description}) => {
+export const DialogVideo: React.FC<DialogVideoProps> = ({
+  video,
+  description,
+}) => {
   return (
     <>
       <video controls>
