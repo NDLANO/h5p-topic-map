@@ -1,5 +1,4 @@
 import * as React from "react";
-import { hot } from "react-hot-loader/root";
 import { Grid } from "./components/Grid/Grid";
 import { TopicMapItemType } from "./types/TopicMapItemType";
 
@@ -15,4 +14,4 @@ const App: React.FC<AppProps> = ({ items }) => {
   );
 };
 
-export default hot(App);
+export default App;
