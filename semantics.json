@@ -199,13 +199,48 @@
             }
           ]
         }
+      },
+      {
+        "label": "Appearance",
+        "name": "appearance",
+        "type": "group",
+        "importance": "low",
+        "widget": "none",
+        "fields": [
+          {
+            "label": "Background image",
+            "name": "gridBackgroundImage",
+            "type": "image",
+            "optional": true
+          },
+          {
+            "label": "Color theme",
+            "name": "colorTheme",
+            "type": "select",
+            "default": "1",
+            "options": [
+              {
+                "label": "Blue",
+                "value": "1"
+              },
+              {
+                "label": "Green",
+                "value": "2"
+              },
+              {
+                "label": "Red",
+                "value": "3"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
   {
+    "label": "Behavioral settings",
     "name": "behaviour",
     "type": "group",
-    "label": "Behavioral settings",
     "importance": "low",
     "fields": []
   },

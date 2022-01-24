@@ -1,3 +1,4 @@
+import { ColorTheme } from "../types/ColorTheme";
 import { H5PField } from "../types/H5P/H5PField";
 import { H5PFieldType } from "../types/H5P/H5PFieldType";
 
@@ -61,3 +62,6 @@ export const itemDialog: Array<H5PField> = [
     ],
   },
 ];
+
+export const colorThemes: Array<{ label: string; value: string }> =
+  Object.entries(ColorTheme).map(([label, value]) => ({ label, value }));

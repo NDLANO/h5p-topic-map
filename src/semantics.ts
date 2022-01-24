@@ -1,8 +1,9 @@
+import { ColorTheme } from "./types/ColorTheme";
 import { H5PBehaviour } from "./types/H5P/H5PBehaviour";
 import { H5PFieldGroup } from "./types/H5P/H5PField";
 import { H5PFieldType } from "./types/H5P/H5PFieldType";
 import { H5PL10n } from "./types/H5P/H5PL10n";
-import { itemDialog, itemPosition } from "./utils/semantics.utils";
+import { colorThemes, itemDialog, itemPosition } from "./utils/semantics.utils";
 
 export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
   {
@@ -112,15 +113,39 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
           ],
         },
       },
+      {
+        label: "Appearance",
+        name: "appearance",
+        type: H5PFieldType.Group,
+        importance: "low",
+        widget: "none",
+        fields: [
+          {
+            label: "Background image",
+            name: "gridBackgroundImage",
+            type: H5PFieldType.Image,
+            optional: true,
+          },
+          {
+            label: "Color theme",
+            name: "colorTheme",
+            type: H5PFieldType.Select,
+            default: ColorTheme.Blue,
+            options: [...colorThemes],
+          },
+        ],
+      },
     ],
   },
+
   {
+    label: "Behavioral settings",
     name: "behaviour",
     type: H5PFieldType.Group,
-    label: "Behavioral settings",
     importance: "low",
     fields: [],
   },
+
   {
     name: "l10n",
     type: H5PFieldType.Group,
