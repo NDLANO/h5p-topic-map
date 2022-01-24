@@ -22,7 +22,15 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PWrapper {
     ReactDOM.render(<App items={topicMapItems ?? []} />, this.wrapper);
   }
 
-  attach([containerElement]: JQuery<HTMLElement>): void {
+  appendTo($container: JQuery<HTMLElement>): void {
+    const containerElement = $container.get(0);
+    if (!containerElement) {
+      console.error(
+        "Found no containing element to attach `h5p-topic-map` to.",
+      );
+      return;
+    }
+
     containerElement.appendChild(this.wrapper);
     containerElement.classList.add("h5p-topic-map");
   }
