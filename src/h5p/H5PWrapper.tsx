@@ -7,6 +7,7 @@ import { getEmptyParams } from "../utils/semantics.utils";
 import {
   H5P,
   normalizeGridBackgroundImagePath,
+  normalizeSizes,
   normalizeTopicMapItemPaths,
 } from "./H5P.util";
 
@@ -33,6 +34,8 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PWrapper {
       paramsWithFallbacks,
       contentId,
     );
+
+    paramsWithFallbacks = normalizeSizes(paramsWithFallbacks);
 
     ReactDOM.render(<App params={paramsWithFallbacks} />, this.wrapper);
   }
