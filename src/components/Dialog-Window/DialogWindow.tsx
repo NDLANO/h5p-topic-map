@@ -1,13 +1,14 @@
-import * as React from "react";
-import { Cross2Icon } from "@radix-ui/react-icons";
 import {
-  Root,
-  Content,
-  Title,
   Close,
-  Overlay,
+  Content,
   Description,
+  Overlay,
+  Root,
+  Title,
 } from "@radix-ui/react-dialog";
+import { Cross2Icon } from "@radix-ui/react-icons";
+import * as React from "react";
+import { useL10n } from "../../hooks/useLocalization";
 import styles from "./DialogWindow.module.scss";
 
 export type DialogWindowProps = {
@@ -17,15 +18,14 @@ export type DialogWindowProps = {
   onOpenChange: (open: boolean) => void;
 };
 
-// TODO: Translate
-const ariaLabel = "Close";
-
 export const DialogWindow: React.FC<DialogWindowProps> = ({
   title,
   notes,
   open,
   onOpenChange,
 }): JSX.Element => {
+  const ariaLabel = useL10n("closeDialog");
+
   return (
     <Root open={open} onOpenChange={onOpenChange}>
       <Overlay className={styles.overlay} />

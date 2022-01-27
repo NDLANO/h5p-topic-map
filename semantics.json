@@ -311,6 +311,14 @@
     "type": "group",
     "common": true,
     "label": "Localize",
-    "fields": []
+    "fields": [
+      {
+        "label": "Close dialog",
+        "description": "Used by screen readers",
+        "name": "closeDialog",
+        "type": "text",
+        "default": "Close dialog"
+      }
+    ]
   }
 ]

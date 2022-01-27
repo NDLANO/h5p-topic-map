@@ -168,6 +168,14 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
     type: H5PFieldType.Group,
     common: true,
     label: "Localize",
-    fields: [],
+    fields: [
+      {
+        label: "Close dialog",
+        description: "Used by screen readers",
+        name: "closeDialog",
+        type: H5PFieldType.Text,
+        default: "Close dialog",
+      },
+    ],
   },
 ];
