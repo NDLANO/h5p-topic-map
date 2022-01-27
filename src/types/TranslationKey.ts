@@ -1,2 +1,2 @@
-export type TranslationKey = 
- | "closeDialog"
+export type TranslationKey =
+  | "closeDialog";

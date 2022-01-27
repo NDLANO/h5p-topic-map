@@ -2,6 +2,7 @@ import { ColorTheme } from "../types/ColorTheme";
 import { H5PField } from "../types/H5P/H5PField";
 import { H5PFieldType } from "../types/H5P/H5PFieldType";
 import { Params } from "../types/H5P/Params";
+import { Translations } from "../types/Translations";
 
 export const itemPosition: Array<H5PField> = [
   {
@@ -102,5 +103,6 @@ export const getEmptyParams = (): Required<Params> => {
       },
     },
     behaviour: null,
+    l10n: {} as Translations,
   };
 };

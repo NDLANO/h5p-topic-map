@@ -1,8 +1,9 @@
 import { ColorTheme } from "../ColorTheme";
 import { Image } from "./Image";
 import { TopicMapItemType } from "../TopicMapItemType";
+import { Translations } from "../Translations";
 
-export type Params = {
+export type Params = Readonly<{
   behaviour?: unknown;
 
   topicMap?: {
@@ -12,4 +13,6 @@ export type Params = {
       colorTheme?: ColorTheme;
     };
   };
-};
+
+  l10n?: Translations;
+}>;
