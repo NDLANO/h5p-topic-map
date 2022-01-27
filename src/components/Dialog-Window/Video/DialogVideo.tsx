@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import * as React from "react";
+import { useL10n } from "../../../hooks/useLocalization";
 import { Video } from "../../../types/H5P/Video";
 import { formatCopyright } from "../../../utils/dialog.utils";
 import styles from "./DialogVideo.module.scss";
@@ -9,8 +10,7 @@ export type DialogVideoProps = {
 };
 
 export const DialogVideo: React.FC<DialogVideoProps> = ({ video }) => {
-  // TODO: Translate
-  const copyrightTitle = "Video";
+  const copyrightTitle = useL10n("copyrightVideo");
 
   return (
     <div className={styles.dialogVideo}>

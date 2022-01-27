@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useL10n } from "../../../hooks/useLocalization";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import styles from "./DialogNote.module.scss";
 
@@ -16,11 +17,10 @@ export const Note: React.FC<NoteProps> = ({ maxLength, id }) => {
     userData[id].noteCompleted ?? false,
   );
 
-  // TODO: Translate
-  const savingTextLabel = "Saving...";
-  const savedTextLabel = "Saved";
-  const completedTextLabel = "Mark as completed";
-  const placeholderText = "Write your notes here...";
+  const savingTextLabel = useL10n("dialogNoteSaving");
+  const savedTextLabel = useL10n("dialogNoteSaved");
+  const completedTextLabel = useL10n("dialogNoteMarkAsCompleted");
+  const placeholderText = useL10n("dialogNotePlaceholder");
 
   const handleNoteCompleted = (): void => {
     setMarkedAsCompleted(!noteCompleted);

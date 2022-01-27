@@ -5,6 +5,7 @@ import { useEffectOnce } from "react-use";
 import styles from "./DialogResources.module.scss";
 import { Link } from "../../../types/Link";
 import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import { useL10n } from "../../../hooks/useLocalization";
 
 export type DialogResourceProps = {
   relevantLinks: string[];
@@ -19,6 +20,10 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
   const [link, setLink] = React.useState("");
   const [customLinks, setCustomLinks] = React.useState<Array<JSX.Element>>([]);
   const inputFieldRef = React.useRef<HTMLInputElement>(null);
+
+  const relevantLinkLabel = useL10n("dialogResourcesRelevantLinks");
+  const customLinkLabel = useL10n("dialogResourcesCustomLinks");
+  const addLinkLabel = useL10n("dialogResourcesAdd");
 
   const removeCustomLink = (linkToRemove: string): void => {
     userData[id].links = userData[id].links?.filter(
@@ -86,10 +91,6 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
       inputFieldRef.current.value = "";
     }
   };
-
-  const relevantLinkLabel = "Relevante lenker";
-  const customLinkLabel = "Dine lenker";
-  const addLinkLabel = "Legg til";
 
   // build a list of custom links for the first render
   useEffectOnce(() => {

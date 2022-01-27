@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import * as React from "react";
+import { useL10n } from "../../../hooks/useLocalization";
 import { Audio } from "../../../types/H5P/Audio";
 import { formatCopyright } from "../../../utils/dialog.utils";
 import styles from "./DialogAudio.module.scss";
@@ -13,8 +14,7 @@ export const DialogAudio: React.FC<DialogAudioProps> = ({
   audioTrack,
   subtext,
 }) => {
-  // TODO: Translate
-  const copyrightTitle = "Audio";
+  const copyrightTitle = useL10n("copyrightAudio");
 
   return (
     <>

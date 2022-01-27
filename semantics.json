@@ -316,8 +316,71 @@
         "label": "Close dialog",
         "description": "Used by screen readers",
         "name": "closeDialog",
-        "type": "text",
-        "default": "Close dialog"
+        "default": "Close dialog",
+        "type": "text"
+      },
+      {
+        "label": "Audio",
+        "description": "Shown in front of copyright statements",
+        "name": "copyrightAudio",
+        "default": "Audio",
+        "type": "text"
+      },
+      {
+        "label": "Photo",
+        "description": "Shown in front of copyright statements",
+        "name": "copyrightPhoto",
+        "default": "Photo",
+        "type": "text"
+      },
+      {
+        "label": "Video",
+        "description": "Shown in front of copyright statements",
+        "name": "copyrightVideo",
+        "default": "Video",
+        "type": "text"
+      },
+      {
+        "label": "Saving note label",
+        "name": "dialogNoteSaving",
+        "default": "Saving…",
+        "type": "text"
+      },
+      {
+        "label": "Saved note label",
+        "name": "dialogNoteSaved",
+        "default": "Saved",
+        "type": "text"
+      },
+      {
+        "label": "Note placeholder",
+        "name": "dialogNotePlaceholder",
+        "default": "Write your notes here…",
+        "type": "text"
+      },
+      {
+        "label": "Mark note as completed",
+        "name": "dialogNoteMarkAsCompleted",
+        "default": "Mark as completed",
+        "type": "text"
+      },
+      {
+        "label": "Dialog resources labels: Relevant links",
+        "name": "dialogResourcesRelevantLinks",
+        "default": "Relevant links",
+        "type": "text"
+      },
+      {
+        "label": "Dialog resources labels: Custom links",
+        "name": "dialogResourcesCustomLinks",
+        "default": "Your links",
+        "type": "text"
+      },
+      {
+        "label": "Dialog resources labels: Add",
+        "name": "dialogResourcesAdd",
+        "default": "Add",
+        "type": "text"
       }
     ]
   }

@@ -5,4 +5,14 @@
 // -----------------------------------
 
 export type TranslationKey =
-  | "closeDialog";
+  | "closeDialog"
+  | "copyrightAudio"
+  | "copyrightPhoto"
+  | "copyrightVideo"
+  | "dialogNoteSaving"
+  | "dialogNoteSaved"
+  | "dialogNotePlaceholder"
+  | "dialogNoteMarkAsCompleted"
+  | "dialogResourcesRelevantLinks"
+  | "dialogResourcesCustomLinks"
+  | "dialogResourcesAdd";
