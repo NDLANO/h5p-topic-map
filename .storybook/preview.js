@@ -1,3 +1,6 @@
+import * as React from "react";
+import { LocalizationContext } from "../src/contexts/LocalizationContext";
+import { semantics } from "../src/semantics";
 import "!style-loader!css-loader!sass-loader!../src/styles.scss";
 
 export const parameters = {
@@ -14,3 +17,18 @@ export const parameters = {
     },
   },
 };
+
+const translations = Object.fromEntries(
+  semantics[2].fields.map(field => {
+    const defaultValue = field["default"] ?? field.name;
+    return [field.name, defaultValue];
+  }),
+);
+
+export const decorators = [
+  Story => (
+    <LocalizationContext.Provider value={translations}>
+      <Story />
+    </LocalizationContext.Provider>
+  ),
+];
