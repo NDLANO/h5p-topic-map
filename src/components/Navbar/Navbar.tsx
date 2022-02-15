@@ -47,6 +47,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [isDeleteConfirmationVisible, setIsDeleteConfirmationVisible] =
     React.useState<boolean>(false);
 
+  const [isHamburgerOpen, setIsHamburgerOpen] = React.useState<boolean>(false);
+
   const deleteAllNotes = (): void => {
     topicMapItems.forEach(item => {
       if (item.id in userData) {
@@ -108,9 +110,34 @@ export const Navbar: React.FC<NavbarProps> = ({
         <button className={styles.navbarTitle} type="button">
           {navbarTitle}
         </button>
+        <button
+          type="button"
+          className={styles.hamburgerButton}
+          onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}
+        >
+          <svg
+            className={styles.hamburgerButtonSvg}
+            xmlns="http://www.w3.org/2000/svg"
+            width={`${isHamburgerOpen ? "12" : "18"}`}
+            height="12"
+            viewBox={`${isHamburgerOpen ? "0 0 12 12" : "0 0 18 12"}`}
+            fill="none"
+          >
+            <path
+              fill="#fff"
+              d={
+                isHamburgerOpen
+                  ? "M11.8337 1.34199L10.6587 0.166992L6.00033 4.82533L1.34199 0.166992L0.166992 1.34199L4.82533 6.00033L0.166992 10.6587L1.34199 11.8337L6.00033 7.17533L10.6587 11.8337L11.8337 10.6587L7.17533 6.00033L11.8337 1.34199Z"
+                  : "M0 12H18V10H0V12ZM0 7H18V5H0V7ZM0 0V2H18V0H0Z"
+              }
+            />
+          </svg>
+        </button>
         <Tabs defaultValue={topicMapSectionLabel}>
           <TabsList
-            className={styles.sectionsMenu}
+            className={`${styles.sectionsMenu} ${
+              !isHamburgerOpen && styles.hidden
+            }`}
             aria-label={navbarAriaLabel}
           >
             <Trigger

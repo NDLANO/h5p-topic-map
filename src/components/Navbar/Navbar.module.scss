@@ -35,15 +35,41 @@
   color: #ffffff;
 }
 
-.sectionsMenu {
+.sectionsMenu,
+.sectionsMenu.hidden {
   position: absolute;
-  top: 1.6rem;
-  right: 1.3rem;
-  font-size: 13px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+  background-color: var(--theme-color-2);
+  align-items: flex-end;
+  padding: 0.5rem;
+  right: 1rem;
+  top: 3.5rem;
+  gap: 0.5rem;
+}
+
+.sectionsMenu.hidden {
+  display: none;
 }
 
 .notesList {
   background-color: #ffffff;
+}
+
+.hamburgerButton {
+  position: absolute;
+  right: 1.75rem;
+  top: 1.55rem;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburgerButtonSvg {
+  width: 16px;
 }
 
 @media (min-width: 768px) {
@@ -57,13 +83,19 @@
     font-size: inherit;
   }
 
-  .sectionsMenu {
-    right: 2rem;
+  .sectionsMenu,
+  .sectionsMenu.hidden {
     font-size: inherit;
-    top: 2rem;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: block;
   }
 
   .navbarTitle {
     font-size: inherit;
+  }
+
+  .hamburgerButton {
+    display: none;
   }
 }
