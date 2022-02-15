@@ -23,10 +23,24 @@ export const Navbar: React.FC<NavbarProps> = ({
   const topicMapSectionLabel = useL10n("navbarTopicMapSectionLabel");
   const notesSectionLabel = useL10n("navbarNotesSectionLabel");
   const helpSectionLabel = useL10n("navbarHelpSectionLabel");
+  const progressBarLabel = useL10n("progressBarLabel");
   const deleteAllNotesText = useL10n("deleteNotesConfirmationWindowLabel");
   const deleteAllNotesConfirmText = useL10n("deleteNotesConfirmLabel");
   const deleteAllNotesDenyText = useL10n("deleteNotesDenyLabel");
   const userData = getUserData();
+  const [progressBarValue, setProgressBarValue] = React.useState<number>(0);
+
+  React.useEffect(() => {
+    setProgressBarValue(
+      topicMapItems.filter(
+        item =>
+          item.dialog &&
+          item.dialog.hasNote &&
+          item.id in userData &&
+          userData[item.id].noteCompleted,
+      ).length,
+    );
+  }, [topicMapItems, userData]);
 
   let navbarTitleForPrint = "";
   const updateNavbarTitleForPrint = (): void => {
@@ -164,15 +178,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               {helpSectionLabel}
             </Trigger>
-            {/* <Trigger
-            className={styles.sectionTitle}
-            key="▰▰▰▰▱▱▱▱▱▱ 40%"
-            value="▰▰▰▰▱▱▱▱▱▱ 40%"
-            aria-label="Progress bar"
-          >
-            ▰▰▰▰▱▱▱▱▱▱ 40%
-          </Trigger>
-          */}
+            <Trigger
+              className={styles.sectionTitle}
+              key={progressBarLabel}
+              value={`${progressBarValue}`}
+              aria-label={progressBarLabel}
+              disabled
+            >{`${progressBarValue} / ${
+              topicMapItems.filter(item => item.dialog && item.dialog.hasNote)
+                .length
+            }`}</Trigger>
           </TabsList>
           <Content
             className={styles.sectionContent}

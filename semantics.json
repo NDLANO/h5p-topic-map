@@ -543,6 +543,12 @@
         "name": "deleteNotesDenyLabel",
         "default": "Cancel",
         "type": "text"
+      },
+      {
+        "label": "Navbar progress bar label",
+        "name": "progressBarLabel",
+        "default": "Progress bar",
+        "type": "text"
       }
     ]
   }
