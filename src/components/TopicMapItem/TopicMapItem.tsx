@@ -11,7 +11,6 @@ import { UserData } from "../../types/UserData";
 export type TopicMapItemProps = {
   item: TopicMapItemType;
   onClick: MouseEventHandler;
-  setUserDataCopy: React.Dispatch<React.SetStateAction<UserData>>;
   userDataCopy: UserData;
 };
 

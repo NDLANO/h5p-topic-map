@@ -55,13 +55,12 @@ export const Grid: React.FC<GridProps> = ({
         >
           <TopicMapItem
             item={item}
-            setUserDataCopy={setUserDataCopy}
             onClick={() => setItemShowingDialog(item)}
             userDataCopy={userDataCopy}
           />
         </div>
       )),
-    [items, userDataCopy, itemShowingDialog],
+    [items, userDataCopy],
   );
 
   const bgImageStyle: string | undefined = backgroundImage?.path
