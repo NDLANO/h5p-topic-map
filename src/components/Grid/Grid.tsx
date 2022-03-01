@@ -60,7 +60,10 @@ export const Grid: React.FC<GridProps> = ({
           />
         </div>
       )),
-    [items, userDataCopy],
+
+    // We want to update re-render the elements whenever `itemShowingDialog` changes (i.e. the dialog window is closed).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [items, userDataCopy, itemShowingDialog],
   );
 
   const bgImageStyle: string | undefined = backgroundImage?.path
