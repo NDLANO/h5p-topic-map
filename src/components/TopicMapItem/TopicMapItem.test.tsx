@@ -28,9 +28,6 @@ describe(TopicMapItem.name, () => {
       <TopicMapItem
         item={item}
         onClick={onClick}
-        setUserDataCopy={() => {
-          return null;
-        }}
         userDataCopy={{}}
       />,
     );
