@@ -96,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     if (currentSection === NavbarSections.TopicMap) {
       setSectionMaxHeight(0);
     } else if (contentRect.height > 0) {
-      if (H5P.isFullscreen && contentRect.height <= window.innerHeight) {
+      if (fullscreenHandle.active && contentRect.height <= window.innerHeight) {
         setSectionMaxHeight(window.innerHeight - navbarHeight);
       } else {
         setSectionMaxHeight(contentRect.height);
@@ -111,18 +111,18 @@ export const Navbar: React.FC<NavbarProps> = ({
       const initialHeight =
         gridRef.current?.getBoundingClientRect().height ?? 0;
       if (initialHeight > 0) {
-        if (H5P.isFullscreen && initialHeight <= window.innerHeight) {
+        if (fullscreenHandle.active && initialHeight <= window.innerHeight) {
           setSectionMaxHeight(window.innerHeight - navbarHeight);
         } else {
           setSectionMaxHeight(initialHeight);
         }
       }
     }
-  }, [currentSection, H5P.isFullscreen, navbarHeight]);
+  }, [currentSection, fullscreenHandle.active, navbarHeight]);
 
   React.useEffect(() => {
     if (currentSection === NavbarSections.Notes) {
-      if (H5P.isFullscreen) {
+      if (fullscreenHandle.active) {
         setNotesListMaxHeight(
           window.innerHeight - navbarHeight - notesSectionHeight,
         );
@@ -132,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   }, [
     currentSection,
-    H5P.isFullscreen,
+    fullscreenHandle.active,
     navbarHeight,
     notesSectionHeight,
     sectionMaxHeight,
@@ -309,6 +309,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       <div className={styles.fullscreenButtonNotMobile}>
         <FullscreenButton
+          fullscreenHandle={fullscreenHandle}
           toggleIOSFullscreen={toggleIPhoneFullscreen}
           isIOSFullscreenActive={isIPhoneFullscreenActive}
         />
