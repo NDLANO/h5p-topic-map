@@ -32,7 +32,6 @@ $navbar-height: var(--h5p-tm-navbar-height);
 .itemWrapper {
   border-radius: 0.25rem;
   box-shadow: 0 0 0 2px var(--theme-color-4), 0 1px 4px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
   position: absolute;
   z-index: $item-z-index;
 

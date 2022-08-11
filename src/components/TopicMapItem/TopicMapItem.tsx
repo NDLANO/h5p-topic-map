@@ -59,47 +59,51 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
   }
 
   return (
-    <button
-      type="button"
-      className={className}
-      onClick={onClick}
-      ref={buttonElement}
-    >
-      {item.topicImage?.path && (
-        <img
-          className={styles.image}
-          src={item.topicImage.path}
-          alt={item.topicImageAltText ?? ""}
-          width={item.topicImage.width}
-          height={item.topicImage.height}
-        />
-      )}
-
-      <div
-        className={`${styles.inner} ${
-          item.topicImage?.path ? "" : styles.noImage
-        } ${item.dialog?.hasNote ? styles.withNote : ""}`}
-        style={{
-          paddingTop:
-            item.topicImage?.path && item.dialog?.hasNote
-              ? strokeWidth * 1.4
-              : strokeWidth * 0.66,
-        }}
+    <div className={styles.topicMapItemContainer}>
+      <button
+        type="button"
+        className={className}
+        onClick={onClick}
+        ref={buttonElement}
       >
-        {item.dialog?.hasNote ? (
+        {item.topicImage?.path && (
+          <img
+            className={styles.image}
+            src={item.topicImage.path}
+            alt={item.topicImageAltText ?? ""}
+            width={item.topicImage.width}
+            height={item.topicImage.height}
+          />
+        )}
+
+        <div
+          className={`${styles.inner} ${
+            item.topicImage?.path ? "" : styles.noImage
+          } ${item.dialog?.hasNote ? styles.withNote : ""}`}
+          style={{ paddingTop: strokeWidth * 0.66 }}
+        >
           <div
-            className={`${styles.icon} ${
-              item.topicImage?.path ? "" : styles.withoutImage
-            }`}
-            style={{
-              left:
-                (buttonElement.current
-                  ? buttonElement.current.getBoundingClientRect().width / 2
-                  : 0) -
-                (strokeWidth * 1.4) / 2,
-              top: 0 - strokeWidth / 2,
-            }}
-          >
+            className={styles.label}
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: item.label }}
+          />
+          {item.description && (
+            <div
+              className={styles.description}
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{ __html: item.description }}
+            />
+          )}
+        </div>
+      </button>
+
+      {item.dialog?.hasNote ? (
+        <button
+          type="button"
+          className={styles.topicMapItemIconEdit}
+          onClick={onClick}
+        >
+          <div className={styles.icon}>
             <NoteButton
               backgroundColor="var(--theme-color-3)"
               borderColor="white"
@@ -108,20 +112,10 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
               strokeWidth={strokeWidth}
             />
           </div>
-        ) : null}
-        <div
-          className={styles.label}
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: item.label }}
-        />
-        {item.description && (
-          <div
-            className={styles.description}
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{ __html: item.description }}
-          />
-        )}
-      </div>
-    </button>
+        </button>
+      ) : (
+        ""
+      )}
+    </div>
   );
 };
