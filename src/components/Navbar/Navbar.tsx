@@ -21,6 +21,7 @@ import { HelpSection } from "./HelpSection/HelpSection";
 import styles from "./Navbar.module.scss";
 import { NotesList } from "./NotesSection/NotesList/NotesList";
 import { NotesSection } from "./NotesSection/NotesSection";
+import { H5P } from "../../h5p/H5P.util";
 
 export type NavbarProps = {
   navbarTitle: string;
@@ -339,7 +340,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       </button>
       <div className={styles.fullscreenButtonMobile}>
         <FullscreenButton
-          fullscreenHandle={fullscreenHandle}
           toggleIOSFullscreen={toggleIPhoneFullscreen}
           isIOSFullscreenActive={isIPhoneFullscreenActive}
         />

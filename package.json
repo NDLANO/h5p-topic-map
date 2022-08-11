@@ -68,7 +68,7 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
     "file-loader": "^6.2.0",
-    "h5p-types": "^0.0.21",
+    "h5p-types": "^1.0.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.6.0",

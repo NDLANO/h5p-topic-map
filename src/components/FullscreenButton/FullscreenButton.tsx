@@ -3,6 +3,7 @@ import isIOS from "is-ios";
 import { useL10n } from "../../hooks/useLocalization";
 import styles from "./FullscreenButton.module.scss";
 import { useH5PInstance } from "../../hooks/useH5PInstance";
+import { H5P } from "../../h5p/H5P.util";
 
 export type FullscreenButtonProps = {
   toggleIOSFullscreen: () => void;
@@ -21,6 +22,9 @@ export const FullscreenButton: React.FC<FullscreenButtonProps> = ({
     }
     else {
       setTimeout(() => {
+        if (!h5pInstance) {
+          return;
+        }
         h5pInstance.handleToggleFullscreen();
       }, 300); // Some devices don't register user gesture before call to to requestFullscreen
     }

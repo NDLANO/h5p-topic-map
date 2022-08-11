@@ -9,6 +9,7 @@ import { Arrow } from "../Arrow/Arrow";
 import { DialogWindow } from "../Dialog-Window/DialogWindow";
 import { TopicMapItem } from "../TopicMapItem/TopicMapItem";
 import styles from "./Grid.module.scss";
+import { H5P } from "../../h5p/H5P.util";
 
 export type GridProps = {
   items: Array<TopicMapItemType>;
