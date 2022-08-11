@@ -3,7 +3,12 @@ src
 .babelrc
 .gitignore
 .h5pignore
+.storybook
 package.json
 package-lock.json
 README.md
 vite.config.ts
+babel.config.js
+tsconfig.json
+nodemon.json
+storybook-static
