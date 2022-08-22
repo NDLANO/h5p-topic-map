@@ -78,7 +78,6 @@ export const App: React.FC<AppProps> = ({
               <Navbar
                 navbarTitle={title ?? ""}
                 params={params}
-                fullscreenHandle={fullscreenHandle}
                 toggleIPhoneFullscreen={handleToggleIPhoneFullscreen}
                 isIPhoneFullscreenActive={isIPhoneFullscreenActive}
                 instance={instance}

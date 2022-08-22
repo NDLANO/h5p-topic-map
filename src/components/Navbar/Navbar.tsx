@@ -1,7 +1,6 @@
 import ProgressBar from "@ramonak/react-progress-bar";
 import * as React from "react";
 import { useState } from "react";
-import type { FullScreenHandle } from "react-full-screen";
 import { useReactToPrint } from "react-to-print";
 import type { IH5PContentType } from "h5p-types";
 import { useContentId } from "../../hooks/useContentId";
@@ -26,7 +25,6 @@ import { H5P } from "../../h5p/H5P.util";
 export type NavbarProps = {
   navbarTitle: string;
   params: Params;
-  fullscreenHandle: FullScreenHandle;
   toggleIPhoneFullscreen: () => void;
   isIPhoneFullscreenActive: boolean;
   instance: IH5PContentType;
@@ -35,7 +33,6 @@ export type NavbarProps = {
 export const Navbar: React.FC<NavbarProps> = ({
   navbarTitle,
   params,
-  fullscreenHandle,
   toggleIPhoneFullscreen,
   isIPhoneFullscreenActive,
   instance,
@@ -385,7 +382,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               arrowItems={params.topicMap?.arrowItems ?? []}
               backgroundImage={params.topicMap?.gridBackgroundImage}
               grid={params.topicMap?.grid}
-              fullscreenHandle={fullscreenHandle}
             />
           </div>
           {isHamburgerOpen && (
