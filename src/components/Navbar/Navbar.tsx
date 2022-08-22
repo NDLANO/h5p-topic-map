@@ -3,6 +3,7 @@ import * as React from "react";
 import { useState } from "react";
 import type { FullScreenHandle } from "react-full-screen";
 import { useReactToPrint } from "react-to-print";
+import type { IH5PContentType } from "h5p-types";
 import { useContentId } from "../../hooks/useContentId";
 import { useH5PInstance } from "../../hooks/useH5PInstance";
 import { useL10n } from "../../hooks/useLocalization";
@@ -21,7 +22,6 @@ import styles from "./Navbar.module.scss";
 import { NotesList } from "./NotesSection/NotesList/NotesList";
 import { NotesSection } from "./NotesSection/NotesSection";
 import { H5P } from "../../h5p/H5P.util";
-import type { IH5PContentType } from "h5p-types";
 
 export type NavbarProps = {
   navbarTitle: string;
@@ -132,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         }
       }
     }
-  }, [currentSection, H5P.isFullscreen, navbarHeight]);
+  }, [currentSection, navbarHeight]);
 
   React.useEffect(() => {
     if (currentSection === NavbarSections.Notes) {
@@ -144,13 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         setNotesListMaxHeight(sectionMaxHeight - notesSectionHeight);
       }
     }
-  }, [
-    currentSection,
-    H5P.isFullscreen,
-    navbarHeight,
-    notesSectionHeight,
-    sectionMaxHeight,
-  ]);
+  }, [currentSection, navbarHeight, notesSectionHeight, sectionMaxHeight]);
 
   React.useEffect(() => {
     const newProgressBarValue = allItems.filter(

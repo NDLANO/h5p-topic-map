@@ -1,7 +1,6 @@
 import type { Image } from "h5p-types";
 import * as React from "react";
 import { useState } from "react";
-import { FullScreenHandle } from "react-full-screen";
 import { ArrowItemType } from "../../types/ArrowItemType";
 import { CommonItemType } from "../../types/CommonItemType";
 import { TopicMapItemType } from "../../types/TopicMapItemType";
@@ -16,7 +15,6 @@ export type GridProps = {
   arrowItems: Array<ArrowItemType>;
   backgroundImage: Image | undefined;
   grid?: GridDimensions;
-  fullscreenHandle: FullScreenHandle;
 };
 
 export type GridDimensions = {
@@ -29,7 +27,6 @@ export const Grid: React.FC<GridProps> = ({
   arrowItems,
   backgroundImage,
   grid,
-  fullscreenHandle,
 }) => {
   const gridContainerRef = React.createRef<HTMLDivElement>();
   const [itemShowingDialog, setItemShowingDialog] =
@@ -173,7 +170,7 @@ export const Grid: React.FC<GridProps> = ({
       ]
         .filter(Boolean)
         .join(" "),
-    [H5P.isFullscreen],
+    [],
   );
 
   return (
