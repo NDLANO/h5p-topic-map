@@ -99,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({
    * React supplies useResizeObserver hook, but H5P may trigger `resize` not
    * only when the window resizes
    */
-  instance.on('resize', () => {
+  instance.on("resize", () => {
     window.requestAnimationFrame(() => {
       if (!gridRef.current) {
         return;

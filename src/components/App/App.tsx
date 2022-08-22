@@ -48,7 +48,7 @@ export const App: React.FC<AppProps> = ({
    * React supplies useResizeObserver hook, but H5P may trigger `resize` not
    * only when the window resizes
    */
-  instance.on('resize', () => {
+  instance.on("resize", () => {
     window.requestAnimationFrame(() => {
       if (!containerRef.current) {
         return;
