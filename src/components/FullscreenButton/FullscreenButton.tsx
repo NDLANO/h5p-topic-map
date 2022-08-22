@@ -19,8 +19,7 @@ export const FullscreenButton: React.FC<FullscreenButtonProps> = ({
   const handleFullscreen = (): void => {
     if (isIOS) {
       toggleIOSFullscreen();
-    }
-    else {
+    } else {
       setTimeout(() => {
         if (!h5pInstance) {
           return;

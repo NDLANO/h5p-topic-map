@@ -1,9 +1,8 @@
 import ProgressBar from "@ramonak/react-progress-bar";
-import useResizeObserver from "@react-hook/resize-observer";
 import * as React from "react";
 import { useState } from "react";
-import type { FullScreenHandle } from "react-full-screen";
 import { useReactToPrint } from "react-to-print";
+import type { IH5PContentType } from "h5p-types";
 import { useContentId } from "../../hooks/useContentId";
 import { useH5PInstance } from "../../hooks/useH5PInstance";
 import { useL10n } from "../../hooks/useLocalization";
@@ -26,17 +25,17 @@ import { H5P } from "../../h5p/H5P.util";
 export type NavbarProps = {
   navbarTitle: string;
   params: Params;
-  fullscreenHandle: FullScreenHandle;
   toggleIPhoneFullscreen: () => void;
   isIPhoneFullscreenActive: boolean;
+  instance: IH5PContentType;
 };
 
 export const Navbar: React.FC<NavbarProps> = ({
   navbarTitle,
   params,
-  fullscreenHandle,
   toggleIPhoneFullscreen,
   isIPhoneFullscreenActive,
+  instance,
 }) => {
   const contentId = useContentId();
   const h5pInstance = useH5PInstance();
@@ -93,16 +92,27 @@ export const Navbar: React.FC<NavbarProps> = ({
   const notesSectionHeight =
     notesSectionRef.current?.getBoundingClientRect().height ?? 0;
 
-  useResizeObserver(gridRef, ({ contentRect }) => {
-    if (currentSection === NavbarSections.TopicMap) {
-      setSectionMaxHeight(0);
-    } else if (contentRect.height > 0) {
-      if (H5P.isFullscreen && contentRect.height <= window.innerHeight) {
-        setSectionMaxHeight(window.innerHeight - navbarHeight);
-      } else {
-        setSectionMaxHeight(contentRect.height);
+  /*
+   * React supplies useResizeObserver hook, but H5P may trigger `resize` not
+   * only when the window resizes
+   */
+  instance.on("resize", () => {
+    window.requestAnimationFrame(() => {
+      if (!gridRef.current) {
+        return;
       }
-    }
+
+      const contentRect = gridRef.current.getBoundingClientRect();
+      if (currentSection === NavbarSections.TopicMap) {
+        setSectionMaxHeight(0);
+      } else if (contentRect.height > 0) {
+        if (H5P.isFullscreen && contentRect.height <= window.innerHeight) {
+          setSectionMaxHeight(window.innerHeight - navbarHeight);
+        } else {
+          setSectionMaxHeight(contentRect.height);
+        }
+      }
+    });
   });
 
   React.useEffect(() => {
@@ -119,7 +129,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         }
       }
     }
-  }, [currentSection, H5P.isFullscreen, navbarHeight]);
+  }, [currentSection, navbarHeight]);
 
   React.useEffect(() => {
     if (currentSection === NavbarSections.Notes) {
@@ -131,13 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         setNotesListMaxHeight(sectionMaxHeight - notesSectionHeight);
       }
     }
-  }, [
-    currentSection,
-    H5P.isFullscreen,
-    navbarHeight,
-    notesSectionHeight,
-    sectionMaxHeight,
-  ]);
+  }, [currentSection, navbarHeight, notesSectionHeight, sectionMaxHeight]);
 
   React.useEffect(() => {
     const newProgressBarValue = allItems.filter(
@@ -378,7 +382,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               arrowItems={params.topicMap?.arrowItems ?? []}
               backgroundImage={params.topicMap?.gridBackgroundImage}
               grid={params.topicMap?.grid}
-              fullscreenHandle={fullscreenHandle}
             />
           </div>
           {isHamburgerOpen && (

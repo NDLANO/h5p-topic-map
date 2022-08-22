@@ -19,13 +19,15 @@ import {
 } from "./H5P.util";
 
 export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
-  public containerElement: HTMLElement|undefined;
+  public containerElement: HTMLElement | undefined;
 
   private wrapper: HTMLElement;
 
   private isIPhoneFullscreenActive: boolean;
 
   private toggleIPhoneFullscreen: () => void;
+
+  private observer: IntersectionObserver;
 
   constructor(params: Params, contentId: string, extras?: H5PExtras) {
     super();
@@ -83,38 +85,31 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     const l10n = params.l10n ?? ({} as Translations);
     const title = extras?.metadata.title;
 
-    /*
-     * Trick components to rerender after resize.
-     * Instead of using a the resize observer, one would normally simply listen
-     * to the `resize` event dispatched by H5P and call components to
-     * resize.
-     */
-    const trickReactResizeObserver = (): void => {
-      if (!this.containerElement) {
-        return;
-      }
-
-      this.containerElement.style.width = '100.01%';
+    this.on("enterFullScreen", () => {
       setTimeout(() => {
-        if (!this.containerElement) {
-          return;
+        this.trigger("resize");
+      }, 250); // DOM might need time to change size
+    });
+
+    this.on("exitFullScreen", () => {
+      setTimeout(() => {
+        this.trigger("resize");
+      }, 250); // DOM might need time to change size
+    });
+
+    // React components require 'resize' once H5P container attached to DOM
+    this.observer = new IntersectionObserver(
+      entries => {
+        if (entries[0].intersectionRatio === 1) {
+          this.observer.unobserve(this.containerElement as Element); // Only need instantiate once.
+          this.trigger("resize");
         }
-
-        this.containerElement.style.width = '';
-      }, 0);
-    }
-
-    this.on('enterFullScreen', () => {
-      setTimeout(() => {
-        trickReactResizeObserver();
-      }, 250); // DOM might need time to change size
-    });
-
-    this.on('exitFullScreen', () => {
-      setTimeout(() => {
-        trickReactResizeObserver();
-      }, 250); // DOM might need time to change size
-    });
+      },
+      {
+        root: document.documentElement,
+        threshold: [1],
+      },
+    );
 
     render(
       <ContentIdContext.Provider value={contentId}>
@@ -124,6 +119,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
               params={paramsWithFallbacks}
               title={title}
               toggleIPhoneFullscreen={this.toggleIPhoneFullscreen}
+              instance={this}
             />
           </H5PContext.Provider>
         </LocalizationContext.Provider>
@@ -136,32 +132,30 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
    * Toggle fullscreen button.
    * @param {string|boolean} state enter|false for enter, exit|true for exit.
    */
-  handleToggleFullscreen(state?: string|boolean): void {
+  handleToggleFullscreen(state?: string | boolean): void {
     if (!this.containerElement) {
       return;
     }
 
-    let newState: boolean|undefined;
-    if (typeof state === 'string') {
-      if (state === 'enter') {
+    let newState: boolean | undefined;
+    if (typeof state === "string") {
+      if (state === "enter") {
         newState = false;
-      }
-      else if (state === 'exit') {
+      } else if (state === "exit") {
         newState = true;
       }
     }
 
-    if (typeof newState !== 'boolean') {
+    if (typeof newState !== "boolean") {
       newState = !H5P.isFullscreen;
     }
 
     if (newState === true) {
       H5P.fullScreen(H5P.jQuery(this.containerElement), this);
-    }
-    else {
+    } else {
       H5P.exitFullScreen();
     }
-  };
+  }
 
   attach($container: JQuery<HTMLElement>): void {
     this.containerElement = $container.get(0);
@@ -174,6 +168,8 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     this.containerElement.appendChild(this.wrapper);
     this.containerElement.classList.add("h5p-topic-map");
+
+    this.observer.observe(this.containerElement as Element);
   }
 
   private static createWrapperElement(): HTMLDivElement {
