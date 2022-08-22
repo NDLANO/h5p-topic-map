@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import * as React from "react";
 import { FullScreenHandle } from "react-full-screen";
+import type { IH5PContentType } from "h5p-types";
 import { Navbar, NavbarProps } from "./Navbar";
 
 export default {
@@ -14,6 +15,7 @@ const defaultArgs: NavbarProps = {
   fullscreenHandle: {} as FullScreenHandle,
   toggleIPhoneFullscreen: () => null,
   isIPhoneFullscreenActive: false,
+  instance: {} as IH5PContentType
 };
 
 export const NavBar: ComponentStory<typeof Navbar> = () => {

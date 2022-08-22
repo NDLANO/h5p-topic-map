@@ -27,6 +27,8 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
   private toggleIPhoneFullscreen: () => void;
 
+  private observer: IntersectionObserver;
+
   constructor(params: Params, contentId: string, extras?: H5PExtras) {
     super();
 
@@ -83,37 +85,27 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     const l10n = params.l10n ?? ({} as Translations);
     const title = extras?.metadata.title;
 
-    /*
-     * Trick components to rerender after resize.
-     * Instead of using a the resize observer, one would normally simply listen
-     * to the `resize` event dispatched by H5P and call components to
-     * resize.
-     */
-    const trickReactResizeObserver = (): void => {
-      if (!this.containerElement) {
-        return;
-      }
-
-      this.containerElement.style.width = '100.01%';
-      setTimeout(() => {
-        if (!this.containerElement) {
-          return;
-        }
-
-        this.containerElement.style.width = '';
-      }, 0);
-    }
-
     this.on('enterFullScreen', () => {
       setTimeout(() => {
-        trickReactResizeObserver();
+        this.trigger('resize');
       }, 250); // DOM might need time to change size
     });
 
     this.on('exitFullScreen', () => {
       setTimeout(() => {
-        trickReactResizeObserver();
+        this.trigger('resize');
       }, 250); // DOM might need time to change size
+    });
+
+    // React components require 'resize' once H5P container attached to DOM
+    this.observer = new IntersectionObserver(entries => {
+      if (entries[0].intersectionRatio === 1) {
+        this.observer.unobserve(this.containerElement as Element); // Only need instantiate once.
+        this.trigger('resize');
+      }
+    }, {
+      root: document.documentElement,
+      threshold: [1]
     });
 
     render(
@@ -124,6 +116,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
               params={paramsWithFallbacks}
               title={title}
               toggleIPhoneFullscreen={this.toggleIPhoneFullscreen}
+              instance={this}
             />
           </H5PContext.Provider>
         </LocalizationContext.Provider>
@@ -174,6 +167,8 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     this.containerElement.appendChild(this.wrapper);
     this.containerElement.classList.add("h5p-topic-map");
+
+    this.observer.observe(this.containerElement as Element);    
   }
 
   private static createWrapperElement(): HTMLDivElement {

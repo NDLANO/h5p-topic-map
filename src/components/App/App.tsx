@@ -1,7 +1,7 @@
-import useResizeObserver from "@react-hook/resize-observer";
 import * as React from "react";
 import { useState } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import type { IH5PContentType } from "h5p-types";
 import { AppWidthContext } from "../../contexts/AppWidthContext";
 import { Params } from "../../types/Params";
 import { defaultTheme } from "../../utils/semantics.utils";
@@ -12,12 +12,14 @@ export type AppProps = {
   params: Params;
   title: string | undefined;
   toggleIPhoneFullscreen: () => void;
+  instance: IH5PContentType;
 };
 
 export const App: React.FC<AppProps> = ({
   params,
   title,
   toggleIPhoneFullscreen,
+  instance,
 }) => {
   const fullscreenHandle = useFullScreenHandle();
   const [isIPhoneFullscreenActive, setIsIPhoneFullscreenActive] =
@@ -37,14 +39,24 @@ export const App: React.FC<AppProps> = ({
     setWidth(initialWidth);
   }, []);
 
-  useResizeObserver(containerRef, ({ contentRect }) => {
-    setWidth(contentRect.width);
-  });
-
   const themeClassName = React.useMemo(
     () => `theme-${params.topicMap?.colorTheme ?? defaultTheme}`,
     [params.topicMap?.colorTheme],
   );
+
+  /*
+   * React supplies useResizeObserver hook, but H5P may trigger `resize` not
+   * only when the window resizes
+   */
+  instance.on('resize', () => {
+    window.requestAnimationFrame(() => {
+      if (!containerRef.current) {
+        return;
+      }
+
+      setWidth(containerRef.current.getBoundingClientRect().width);
+    });
+  });
 
   return (
     <div
@@ -69,6 +81,7 @@ export const App: React.FC<AppProps> = ({
                 fullscreenHandle={fullscreenHandle}
                 toggleIPhoneFullscreen={handleToggleIPhoneFullscreen}
                 isIPhoneFullscreenActive={isIPhoneFullscreenActive}
+                instance={instance}
               />
             </div>
           </FullScreen>

@@ -1,5 +1,4 @@
 import ProgressBar from "@ramonak/react-progress-bar";
-import useResizeObserver from "@react-hook/resize-observer";
 import * as React from "react";
 import { useState } from "react";
 import type { FullScreenHandle } from "react-full-screen";
@@ -22,6 +21,7 @@ import styles from "./Navbar.module.scss";
 import { NotesList } from "./NotesSection/NotesList/NotesList";
 import { NotesSection } from "./NotesSection/NotesSection";
 import { H5P } from "../../h5p/H5P.util";
+import type { IH5PContentType } from "h5p-types";
 
 export type NavbarProps = {
   navbarTitle: string;
@@ -29,6 +29,7 @@ export type NavbarProps = {
   fullscreenHandle: FullScreenHandle;
   toggleIPhoneFullscreen: () => void;
   isIPhoneFullscreenActive: boolean;
+  instance: IH5PContentType;
 };
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -37,6 +38,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   fullscreenHandle,
   toggleIPhoneFullscreen,
   isIPhoneFullscreenActive,
+  instance,
 }) => {
   const contentId = useContentId();
   const h5pInstance = useH5PInstance();
@@ -93,16 +95,27 @@ export const Navbar: React.FC<NavbarProps> = ({
   const notesSectionHeight =
     notesSectionRef.current?.getBoundingClientRect().height ?? 0;
 
-  useResizeObserver(gridRef, ({ contentRect }) => {
-    if (currentSection === NavbarSections.TopicMap) {
-      setSectionMaxHeight(0);
-    } else if (contentRect.height > 0) {
-      if (H5P.isFullscreen && contentRect.height <= window.innerHeight) {
-        setSectionMaxHeight(window.innerHeight - navbarHeight);
-      } else {
-        setSectionMaxHeight(contentRect.height);
+  /*
+   * React supplies useResizeObserver hook, but H5P may trigger `resize` not
+   * only when the window resizes
+   */
+  instance.on('resize', () => {
+    window.requestAnimationFrame(() => {
+      if (!gridRef.current) {
+        return;
       }
-    }
+
+      const contentRect = gridRef.current.getBoundingClientRect();
+      if (currentSection === NavbarSections.TopicMap) {
+        setSectionMaxHeight(0);
+      } else if (contentRect.height > 0) {
+        if (H5P.isFullscreen && contentRect.height <= window.innerHeight) {
+          setSectionMaxHeight(window.innerHeight - navbarHeight);
+        } else {
+          setSectionMaxHeight(contentRect.height);
+        }
+      }
+    });
   });
 
   React.useEffect(() => {
