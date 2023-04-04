@@ -1,4 +1,4 @@
-import type { EventDispatcher, XAPIDefinition, XAPIVerb } from "h5p-types";
+import type { IH5PContentType, XAPIDefinition, XAPIVerb } from "h5p-types";
 
 /**
  * Get the xAPI definition for the xAPI object
@@ -22,7 +22,7 @@ export const getxAPIDefinition = (): XAPIDefinition => {
 export const sendXAPIEvent = (
   verb: XAPIVerb,
   data: Record<string, unknown>,
-  h5pInstance: EventDispatcher,
+  h5pInstance: IH5PContentType,
   contentId: string,
 ): void => {
   // eslint-disable-next-line no-param-reassign

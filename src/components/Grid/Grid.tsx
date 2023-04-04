@@ -1,20 +1,23 @@
-import type { Image } from "h5p-types";
+import type { Image, IH5PContentType } from "h5p-types";
 import * as React from "react";
 import { useState } from "react";
 import { ArrowItemType } from "../../types/ArrowItemType";
 import { CommonItemType } from "../../types/CommonItemType";
 import { TopicMapItemType } from "../../types/TopicMapItemType";
+import { TopicMapSubcontentType } from "../../types/TopicMapSubcontentType";
 import { Arrow } from "../Arrow/Arrow";
 import { DialogWindow } from "../Dialog-Window/DialogWindow";
 import { TopicMapItem } from "../TopicMapItem/TopicMapItem";
+import { TopicMapSubcontent } from "../TopicMapSubcontent/TopicMapSubcontent";
 import styles from "./Grid.module.scss";
 import { H5P } from "../../h5p/H5P.util";
 
 export type GridProps = {
-  items: Array<TopicMapItemType>;
+  items: Array<TopicMapItemType | TopicMapSubcontentType>;
   arrowItems: Array<ArrowItemType>;
   backgroundImage: Image | undefined;
   grid?: GridDimensions;
+  rootInstance: IH5PContentType;
 };
 
 export type GridDimensions = {
@@ -27,14 +30,20 @@ export const Grid: React.FC<GridProps> = ({
   arrowItems,
   backgroundImage,
   grid,
+  rootInstance,
 }) => {
   const gridContainerRef = React.createRef<HTMLDivElement>();
   const [itemShowingDialog, setItemShowingDialog] =
     useState<CommonItemType | null>(null);
 
   const isArrow = (
-    item: ArrowItemType | TopicMapItemType,
+    item: ArrowItemType | TopicMapItemType | TopicMapSubcontentType,
   ): item is ArrowItemType => (item as ArrowItemType).arrowType != null;
+
+  const isSubcontent = (
+    item: ArrowItemType | TopicMapItemType | TopicMapSubcontentType,
+  ): item is TopicMapSubcontentType =>
+    (item as TopicMapSubcontentType).subcontent != null;
 
   const getFirstArrowPosition = (
     arrow: ArrowItemType,
@@ -94,7 +103,9 @@ export const Grid: React.FC<GridProps> = ({
     };
 
     const sortedItems = items.concat().sort((a, b) => sortItems(a, b));
-    let allItems: Array<TopicMapItemType | ArrowItemType> = sortedItems;
+    let allItems: Array<
+      TopicMapItemType | TopicMapSubcontentType | ArrowItemType
+    > = sortedItems;
 
     arrowItems
       .concat()
@@ -122,6 +133,24 @@ export const Grid: React.FC<GridProps> = ({
             }}
             dialogIsOpen={itemShowingDialog === item}
           />
+        );
+      }
+
+      if (isSubcontent(item)) {
+        return (
+          <div
+            key={item.id}
+            id={item.id}
+            className={`${styles.itemWrapper} ${styles.subcontent}`}
+            style={{
+              left: `${item.xPercentagePosition}%`,
+              top: `${item.yPercentagePosition}%`,
+              height: `${item.heightPercentage}%`,
+              width: `${item.widthPercentage}%`,
+            }}
+          >
+            <TopicMapSubcontent item={item} rootInstance={rootInstance} />
+          </div>
         );
       }
 

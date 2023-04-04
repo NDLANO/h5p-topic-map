@@ -382,6 +382,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               arrowItems={params.topicMap?.arrowItems ?? []}
               backgroundImage={params.topicMap?.gridBackgroundImage}
               grid={params.topicMap?.grid}
+              rootInstance={instance}
             />
           </div>
           {isHamburgerOpen && (

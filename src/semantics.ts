@@ -1,6 +1,4 @@
 import type { H5PFieldGroup, H5PBehaviour, H5PL10n } from "h5p-types";
-import { ColorTheme } from "./types/ColorTheme";
-import { colorThemes, itemDialog } from "./utils/semantics.utils";
 
 export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
   {
@@ -53,15 +51,70 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
               widget: "none",
             },
             {
+              name: "type",
+              type: "select",
+              label: "Type of content",
+              options: [
+                {
+                  value: "topic",
+                  label: "Topic content",
+                },
+                {
+                  value: "subcontent",
+                  label: "H5P subcontent",
+                },
+              ],
+              default: "topic",
+            },
+            {
+              name: "subcontent",
+              type: "library",
+              label: "Subcontent",
+              optional: true,
+              options: [
+                "H5P.AdvancedText 1.1",
+                "H5P.Blanks 1.14",
+                "H5P.TrueFalse 1.8",
+                "H5P.VocabularyDrill 1.0",
+              ],
+              widget: "showWhen",
+              showWhen: {
+                rules: [
+                  {
+                    field: "type",
+                    equals: "subcontent",
+                  },
+                ],
+              },
+            },
+            {
               label: "Label",
               name: "label",
               type: "text",
+              widget: "showWhen",
+              showWhen: {
+                rules: [
+                  {
+                    field: "type",
+                    equals: "topic",
+                  },
+                ],
+              },
             },
             {
               label: "Description",
               name: "description",
               type: "text",
               optional: true,
+              widget: "showWhen",
+              showWhen: {
+                rules: [
+                  {
+                    field: "type",
+                    equals: "topic",
+                  },
+                ],
+              },
             },
             {
               label: "Topic image",
@@ -69,6 +122,15 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
                 "Background image for card and image above text in dialog",
               name: "topicImage",
               type: "image",
+              widget: "showWhen",
+              showWhen: {
+                rules: [
+                  {
+                    field: "type",
+                    equals: "topic",
+                  },
+                ],
+              },
             },
             {
               label: "Topic image alt text",
@@ -77,10 +139,132 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
               name: "topicImageAltText",
               type: "text",
               optional: true,
+              widget: "showWhen",
+              showWhen: {
+                rules: [
+                  {
+                    field: "type",
+                    equals: "topic",
+                  },
+                ],
+              },
             },
-
-            ...itemDialog,
-
+            {
+              label: "Dialog",
+              name: "dialog",
+              type: "group",
+              fields: [
+                {
+                  label: "Show notes textarea",
+                  name: "hasNote",
+                  type: "boolean",
+                  default: true,
+                },
+                {
+                  label: "Maximum number of words",
+                  description:
+                    "Specifies the maximum number of words for the note. Default is 160 words.",
+                  name: "maxWordCount",
+                  type: "number",
+                  optional: true,
+                  default: 160,
+                },
+                {
+                  label: "Text",
+                  name: "text",
+                  type: "text",
+                  widget: "html",
+                  optional: true,
+                  tags: [
+                    "h2",
+                    "h3",
+                    "h4",
+                    "h5",
+                    "h6",
+                    "p",
+                    "br",
+                    "strong",
+                    "em",
+                    "a",
+                  ],
+                },
+                {
+                  label: "Video",
+                  name: "video",
+                  type: "video",
+                  optional: true,
+                },
+                {
+                  label: "Audio",
+                  name: "audio",
+                  type: "group",
+                  optional: true,
+                  importance: "low",
+                  fields: [
+                    {
+                      label: "Audio",
+                      name: "audioFile",
+                      type: "audio",
+                    },
+                    {
+                      label: "Subtext",
+                      name: "subtext",
+                      type: "text",
+                      widget: "html",
+                      optional: true,
+                      tags: ["p", "br", "strong", "em"],
+                    },
+                  ],
+                },
+                {
+                  label: "Links",
+                  name: "links",
+                  description:
+                    "These links are as auxiliary links for the user in the element's modal window",
+                  type: "list",
+                  optional: true,
+                  entity: "linkItem",
+                  field: {
+                    label: "Link",
+                    name: "link",
+                    type: "group",
+                    fields: [
+                      {
+                        label: "Id",
+                        name: "id",
+                        type: "text",
+                        widget: "uuid",
+                      },
+                      {
+                        label: "Label",
+                        name: "label",
+                        type: "text",
+                      },
+                      {
+                        label: "Url",
+                        name: "url",
+                        type: "text",
+                      },
+                    ],
+                  },
+                },
+                {
+                  label: "Show add links option",
+                  name: "showAddLinks",
+                  type: "boolean",
+                  default: false,
+                },
+              ],
+              widget: "showWhen",
+              showWhen: {
+                rules: [
+                  {
+                    field: "type",
+                    equals: "topic",
+                  },
+                ],
+              },
+            },
             {
               label: "Index",
               description:
@@ -259,9 +443,113 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
               widget: "none",
               default: true,
             },
-
-            ...itemDialog,
-
+            {
+              label: "Dialog",
+              name: "dialog",
+              type: "group",
+              fields: [
+                {
+                  label: "Show notes textarea",
+                  name: "hasNote",
+                  type: "boolean",
+                  default: true,
+                },
+                {
+                  label: "Maximum number of words",
+                  description:
+                    "Specifies the maximum number of words for the note. Default is 160 words.",
+                  name: "maxWordCount",
+                  type: "number",
+                  optional: true,
+                  default: 160,
+                },
+                {
+                  label: "Text",
+                  name: "text",
+                  type: "text",
+                  widget: "html",
+                  optional: true,
+                  tags: [
+                    "h2",
+                    "h3",
+                    "h4",
+                    "h5",
+                    "h6",
+                    "p",
+                    "br",
+                    "strong",
+                    "em",
+                    "a",
+                  ],
+                },
+                {
+                  label: "Video",
+                  name: "video",
+                  type: "video",
+                  optional: true,
+                },
+                {
+                  label: "Audio",
+                  name: "audio",
+                  type: "group",
+                  optional: true,
+                  importance: "low",
+                  fields: [
+                    {
+                      label: "Audio",
+                      name: "audioFile",
+                      type: "audio",
+                    },
+                    {
+                      label: "Subtext",
+                      name: "subtext",
+                      type: "text",
+                      widget: "html",
+                      optional: true,
+                      tags: ["p", "br", "strong", "em"],
+                    },
+                  ],
+                },
+                {
+                  label: "Links",
+                  name: "links",
+                  description:
+                    "These links are as auxiliary links for the user in the element's modal window",
+                  type: "list",
+                  optional: true,
+                  entity: "linkItem",
+                  field: {
+                    label: "Link",
+                    name: "link",
+                    type: "group",
+                    fields: [
+                      {
+                        label: "Id",
+                        name: "id",
+                        type: "text",
+                        widget: "uuid",
+                      },
+                      {
+                        label: "Label",
+                        name: "label",
+                        type: "text",
+                      },
+                      {
+                        label: "Url",
+                        name: "url",
+                        type: "text",
+                      },
+                    ],
+                  },
+                },
+                {
+                  label: "Show add links option",
+                  name: "showAddLinks",
+                  type: "boolean",
+                  default: false,
+                },
+              ],
+            },
             {
               label: "Index",
               name: "index",
@@ -336,8 +624,25 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: "Color theme",
         name: "colorTheme",
         type: "select",
-        default: ColorTheme.Blue,
-        options: [...colorThemes],
+        default: "1",
+        options: [
+          {
+            label: "Blue",
+            value: "1",
+          },
+          {
+            label: "Green",
+            value: "2",
+          },
+          {
+            label: "Red",
+            value: "3",
+          },
+          {
+            label: "Gray",
+            value: "4",
+          },
+        ],
         widget: "none",
       },
       {
@@ -361,7 +666,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
       },
     ],
   },
-
   {
     label: "Behavioral settings",
     name: "behaviour",
@@ -369,7 +673,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
     importance: "low",
     fields: [],
   },
-
   {
     name: "l10n",
     type: "group",
@@ -502,6 +805,7 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         default:
           "<p>The purpose of this exercise is to enhance your learning by linking your own notes to a topic map. The topic map consists of events (boxes) and connections (arrows). You must enter notes for both events and connections.</p><p>Click or tap the boxes and arrows to add a note to an event or connection. The notes you enter are automatically saved locally in the browser of the device you are using, so you can continue on or read the notes at a later time.</p><p><strong>Progress bar</strong> shows what percentage of the events and connections have received notes. 100% means you have posted notes in all available places.</p><p><strong>My notes</strong> gives you an overview of all the notes you have written. There you can print out or delete all the notes. These notes are stored locally in your internet browser, therefore it's recommended to export them using printing functionality in order to save your answers over time.</p>",
         type: "text",
+        // @ts-expect-error Type definition is incomplete
         tags: ["h2", "h3", "h4", "p", "br", "strong", "em", "a"],
       },
       {

@@ -49,28 +49,101 @@
               "widget": "none"
             },
             {
+              "name": "type",
+              "type": "select",
+              "label": "Type of content",
+              "options": [
+                {
+                  "value": "topic",
+                  "label": "Topic content"
+                },
+                {
+                  "value": "subcontent",
+                  "label": "H5P subcontent"
+                }
+              ],
+              "default": "topic"
+            },
+            {
+              "name": "subcontent",
+              "type": "library",
+              "label": "Subcontent",
+              "optional": true,
+              "options": [
+                "H5P.AdvancedText 1.1",
+                "H5P.Blanks 1.14",
+                "H5P.TrueFalse 1.8",
+                "H5P.VocabularyDrill 1.0"
+              ],
+              "widget": "showWhen",
+              "showWhen": {
+                "rules": [
+                  {
+                    "field": "type",
+                    "equals": "subcontent"
+                  }
+                ]
+              }
+            },
+            {
               "label": "Label",
               "name": "label",
-              "type": "text"
+              "type": "text",
+              "widget": "showWhen",
+              "showWhen": {
+                "rules": [
+                  {
+                    "field": "type",
+                    "equals": "topic"
+                  }
+                ]
+              }
             },
             {
               "label": "Description",
               "name": "description",
               "type": "text",
-              "optional": true
+              "optional": true,
+              "widget": "showWhen",
+              "showWhen": {
+                "rules": [
+                  {
+                    "field": "type",
+                    "equals": "topic"
+                  }
+                ]
+              }
             },
             {
               "label": "Topic image",
               "description": "Background image for card and image above text in dialog",
               "name": "topicImage",
-              "type": "image"
+              "type": "image",
+              "widget": "showWhen",
+              "showWhen": {
+                "rules": [
+                  {
+                    "field": "type",
+                    "equals": "topic"
+                  }
+                ]
+              }
             },
             {
               "label": "Topic image alt text",
               "description": "Alternative text for the image that is used by screen readers",
               "name": "topicImageAltText",
               "type": "text",
-              "optional": true
+              "optional": true,
+              "widget": "showWhen",
+              "showWhen": {
+                "rules": [
+                  {
+                    "field": "type",
+                    "equals": "topic"
+                  }
+                ]
+              }
             },
             {
               "label": "Dialog",
@@ -180,7 +253,16 @@
                   "type": "boolean",
                   "default": false
                 }
-              ]
+              ],
+              "widget": "showWhen",
+              "showWhen": {
+                "rules": [
+                  {
+                    "field": "type",
+                    "equals": "topic"
+                  }
+                ]
+              }
             },
             {
               "label": "Index",
