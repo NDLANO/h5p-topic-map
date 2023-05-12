@@ -35,10 +35,6 @@ DenFranskeRevolusjon.args = {
       navbarTabsListAriaLabel: "Navigation bar",
       navbarTopicMapSectionLabel: "Topic map",
       navbarNotesSectionLabel: "My notes",
-      navbarHelpSectionLabel: "Help",
-      navbarHelpSectionTitle: "Help",
-      navbarHelpSectionBody:
-        "&lt;p&gt;The purpose of this exercise is to enhance your learning by linking your own notes to a topic map. The topic map consists of events (boxes) and connections (arrows). You must enter notes for both events and connections.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;Click or tap the boxes and arrows to add a note to an event or connection. The notes you enter are automatically saved locally in the browser of the device you are using, so you can continue on or read the notes at a later time.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;&lt;strong&gt;Progress bar&lt;/strong&gt; shows what percentage of the events and connections have received notes. 100% means you have posted notes in all available places.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;&lt;strong&gt;Export the notes&lt;/strong&gt; gives you an overview of all the notes you have written. There you can print or copy the notes to e.g. paste them into a document or email.&lt;/p&gt;&lt;br /&gt;&lt;p&gt;&lt;strong&gt;Delete all notes&lt;/strong&gt; removes all notes from the browser on the device you are using.&lt;/p&gt;",
       dialogResourcesLabel: "Resources",
       dialogTextLabel: "Text",
       dialogNoteLabel: "Note",

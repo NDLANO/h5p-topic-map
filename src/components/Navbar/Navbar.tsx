@@ -1,12 +1,13 @@
 import ProgressBar from "@ramonak/react-progress-bar";
+import type { IH5PContentType } from "h5p-types";
 import * as React from "react";
 import { useState } from "react";
 import { useReactToPrint } from "react-to-print";
-import type { IH5PContentType } from "h5p-types";
+import { H5P } from "../../h5p/H5P.util";
 import { useContentId } from "../../hooks/useContentId";
 import { useH5PInstance } from "../../hooks/useH5PInstance";
-import { useL10n } from "../../hooks/useLocalization";
 import { useLocalStorageUserData } from "../../hooks/useLocalStorageUserData";
+import { useL10n } from "../../hooks/useLocalization";
 import { useSizeClassNames } from "../../hooks/useSizeClassNames";
 import { CommonItemType } from "../../types/CommonItemType";
 import { NavbarSections } from "../../types/NavbarSections";
@@ -15,12 +16,9 @@ import { exportAllUserData } from "../../utils/user-data.utils";
 import { DialogWindow } from "../Dialog-Window/DialogWindow";
 import { FullscreenButton } from "../FullscreenButton/FullscreenButton";
 import { Grid } from "../Grid/Grid";
-import { HamburgerCloseIcon, HamburgerIcon } from "../Icons/Icons";
-import { HelpSection } from "./HelpSection/HelpSection";
 import styles from "./Navbar.module.scss";
 import { NotesList } from "./NotesSection/NotesList/NotesList";
 import { NotesSection } from "./NotesSection/NotesSection";
-import { H5P } from "../../h5p/H5P.util";
 
 export type NavbarProps = {
   navbarTitle: string;
@@ -44,7 +42,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navbarAriaLabel = useL10n("navbarTabsListAriaLabel");
   const notesSectionLabel = useL10n("navbarNotesSectionLabel");
-  const helpSectionLabel = useL10n("navbarHelpSectionLabel");
   const progressPercentageLabel = useL10n("progressPercentageLabel");
   const deleteAllNotesText = useL10n("deleteNotesConfirmationWindowLabel");
   const deleteAllNotesConfirmText = useL10n("deleteNotesConfirmLabel");
@@ -65,8 +62,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     useState(false);
   const [isSubmitAllConfirmationVisible, setIsSubmitAllConfirmationVisible] =
     useState(false);
-
-  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
   const sizeClassNames = useSizeClassNames(styles);
 
@@ -243,6 +238,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   );
 
   const goToTopicMap = (): void => setCurrentSection(NavbarSections.TopicMap);
+  const goToNotesPage = (): void => setCurrentSection(NavbarSections.Notes);
 
   const notesSection = (
     <>
@@ -284,71 +280,20 @@ export const Navbar: React.FC<NavbarProps> = ({
     </>
   );
 
-  const sectionsMenu = (
+  const sectionsMenu = hasNotes && (
     <>
-      {hasNotes && (
-        <button
-          className={`${styles.sectionTitle} ${
-            currentSection === NavbarSections.Notes && styles.active
-          }`}
-          type="button"
-          onClick={() => setCurrentSection(NavbarSections.Notes)}
-        >
-          {notesSectionLabel}
-        </button>
-      )}
-
       <button
         className={`${styles.sectionTitle} ${
-          currentSection === NavbarSections.Help && styles.active
+          currentSection === NavbarSections.Notes && styles.active
         }`}
         type="button"
-        onClick={() => setCurrentSection(NavbarSections.Help)}
+        onClick={goToNotesPage}
       >
-        {helpSectionLabel}
+        {notesSectionLabel}
       </button>
 
-      {hasNotes && (
-        <div className={styles.progressBarWrapper}>{progressBar}</div>
-      )}
-
-      <div className={styles.fullscreenButtonNotMobile}>
-        <FullscreenButton
-          toggleIOSFullscreen={toggleIPhoneFullscreen}
-          isIOSFullscreenActive={isIPhoneFullscreenActive}
-        />
-      </div>
+      <div className={styles.progressBarWrapper}>{progressBar}</div>
     </>
-  );
-
-  const navButtonsMobile = (
-    <div className={styles.navButtonsMobile}>
-      <button
-        type="button"
-        className={styles.hamburgerButton}
-        onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}
-      >
-        {isHamburgerOpen ? (
-          <HamburgerCloseIcon
-            iconColor="#fff"
-            width={undefined}
-            height={undefined}
-          />
-        ) : (
-          <HamburgerIcon
-            iconColor="#fff"
-            width={undefined}
-            height={undefined}
-          />
-        )}
-      </button>
-      <div className={styles.fullscreenButtonMobile}>
-        <FullscreenButton
-          toggleIOSFullscreen={toggleIPhoneFullscreen}
-          isIOSFullscreenActive={isIPhoneFullscreenActive}
-        />
-      </div>
-    </div>
   );
 
   return (
@@ -370,8 +315,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               {navbarTitle}
             </button>
-            <div className={styles.sectionsMenuNotMobile}>{sectionsMenu}</div>
-            {navButtonsMobile}
+            <div className={styles.sectionsMenu}>{sectionsMenu}</div>
+            <div className={styles.fullscreenButton}>
+              <FullscreenButton
+                toggleIOSFullscreen={toggleIPhoneFullscreen}
+                isIOSFullscreenActive={isIPhoneFullscreenActive}
+              />
+            </div>
           </div>
         </div>
 
@@ -384,23 +334,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               grid={params.topicMap?.grid}
             />
           </div>
-          {isHamburgerOpen && (
-            <div className={styles.sectionsMenuMobile}>{sectionsMenu}</div>
+          {currentSection === NavbarSections.Notes && (
+            <div className={styles.sectionContentWrapper}>{notesSection}</div>
           )}
-          <div className={styles.sectionContentWrapper}>
-            {currentSection === NavbarSections.Notes && notesSection}
-            {currentSection === NavbarSections.Help && (
-              <div
-                className={styles.helpSectionWrapper}
-                style={{
-                  maxHeight: sectionMaxHeight,
-                  minHeight: sectionMaxHeight,
-                }}
-              >
-                <HelpSection goToTopicMap={goToTopicMap} />
-              </div>
-            )}
-          </div>
         </div>
       </div>
       {deleteConfirmation}
