@@ -1,6 +1,0 @@
-package-lock.json
-dist/
-storybook-static/
-semantics.json
-src/types/TranslationKey.ts
-language/
