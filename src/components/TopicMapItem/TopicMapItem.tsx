@@ -1,14 +1,14 @@
-import * as React from "react";
-import { FC, MouseEventHandler } from "react";
-import { useAppWidth } from "../../hooks/useAppWidth";
-import { useContentId } from "../../hooks/useContentId";
-import { useLocalStorageUserData } from "../../hooks/useLocalStorageUserData";
-import { useSizeClassNames } from "../../hooks/useSizeClassNames";
-import { NoteButtonIconState } from "../../types/NoteButtonIconState";
-import { TopicMapItemType } from "../../types/TopicMapItemType";
-import { GridDimensions } from "../Grid/Grid";
-import { NoteButton } from "../NoteButton/NoteButton";
-import styles from "./TopicMapItem.module.scss";
+import * as React from 'react';
+import { FC, MouseEventHandler } from 'react';
+import { useAppWidth } from '../../hooks/useAppWidth';
+import { useContentId } from '../../hooks/useContentId';
+import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
+import { useSizeClassNames } from '../../hooks/useSizeClassNames';
+import { NoteButtonIconState } from '../../types/NoteButtonIconState';
+import { TopicMapItemType } from '../../types/TopicMapItemType';
+import { GridDimensions } from '../Grid/Grid';
+import { NoteButton } from '../NoteButton/NoteButton';
+import styles from './TopicMapItem.module.scss';
 
 export type TopicMapItemProps = {
   item: TopicMapItemType;
@@ -31,7 +31,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
   const [strokeWidth, setStrokeWidth] = React.useState(4);
 
   const sizeClassNames = useSizeClassNames(styles);
-  const className = [styles.topicMapItem, sizeClassNames].join(" ");
+  const className = [styles.topicMapItem, sizeClassNames].join(' ');
 
   React.useEffect(() => {
     if (gridRef) {
@@ -70,7 +70,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
           <img
             className={styles.image}
             src={item.topicImage.path}
-            alt={item.topicImageAltText ?? ""}
+            alt={item.topicImageAltText ?? ''}
             width={item.topicImage.width}
             height={item.topicImage.height}
           />
@@ -78,19 +78,19 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
 
         <div
           className={`${styles.inner} ${
-            item.topicImage?.path ? "" : styles.noImage
-          } ${item.dialog?.hasNote ? styles.withNote : ""}`}
+            item.topicImage?.path ? '' : styles.noImage
+          } ${item.dialog?.hasNote ? styles.withNote : ''}`}
           style={{ paddingTop: strokeWidth * 0.66 }}
         >
           <div
             className={styles.label}
-            // eslint-disable-next-line react/no-danger
+            
             dangerouslySetInnerHTML={{ __html: item.label }}
           />
           {item.description && (
             <div
               className={styles.description}
-              // eslint-disable-next-line react/no-danger
+              
               dangerouslySetInnerHTML={{ __html: item.description }}
             />
           )}
@@ -114,7 +114,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
           </div>
         </button>
       ) : (
-        ""
+        ''
       )}
     </div>
   );

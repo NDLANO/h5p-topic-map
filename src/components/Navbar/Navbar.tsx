@@ -1,24 +1,24 @@
-import ProgressBar from "@ramonak/react-progress-bar";
-import type { IH5PContentType } from "h5p-types";
-import * as React from "react";
-import { useState } from "react";
-import { useReactToPrint } from "react-to-print";
-import { H5P } from "../../h5p/H5P.util";
-import { useContentId } from "../../hooks/useContentId";
-import { useH5PInstance } from "../../hooks/useH5PInstance";
-import { useLocalStorageUserData } from "../../hooks/useLocalStorageUserData";
-import { useL10n } from "../../hooks/useLocalization";
-import { useSizeClassNames } from "../../hooks/useSizeClassNames";
-import { CommonItemType } from "../../types/CommonItemType";
-import { NavbarSections } from "../../types/NavbarSections";
-import { Params } from "../../types/Params";
-import { exportAllUserData } from "../../utils/user-data.utils";
-import { DialogWindow } from "../Dialog-Window/DialogWindow";
-import { FullscreenButton } from "../FullscreenButton/FullscreenButton";
-import { Grid } from "../Grid/Grid";
-import styles from "./Navbar.module.scss";
-import { NotesList } from "./NotesSection/NotesList/NotesList";
-import { NotesSection } from "./NotesSection/NotesSection";
+import ProgressBar from '@ramonak/react-progress-bar';
+import type { IH5PContentType } from 'h5p-types';
+import * as React from 'react';
+import { useState } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import { H5P } from '../../h5p/H5P.util';
+import { useContentId } from '../../hooks/useContentId';
+import { useH5PInstance } from '../../hooks/useH5PInstance';
+import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
+import { useL10n } from '../../hooks/useLocalization';
+import { useSizeClassNames } from '../../hooks/useSizeClassNames';
+import { CommonItemType } from '../../types/CommonItemType';
+import { NavbarSections } from '../../types/NavbarSections';
+import { Params } from '../../types/Params';
+import { exportAllUserData } from '../../utils/user-data.utils';
+import { DialogWindow } from '../Dialog-Window/DialogWindow';
+import { FullscreenButton } from '../FullscreenButton/FullscreenButton';
+import { Grid } from '../Grid/Grid';
+import styles from './Navbar.module.scss';
+import { NotesList } from './NotesSection/NotesList/NotesList';
+import { NotesSection } from './NotesSection/NotesSection';
 
 export type NavbarProps = {
   navbarTitle: string;
@@ -40,15 +40,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const [userData, setUserData] = useLocalStorageUserData();
 
-  const navbarAriaLabel = useL10n("navbarTabsListAriaLabel");
-  const notesSectionLabel = useL10n("navbarNotesSectionLabel");
-  const progressPercentageLabel = useL10n("progressPercentageLabel");
-  const deleteAllNotesText = useL10n("deleteNotesConfirmationWindowLabel");
-  const deleteAllNotesConfirmText = useL10n("deleteNotesConfirmLabel");
-  const deleteAllNotesDenyText = useL10n("deleteNotesDenyLabel");
-  const submitAllDataText = useL10n("submitDataConfirmationWindowLabel");
-  const submitAllDataConfirmText = useL10n("submitDataConfirmLabel");
-  const submitAllDataDenyText = useL10n("submitDataDenyLabel");
+  const navbarAriaLabel = useL10n('navbarTabsListAriaLabel');
+  const notesSectionLabel = useL10n('navbarNotesSectionLabel');
+  const progressPercentageLabel = useL10n('progressPercentageLabel');
+  const deleteAllNotesText = useL10n('deleteNotesConfirmationWindowLabel');
+  const deleteAllNotesConfirmText = useL10n('deleteNotesConfirmLabel');
+  const deleteAllNotesDenyText = useL10n('deleteNotesDenyLabel');
+  const submitAllDataText = useL10n('submitDataConfirmationWindowLabel');
+  const submitAllDataConfirmText = useL10n('submitDataConfirmLabel');
+  const submitAllDataDenyText = useL10n('submitDataDenyLabel');
 
   const [currentSection, setCurrentSection] = useState(NavbarSections.TopicMap);
 
@@ -74,7 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   );
 
   const totalNotesToComplete = React.useMemo(
-    () => allItems.filter(item => item.dialog?.hasNote).length,
+    () => allItems.filter((item) => item.dialog?.hasNote).length,
     [allItems],
   );
   const hasNotes = totalNotesToComplete > 0;
@@ -91,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({
    * React supplies useResizeObserver hook, but H5P may trigger `resize` not
    * only when the window resizes
    */
-  instance.on("resize", () => {
+  instance.on('resize', () => {
     window.requestAnimationFrame(() => {
       if (!gridRef.current) {
         return;
@@ -100,10 +100,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       const contentRect = gridRef.current.getBoundingClientRect();
       if (currentSection === NavbarSections.TopicMap) {
         setSectionMaxHeight(0);
-      } else if (contentRect.height > 0) {
+      }
+      else if (contentRect.height > 0) {
         if (H5P.isFullscreen && contentRect.height <= window.innerHeight) {
           setSectionMaxHeight(window.innerHeight - navbarHeight);
-        } else {
+        }
+        else {
           setSectionMaxHeight(contentRect.height);
         }
       }
@@ -113,13 +115,15 @@ export const Navbar: React.FC<NavbarProps> = ({
   React.useEffect(() => {
     if (currentSection === NavbarSections.TopicMap) {
       setSectionMaxHeight(0);
-    } else {
+    }
+    else {
       const initialHeight =
         gridRef.current?.getBoundingClientRect().height ?? 0;
       if (initialHeight > 0) {
         if (H5P.isFullscreen && initialHeight <= window.innerHeight) {
           setSectionMaxHeight(window.innerHeight - navbarHeight);
-        } else {
+        }
+        else {
           setSectionMaxHeight(initialHeight);
         }
       }
@@ -132,7 +136,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         setNotesListMaxHeight(
           window.innerHeight - navbarHeight - notesSectionHeight,
         );
-      } else {
+      }
+      else {
         setNotesListMaxHeight(sectionMaxHeight - notesSectionHeight);
       }
     }
@@ -140,7 +145,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   React.useEffect(() => {
     const newProgressBarValue = allItems.filter(
-      item =>
+      (item) =>
         item.dialog?.hasNote && userData[contentId]?.dialogs[item.id]?.noteDone,
     ).length;
 
@@ -150,9 +155,9 @@ export const Navbar: React.FC<NavbarProps> = ({
     );
   }, [allItems, contentId, totalNotesToComplete, userData]);
 
-  let navbarTitleForPrint = "";
+  let navbarTitleForPrint = '';
   const updateNavbarTitleForPrint = (): void => {
-    navbarTitleForPrint = navbarTitleForPrint ? "" : navbarTitle;
+    navbarTitleForPrint = navbarTitleForPrint ? '' : navbarTitle;
   };
   const notesListRef = React.useRef(null);
   const handlePrint = useReactToPrint({
@@ -163,7 +168,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   });
 
   const deleteAllNotes = (): void => {
-    allItems.forEach(item => {
+    allItems.forEach((item) => {
       if (userData[contentId]?.dialogs?.[item.id]) {
         userData[contentId].dialogs[item.id].note = undefined;
         userData[contentId].dialogs[item.id].noteDone = undefined;
@@ -201,7 +206,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   const fakeItem = {
-    id: "id",
+    id: 'id',
     label: deleteAllNotesText,
   };
 
@@ -209,7 +214,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     <DialogWindow
       item={fakeItem}
       open={isDeleteConfirmationVisible}
-      onOpenChange={isOpen => {
+      onOpenChange={(isOpen) => {
         if (!isOpen) denyDeletion();
       }}
       confirmWindow={{
@@ -223,9 +228,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const submitAllConfirmation = (
     <DialogWindow
-      item={{ id: "", label: submitAllDataText }}
+      item={{ id: '', label: submitAllDataText }}
       open={isSubmitAllConfirmationVisible}
-      onOpenChange={isOpen => {
+      onOpenChange={(isOpen) => {
         if (!isOpen) denySubmitAll();
       }}
       confirmWindow={{
@@ -303,7 +308,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         className={sizeClassNames}
         style={{
           // @ts-expect-error Custom properties are allowed
-          "--h5p-tm-navbar-height": `${navbarHeight}px`,
+          '--h5p-tm-navbar-height': `${navbarHeight}px`,
         }}
       >
         <div ref={navbarRef}>

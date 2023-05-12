@@ -1,13 +1,13 @@
-import type { H5PExtras, IH5PContentType } from "h5p-types";
-import * as React from "react";
-import { render } from "react-dom";
-import { App } from "../components/App/App";
-import { ContentIdContext } from "../contexts/ContentIdContext";
-import { H5PContext } from "../contexts/H5PContext";
-import { LocalizationContext } from "../contexts/LocalizationContext";
-import { Params } from "../types/Params";
-import { Translations } from "../types/Translations";
-import { getEmptyParams } from "../utils/semantics.utils";
+import type { H5PExtras, IH5PContentType } from 'h5p-types';
+import * as React from 'react';
+import { render } from 'react-dom';
+import { App } from '../components/App/App';
+import { ContentIdContext } from '../contexts/ContentIdContext';
+import { H5PContext } from '../contexts/H5PContext';
+import { LocalizationContext } from '../contexts/LocalizationContext';
+import { Params } from '../types/Params';
+import { Translations } from '../types/Translations';
+import { getEmptyParams } from '../utils/semantics.utils';
 import {
   H5P,
   normalizeArrowDialogAudioPaths,
@@ -16,7 +16,7 @@ import {
   normalizeGridBackgroundImagePath,
   normalizeSizes,
   normalizeTopicMapItemPaths,
-} from "./H5P.util";
+} from './H5P.util';
 
 export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
   public containerElement: HTMLElement | undefined;
@@ -37,13 +37,14 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     this.toggleIPhoneFullscreen = () => {
       this.isIPhoneFullscreenActive = !this.isIPhoneFullscreenActive;
       document.body.style.overflow = this.isIPhoneFullscreenActive
-        ? "hidden"
-        : "auto";
-      const topicMapContainer = document.querySelector(".h5p-topic-map");
+        ? 'hidden'
+        : 'auto';
+      const topicMapContainer = document.querySelector('.h5p-topic-map');
       if (this.isIPhoneFullscreenActive) {
-        topicMapContainer?.classList.add("iPhoneFullscreenStyle");
-      } else {
-        topicMapContainer?.classList.remove("iPhoneFullscreenStyle");
+        topicMapContainer?.classList.add('iPhoneFullscreenStyle');
+      }
+      else {
+        topicMapContainer?.classList.remove('iPhoneFullscreenStyle');
       }
     };
 
@@ -81,28 +82,28 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     paramsWithFallbacks = normalizeSizes(paramsWithFallbacks);
 
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    
     const l10n = params.l10n ?? ({} as Translations);
     const title = extras?.metadata.title;
 
-    this.on("enterFullScreen", () => {
+    this.on('enterFullScreen', () => {
       setTimeout(() => {
-        this.trigger("resize");
+        this.trigger('resize');
       }, 250); // DOM might need time to change size
     });
 
-    this.on("exitFullScreen", () => {
+    this.on('exitFullScreen', () => {
       setTimeout(() => {
-        this.trigger("resize");
+        this.trigger('resize');
       }, 250); // DOM might need time to change size
     });
 
     // React components require 'resize' once H5P container attached to DOM
     this.observer = new IntersectionObserver(
-      entries => {
+      (entries) => {
         if (entries[0].intersectionRatio === 1) {
           this.observer.unobserve(this.containerElement as Element); // Only need instantiate once.
-          this.trigger("resize");
+          this.trigger('resize');
         }
       },
       {
@@ -138,21 +139,23 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     }
 
     let newState: boolean | undefined;
-    if (typeof state === "string") {
-      if (state === "enter") {
+    if (typeof state === 'string') {
+      if (state === 'enter') {
         newState = false;
-      } else if (state === "exit") {
+      }
+      else if (state === 'exit') {
         newState = true;
       }
     }
 
-    if (typeof newState !== "boolean") {
+    if (typeof newState !== 'boolean') {
       newState = !H5P.isFullscreen;
     }
 
     if (newState === true) {
       H5P.fullScreen(H5P.jQuery(this.containerElement), this);
-    } else {
+    }
+    else {
       H5P.exitFullScreen();
     }
   }
@@ -161,18 +164,18 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     this.containerElement = $container.get(0);
     if (!this.containerElement) {
       console.error(
-        "Found no containing element to attach `h5p-topic-map` to.",
+        'Found no containing element to attach `h5p-topic-map` to.',
       );
       return;
     }
 
     this.containerElement.appendChild(this.wrapper);
-    this.containerElement.classList.add("h5p-topic-map");
+    this.containerElement.classList.add('h5p-topic-map');
 
     this.observer.observe(this.containerElement as Element);
   }
 
   private static createWrapperElement(): HTMLDivElement {
-    return document.createElement("div");
+    return document.createElement('div');
   }
 }

@@ -1,9 +1,9 @@
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import * as React from "react";
-import { H5PIntegration } from "../../../h5p/H5P.util";
-import { useL10n } from "../../../hooks/useLocalization";
-import { useSizeClassNames } from "../../../hooks/useSizeClassNames";
-import styles from "./NotesSection.module.scss";
+import { ArrowLeftIcon } from '@radix-ui/react-icons';
+import * as React from 'react';
+import { H5PIntegration } from '../../../h5p/H5P.util';
+import { useL10n } from '../../../hooks/useLocalization';
+import { useSizeClassNames } from '../../../hooks/useSizeClassNames';
+import styles from './NotesSection.module.scss';
 
 export type NotesSectionProps = {
   setDeleteConfirmationVisibility: (isVisible: boolean) => void;
@@ -18,12 +18,12 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
   handlePrint,
   goToTopicMap,
 }) => {
-  const mainBodyTitle = useL10n("navbarNotesSectionTitle");
-  const mainBodyText = useL10n("navbarNotesSectionBody");
-  const printText = useL10n("navbarNotesSectionPrintLabel");
-  const exportAllUserDataText = useL10n("navbarNotesSectionSubmitAllLabel");
-  const deleteText = useL10n("navbarNotesSectionDeleteLabel");
-  const goToTopicMapLabel = useL10n("goToTopicMapLabel");
+  const mainBodyTitle = useL10n('navbarNotesSectionTitle');
+  const mainBodyText = useL10n('navbarNotesSectionBody');
+  const printText = useL10n('navbarNotesSectionPrintLabel');
+  const exportAllUserDataText = useL10n('navbarNotesSectionSubmitAllLabel');
+  const deleteText = useL10n('navbarNotesSectionDeleteLabel');
+  const goToTopicMapLabel = useL10n('goToTopicMapLabel');
 
   const sizeClassNames = useSizeClassNames(styles);
 

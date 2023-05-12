@@ -1,12 +1,12 @@
-import * as React from "react";
-import { useState } from "react";
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
-import type { IH5PContentType } from "h5p-types";
-import { AppWidthContext } from "../../contexts/AppWidthContext";
-import { Params } from "../../types/Params";
-import { defaultTheme } from "../../utils/semantics.utils";
-import { Navbar } from "../Navbar/Navbar";
-import styles from "./App.module.scss";
+import * as React from 'react';
+import { useState } from 'react';
+import { FullScreen, useFullScreenHandle } from 'react-full-screen';
+import type { IH5PContentType } from 'h5p-types';
+import { AppWidthContext } from '../../contexts/AppWidthContext';
+import { Params } from '../../types/Params';
+import { defaultTheme } from '../../utils/semantics.utils';
+import { Navbar } from '../Navbar/Navbar';
+import styles from './App.module.scss';
 
 export type AppProps = {
   params: Params;
@@ -48,7 +48,7 @@ export const App: React.FC<AppProps> = ({
    * React supplies useResizeObserver hook, but H5P may trigger `resize` not
    * only when the window resizes
    */
-  instance.on("resize", () => {
+  instance.on('resize', () => {
     window.requestAnimationFrame(() => {
       if (!containerRef.current) {
         return;
@@ -76,7 +76,7 @@ export const App: React.FC<AppProps> = ({
           >
             <div className={styles.navbarWrapper} ref={containerRef}>
               <Navbar
-                navbarTitle={title ?? ""}
+                navbarTitle={title ?? ''}
                 params={params}
                 toggleIPhoneFullscreen={handleToggleIPhoneFullscreen}
                 isIPhoneFullscreenActive={isIPhoneFullscreenActive}

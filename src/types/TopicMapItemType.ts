@@ -1,4 +1,4 @@
-import type { CommonItemType } from "./CommonItemType";
+import type { CommonItemType } from './CommonItemType';
 
 export type TopicMapItemType = CommonItemType & {
   /** The x position as a percentage of the container's width */

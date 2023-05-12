@@ -1,6 +1,6 @@
-import { useMemo } from "react";
-import { getSizeClassNames } from "../utils/style.utils";
-import { useAppWidth } from "./useAppWidth";
+import { useMemo } from 'react';
+import { getSizeClassNames } from '../utils/style.utils';
+import { useAppWidth } from './useAppWidth';
 
 export const useSizeClassNames = (styles: Record<string, string>): string => {
   const appWidth = useAppWidth();

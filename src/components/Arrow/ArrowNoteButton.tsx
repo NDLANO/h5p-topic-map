@@ -1,8 +1,8 @@
-import * as React from "react";
-import { FC } from "react";
-import { NoteButtonIconState } from "../../types/NoteButtonIconState";
-import { Position } from "../../types/Position";
-import { NoteButton } from "../NoteButton/NoteButton";
+import * as React from 'react';
+import { FC } from 'react';
+import { NoteButtonIconState } from '../../types/NoteButtonIconState';
+import { Position } from '../../types/Position';
+import { NoteButton } from '../NoteButton/NoteButton';
 
 export type ArrowNoteButtonProps = {
   buttonState: NoteButtonIconState;
@@ -30,7 +30,7 @@ export const ArrowNoteButton: FC<ArrowNoteButtonProps> = ({
   return (
     <div
       style={{
-        position: "absolute",
+        position: 'absolute',
         top: position.y - offsetY,
         left: position.x - offsetX,
       }}

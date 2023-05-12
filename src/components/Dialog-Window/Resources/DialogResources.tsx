@@ -1,12 +1,12 @@
-import { Cross2Icon } from "@radix-ui/react-icons";
-import * as React from "react";
-import { useEffectOnce } from "react-use";
-import { H5P } from "../../../h5p/H5P.util";
-import { useContentId } from "../../../hooks/useContentId";
-import { useL10n } from "../../../hooks/useLocalization";
-import { useLocalStorageUserData } from "../../../hooks/useLocalStorageUserData";
-import { Link } from "../../../types/Link";
-import styles from "./DialogResources.module.scss";
+import { Cross2Icon } from '@radix-ui/react-icons';
+import * as React from 'react';
+import { useEffectOnce } from 'react-use';
+import { H5P } from '../../../h5p/H5P.util';
+import { useContentId } from '../../../hooks/useContentId';
+import { useL10n } from '../../../hooks/useLocalization';
+import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData';
+import { Link } from '../../../types/Link';
+import styles from './DialogResources.module.scss';
 
 export type DialogResourceProps = {
   relevantLinks: Link[] | undefined;
@@ -21,13 +21,13 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
 }) => {
   const contentId = useContentId();
   const [userData, setUserData] = useLocalStorageUserData();
-  const [link, setLink] = React.useState("");
+  const [link, setLink] = React.useState('');
   const [customLinks, setCustomLinks] = React.useState<Array<JSX.Element>>([]);
   const inputFieldRef = React.useRef<HTMLInputElement>(null);
 
-  const relevantLinkLabel = useL10n("dialogResourcesRelevantLinks");
-  const customLinkLabel = useL10n("dialogResourcesCustomLinks");
-  const addLinkLabel = useL10n("dialogResourcesAdd");
+  const relevantLinkLabel = useL10n('dialogResourcesRelevantLinks');
+  const customLinkLabel = useL10n('dialogResourcesCustomLinks');
+  const addLinkLabel = useL10n('dialogResourcesAdd');
 
   const removeCustomLink = (linkToRemove: string): void => {
     userData[contentId].dialogs[id].links = userData[contentId]?.dialogs[
@@ -36,13 +36,13 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
 
     setUserData(userData);
     // we can disable this check since this function will not be called before the page is rendered
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    // eslint-disable-next-line no-use-before-define
     populateCustomLinks();
   };
 
   const normalizeLinkPath = (linkPath: string): string => {
     const pathAlreadyAbsolute =
-      linkPath.startsWith("http://") || linkPath.startsWith("https://");
+      linkPath.startsWith('http://') || linkPath.startsWith('https://');
 
     if (pathAlreadyAbsolute) {
       return linkPath;
@@ -56,8 +56,8 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
     const url = new URL(normalizedLink);
 
     let rootUrl = url.hostname;
-    if (rootUrl.startsWith("www.")) {
-      rootUrl = rootUrl.replace("www.", "");
+    if (rootUrl.startsWith('www.')) {
+      rootUrl = rootUrl.replace('www.', '');
     }
     return rootUrl;
   };
@@ -65,18 +65,18 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
   const relevantItems =
     relevantLinks != null
       ? relevantLinks.map((item: Link) =>
-          item.url ? (
-            <li key={item.id} className={styles.li}>
-              <a
-                href={normalizeLinkPath(item.url)}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                {item.label} ({getRootUrl(item.url)})
-              </a>
-            </li>
-          ) : null,
-        )
+        item.url ? (
+          <li key={item.id} className={styles.li}>
+            <a
+              href={normalizeLinkPath(item.url)}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {item.label} ({getRootUrl(item.url)})
+            </a>
+          </li>
+        ) : null,
+      )
       : null;
 
   // extract the generation of custom links list to separate function
@@ -86,7 +86,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
       return;
     }
 
-    const updatedLinks = links.map(item => (
+    const updatedLinks = links.map((item) => (
       <li key={item.id} className={styles.li}>
         <a
           href={normalizeLinkPath(item.url)}
@@ -140,10 +140,10 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
     }
 
     saveCustomLink(link);
-    setLink("");
+    setLink('');
 
     if (inputFieldRef.current != null) {
-      inputFieldRef.current.value = "";
+      inputFieldRef.current.value = '';
     }
   };
 
@@ -154,7 +154,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
 
   return (
     <form
-      onSubmit={event => {
+      onSubmit={(event) => {
         updateCustomList();
         event.preventDefault();
       }}
@@ -174,7 +174,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
               className={styles.input}
               type="text"
               placeholder="www.example.com"
-              onChange={e => setLink(e.target.value)}
+              onChange={(e) => setLink(e.target.value)}
               ref={inputFieldRef}
             />
             <button

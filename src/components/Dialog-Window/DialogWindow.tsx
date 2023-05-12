@@ -1,13 +1,13 @@
-import { Close, Content, Overlay, Root, Title } from "@radix-ui/react-dialog";
-import { Cross2Icon } from "@radix-ui/react-icons";
-import * as React from "react";
-import { FC, ReactNode } from "react";
-import { useMedia } from "react-use";
-import { useL10n } from "../../hooks/useLocalization";
-import { CommonItemType } from "../../types/CommonItemType";
-import styles from "./DialogWindow.module.scss";
-import { DialogNote } from "./Notes/DialogNote";
-import { DialogTabs } from "./Tabs/DialogTabs";
+import { Close, Content, Overlay, Root, Title } from '@radix-ui/react-dialog';
+import { Cross2Icon } from '@radix-ui/react-icons';
+import * as React from 'react';
+import { FC, ReactNode } from 'react';
+import { useMedia } from 'react-use';
+import { useL10n } from '../../hooks/useLocalization';
+import { CommonItemType } from '../../types/CommonItemType';
+import styles from './DialogWindow.module.scss';
+import { DialogNote } from './Notes/DialogNote';
+import { DialogTabs } from './Tabs/DialogTabs';
 
 export type DialogWindowProps = {
   item: CommonItemType;
@@ -28,8 +28,8 @@ export const DialogWindow: FC<DialogWindowProps> = ({
   confirmWindow,
   children,
 }) => {
-  const ariaLabel = useL10n("closeDialog");
-  const smallScreen = useMedia("(max-width: 768px)");
+  const ariaLabel = useL10n('closeDialog');
+  const smallScreen = useMedia('(max-width: 768px)');
 
   if (confirmWindow) {
     return (
@@ -71,7 +71,7 @@ export const DialogWindow: FC<DialogWindowProps> = ({
     !item.topicImage &&
     !item.dialog.audio?.audioFile &&
     (!item.dialog.links ||
-      item.dialog.links?.filter(link => Boolean(link.url)).length === 0) &&
+      item.dialog.links?.filter((link) => Boolean(link.url)).length === 0) &&
     !item.dialog.showAddLinks &&
     !item.dialog.text &&
     !item.dialog.video;
@@ -98,7 +98,7 @@ export const DialogWindow: FC<DialogWindowProps> = ({
     <Content className={styles.dialogContent}>
       <Title
         className={styles.dialogTitle}
-        // eslint-disable-next-line react/no-danger
+        
         dangerouslySetInnerHTML={{ __html: item.label }}
       />
       {!noTabItems && <DialogTabs item={item} />}
@@ -115,7 +115,7 @@ export const DialogWindow: FC<DialogWindowProps> = ({
       >
         <Title
           className={styles.dialogTitle}
-          // eslint-disable-next-line react/no-danger
+          
           dangerouslySetInnerHTML={{ __html: item.label }}
         />
         {!noTabItems && (
@@ -125,7 +125,7 @@ export const DialogWindow: FC<DialogWindowProps> = ({
         )}
         <div
           className={`${styles.noteWrapper} ${
-            noTabItems ? styles.fullWidth : ""
+            noTabItems ? styles.fullWidth : ''
           }`}
         >
           <DialogNote

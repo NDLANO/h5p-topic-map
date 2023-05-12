@@ -1,6 +1,6 @@
-import { useLocalStorage } from "usehooks-ts";
-import { UserData } from "../types/UserData";
-import { userDataLocalStorageKey } from "../utils/user-data.utils";
+import { useLocalStorage } from 'usehooks-ts';
+import { UserData } from '../types/UserData';
+import { userDataLocalStorageKey } from '../utils/user-data.utils';
 
 /**
  * Read the stored data from local storage based on the current default storage key.

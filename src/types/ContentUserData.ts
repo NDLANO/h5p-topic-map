@@ -1,4 +1,4 @@
-import { DialogData } from "./DialogData";
+import { DialogData } from './DialogData';
 
 export type ContentUserData = {
   dialogs: {

@@ -1,29 +1,28 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const mode = process.argv.includes("--mode=production")
-  ? "production"
-  : "development";
-const isDev = mode !== "production";
+const mode = process.argv.includes('--mode=production')
+  ? 'production'
+  : 'development';
+const isDev = mode !== 'production';
 
 const config = {
   mode,
   entry: {
-    "h5p-topic-map": path.join(__dirname, "src", "index.tsx"),
+    'h5p-topic-map': path.join(__dirname, 'src', 'index.tsx'),
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].js',
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].css",
+      filename: '[name].css',
     }),
   ],
   resolve: {
-    modules: [path.resolve("./src"), path.resolve("./node_modules")],
-    extensions: [".ts", ".tsx", ".js", ".jsx", ".css"],
+    modules: [path.resolve('./src'), path.resolve('./node_modules')],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css'],
   },
   module: {
     rules: [
@@ -31,12 +30,12 @@ const config = {
         test: /\.tsx?$/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              presets: ["@babel/preset-env"],
+              presets: ['@babel/preset-env'],
             },
           },
-          { loader: "ts-loader" },
+          { loader: 'ts-loader' },
         ],
         exclude: /node_modules/,
       },
@@ -44,13 +43,13 @@ const config = {
         test: /\.s?css$/,
         use: [
           {
-            loader: "style-loader",
+            loader: 'style-loader',
           },
           {
-            loader: "css-loader",
+            loader: 'css-loader',
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
           },
         ],
       },
@@ -58,8 +57,8 @@ const config = {
   },
   optimization: {
     splitChunks: {
-      name: "vendor",
-      chunks: "all",
+      name: 'vendor',
+      chunks: 'all',
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
@@ -76,7 +75,7 @@ const config = {
 };
 
 if (isDev) {
-  config.devtool = "inline-source-map";
+  config.devtool = 'inline-source-map';
 }
 
 module.exports = config;

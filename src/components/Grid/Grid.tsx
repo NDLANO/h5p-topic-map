@@ -1,25 +1,25 @@
-import type { Image } from "h5p-types";
-import * as React from "react";
-import { useState } from "react";
-import { ArrowItemType } from "../../types/ArrowItemType";
-import { CommonItemType } from "../../types/CommonItemType";
-import { TopicMapItemType } from "../../types/TopicMapItemType";
-import { Arrow } from "../Arrow/Arrow";
-import { DialogWindow } from "../Dialog-Window/DialogWindow";
-import { TopicMapItem } from "../TopicMapItem/TopicMapItem";
-import styles from "./Grid.module.scss";
-import { H5P } from "../../h5p/H5P.util";
+import type { Image } from 'h5p-types';
+import * as React from 'react';
+import { useState } from 'react';
+import { ArrowItemType } from '../../types/ArrowItemType';
+import { CommonItemType } from '../../types/CommonItemType';
+import { TopicMapItemType } from '../../types/TopicMapItemType';
+import { Arrow } from '../Arrow/Arrow';
+import { DialogWindow } from '../Dialog-Window/DialogWindow';
+import { TopicMapItem } from '../TopicMapItem/TopicMapItem';
+import styles from './Grid.module.scss';
+import { H5P } from '../../h5p/H5P.util';
+
+export type GridDimensions = {
+  numberOfColumns: number;
+  numberOfRows: number;
+};
 
 export type GridProps = {
   items: Array<TopicMapItemType>;
   arrowItems: Array<ArrowItemType>;
   backgroundImage: Image | undefined;
   grid?: GridDimensions;
-};
-
-export type GridDimensions = {
-  numberOfColumns: number;
-  numberOfRows: number;
 };
 
 export const Grid: React.FC<GridProps> = ({
@@ -38,7 +38,7 @@ export const Grid: React.FC<GridProps> = ({
 
   const getFirstArrowPosition = (
     arrow: ArrowItemType,
-    xORy: "x" | "y",
+    xORy: 'x' | 'y',
   ): number => {
     return arrow.startPosition?.[xORy] < arrow.endPosition?.[xORy]
       ? arrow.startPosition?.[xORy]
@@ -66,10 +66,10 @@ export const Grid: React.FC<GridProps> = ({
 
   const sortArrowItems = React.useCallback(
     (a: ArrowItemType, b: ArrowItemType): number => {
-      const arrowAx = getFirstArrowPosition(a, "x");
-      const arrowBx = getFirstArrowPosition(b, "x");
-      const arrowAy = getFirstArrowPosition(a, "y");
-      const arrowBy = getFirstArrowPosition(b, "y");
+      const arrowAx = getFirstArrowPosition(a, 'x');
+      const arrowBx = getFirstArrowPosition(b, 'x');
+      const arrowAy = getFirstArrowPosition(a, 'y');
+      const arrowBy = getFirstArrowPosition(b, 'y');
 
       if (arrowAx === arrowBx) {
         return arrowAy < arrowBy ? 1 : -1;
@@ -99,7 +99,7 @@ export const Grid: React.FC<GridProps> = ({
     arrowItems
       .concat()
       .sort((a, b) => sortArrowItems(a, b))
-      .forEach(arrowItem => {
+      .forEach((arrowItem) => {
         allItems.forEach((mapItem, index) => {
           if (mapItem.id === arrowItem.startElementId) {
             allItems = addArrow(allItems, index + 1, arrowItem);
@@ -107,7 +107,7 @@ export const Grid: React.FC<GridProps> = ({
         });
       });
 
-    return allItems.map(item => {
+    return allItems.map((item) => {
       if (isArrow(item)) {
         return (
           <Arrow
@@ -116,8 +116,8 @@ export const Grid: React.FC<GridProps> = ({
             grid={grid}
             onClick={() => onClick(item)}
             onTouchStart={() => onClick(item)}
-            onKeyUp={event => {
-              if (event.key === "Enter" || event.code === "Space")
+            onKeyUp={(event) => {
+              if (event.key === 'Enter' || event.code === 'Space')
                 onClick(item);
             }}
             dialogIsOpen={itemShowingDialog === item}
@@ -148,7 +148,6 @@ export const Grid: React.FC<GridProps> = ({
     });
 
     // We want to update re-render the elements whenever `itemShowingDialog` changes (i.e. the dialog window is closed).
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     arrowItems,
     grid,
@@ -169,7 +168,7 @@ export const Grid: React.FC<GridProps> = ({
         H5P.isFullscreen ? styles.gridWrapperFullscreen : undefined,
       ]
         .filter(Boolean)
-        .join(" "),
+        .join(' '),
     [],
   );
 

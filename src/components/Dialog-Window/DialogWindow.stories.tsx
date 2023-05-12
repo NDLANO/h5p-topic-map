@@ -1,32 +1,32 @@
-import * as React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { DialogWindow } from "./DialogWindow";
-import { TopicMapItemType } from "../../types/TopicMapItemType";
+import * as React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { DialogWindow } from './DialogWindow';
+import { TopicMapItemType } from '../../types/TopicMapItemType';
 
 export default {
-  title: "Organisms/DialogWindow",
+  title: 'Organisms/DialogWindow',
   component: DialogWindow,
 } as ComponentMeta<typeof DialogWindow>;
 
-const Template: ComponentStory<typeof DialogWindow> = args => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
+const Template: ComponentStory<typeof DialogWindow> = (args) => (
+  
   <DialogWindow {...args} />
 );
 
 const openClose = (open: boolean): void => {
-  // eslint-disable-next-line no-unused-expressions
-  console.info("Toggle dialog", { open });
+  // eslint-disable-next-line no-console
+  console.info('Toggle dialog', { open });
 };
 
 const item: TopicMapItemType = {
-  id: "1",
+  id: '1',
   topicImage: {
-    path: "https://images.unsplash.com/photo-1569587112025-0d460e81a126?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80",
-    alt: "",
-    copyright: { license: "U" },
+    path: 'https://images.unsplash.com/photo-1569587112025-0d460e81a126?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80',
+    alt: '',
+    copyright: { license: 'U' },
   },
-  label: "Sheep in the distance",
-  description: "Description for storybooks!",
+  label: 'Sheep in the distance',
+  description: 'Description for storybooks!',
   widthPercentage: 50,
   heightPercentage: 25,
   xPercentagePosition: 3,
@@ -34,7 +34,7 @@ const item: TopicMapItemType = {
   dialog: {
     showAddLinks: false,
     hasNote: false,
-    text: "Den franske revolusjon var en periode med store sosiale og politiske omveltningene i Frankrike i perioden 1789-1799. Året 1789 markerer det første viktige vendepunktet under revolusjonen. 14. juli dette året brøt det ut masseopprør i Paris og fengselet Bastillen ble stormet.",
+    text: 'Den franske revolusjon var en periode med store sosiale og politiske omveltningene i Frankrike i perioden 1789-1799. Året 1789 markerer det første viktige vendepunktet under revolusjonen. 14. juli dette året brøt det ut masseopprør i Paris og fengselet Bastillen ble stormet.',
   },
 };
 
@@ -69,8 +69,8 @@ DialogWindowTabs.args = {
       ...item.dialog,
       hasNote: false,
       links: [
-        { id: "link-1", label: "Google", url: "www.google.com" },
-        { id: "link-2", label: "YouTube", url: "www.youtube.com" },
+        { id: 'link-1', label: 'Google', url: 'www.google.com' },
+        { id: 'link-2', label: 'YouTube', url: 'www.youtube.com' },
       ],
       showAddLinks: true,
     },
@@ -95,13 +95,13 @@ export const DialogWindowWithOnlyNote = Template.bind({});
 DialogWindowWithOnlyNote.args = {
   item: {
     ...item,
-    id: "2",
-    description: "",
+    id: '2',
+    description: '',
     topicImage: undefined,
     dialog: {
       ...item.dialog,
       hasNote: true,
-      text: "",
+      text: '',
       showAddLinks: false,
     },
   },

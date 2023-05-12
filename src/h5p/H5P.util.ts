@@ -1,16 +1,14 @@
-import type { Audio, H5PIntegrationObject, H5PObject } from "h5p-types";
-import { ArrowItemType } from "../types/ArrowItemType";
-import { Params } from "../types/Params";
-import { TopicMapItemType } from "../types/TopicMapItemType";
+import type { Audio, H5PIntegrationObject, H5PObject } from 'h5p-types';
+import { ArrowItemType } from '../types/ArrowItemType';
+import { Params } from '../types/Params';
+import { TopicMapItemType } from '../types/TopicMapItemType';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const H5P = (window as any).H5P as H5PObject;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const H5PIntegration = (window as any).H5P as H5PIntegrationObject;
 
 export const normalizeAssetPath = (path: string, contentId: string): string => {
   const pathAlreadyAbsolute =
-    path.startsWith("http://") || path.startsWith("https://");
+    path.startsWith('http://') || path.startsWith('https://');
 
   if (pathAlreadyAbsolute) {
     return path;
@@ -30,7 +28,7 @@ export const makeBackgroundImagePathsAbsolute = (
 ): Array<TopicMapItemType> | undefined => {
   if (!items) return undefined;
 
-  return items.map(item => {
+  return items.map((item) => {
     if (!item.topicImage) return item;
 
     return {
@@ -55,7 +53,7 @@ export const makeArrowImagePathsAbsolute = (
 ): Array<ArrowItemType> | undefined => {
   if (!items) return undefined;
 
-  return items.map(item => {
+  return items.map((item) => {
     if (!item.topicImage) return item;
 
     return {
@@ -143,7 +141,7 @@ export const normalizeGridBackgroundImagePath = <Type extends Params>(
  */
 export const normalizeSizes = (params: Required<Params>): Required<Params> => {
   const topicMapItems: Array<TopicMapItemType> | undefined =
-    params.topicMap?.topicMapItems?.map(item => {
+    params.topicMap?.topicMapItems?.map((item) => {
       const tooWide = item.xPercentagePosition + item.widthPercentage > 100;
       const tooTall = item.yPercentagePosition + item.heightPercentage > 100;
 
@@ -184,7 +182,7 @@ export const makeAudioPathsAbsolute = (
 ): Array<Audio> | undefined => {
   if (!items) return undefined;
 
-  return items.map(item => {
+  return items.map((item) => {
     if (!item.path) return item;
 
     return {
@@ -206,7 +204,7 @@ export const makeDialogAudioPathsAbsolute = (
 ): Array<TopicMapItemType> | undefined => {
   if (!items) return undefined;
 
-  return items.map(item => {
+  return items.map((item) => {
     if (!item.dialog?.audio?.audioFile) return item;
 
     const audioFile = makeAudioPathsAbsolute(
@@ -260,7 +258,7 @@ export const makeArrowDialogAudioPathsAbsolute = (
 ): Array<ArrowItemType> | undefined => {
   if (!items) return undefined;
 
-  return items.map(item => {
+  return items.map((item) => {
     if (!item.dialog?.audio?.audioFile) return item;
 
     const audioFile = makeAudioPathsAbsolute(

@@ -1,9 +1,9 @@
-import * as React from "react";
-import { useContentId } from "../../../hooks/useContentId";
-import { useL10n } from "../../../hooks/useLocalization";
-import { useLocalStorageUserData } from "../../../hooks/useLocalStorageUserData";
-import { useSendXAPIEvent } from "../../../hooks/useSendXAPIEvent";
-import styles from "./DialogNote.module.scss";
+import * as React from 'react';
+import { useContentId } from '../../../hooks/useContentId';
+import { useL10n } from '../../../hooks/useLocalization';
+import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData';
+import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
+import styles from './DialogNote.module.scss';
 
 export type NoteProps = {
   maxLength: number;
@@ -20,9 +20,9 @@ export const DialogNote: React.FC<NoteProps> = ({
   const [userData, setUserData] = useLocalStorageUserData();
 
   const [note, setNote] = React.useState(
-    userData[contentId]?.dialogs[id]?.note ?? "",
+    userData[contentId]?.dialogs[id]?.note ?? '',
   );
-  const [dynamicSavingText, setDynamicSavingText] = React.useState("");
+  const [dynamicSavingText, setDynamicSavingText] = React.useState('');
   const [savingTextTimeout, setSavingTextTimeout] = React.useState<number>();
   const [noteDone, setMarkedAsDone] = React.useState(
     userData[contentId]?.dialogs[id]?.noteDone ?? false,
@@ -30,13 +30,13 @@ export const DialogNote: React.FC<NoteProps> = ({
   const [wordCount, setWordCount] = React.useState(0);
   const [maxWordCount, setMaxWordCount] = React.useState<number | undefined>();
 
-  const savingTextLabel = useL10n("dialogNoteSaving");
-  const savedTextLabel = useL10n("dialogNoteSaved");
-  const wordLimitExceededTextLabel = useL10n("dialogNoteLimitExceeded");
-  const doneTextLabel = useL10n("dialogNoteMarkAsDone");
-  const placeholderText = useL10n("dialogNotePlaceholder");
-  const wordTextLabel = useL10n("dialogWordsLabel");
-  const wordNoteLabel = useL10n("dialogNoteLabel");
+  const savingTextLabel = useL10n('dialogNoteSaving');
+  const savedTextLabel = useL10n('dialogNoteSaved');
+  const wordLimitExceededTextLabel = useL10n('dialogNoteLimitExceeded');
+  const doneTextLabel = useL10n('dialogNoteMarkAsDone');
+  const placeholderText = useL10n('dialogNotePlaceholder');
+  const wordTextLabel = useL10n('dialogWordsLabel');
+  const wordNoteLabel = useL10n('dialogNoteLabel');
 
   const { sendXAPIEvent } = useSendXAPIEvent();
 
@@ -54,7 +54,7 @@ export const DialogNote: React.FC<NoteProps> = ({
     setMarkedAsDone(!noteDone);
     setUserData(userData);
 
-    sendXAPIEvent("completed", {
+    sendXAPIEvent('completed', {
       itemId: id,
       note,
       completed: userData[contentId]?.dialogs[id].noteDone ?? false,
@@ -69,17 +69,17 @@ export const DialogNote: React.FC<NoteProps> = ({
         const localTime = timestamp.toLocaleTimeString(
           window.navigator.language,
           {
-            hour: "2-digit",
-            minute: "2-digit",
+            hour: '2-digit',
+            minute: '2-digit',
           },
         );
         setDynamicSavingText(
           `${
-            maxWordCount ? `${wordLimitExceededTextLabel} - ` : ""
+            maxWordCount ? `${wordLimitExceededTextLabel} - ` : ''
           } ${savedTextLabel} ${localTime}`,
         );
 
-        sendXAPIEvent("answered", {
+        sendXAPIEvent('answered', {
           itemId: id,
           note,
         });
@@ -88,7 +88,7 @@ export const DialogNote: React.FC<NoteProps> = ({
   };
 
   const countWords = React.useCallback((): void => {
-    const count = note.split(/\s/).filter(word => word.length > 0).length;
+    const count = note.split(/\s/).filter((word) => word.length > 0).length;
     setWordCount(count);
 
     // TODO: Enforce max length when pasting in text,
@@ -96,10 +96,10 @@ export const DialogNote: React.FC<NoteProps> = ({
     const tooManyWords = count > maxLength;
     if (tooManyWords) {
       setMaxWordCount(count);
-    } else {
+    }
+    else {
       setMaxWordCount(undefined);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maxLength, note, savingTextTimeout]);
 
   React.useEffect(() => {
@@ -143,14 +143,14 @@ export const DialogNote: React.FC<NoteProps> = ({
         </div>
         <div
           className={`${styles.textAreaWrapper} ${
-            maxWordCount ? styles.maxWords : ""
+            maxWordCount ? styles.maxWords : ''
           }`}
         >
           <textarea
             className={styles.textArea}
             id="note"
             placeholder={placeholderText}
-            onChange={event => onChange(event)}
+            onChange={(event) => onChange(event)}
             defaultValue={note}
           />
           <div className={styles.bottomGroup}>
@@ -168,7 +168,7 @@ export const DialogNote: React.FC<NoteProps> = ({
             <div
               data-testid="wordCount"
               className={`${styles.wordCounter} ${
-                maxWordCount ? styles.redText : ""
+                maxWordCount ? styles.redText : ''
               }`}
             >
               {wordCount} / {maxLength} {wordTextLabel}

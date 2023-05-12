@@ -1,5 +1,5 @@
-import * as React from "react";
-import styles from "./ExternalResources.module.scss";
+import * as React from 'react';
+import styles from './ExternalResources.module.scss';
 
 export type DialogExternalResourcesProps = {
   url: string;
