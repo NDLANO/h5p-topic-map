@@ -1,0 +1,1 @@
+{"version":3,"file":"components-Dialog-Window-ExternalResources-ExternalResources-stories.css","mappings":"AAAA","sources":["webpack://h5p-topic-map/./src/components/Dialog-Window/ExternalResources/ExternalResources.module.scss"],"sourcesContent":[".externalResources {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n"],"names":[],"sourceRoot":""}
