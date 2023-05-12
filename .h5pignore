@@ -5,9 +5,13 @@ node_modules
 src
 storybook-static
 .babelrc
+.eslintignore
+.eslintrc.json
 .gitignore
 .h5pignore
 babel.config.js
+generate-semantics.ts
+jest.config.ts
 nodemon.json
 package-lock.json
 package.json
