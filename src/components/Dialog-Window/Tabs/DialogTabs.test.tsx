@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-import { render } from "@testing-library/react";
-import * as React from "react";
-import { DialogTabs } from "./DialogTabs";
+import { render } from '@testing-library/react';
+import * as React from 'react';
+import { DialogTabs } from './DialogTabs';
 
-Object.defineProperty(window, "matchMedia", {
+Object.defineProperty(window, 'matchMedia', {
   value: () => {
     return {
       matches: false,
@@ -14,19 +13,19 @@ Object.defineProperty(window, "matchMedia", {
 });
 
 describe(DialogTabs.name, () => {
-  it("should have rendered.", () => {
+  it('should have rendered.', () => {
     const item = {
-      id: "testid",
-      label: "Test label",
-      description: "Testing",
+      id: 'testid',
+      label: 'Test label',
+      description: 'Testing',
       dialog: {
         hasNote: true,
-        text: "Dialog test",
+        text: 'Dialog test',
         showAddLinks: false,
       },
     };
     const tabs = render(<DialogTabs item={item} />).container;
 
-    expect(tabs.querySelector("div")).toBeTruthy();
+    expect(tabs.querySelector('div')).toBeTruthy();
   });
 });

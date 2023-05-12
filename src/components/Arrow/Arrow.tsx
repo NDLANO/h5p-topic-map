@@ -1,14 +1,14 @@
-import * as React from "react";
-import { FC, MouseEventHandler } from "react";
-import { useContentId } from "../../hooks/useContentId";
-import { useLocalStorageUserData } from "../../hooks/useLocalStorageUserData";
-import { ArrowItemType } from "../../types/ArrowItemType";
-import { ArrowType } from "../../types/ArrowType";
-import { NoteButtonIconState } from "../../types/NoteButtonIconState";
-import { Position } from "../../types/Position";
-import { GridDimensions } from "../Grid/Grid";
-import styles from "./Arrow.module.scss";
-import { ArrowNoteButton } from "./ArrowNoteButton";
+import * as React from 'react';
+import { FC, MouseEventHandler } from 'react';
+import { useContentId } from '../../hooks/useContentId';
+import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
+import { ArrowItemType } from '../../types/ArrowItemType';
+import { ArrowType } from '../../types/ArrowType';
+import { NoteButtonIconState } from '../../types/NoteButtonIconState';
+import { Position } from '../../types/Position';
+import { GridDimensions } from '../Grid/Grid';
+import styles from './Arrow.module.scss';
+import { ArrowNoteButton } from './ArrowNoteButton';
 
 export type ArrowProps = {
   item: ArrowItemType;
@@ -40,7 +40,7 @@ export const Arrow: FC<ArrowProps> = ({
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
 
-  const [pathDef, setPathDef] = React.useState<string>("");
+  const [pathDef, setPathDef] = React.useState<string>('');
   const [strokeWidth, setStrokeWidth] = React.useState<number>(4);
   const [buttonState, setButtonState] = React.useState<NoteButtonIconState>(
     NoteButtonIconState.None,
@@ -106,7 +106,8 @@ export const Arrow: FC<ArrowProps> = ({
       if (grid) {
         if (isHorizontal) {
           setStrokeWidth((gridElement.clientHeight / grid.numberOfRows) * 0.66);
-        } else {
+        }
+        else {
           setStrokeWidth(
             (gridElement.clientWidth / grid.numberOfColumns) * 0.66,
           );
@@ -129,7 +130,7 @@ export const Arrow: FC<ArrowProps> = ({
           (position.y / 100) * gridElement.clientHeight
         }`;
       const path = `${startx},${starty} ${
-        item.relativeBreakpoints?.map(asPoint).join(" ") ?? ""
+        item.relativeBreakpoints?.map(asPoint).join(' ') ?? ''
       } ${endx},${endy}`;
 
       const middlePoint = findMiddlePosition(
@@ -185,13 +186,13 @@ export const Arrow: FC<ArrowProps> = ({
             markerEnd={
               item.arrowType === ArrowType.BiDirectional ||
               item.arrowType === ArrowType.Directional
-                ? "url(#arrowhead)"
-                : ""
+                ? 'url(#arrowhead)'
+                : ''
             }
             markerStart={
               item.arrowType === ArrowType.BiDirectional
-                ? "url(#arrowtail)"
-                : ""
+                ? 'url(#arrowtail)'
+                : ''
             }
             onClick={onClick}
             role="button"

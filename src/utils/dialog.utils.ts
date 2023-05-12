@@ -1,4 +1,4 @@
-import type { Copyright } from "h5p-types";
+import type { Copyright } from 'h5p-types';
 
 export const formatCopyright = (
   copyrightTitle: string,
@@ -6,7 +6,7 @@ export const formatCopyright = (
 ): string => {
   const showTitleAuthorDivider = title && author;
 
-  return `${copyrightTitle}: ${title ?? ""} ${
-    showTitleAuthorDivider ? "/" : ""
-  } ${author ? ` ${author}` : ""} (${license})`;
+  return `${copyrightTitle}: ${title ?? ''} ${
+    showTitleAuthorDivider ? '/' : ''
+  } ${author ? ` ${author}` : ''} (${license})`;
 };

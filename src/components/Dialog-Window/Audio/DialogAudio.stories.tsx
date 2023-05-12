@@ -1,20 +1,20 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import * as React from "react";
-import { DialogAudio } from "./DialogAudio";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import * as React from 'react';
+import { DialogAudio } from './DialogAudio';
 
 export default {
-  title: "Molecules/Dialog Content/Dialog Audio",
+  title: 'Molecules/Dialog Content/Dialog Audio',
   component: DialogAudio,
 } as ComponentMeta<typeof DialogAudio>;
 
-const Template: ComponentStory<typeof DialogAudio> = args => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
+const Template: ComponentStory<typeof DialogAudio> = (args) => (
+  
   <DialogAudio {...args} />
 );
 
 export const Audio = Template.bind({});
 Audio.args = {
-  audioTrack: { path: "https://bigsoundbank.com/UPLOAD/mp3/0001.mp3" },
+  audioTrack: { path: 'https://bigsoundbank.com/UPLOAD/mp3/0001.mp3' },
   subtext: `
       <b>
         Den franske revolusjon var en periode med store sosiale og politiske
@@ -35,14 +35,14 @@ Audio.args = {
 export const AudioWithCopyright = Template.bind({});
 AudioWithCopyright.args = {
   audioTrack: {
-    path: "https://bigsoundbank.com/UPLOAD/mp3/0001.mp3",
+    path: 'https://bigsoundbank.com/UPLOAD/mp3/0001.mp3',
     copyright: {
-      author: "Author",
-      title: "Title",
-      license: "CC BY",
-      source: "https://bigsoundbank.com/UPLOAD/mp3/0001.mp3",
-      version: "1",
-      year: "2000",
+      author: 'Author',
+      title: 'Title',
+      license: 'CC BY',
+      source: 'https://bigsoundbank.com/UPLOAD/mp3/0001.mp3',
+      version: '1',
+      year: '2000',
     },
   },
   subtext: `

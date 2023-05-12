@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 export type IconProps = {
   iconColor: string;
@@ -9,8 +9,8 @@ export type IconProps = {
 export const EditIcon: React.FC<IconProps> = ({ iconColor, width, height }) => {
   return (
     <svg
-      width={width ? `${width}` : "10"}
-      height={height ? `${height}` : "10"}
+      width={width ? `${width}` : '10'}
+      height={height ? `${height}` : '10'}
       viewBox="0 0 17 17"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -26,8 +26,8 @@ export const EditIcon: React.FC<IconProps> = ({ iconColor, width, height }) => {
 
 export const NoteIcon: React.FC<IconProps> = ({ iconColor, width, height }) => (
   <svg
-    width={width ? `${width}` : "12"}
-    height={height ? `${height}` : "12"}
+    width={width ? `${width}` : '12'}
+    height={height ? `${height}` : '12'}
     viewBox="0 0 12 12"
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="xMidYMin"
@@ -41,8 +41,8 @@ export const NoteIcon: React.FC<IconProps> = ({ iconColor, width, height }) => (
 
 export const DoneIcon: React.FC<IconProps> = ({ iconColor, width, height }) => (
   <svg
-    width={width ? `${width}` : "12"}
-    height={height ? `${height}` : "12"}
+    width={width ? `${width}` : '12'}
+    height={height ? `${height}` : '12'}
     viewBox="0 -1 18 14"
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="xMidYMin"

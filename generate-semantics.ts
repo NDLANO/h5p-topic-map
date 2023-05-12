@@ -1,9 +1,9 @@
-import * as fs from "fs";
-import { semantics } from "./src/semantics";
-import { findDuplicates } from "./src/utils/array.utils";
+import * as fs from 'fs';
+import { semantics } from './src/semantics';
+import { findDuplicates } from './src/utils/array.utils';
 
-const semanticsPath = "semantics.json";
-const translationKeyPath = "src/types/TranslationKey.ts";
+const semanticsPath = 'semantics.json';
+const translationKeyPath = 'src/types/TranslationKey.ts';
 
 async function createSemanticsJson(): Promise<void> {
   const textContent = JSON.stringify(semantics, null, 2);
@@ -17,11 +17,11 @@ async function createTranslationKeys(): Promise<void> {
   const duplicateKeysExist = duplicates.length > 0;
   if (duplicateKeysExist) {
     throw new Error(
-      `Duplicate translation keys exist:\n · ${duplicates.join("\n · ")}\n`,
+      `Duplicate translation keys exist:\n · ${duplicates.join('\n · ')}\n`,
     );
   }
 
-  const translationKeysString = translationKeys.join(`"\n  | "`);
+  const translationKeysString = translationKeys.join('"\n  | "');
 
   const textContent = `// --------- ⚠️  WARNING  ⚠️ ---------
 // This file is generated from the values within \`semantics.json\`'s l10n group. 

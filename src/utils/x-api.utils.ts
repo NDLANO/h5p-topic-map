@@ -1,4 +1,4 @@
-import type { EventDispatcher, XAPIDefinition, XAPIVerb } from "h5p-types";
+import type { EventDispatcher, XAPIDefinition, XAPIVerb } from 'h5p-types';
 
 /**
  * Get the xAPI definition for the xAPI object
@@ -6,14 +6,14 @@ import type { EventDispatcher, XAPIDefinition, XAPIVerb } from "h5p-types";
 export const getxAPIDefinition = (): XAPIDefinition => {
   const definition: XAPIDefinition = {
     name: {
-      "en-US": "Name",
+      'en-US': 'Name',
     },
     description: {
-      "en-US": "Description",
+      'en-US': 'Description',
     },
-    type: "http://adlnet.gov/expapi/activities/cmi.interaction",
-    interactionType: "fill-in",
-    correctResponsesPattern: ".*",
+    type: 'http://adlnet.gov/expapi/activities/cmi.interaction',
+    interactionType: 'fill-in',
+    correctResponsesPattern: '.*',
   };
 
   return definition;
@@ -29,7 +29,7 @@ export const sendXAPIEvent = (
   data.contentId = contentId;
 
   const xAPIEvent = h5pInstance.createXAPIEventTemplate(verb, data);
-  xAPIEvent.getVerifiedStatementValue(["object", "definition"]);
+  xAPIEvent.getVerifiedStatementValue(['object', 'definition']);
 
   if (xAPIEvent.data) {
     xAPIEvent.data.statement.object.definition = {

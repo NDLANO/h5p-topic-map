@@ -1,14 +1,14 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import * as React from "react";
-import { DialogText } from "./DialogText";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import * as React from 'react';
+import { DialogText } from './DialogText';
 
 export default {
-  title: "molecules/Dialog Content/Dialog Text",
+  title: 'molecules/Dialog Content/Dialog Text',
   component: DialogText,
 } as ComponentMeta<typeof DialogText>;
 
-const Template: ComponentStory<typeof DialogText> = args => (
-  // eslint-disable-next-line react/jsx-props-no-spreading
+const Template: ComponentStory<typeof DialogText> = (args) => (
+  
   <DialogText {...args} />
 );
 
@@ -16,15 +16,15 @@ export const SimpleText = Template.bind({});
 
 SimpleText.args = {
   topicImage: {
-    path: "https://images.unsplash.com/photo-1557657043-23eec69b89c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1746&q=80",
-    alt: "White seal on soil",
+    path: 'https://images.unsplash.com/photo-1557657043-23eec69b89c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1746&q=80',
+    alt: 'White seal on soil',
     copyright: {
-      author: "Amy Asher",
-      license: "Unsplash License",
-      source: "https://unsplash.com/photos/giZJHm2m9yY",
-      title: "White seal on soil",
-      version: "1",
-      year: "2019",
+      author: 'Amy Asher',
+      license: 'Unsplash License',
+      source: 'https://unsplash.com/photos/giZJHm2m9yY',
+      title: 'White seal on soil',
+      version: '1',
+      year: '2019',
     },
   },
   introduction: `Den franske revolusjon var en periode med store sosiale og politiske

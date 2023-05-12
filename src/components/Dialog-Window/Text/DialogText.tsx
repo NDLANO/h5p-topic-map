@@ -1,9 +1,8 @@
-/* eslint-disable react/no-danger */
-import type { Image } from "h5p-types";
-import * as React from "react";
-import { useL10n } from "../../../hooks/useLocalization";
-import { formatCopyright } from "../../../utils/dialog.utils";
-import styles from "./DialogText.module.scss";
+import type { Image } from 'h5p-types';
+import * as React from 'react';
+import { useL10n } from '../../../hooks/useLocalization';
+import { formatCopyright } from '../../../utils/dialog.utils';
+import styles from './DialogText.module.scss';
 
 export type DialogTextProps = {
   topicImage: Image | undefined;
@@ -18,7 +17,7 @@ export const DialogText: React.FC<DialogTextProps> = ({
   bodyText,
   topicImageAltText,
 }) => {
-  const copyrightTitle = useL10n("copyrightPhoto");
+  const copyrightTitle = useL10n('copyrightPhoto');
 
   return (
     <div className={styles.dialogText}>
@@ -33,14 +32,14 @@ export const DialogText: React.FC<DialogTextProps> = ({
           <img
             className={styles.topicImage}
             src={topicImage.path}
-            alt={topicImageAltText ?? ""}
+            alt={topicImageAltText ?? ''}
             width={topicImage.width}
             height={topicImage.height}
           />
           {topicImage?.copyright ? (
             <div
               className={styles.copyright}
-              // eslint-disable-next-line react/no-danger
+              
               dangerouslySetInnerHTML={{
                 __html: formatCopyright(copyrightTitle, topicImage.copyright),
               }}

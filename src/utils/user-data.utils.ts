@@ -1,12 +1,12 @@
-import type { EventDispatcher } from "h5p-types";
-import { ContentUserData } from "../types/ContentUserData";
-import { UserData } from "../types/UserData";
-import { sendXAPIEvent } from "./x-api.utils";
+import type { EventDispatcher } from 'h5p-types';
+import { ContentUserData } from '../types/ContentUserData';
+import { UserData } from '../types/UserData';
+import { sendXAPIEvent } from './x-api.utils';
 
-export const userDataLocalStorageKey = "h5p-topic-map-userdata";
+export const userDataLocalStorageKey = 'h5p-topic-map-userdata';
 
 const getUserData = (): UserData => {
-  return JSON.parse(localStorage.getItem(userDataLocalStorageKey) ?? "{}");
+  return JSON.parse(localStorage.getItem(userDataLocalStorageKey) ?? '{}');
 };
 
 const getContentUserData = (contentId: string): ContentUserData => {
@@ -27,8 +27,8 @@ export const exportAllUserData = (
 ): void => {
   const contentUserData = getContentUserData(contentId);
   sendXAPIEvent(
-    "completed",
-    { type: "ALL_USER_DATA", ...contentUserData },
+    'completed',
+    { type: 'ALL_USER_DATA', ...contentUserData },
     h5pInstance,
     contentId,
   );

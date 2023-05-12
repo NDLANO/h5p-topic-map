@@ -1,11 +1,11 @@
-import * as React from "react";
-import { useContentId } from "../../../../hooks/useContentId";
-import { useL10n } from "../../../../hooks/useLocalization";
-import { useLocalStorageUserData } from "../../../../hooks/useLocalStorageUserData";
-import { CommonItemType } from "../../../../types/CommonItemType";
-import { NoteButtonIconState } from "../../../../types/NoteButtonIconState";
-import { NoteButton } from "../../../NoteButton/NoteButton";
-import styles from "./NotesList.module.scss";
+import * as React from 'react';
+import { useContentId } from '../../../../hooks/useContentId';
+import { useL10n } from '../../../../hooks/useLocalization';
+import { useLocalStorageUserData } from '../../../../hooks/useLocalStorageUserData';
+import { CommonItemType } from '../../../../types/CommonItemType';
+import { NoteButtonIconState } from '../../../../types/NoteButtonIconState';
+import { NoteButton } from '../../../NoteButton/NoteButton';
+import styles from './NotesList.module.scss';
 
 export type NotesListProps = {
   topicMapItems: CommonItemType[];
@@ -18,10 +18,10 @@ export const NotesList: React.FC<NotesListProps> = ({
 }) => {
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
-  const noItemsInListText = useL10n("navbarNotesEmptyListLabel");
-  const missingNoteText = useL10n("navbarNotesMissingNoteLabel");
+  const noItemsInListText = useL10n('navbarNotesEmptyListLabel');
+  const missingNoteText = useL10n('navbarNotesMissingNoteLabel');
 
-  const userDataEntries = topicMapItems.map(item => {
+  const userDataEntries = topicMapItems.map((item) => {
     const dialogData = userData[contentId]?.dialogs?.[item.id];
 
     const doesNoteExist = dialogData?.note;

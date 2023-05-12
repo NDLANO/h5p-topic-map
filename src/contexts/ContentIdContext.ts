@@ -1,3 +1,3 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
-export const ContentIdContext = createContext("");
+export const ContentIdContext = createContext('');

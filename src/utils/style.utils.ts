@@ -1,4 +1,4 @@
-import { BreakpointSize } from "../types/BreakpointSize";
+import { BreakpointSize } from '../types/BreakpointSize';
 
 export const getSizeClassNames = (
   styles: Record<string, string>,
