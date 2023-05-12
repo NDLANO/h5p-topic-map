@@ -161,7 +161,7 @@
               },
               {
                 "label": "Ingress",
-                "description": ""
+                "description": "The description is shown on top of the background image, below the label"
               },
               {
                 "label": "Temabilde",
