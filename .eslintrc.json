@@ -21,6 +21,7 @@
     "consistent-return": "off",
     "no-use-before-define": "off",
     "no-shadow": "off",
+    "quotes": ["error", "double"],
     "no-console": ["error", { "allow": ["warn", "error", "info"] }],
     "default-case": "off",
     "@typescript-eslint/no-shadow": ["error"],
@@ -43,7 +44,7 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["**/*.test.*", "**/*.stories.*", "vite.config.ts"]
+        "devDependencies": ["**/*.test.*", "**/*.stories.*", "webpack.config.js"]
       }
     ],
     "react-hooks/rules-of-hooks": "error",
