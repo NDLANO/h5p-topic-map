@@ -6,6 +6,7 @@
   "patchVersion": 121,
   "runnable": 1,
   "embedTypes": ["iframe"],
+  "license": "MIT",
   "preloadedJs": [
     {
       "path": "dist/h5p-topic-map.js"
