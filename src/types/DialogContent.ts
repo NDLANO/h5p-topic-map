@@ -1,4 +1,4 @@
-import type { Audio, Video } from 'h5p-types';
+import type { H5PAudio, H5PVideo } from 'h5p-types';
 import { Link } from './Link';
 
 export type DialogContent = {
@@ -7,14 +7,14 @@ export type DialogContent = {
   showAddLinks: boolean;
   maxWordCount?: number;
   text?: string;
-  video?: Array<Video>;
+  video?: Array<H5PVideo>;
   audio?: {
     /**
      * "Optional" because we can't force the user
      * to add a file, therefore there's an off-chance
      * that the value will be nullish
      *  */
-    audioFile?: Array<Audio>;
+    audioFile?: Array<H5PAudio>;
     subtext?: string;
   };
 };

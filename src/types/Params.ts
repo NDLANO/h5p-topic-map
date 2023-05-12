@@ -1,4 +1,4 @@
-import type { Image } from 'h5p-types';
+import type { H5PImage } from 'h5p-types';
 import { GridDimensions } from '../components/Grid/Grid';
 import { ArrowItemType } from './ArrowItemType';
 import { ColorTheme } from './ColorTheme';
@@ -12,7 +12,7 @@ export type Params = Readonly<{
     topicMapItems?: Array<TopicMapItemType>;
     arrowItems?: Array<ArrowItemType>;
 
-    gridBackgroundImage?: Image;
+    gridBackgroundImage?: H5PImage;
     colorTheme?: ColorTheme;
     grid?: GridDimensions;
   };

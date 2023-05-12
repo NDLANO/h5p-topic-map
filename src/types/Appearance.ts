@@ -1,7 +1,7 @@
-import type { Image } from 'h5p-types';
+import type { H5PImage } from 'h5p-types';
 import { ColorTheme } from './ColorTheme';
 
 export type Appearance = {
-  backgroundImage?: Image;
+  backgroundImage?: H5PImage;
   colorTheme?: ColorTheme;
 };

@@ -1,11 +1,11 @@
 import { render } from '@testing-library/react';
-import type { Image } from 'h5p-types';
+import type { H5PImage } from 'h5p-types';
 import * as React from 'react';
 import { DialogText } from './DialogText';
 
 describe(DialogText.name, () => {
   it('Should have rendered', () => {
-    const topicImage: Image = {
+    const topicImage: H5PImage = {
       path: 'https://images.unsplash.com/photo-1643114673614-55af01ec8dfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
     };
     const introduction = 'Tree trunks grow however makes them happy. Let\'s get crazy. This is the time to get out all your flustrations, much better than kicking the dog around the house or taking it out on your spouse. Volunteering your time; it pays you and your whole community fantastic dividends.';

@@ -1,4 +1,4 @@
-import type { Image } from 'h5p-types';
+import type { H5PImage } from 'h5p-types';
 import * as React from 'react';
 import { useState } from 'react';
 import { ArrowItemType } from '../../types/ArrowItemType';
@@ -18,7 +18,7 @@ export type GridDimensions = {
 export type GridProps = {
   items: Array<TopicMapItemType>;
   arrowItems: Array<ArrowItemType>;
-  backgroundImage: Image | undefined;
+  backgroundImage: H5PImage | undefined;
   grid?: GridDimensions;
 };
 

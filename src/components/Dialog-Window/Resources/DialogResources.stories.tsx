@@ -1,13 +1,13 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import { DialogResources } from './DialogResources';
 
 export default {
   title: 'Molecules/Dialog Content/Dialog Resources',
   component: DialogResources,
-} as unknown as ComponentMeta<typeof DialogResources>;
+} satisfies Meta<typeof DialogResources>;
 
-const Template: ComponentStory<typeof DialogResources> = (args) => (
+const Template: StoryFn<typeof DialogResources> = (args) => (
   
   <DialogResources {...args} />
 );

@@ -1,4 +1,4 @@
-import type { Audio, H5PIntegrationObject, H5PObject } from 'h5p-types';
+import type { H5PAudio, H5PIntegrationObject, H5PObject } from 'h5p-types';
 import { ArrowItemType } from '../types/ArrowItemType';
 import { Params } from '../types/Params';
 import { TopicMapItemType } from '../types/TopicMapItemType';
@@ -177,9 +177,9 @@ export const normalizeSizes = (params: Required<Params>): Required<Params> => {
  * @param contentId Content id of the H5P being shown
  */
 export const makeAudioPathsAbsolute = (
-  items: Array<Audio> | undefined,
+  items: Array<H5PAudio> | undefined,
   contentId: string,
-): Array<Audio> | undefined => {
+): Array<H5PAudio> | undefined => {
   if (!items) return undefined;
 
   return items.map((item) => {

@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 
 import { Grid, GridProps } from './Grid';
 import { ArrowType } from '../../types/ArrowType';
@@ -8,7 +8,7 @@ import { ArrowType } from '../../types/ArrowType';
 export default {
   title: 'Organisms/Grid',
   component: Grid,
-} as ComponentMeta<typeof Grid>;
+} satisfies Meta<typeof Grid>;
 
 const defaultArgs: GridProps = {
   items: [],
@@ -16,7 +16,7 @@ const defaultArgs: GridProps = {
   backgroundImage: undefined,
 };
 
-export const WithItems: ComponentStory<typeof Grid> = () => {
+export const WithItems: StoryFn<typeof Grid> = () => {
   const args: GridProps = {
     ...defaultArgs,
     items: [
@@ -113,7 +113,7 @@ export const WithItems: ComponentStory<typeof Grid> = () => {
   return <Grid {...args} />;
 };
 
-export const WithBackgroundImage: ComponentStory<typeof Grid> = () => {
+export const WithBackgroundImage: StoryFn<typeof Grid> = () => {
   const args: GridProps = {
     ...defaultArgs,
     items: [
@@ -222,7 +222,7 @@ export const WithBackgroundImage: ComponentStory<typeof Grid> = () => {
   return <Grid {...args} />;
 };
 
-export const WithoutItems: ComponentStory<typeof Grid> = () => {
+export const WithoutItems: StoryFn<typeof Grid> = () => {
   const args: GridProps = { ...defaultArgs };
   return <Grid {...args} />;
 };

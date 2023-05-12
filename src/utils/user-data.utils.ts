@@ -1,4 +1,4 @@
-import type { EventDispatcher } from 'h5p-types';
+import type { IH5PContentType } from 'h5p-types';
 import { ContentUserData } from '../types/ContentUserData';
 import { UserData } from '../types/UserData';
 import { sendXAPIEvent } from './x-api.utils';
@@ -23,7 +23,7 @@ const getContentUserData = (contentId: string): ContentUserData => {
 
 export const exportAllUserData = (
   contentId: string,
-  h5pInstance: EventDispatcher,
+  h5pInstance: IH5PContentType,
 ): void => {
   const contentUserData = getContentUserData(contentId);
   sendXAPIEvent(

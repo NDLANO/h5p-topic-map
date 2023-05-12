@@ -1,14 +1,14 @@
+import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { DialogWindow } from './DialogWindow';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
+import { DialogWindow } from './DialogWindow';
 
 export default {
   title: 'Organisms/DialogWindow',
   component: DialogWindow,
-} as ComponentMeta<typeof DialogWindow>;
+} satisfies Meta<typeof DialogWindow>;
 
-const Template: ComponentStory<typeof DialogWindow> = (args) => (
+const Template: StoryFn<typeof DialogWindow> = (args) => (
   
   <DialogWindow {...args} />
 );

@@ -1,11 +1,11 @@
-import type { Image } from 'h5p-types';
+import type { H5PImage } from 'h5p-types';
 import * as React from 'react';
 import { useL10n } from '../../../hooks/useLocalization';
 import { formatCopyright } from '../../../utils/dialog.utils';
 import styles from './DialogText.module.scss';
 
 export type DialogTextProps = {
-  topicImage: Image | undefined;
+  topicImage: H5PImage | undefined;
   introduction: string | undefined;
   bodyText: string | undefined;
   topicImageAltText: string | undefined;

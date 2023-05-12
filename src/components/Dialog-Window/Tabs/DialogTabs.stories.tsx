@@ -1,13 +1,13 @@
+import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { DialogTabs } from './DialogTabs';
 
 export default {
   title: 'Molecules/Dialog Content/Dialog Tabs',
   component: DialogTabs,
-} as ComponentMeta<typeof DialogTabs>;
+} satisfies Meta<typeof DialogTabs>;
 
-const Template: ComponentStory<typeof DialogTabs> = (args) => (
+const Template: StoryFn<typeof DialogTabs> = (args) => (
   
   <DialogTabs {...args} />
 );

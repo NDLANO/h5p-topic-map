@@ -1,8 +1,8 @@
-import type { Copyright } from 'h5p-types';
+import type { H5PCopyright } from 'h5p-types';
 
 export const formatCopyright = (
   copyrightTitle: string,
-  { author, title, license }: Copyright,
+  { author, title, license }: H5PCopyright,
 ): string => {
   const showTitleAuthorDivider = title && author;
 
