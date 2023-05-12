@@ -1,0 +1,473 @@
+{
+  "semantics": [
+    {
+      "fields": [
+        {
+          "field": {
+            "fields": [
+              {
+                "label": "Id"
+              },
+              {
+                "label": "X-position as a percentage of the container width"
+              },
+              {
+                "label": "Y-position as a percentage of the container height"
+              },
+              {
+                "label": "Width as a percentage of the container width"
+              },
+              {
+                "label": "Height as a percentage of the container height"
+              },
+              {
+                "label": "Label"
+              },
+              {
+                "label": "Description"
+              },
+              {
+                "label": "Topic image",
+                "description": "Background image for card and image above text in dialog"
+              },
+              {
+                "label": "Topic image alt text",
+                "description": "Alternative text for the image that is used by screen readers"
+              },
+              {
+                "fields": [
+                  {
+                    "label": "Show notes textarea"
+                  },
+                  {
+                    "label": "Maximum number of words",
+                    "description": "Specifies the maximum number of words for the note. Default is 160 words."
+                  },
+                  {
+                    "label": "Text"
+                  },
+                  {
+                    "label": "Video"
+                  },
+                  {
+                    "label": "Audio",
+                    "fields": [
+                      {
+                        "label": "Audio"
+                      },
+                      {
+                        "label": "Subtext"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Links",
+                    "description": "These links are as auxiliary links for the user in the element's modal window",
+                    "entity": "linkItem",
+                    "field": {
+                      "label": "Link",
+                      "fields": [
+                        {
+                          "label": "Id"
+                        },
+                        {
+                          "label": "Label"
+                        },
+                        {
+                          "label": "Url"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "label": "Show add links option"
+                  }
+                ],
+                "label": "Dialog"
+              },
+              {
+                "label": "Index",
+                "description": "⚠️ Advanced feature: Used for manually setting tab order."
+              }
+            ],
+            "label": "Item"
+          },
+          "label": "Topic map items",
+          "entity": "Topic map item"
+        },
+        {
+          "field": {
+            "fields": [
+              {
+                "label": "Id"
+              },
+              {
+                "label": "Percentage position of start element",
+                "fields": [
+                  {
+                    "label": "X-position as a percentage of the container width"
+                  },
+                  {
+                    "label": "Y-position as a percentage of the container height"
+                  }
+                ]
+              },
+              {
+                "label": "Percentage position of start element",
+                "fields": [
+                  {
+                    "label": "X-position as a percentage of the container width"
+                  },
+                  {
+                    "label": "Y-position as a percentage of the container height"
+                  }
+                ]
+              },
+              {
+                "label": "Grid position of start element",
+                "fields": [
+                  {
+                    "label": "X-position as a grid coordinate"
+                  },
+                  {
+                    "label": "Y-position as a grid coordinate"
+                  }
+                ]
+              },
+              {
+                "label": "Grid position of start element",
+                "fields": [
+                  {
+                    "label": "X-position as a grid coordinate"
+                  },
+                  {
+                    "label": "Y-position as a grid coordinate"
+                  }
+                ]
+              },
+              {
+                "label": "Id of start element"
+              },
+              {
+                "label": "Id of end element"
+              },
+              {
+                "label": "Label",
+                "description": "The label is used by screen readers and on the summary page"
+              },
+              {
+                "label": "Description",
+                "description": "The description is shown on top of the background image, below the label"
+              },
+              {
+                "label": "Topic image",
+                "description": "Image above text in dialog"
+              },
+              {
+                "label": "Topic image alt text",
+                "description": "Alternative text for the image that is used by screen readers"
+              },
+              {
+                "label": "Arrow type",
+                "options": [
+                  {
+                    "label": "Directional"
+                  },
+                  {
+                    "label": "Bi-directional"
+                  },
+                  {
+                    "label": "Non-directional"
+                  }
+                ]
+              },
+              {
+                "label": "Show end arrow-head"
+              },
+              {
+                "label": "Dialog",
+                "fields": [
+                  {
+                    "label": "Show notes textarea"
+                  },
+                  {
+                    "label": "Maximum number of words",
+                    "description": "Specifies the maximum number of words for the note. Default is 160 words."
+                  },
+                  {
+                    "label": "Text"
+                  },
+                  {
+                    "label": "Video"
+                  },
+                  {
+                    "label": "Audio",
+                    "fields": [
+                      {
+                        "label": "Audio"
+                      },
+                      {
+                        "label": "Subtext"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "Links",
+                    "description": "These links are as auxiliary links for the user in the element's modal window",
+                    "entity": "linkItem",
+                    "field": {
+                      "label": "Link",
+                      "fields": [
+                        {
+                          "label": "Id"
+                        },
+                        {
+                          "label": "Label"
+                        },
+                        {
+                          "label": "Url"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "label": "Show add links option"
+                  }
+                ]
+              },
+              {
+                "label": "Index"
+              },
+              {
+                "label": "Arrow breakpoints",
+                "entity": "breakpoint",
+                "field": {
+                  "label": "Breakpoint",
+                  "fields": [
+                    {
+                      "label": "X-position as grid index"
+                    },
+                    {
+                      "label": "Y-position as grid index"
+                    }
+                  ]
+                }
+              },
+              {
+                "label": "Arrow Relative breakpoints",
+                "entity": "breakpoint",
+                "field": {
+                  "label": "Breakpoint",
+                  "fields": [
+                    {
+                      "label": "X-position as a percentage of the container width"
+                    },
+                    {
+                      "label": "Y-position as a percentage of the container height"
+                    }
+                  ]
+                }
+              }
+            ],
+            "label": "Arrow"
+          },
+          "label": "Arrows",
+          "entity": "arrowItem"
+        },
+        {
+          "label": "Background image"
+        },
+        {
+          "label": "Color theme",
+          "options": [
+            {
+              "label": "Blue"
+            },
+            {
+              "label": "Green"
+            },
+            {
+              "label": "Red"
+            },
+            {
+              "label": "Gray"
+            }
+          ]
+        },
+        {
+          "label": "Grid",
+          "fields": [
+            {
+              "label": "Number of columns"
+            },
+            {
+              "label": "Number of rows"
+            }
+          ]
+        }
+      ],
+      "label": "Topic map editor"
+    },
+    {
+      "label": "Behavioral settings"
+    },
+    {
+      "fields": [
+        {
+          "label": "Close dialog",
+          "description": "Used by screen readers",
+          "default": "Close dialog"
+        },
+        {
+          "label": "Audio",
+          "description": "Shown in front of copyright statements",
+          "default": "Audio"
+        },
+        {
+          "label": "Photo",
+          "description": "Shown in front of copyright statements",
+          "default": "Photo"
+        },
+        {
+          "label": "Video",
+          "description": "Shown in front of copyright statements",
+          "default": "Video"
+        },
+        {
+          "label": "Saving note label",
+          "default": "Saving…"
+        },
+        {
+          "label": "Saved note label",
+          "default": "Saved"
+        },
+        {
+          "label": "Word limit exceeded label",
+          "default": "Too many words"
+        },
+        {
+          "label": "Note placeholder",
+          "default": "Write your notes here…"
+        },
+        {
+          "label": "Mark note as done",
+          "default": "Mark as done"
+        },
+        {
+          "label": "Dialog resources labels: Relevant links",
+          "default": "Relevant links"
+        },
+        {
+          "label": "Dialog resources labels: Custom links",
+          "default": "Your links"
+        },
+        {
+          "label": "Dialog resources labels: Add",
+          "default": "Add"
+        },
+        {
+          "label": "Dialog words text label",
+          "default": "Words"
+        },
+        {
+          "label": "Fullscreen button label",
+          "default": "Toggle fullscreen mode"
+        },
+        {
+          "label": "Navbar tabs list label",
+          "description": "Used by screen readers",
+          "default": "Navigation bar"
+        },
+        {
+          "label": "Navbar topic map section label",
+          "default": "Topic map"
+        },
+        {
+          "label": "Navbar notes section label",
+          "default": "My notes"
+        },
+        {
+          "label": "Navbar help section label",
+          "default": "Help"
+        },
+        {
+          "label": "Navbar help section title",
+          "default": "Help"
+        },
+        {
+          "label": "Navbar help section body",
+          "default": "<p>The purpose of this exercise is to enhance your learning by linking your own notes to a topic map. The topic map consists of events (boxes) and connections (arrows). You must enter notes for both events and connections.</p><p>Click or tap the boxes and arrows to add a note to an event or connection. The notes you enter are automatically saved locally in the browser of the device you are using, so you can continue on or read the notes at a later time.</p><p><strong>Progress bar</strong> shows what percentage of the events and connections have received notes. 100% means you have posted notes in all available places.</p><p><strong>My notes</strong> gives you an overview of all the notes you have written. There you can print out or delete all the notes. These notes are stored locally in your internet browser, therefore it's recommended to export them using printing functionality in order to save your answers over time.</p>"
+        },
+        {
+          "label": "Dialog resources labels",
+          "default": "Resources"
+        },
+        {
+          "label": "Text",
+          "default": "Text"
+        },
+        {
+          "label": "Note",
+          "default": "Note"
+        },
+        {
+          "label": "Tabs list",
+          "default": "Tabs list"
+        },
+        {
+          "label": "Navbar notes section title",
+          "default": "My notes"
+        },
+        {
+          "label": "Navbar notes section body",
+          "default": "Here you have an overview of all the notes you have written. The notes are saved locally in this browser. To save the notes elsewhere, you can print or copy the notes into a document."
+        },
+        {
+          "label": "Navbar notes print button label",
+          "default": "Print"
+        },
+        {
+          "label": "Navbar notes delete all notes button label",
+          "default": "Delete all notes"
+        },
+        {
+          "label": "Navbar notes empty list label",
+          "default": "No dialogue notes available in this topic map."
+        },
+        {
+          "label": "Navbar notes missing note label",
+          "default": "━ No notes have been added yet"
+        },
+        {
+          "label": "Delete all notes confirmation window label",
+          "default": "Are you sure you want to delete all your notes?"
+        },
+        {
+          "default": "Delete",
+          "label": "Delete all notes confirm deletion label"
+        },
+        {
+          "label": "Delete all notes deny deletion label",
+          "default": "Cancel"
+        },
+        {
+          "label": "Navbar notes submit all data button label",
+          "default": "Submit all data"
+        },
+        {
+          "label": "Submit all notes confirmation window label",
+          "default": "Are you sure you want to submit all your data?"
+        },
+        {
+          "label": "Submit all data confirm label",
+          "default": "Submit"
+        },
+        {
+          "label": "Submit all data deny label",
+          "default": "Cancel"
+        }
+      ],
+      "label": "Localize"
+    }
+  ]
+}
