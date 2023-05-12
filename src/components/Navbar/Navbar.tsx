@@ -238,6 +238,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   );
 
   const goToTopicMap = (): void => setCurrentSection(NavbarSections.TopicMap);
+  const goToNotesPage = (): void => setCurrentSection(NavbarSections.Notes);
 
   const notesSection = (
     <>
@@ -286,7 +287,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           currentSection === NavbarSections.Notes && styles.active
         }`}
         type="button"
-        onClick={() => setCurrentSection(NavbarSections.Notes)}
+        onClick={goToNotesPage}
       >
         {notesSectionLabel}
       </button>
