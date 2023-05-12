@@ -16,7 +16,6 @@ import { exportAllUserData } from "../../utils/user-data.utils";
 import { DialogWindow } from "../Dialog-Window/DialogWindow";
 import { FullscreenButton } from "../FullscreenButton/FullscreenButton";
 import { Grid } from "../Grid/Grid";
-import { HamburgerCloseIcon, HamburgerIcon } from "../Icons/Icons";
 import styles from "./Navbar.module.scss";
 import { NotesList } from "./NotesSection/NotesList/NotesList";
 import { NotesSection } from "./NotesSection/NotesSection";
@@ -63,8 +62,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     useState(false);
   const [isSubmitAllConfirmationVisible, setIsSubmitAllConfirmationVisible] =
     useState(false);
-
-  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
   const sizeClassNames = useSizeClassNames(styles);
 
@@ -282,61 +279,20 @@ export const Navbar: React.FC<NavbarProps> = ({
     </>
   );
 
-  const sectionsMenu = (
+  const sectionsMenu = hasNotes && (
     <>
-      {hasNotes && (
-        <button
-          className={`${styles.sectionTitle} ${
-            currentSection === NavbarSections.Notes && styles.active
-          }`}
-          type="button"
-          onClick={() => setCurrentSection(NavbarSections.Notes)}
-        >
-          {notesSectionLabel}
-        </button>
-      )}
-
-      {hasNotes && (
-        <div className={styles.progressBarWrapper}>{progressBar}</div>
-      )}
-
-      <div className={styles.fullscreenButtonNotMobile}>
-        <FullscreenButton
-          toggleIOSFullscreen={toggleIPhoneFullscreen}
-          isIOSFullscreenActive={isIPhoneFullscreenActive}
-        />
-      </div>
-    </>
-  );
-
-  const navButtonsMobile = (
-    <div className={styles.navButtonsMobile}>
       <button
+        className={`${styles.sectionTitle} ${
+          currentSection === NavbarSections.Notes && styles.active
+        }`}
         type="button"
-        className={styles.hamburgerButton}
-        onClick={() => setIsHamburgerOpen(!isHamburgerOpen)}
+        onClick={() => setCurrentSection(NavbarSections.Notes)}
       >
-        {isHamburgerOpen ? (
-          <HamburgerCloseIcon
-            iconColor="#fff"
-            width={undefined}
-            height={undefined}
-          />
-        ) : (
-          <HamburgerIcon
-            iconColor="#fff"
-            width={undefined}
-            height={undefined}
-          />
-        )}
+        {notesSectionLabel}
       </button>
-      <div className={styles.fullscreenButtonMobile}>
-        <FullscreenButton
-          toggleIOSFullscreen={toggleIPhoneFullscreen}
-          isIOSFullscreenActive={isIPhoneFullscreenActive}
-        />
-      </div>
-    </div>
+
+      <div className={styles.progressBarWrapper}>{progressBar}</div>
+    </>
   );
 
   return (
@@ -358,8 +314,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               {navbarTitle}
             </button>
-            <div className={styles.sectionsMenuNotMobile}>{sectionsMenu}</div>
-            {navButtonsMobile}
+            <div className={styles.sectionsMenu}>{sectionsMenu}</div>
+            <div className={styles.fullscreenButton}>
+              <FullscreenButton
+                toggleIOSFullscreen={toggleIPhoneFullscreen}
+                isIOSFullscreenActive={isIPhoneFullscreenActive}
+              />
+            </div>
           </div>
         </div>
 
@@ -372,9 +333,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               grid={params.topicMap?.grid}
             />
           </div>
-          {isHamburgerOpen && (
-            <div className={styles.sectionsMenuMobile}>{sectionsMenu}</div>
-          )}
           {currentSection === NavbarSections.Notes && (
             <div className={styles.sectionContentWrapper}>{notesSection}</div>
           )}

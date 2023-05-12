@@ -13,7 +13,11 @@ const defaultArgs: NavbarProps = {
   params: {},
   toggleIPhoneFullscreen: () => null,
   isIPhoneFullscreenActive: false,
-  instance: {} as IH5PContentType,
+  instance: {
+    on: () => {
+      /* Empty */
+    },
+  } as unknown as IH5PContentType,
 };
 
 export const NavBar: ComponentStory<typeof Navbar> = () => {

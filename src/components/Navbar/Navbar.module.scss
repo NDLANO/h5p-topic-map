@@ -15,7 +15,9 @@ $grid-z-index: 1;
   border-radius: 0;
   color: #ffffff;
   cursor: pointer;
+  flex-grow: 1;
   padding-left: 0.25rem;
+  text-align: left;
 }
 
 .sectionsWrapper {
@@ -44,21 +46,13 @@ $grid-z-index: 1;
   }
 }
 
-.sectionsMenuMobile {
+.sectionsMenu {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 0.25rem 0.25rem 0.5rem;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: $grid-z-index + 2;
-  background-color: var(--theme-color-2);
+  flex-direction: row;
+  gap: 1rem;
 }
 
-.sectionsMenuNotMobile,
-.progressBarWrapper,
-.fullscreenButtonNotMobile {
+.progressBarWrapper {
   display: none;
 }
 
@@ -68,16 +62,8 @@ $grid-z-index: 1;
   }
 }
 
-.hamburgerButton {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.navButtonsMobile {
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
+.fullscreenButton {
+  transform: scale(1);
 }
 
 .fullscreenButtonMobile {
@@ -85,26 +71,13 @@ $grid-z-index: 1;
 }
 
 .smallUp {
-  .hamburgerMenu,
-  .sectionsMenuMobile,
-  .navButtonsMobile,
+  .fullscreenButtonMobile,
   .progressBarMobileWrapper {
     display: none;
   }
 
   .navbarWrapper {
     padding: 0.5rem;
-  }
-
-  .fullscreenButtonNotMobile {
-    transform: scale(1);
-    display: block;
-  }
-
-  .sectionsMenuNotMobile {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
   }
 
   .progressBarWrapper {
