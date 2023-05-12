@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
 import { NotesSection } from './NotesSection';
 
 export default {
   title: 'Molecules/Navbar/Notes Section',
   component: NotesSection,
-} as ComponentMeta<typeof NotesSection>;
+} satisfies Meta<typeof NotesSection>;
 
-const Template: ComponentStory<typeof NotesSection> = (args) => (
+const Template: StoryFn<typeof NotesSection> = (args) => (
   
   <NotesSection {...args} />
 );

@@ -1,4 +1,4 @@
-import type { Video } from 'h5p-types';
+import type { H5PVideo } from 'h5p-types';
 import * as React from 'react';
 import { H5P } from '../../../h5p/H5P.util';
 import { useContentId } from '../../../hooks/useContentId';
@@ -7,7 +7,7 @@ import { formatCopyright } from '../../../utils/dialog.utils';
 import styles from './DialogVideo.module.scss';
 
 export type DialogVideoProps = {
-  sources: Array<Video>;
+  sources: Array<H5PVideo>;
 };
 
 export const DialogVideo: React.FC<DialogVideoProps> = ({ sources }) => {

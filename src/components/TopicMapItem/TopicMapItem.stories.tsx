@@ -1,13 +1,12 @@
+import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
-import { TopicMapItem, TopicMapItemProps } from './TopicMapItem';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
+import { TopicMapItem, TopicMapItemProps } from './TopicMapItem';
 
 export default {
   title: 'Molecules/TopicMapItem',
   component: TopicMapItem,
-} as ComponentMeta<typeof TopicMapItem>;
+} satisfies Meta<typeof TopicMapItem>;
 
 const item: TopicMapItemType = {
   id: '1',
@@ -38,12 +37,12 @@ const defaultArgs: TopicMapItemProps = {
   onClick,
 };
 
-export const NoContainer: ComponentStory<typeof TopicMapItem> = () => {
+export const NoContainer: StoryFn<typeof TopicMapItem> = () => {
   const args: TopicMapItemProps = { ...defaultArgs };
   return <TopicMapItem {...args} />;
 };
 
-export const Square: ComponentStory<typeof TopicMapItem> = () => {
+export const Square: StoryFn<typeof TopicMapItem> = () => {
   const args: TopicMapItemProps = { ...defaultArgs };
   return (
     <div
@@ -57,7 +56,7 @@ export const Square: ComponentStory<typeof TopicMapItem> = () => {
   );
 };
 
-export const Wide: ComponentStory<typeof TopicMapItem> = () => {
+export const Wide: StoryFn<typeof TopicMapItem> = () => {
   const args: TopicMapItemProps = { ...defaultArgs };
   return (
     <div
@@ -71,7 +70,7 @@ export const Wide: ComponentStory<typeof TopicMapItem> = () => {
   );
 };
 
-export const Tall: ComponentStory<typeof TopicMapItem> = () => {
+export const Tall: StoryFn<typeof TopicMapItem> = () => {
   const args: TopicMapItemProps = { ...defaultArgs };
   return (
     <div

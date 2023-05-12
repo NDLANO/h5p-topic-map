@@ -1,13 +1,13 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import { DialogAudio } from './DialogAudio';
 
 export default {
   title: 'Molecules/Dialog Content/Dialog Audio',
   component: DialogAudio,
-} as ComponentMeta<typeof DialogAudio>;
+} satisfies Meta<typeof DialogAudio>;
 
-const Template: ComponentStory<typeof DialogAudio> = (args) => (
+const Template: StoryFn<typeof DialogAudio> = (args) => (
   
   <DialogAudio {...args} />
 );

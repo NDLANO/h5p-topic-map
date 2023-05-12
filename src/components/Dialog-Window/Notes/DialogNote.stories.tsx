@@ -1,14 +1,13 @@
-
+import { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { DialogNote } from './DialogNote';
 
 export default {
   title: 'Molecules/Dialog Content/Dialog Notes',
   component: DialogNote,
-} as ComponentMeta<typeof DialogNote>;
+} satisfies Meta<typeof DialogNote>;
 
-const Template: ComponentStory<typeof DialogNote> = (args) => (
+const Template: StoryFn<typeof DialogNote> = (args) => (
   <div style={{ height: '80vh', width: '80vw' }}>
     <DialogNote {...args} />
   </div>

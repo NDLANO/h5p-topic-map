@@ -1,6 +1,6 @@
 import type { H5PExtras, IH5PContentType } from 'h5p-types';
 import * as React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { App } from '../components/App/App';
 import { ContentIdContext } from '../contexts/ContentIdContext';
 import { H5PContext } from '../contexts/H5PContext';
@@ -112,7 +112,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
       },
     );
 
-    render(
+    createRoot(this.wrapper).render(
       <ContentIdContext.Provider value={contentId}>
         <LocalizationContext.Provider value={l10n}>
           <H5PContext.Provider value={this}>
@@ -125,7 +125,6 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
           </H5PContext.Provider>
         </LocalizationContext.Provider>
       </ContentIdContext.Provider>,
-      this.wrapper,
     );
   }
 

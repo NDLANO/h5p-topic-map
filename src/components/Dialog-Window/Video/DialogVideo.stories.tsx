@@ -1,19 +1,19 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import type { Video } from 'h5p-types';
+import { Meta, StoryFn } from '@storybook/react';
+import type { H5PVideo } from 'h5p-types';
 import * as React from 'react';
 import { DialogVideo } from './DialogVideo';
 
 export default {
   title: 'Molecules/Dialog Content/Dialog Video',
   component: DialogVideo,
-} as unknown as ComponentMeta<typeof DialogVideo>;
+} satisfies Meta<typeof DialogVideo>;
 
-const Template: ComponentStory<typeof DialogVideo> = (args) => (
+const Template: StoryFn<typeof DialogVideo> = (args) => (
   
   <DialogVideo {...args} />
 );
 
-const video: Video = {
+const video: H5PVideo = {
   path: 'https://player.vimeo.com/video/224857514?title=0&portrait=0&byline=0&autoplay=1&loop=1&transparent=1',
   copyright: {
     title: 'Jellyfish',

@@ -1,11 +1,11 @@
-import type { Audio } from 'h5p-types';
+import type { H5PAudio } from 'h5p-types';
 import * as React from 'react';
 import { useL10n } from '../../../hooks/useLocalization';
 import { formatCopyright } from '../../../utils/dialog.utils';
 import styles from './DialogAudio.module.scss';
 
 export type DialogAudioProps = {
-  audioTrack: Audio;
+  audioTrack: H5PAudio;
   subtext?: string;
 };
 
