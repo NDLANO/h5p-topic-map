@@ -4,9 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const mode = process.argv.includes('--mode=production')
   ? 'production'
   : 'development';
-const isDev = mode !== 'production';
 
-const config = {
+module.exports = {
   mode,
   entry: {
     'h5p-topic-map': path.join(__dirname, 'src', 'index.tsx'),
@@ -14,6 +13,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
+    clean: true,
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -72,10 +72,5 @@ const config = {
       },
     },
   },
+  ...(mode !== 'production' && { devtool: 'eval-cheap-module-source-map' })
 };
-
-if (isDev) {
-  config.devtool = 'inline-source-map';
-}
-
-module.exports = config;

@@ -5,11 +5,11 @@
   "main": "index.js",
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "scripts": {
     "watch": "webpack --watch --mode=development",
     "build": "webpack --mode=production",
-    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest",
     "storybook": "storybook dev -p 6006",
@@ -69,5 +69,6 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.82.1",
     "webpack-cli": "^5.1.1"
-  }
+  },
+  "browserslist": "> 0.5%, last 2 versions, Firefox ESR, not dead"
 }
