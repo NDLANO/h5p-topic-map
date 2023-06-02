@@ -126,11 +126,9 @@ export const Arrow: FC<ArrowProps> = ({
         };
       };
       const asPoint = (position: Position): string =>
-        `${(position.x / 100) * gridElement.clientWidth},${
-          (position.y / 100) * gridElement.clientHeight
+        `${(position.x / 100) * gridElement.clientWidth},${(position.y / 100) * gridElement.clientHeight
         }`;
-      const path = `${startx},${starty} ${
-        item.relativeBreakpoints?.map(asPoint).join(' ') ?? ''
+      const path = `${startx},${starty} ${item.relativeBreakpoints?.map(asPoint).join(' ') ?? ''
       } ${endx},${endy}`;
 
       const middlePoint = findMiddlePosition(
@@ -151,7 +149,6 @@ export const Arrow: FC<ArrowProps> = ({
     <div className={styles.arrow}>
       <div
         ref={arrowContainerRef}
-        aria-label={item.label}
         className={`arrow-item ${styles.arrow}`}
       >
         <svg className={styles.arrowSvg}>
@@ -178,6 +175,7 @@ export const Arrow: FC<ArrowProps> = ({
             </marker>
           </defs>
           <polyline
+            aria-label={item.label}
             className={styles.path}
             points={pathDef}
             fill="transparent"
@@ -185,7 +183,7 @@ export const Arrow: FC<ArrowProps> = ({
             strokeWidth={strokeWidth}
             markerEnd={
               item.arrowType === ArrowType.BiDirectional ||
-              item.arrowType === ArrowType.Directional
+                item.arrowType === ArrowType.Directional
                 ? 'url(#arrowhead)'
                 : ''
             }
