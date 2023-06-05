@@ -176,7 +176,7 @@ export const Arrow: FC<ArrowProps> = ({
           </defs>
           <polyline
             aria-label={item.label}
-            className={styles.path}
+            className={`${item.dialog ? styles.path : ''}`}
             points={pathDef}
             fill="transparent"
             stroke="var(--theme-color-4)"
