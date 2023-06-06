@@ -388,18 +388,6 @@
           "default": "Mis notas"
         },
         {
-          "label": "Etiqueta de la sección de ayuda de la barra de navegación",
-          "default": "Ayuda"
-        },
-        {
-          "label": "Título de la sección de ayuda de la barra de navegación",
-          "default": "Ayuda"
-        },
-        {
-          "label": "Cuerpo de la sección de ayuda de la barra de navegación",
-          "default": "<p>El propósito de este ejercicio es mejorar tu aprendizaje vinculando tus propias notas a un mapa de temas. El mapa de temas consta de eventos (cuadros) y conexiones (flechas). Debes escribir notas tanto para eventos como para conexiones.</p><p>Haz clic o toca las casillas y flechas para agregar una nota a un evento o conexión. Las notas que escribes se guardan automáticamente de forma local en el navegador del dispositivo que estás utilizando, por lo que puedes continuar o leer las notas en otro momento.</p><p><strong>La barra de progreso</strong> muestra qué porcentaje de los eventos y conexiones han recibido notas. 100% significa que has publicado notas en todos los lugares disponibles.</p><p><strong>Mis notas</strong> te ofrece una descripción general de todas las notas que has escrito. Allí puedes imprimir o eliminar todas las notas. Estas notas se almacenan localmente en tu navegador, por lo que se recomienda exportarlas mediante la función de impresión para guardar tus respuestas de modo permanente.</p>"
-        },
-        {
           "label": "Etiquetas de diálogo de recursos",
           "default": "Recursos"
         },
@@ -421,7 +409,7 @@
         },
         {
           "label": "Cuerpo de la sección de notas de la barra de navegación",
-          "default": "Aquí tienes un resumen de todas las notas que has escrito. Las notas se guardan localmente en este navegador. Para guardar las notas en otro lugar, puedes imprimir o copiar las notas en un documento."
+          "default": "Aquí tiene un resumen de todas las notas que ha escrito. Las notas se guardan localmente en este navegador. Para guardar las notas en otro lugar, puede imprimir o copiar las notas en un documento."
         },
         {
           "label": "Etiqueta del botón de impresión de notas de la barra de navegación",
@@ -441,7 +429,7 @@
         },
         {
           "label": "Ventana de confirmación de eliminación de todas las notas",
-          "default": "¿Estás seguro de que quieres eliminar todas tus notas?"
+          "default": "¿Está seguro de querer eliminar todas sus notas?"
         },
         {
           "label": "Etiqueta de confirmación de eliminación de todas las notas",
@@ -454,6 +442,18 @@
         {
           "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",
           "default": "Enviar todos los datos"
+        },
+        {
+          "label": "Etiqueta de ventana de confirmación de envío de todas las notas",
+          "default": "¿Está seguro de querer enviar todos sus datos?"
+        },
+        {
+          "label": "Etiqueta de confirmación de envío de todos los datos",
+          "default": "Enviar"
+        },
+        {
+          "label": "Etiqueta para rechazar envío de todos los datos",
+          "default": "Cancelar"
         },
         {
           "label": "Etiqueta de ventana de confirmación de envío de todas las notas",
