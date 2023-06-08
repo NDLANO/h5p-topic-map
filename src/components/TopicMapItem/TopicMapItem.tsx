@@ -9,6 +9,7 @@ import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { GridDimensions } from '../Grid/Grid';
 import { NoteButton } from '../NoteButton/NoteButton';
 import styles from './TopicMapItem.module.scss';
+import { getNoteStateText } from '../../utils/note.utils';
 
 export type TopicMapItemProps = {
   item: TopicMapItemType;
@@ -93,6 +94,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
               dangerouslySetInnerHTML={{ __html: item.description }}
             />
           )}
+          <span className={styles.visuallyHidden}>{getNoteStateText(btnState)}</span>
         </div>
       </button>
 

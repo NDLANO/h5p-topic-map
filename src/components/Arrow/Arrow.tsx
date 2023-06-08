@@ -9,6 +9,7 @@ import { Position } from '../../types/Position';
 import { GridDimensions } from '../Grid/Grid';
 import styles from './Arrow.module.scss';
 import { ArrowNoteButton } from './ArrowNoteButton';
+import { getNoteStateText } from '../../utils/note.utils';
 
 export type ArrowProps = {
   item: ArrowItemType;
@@ -17,6 +18,7 @@ export type ArrowProps = {
   dialogIsOpen: boolean;
   onTouchStart: React.TouchEventHandler;
   onKeyUp: React.KeyboardEventHandler;
+  descriptiveText: string;
 };
 
 const calculateIsHorizontal = (
@@ -36,6 +38,7 @@ export const Arrow: FC<ArrowProps> = ({
   onClick,
   onKeyUp,
   dialogIsOpen,
+  descriptiveText,
 }) => {
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
@@ -175,7 +178,7 @@ export const Arrow: FC<ArrowProps> = ({
             </marker>
           </defs>
           <polyline
-            aria-label={item.label}
+            aria-label={`${descriptiveText} ${getNoteStateText(buttonState)}`}
             className={`${item.dialog ? styles.path : ''}`}
             points={pathDef}
             fill="transparent"
