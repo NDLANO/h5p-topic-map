@@ -90,7 +90,7 @@
                 "description": "⚠️ Advanced feature: Used for manually setting tab order."
               }
             ],
-            "label": "Item"
+            "label": "Elementua"
           },
           "label": "Topic map items",
           "entity": "Topic map item"
