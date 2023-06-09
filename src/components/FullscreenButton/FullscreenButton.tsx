@@ -34,7 +34,6 @@ export const FullscreenButton: React.FC<FullscreenButtonProps> = ({
     <button
       className={styles.fullscreenButton}
       type="button"
-      title={fullscreenButtonLabel}
       aria-label={fullscreenButtonLabel}
       onClick={handleFullscreen}
     >
