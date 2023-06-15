@@ -454,6 +454,30 @@
         {
           "label": "Submit all data deny label",
           "default": "Cancel"
+        },
+        {
+          "label": "Go back to topic map label",
+          "default": "Back"
+        },
+        {
+          "label": "Descriptive text for directional arrow",
+          "default": "Arrow from @startItem to @endItem"
+        },
+        {
+          "label": "Descriptive text for bi-directional arrow",
+          "default": "Arrow between @startItem and @endItem"
+        },
+        {
+          "label": "Descriptive text for note status done",
+          "default": ". Note marked as done"
+        },
+        {
+          "label": "Descriptive text for note status started",
+          "default": ". Note started"
+        },
+        {
+          "label": "Descriptive text for note status default",
+          "default": ". Note empty"
         }
       ]
     }
