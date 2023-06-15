@@ -1,5 +1,4 @@
 .trigger {
-  all: unset;
   font-family: inherit;
   background-color: white;
   padding: 0 20px;
@@ -14,14 +13,14 @@
   cursor: pointer;
   max-width: min-content;
   border-bottom: 2px solid #eee;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  outline-offset: -2px;
 
   &[data-state="active"] {
     font-weight: 800;
     border-bottom: 2px solid #2360c5;
-  }
-
-  &:focus {
-    position: relative;
   }
 }
 
