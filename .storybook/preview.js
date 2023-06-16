@@ -1,13 +1,13 @@
-import * as React from "react";
-import { ContentIdContext } from "../src/contexts/ContentIdContext";
-import { LocalizationContext } from "../src/contexts/LocalizationContext";
-import { H5PContext } from "../src/contexts/H5PContext";
-import { semantics } from "../src/semantics";
-import "!style-loader!css-loader!sass-loader!../src/styles.scss";
-import { H5PWrapper } from "../src/h5p/H5PWrapper";
+import '!style-loader!css-loader!sass-loader!../src/styles.scss';
+import * as React from 'react';
+import { L10nContext } from 'use-h5p';
+import { ContentIdContext } from '../src/contexts/ContentIdContext';
+import { H5PContext } from '../src/contexts/H5PContext';
+import { H5PWrapper } from '../src/h5p/H5PWrapper';
+import { semantics } from '../src/semantics';
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -16,25 +16,25 @@ export const parameters = {
   },
   options: {
     storySort: {
-      order: ["Atoms", "Molecules", "Organisms", "Templates", "Pages"],
+      order: ['Atoms', 'Molecules', 'Organisms', 'Templates', 'Pages'],
     },
   },
   themes: {
-    default: "Blue",
+    default: 'Blue',
     list: [
-      { name: "Blue", class: "theme-1", color: "#40586f" },
-      { name: "Green", class: "theme-2", color: "#3d6060" },
-      { name: "Red", class: "theme-3", color: "#981b1e" },
-      { name: "Grey", class: "theme-4", color: "#373d3f" },
+      { name: 'Blue', class: 'theme-1', color: '#40586f' },
+      { name: 'Green', class: 'theme-2', color: '#3d6060' },
+      { name: 'Red', class: 'theme-3', color: '#981b1e' },
+      { name: 'Grey', class: 'theme-4', color: '#373d3f' },
     ],
-    target: ".h5p-topic-map .h5p-topic-map, .h5p-topic-map",
+    target: '.h5p-topic-map .h5p-topic-map, .h5p-topic-map',
     clearable: false,
   },
 };
 
 const translations = Object.fromEntries(
-  semantics[2].fields.map(field => {
-    const defaultValue = field["default"] ?? field.name;
+  semantics[2].fields.map((field) => {
+    const defaultValue = field['default'] ?? field.name;
     return [field.name, defaultValue];
   }),
 );
@@ -45,23 +45,23 @@ const h5pInstance = new H5PWrapper(
     l10n: {},
     topicMap: {},
   },
-  "1",
+  '1',
   {
     metadata: {
-      title: "",
+      title: '',
     },
     standalone: false,
   },
 );
 
 export const decorators = [
-  Story => (
+  (Story) => (
     <ContentIdContext.Provider value="1">
-      <LocalizationContext.Provider value={translations}>
+      <L10nContext.Provider value={translations}>
         <H5PContext.Provider value={h5pInstance}>
           <Story />
         </H5PContext.Provider>
-      </LocalizationContext.Provider>
+      </L10nContext.Provider>
     </ContentIdContext.Provider>
   ),
 ];
