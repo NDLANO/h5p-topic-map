@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-expressions */
 import { Content, List, Root, Trigger } from '@radix-ui/react-tabs';
 import * as React from 'react';
 import { useMedia } from 'react-use';
-import { useL10n } from '../../../hooks/useLocalization';
+import { useTranslation } from '../../../hooks/useTranslation';
 import { CommonItemType } from '../../../types/CommonItemType';
 import { DialogAudio } from '../Audio/DialogAudio';
 import { DialogNote } from '../Notes/DialogNote';
@@ -138,15 +137,15 @@ const tabItems = (item: CommonItemType): JSX.Element[] => {
 };
 
 export const DialogTabs: React.FC<TabProps> = ({ item }) => {
+  const { t } = useTranslation();
+
   const translation: Translation = {
-    audio: useL10n('copyrightAudio'),
-    video: useL10n('copyrightVideo'),
-    links: useL10n('dialogResourcesLabel'),
-    text: useL10n('dialogTextLabel'),
+    audio: t('copyrightAudio'),
+    video: t('copyrightVideo'),
+    links: t('dialogResourcesLabel'),
+    text: t('dialogTextLabel'),
   };
 
-  const listAriaLabel = useL10n('dialogTabListAriaLabel');
-  const noteLabel = useL10n('dialogNoteLabel');
   const smallScreen = useMedia('(max-width: 768px)');
 
   const hasNote = item.dialog?.hasNote;
@@ -161,11 +160,14 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
       defaultValue={defaultTabValue(item)}
       orientation="vertical"
     >
-      <List className={showTabs ? styles.list : ''} aria-label={listAriaLabel}>
+      <List
+        className={showTabs ? styles.list : ''}
+        aria-label={t('dialogTabListAriaLabel')}
+      >
         {showTabs && tabLabelItems(item, translation)}
         {smallScreen && hasNote ? (
           <Trigger key="notes" className={styles.trigger} value="notes">
-            {noteLabel}
+            {t('dialogNoteLabel')}
           </Trigger>
         ) : null}
       </List>

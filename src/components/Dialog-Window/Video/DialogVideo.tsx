@@ -2,7 +2,7 @@ import type { H5PVideo } from 'h5p-types';
 import * as React from 'react';
 import { H5P } from '../../../h5p/H5P.util';
 import { useContentId } from '../../../hooks/useContentId';
-import { useL10n } from '../../../hooks/useLocalization';
+import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
 import styles from './DialogVideo.module.scss';
 
@@ -12,7 +12,7 @@ export type DialogVideoProps = {
 
 export const DialogVideo: React.FC<DialogVideoProps> = ({ sources }) => {
   const contentId = useContentId();
-  const copyrightTitle = useL10n('copyrightVideo');
+  const { t } = useTranslation();
   const videoWrapperRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -45,9 +45,8 @@ export const DialogVideo: React.FC<DialogVideoProps> = ({ sources }) => {
       {sources[0]?.copyright ? (
         <p
           className={styles.copyright}
-          
           dangerouslySetInnerHTML={{
-            __html: formatCopyright(copyrightTitle, sources[0].copyright),
+            __html: formatCopyright(t('copyrightVideo'), sources[0].copyright),
           }}
         />
       ) : null}

@@ -1,8 +1,8 @@
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { H5PIntegration } from '../../../h5p/H5P.util';
-import { useL10n } from '../../../hooks/useLocalization';
 import { useSizeClassNames } from '../../../hooks/useSizeClassNames';
+import { useTranslation } from '../../../hooks/useTranslation';
 import styles from './NotesSection.module.scss';
 
 export type NotesSectionProps = {
@@ -18,12 +18,11 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
   handlePrint,
   goToTopicMap,
 }) => {
-  const mainBodyTitle = useL10n('navbarNotesSectionTitle');
-  const mainBodyText = useL10n('navbarNotesSectionBody');
-  const printText = useL10n('navbarNotesSectionPrintLabel');
-  const exportAllUserDataText = useL10n('navbarNotesSectionSubmitAllLabel');
-  const deleteText = useL10n('navbarNotesSectionDeleteLabel');
-  const goToTopicMapLabel = useL10n('goToTopicMapLabel');
+  const { t } = useTranslation();
+
+  const printText = t('navbarNotesSectionPrintLabel');
+  const exportAllUserDataText = t('navbarNotesSectionSubmitAllLabel');
+  const deleteText = t('navbarNotesSectionDeleteLabel');
 
   const sizeClassNames = useSizeClassNames(styles);
 
@@ -35,14 +34,16 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
             type="button"
             onClick={goToTopicMap}
             className={styles.backArrow}
-            aria-label={goToTopicMapLabel}
+            aria-label={t('goToTopicMapLabel')}
           >
             <ArrowLeftIcon width={22} height={22} />
           </button>
-          <p>{mainBodyTitle}</p>
+          <p>{t('navbarNotesSectionTitle')}</p>
         </div>
         <div className={styles.mainBodyTextWrapper}>
-          <div className={styles.mainBodyText}>{mainBodyText}</div>
+          <div className={styles.mainBodyText}>
+            {t('navbarNotesSectionBody')}
+          </div>
           <div className={styles.mainBodyButtons}>
             <button
               className={styles.mainBodyButton}

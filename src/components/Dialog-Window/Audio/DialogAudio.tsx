@@ -1,6 +1,6 @@
 import type { H5PAudio } from 'h5p-types';
 import * as React from 'react';
-import { useL10n } from '../../../hooks/useLocalization';
+import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
 import styles from './DialogAudio.module.scss';
 
@@ -13,7 +13,7 @@ export const DialogAudio: React.FC<DialogAudioProps> = ({
   audioTrack,
   subtext,
 }) => {
-  const copyrightTitle = useL10n('copyrightAudio');
+  const { t } = useTranslation();
 
   return (
     <>
@@ -22,9 +22,8 @@ export const DialogAudio: React.FC<DialogAudioProps> = ({
       {audioTrack.copyright ? (
         <p
           className={styles.copyright}
-          
           dangerouslySetInnerHTML={{
-            __html: formatCopyright(copyrightTitle, audioTrack.copyright),
+            __html: formatCopyright(t('copyrightAudio'), audioTrack.copyright),
           }}
         />
       ) : null}
@@ -32,7 +31,6 @@ export const DialogAudio: React.FC<DialogAudioProps> = ({
       {subtext ? (
         <div
           className={styles.subtext}
-          
           dangerouslySetInnerHTML={{ __html: subtext }}
         />
       ) : null}

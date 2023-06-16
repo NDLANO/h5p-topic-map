@@ -7,8 +7,8 @@ import { H5P } from '../../h5p/H5P.util';
 import { useContentId } from '../../hooks/useContentId';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
-import { useL10n } from '../../hooks/useLocalization';
 import { useSizeClassNames } from '../../hooks/useSizeClassNames';
+import { useTranslation } from '../../hooks/useTranslation';
 import { CommonItemType } from '../../types/CommonItemType';
 import { NavbarSections } from '../../types/NavbarSections';
 import { Params } from '../../types/Params';
@@ -37,19 +37,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const contentId = useContentId();
   const h5pInstance = useH5PInstance();
-
+  const { t } = useTranslation();
   const [userData, setUserData] = useLocalStorageUserData();
-
-  const navbarAriaLabel = useL10n('navbarTabsListAriaLabel');
-  const notesSectionLabel = useL10n('navbarNotesSectionLabel');
-  const progressPercentageLabel = useL10n('progressPercentageLabel');
-  const deleteAllNotesText = useL10n('deleteNotesConfirmationWindowLabel');
-  const deleteAllNotesConfirmText = useL10n('deleteNotesConfirmLabel');
-  const deleteAllNotesDenyText = useL10n('deleteNotesDenyLabel');
-  const submitAllDataText = useL10n('submitDataConfirmationWindowLabel');
-  const submitAllDataConfirmText = useL10n('submitDataConfirmLabel');
-  const submitAllDataDenyText = useL10n('submitDataDenyLabel');
-
   const [currentSection, setCurrentSection] = useState(NavbarSections.TopicMap);
 
   const [progressBarValue, setProgressBarValue] = useState(0);
@@ -207,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const fakeItem = {
     id: 'id',
-    label: deleteAllNotesText,
+    label: t('deleteNotesConfirmationWindowLabel'),
   };
 
   const deleteConfirmation = (
@@ -220,15 +209,15 @@ export const Navbar: React.FC<NavbarProps> = ({
       confirmWindow={{
         confirmAction: confirmDeletion,
         denyAction: denyDeletion,
-        confirmText: deleteAllNotesConfirmText,
-        denyText: deleteAllNotesDenyText,
+        confirmText: t('deleteNotesConfirmLabel'),
+        denyText: t('deleteNotesDenyLabel'),
       }}
     />
   );
 
   const submitAllConfirmation = (
     <DialogWindow
-      item={{ id: '', label: submitAllDataText }}
+      item={{ id: '', label: t('submitDataConfirmationWindowLabel') }}
       open={isSubmitAllConfirmationVisible}
       onOpenChange={(isOpen) => {
         if (!isOpen) denySubmitAll();
@@ -236,8 +225,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       confirmWindow={{
         confirmAction: confirmSubmitAll,
         denyAction: denySubmitAll,
-        confirmText: submitAllDataConfirmText,
-        denyText: submitAllDataDenyText,
+        confirmText: t('submitDataConfirmLabel'),
+        denyText: t('submitDataDenyLabel'),
       }}
     />
   );
@@ -273,7 +262,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     <>
       <div
         className={styles.progressPercentage}
-        aria-label={progressPercentageLabel}
+        aria-label={t('progressPercentageLabel')}
       >{`${progressPercentage}%`}</div>
       <ProgressBar
         className={styles.progressBar}
@@ -294,7 +283,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         type="button"
         onClick={goToNotesPage}
       >
-        {notesSectionLabel}
+        {t('navbarNotesSectionLabel')}
       </button>
 
       <div className={styles.progressBarWrapper}>{progressBar}</div>
@@ -304,7 +293,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <div
-        aria-label={navbarAriaLabel}
+        aria-label={t('navbarTabsListAriaLabel')}
         className={sizeClassNames}
         style={{
           // @ts-expect-error Custom properties are allowed
