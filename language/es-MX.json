@@ -1,9 +1,13 @@
 {
   "semantics": [
     {
+      "label": "Editor de mapas temáticos",
       "fields": [
         {
+          "label": "Elementos del mapa de temas",
+          "entity": "Elemento del mapa de temas",
           "field": {
+            "label": "Elemento",
             "fields": [
               {
                 "label": "Id"
@@ -89,11 +93,8 @@
                 "label": "Índice",
                 "description": "⚠️ Función avanzada: se utiliza para configurar manualmente el orden de las pestañas."
               }
-            ],
-            "label": "Elemento"
-          },
-          "label": "Elementos del mapa de temas",
-          "entity": "Elemento del mapa de temas"
+            ]
+          }
         },
         {
           "label": "Flechas",
@@ -305,8 +306,7 @@
             }
           ]
         }
-      ],
-      "label": "Editor de mapas temáticos"
+      ]
     },
     {
       "label": "Configuraciones del comportamiento"
@@ -438,6 +438,10 @@
         {
           "label": "Etiqueta para rechazar borrado de todas las notas",
           "default": "Cancelar"
+        },
+        {
+          "label": "Etiqueta de porcentaje de progreso de la barra de navegación",
+          "default": "Progreso actual"
         },
         {
           "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",

@@ -1,6 +1,7 @@
 {
   "semantics": [
     {
+      "label": "Temos žemėlapio redagavimas",
       "fields": [
         {
           "label": "Temos žemėlapio elementai",
@@ -305,13 +306,13 @@
             }
           ]
         }
-      ],
-      "label": "Temos žemėlapio redagavimas"
+      ]
     },
     {
       "label": "Behavioral settings"
     },
     {
+      "label": "Localize",
       "fields": [
         {
           "label": "Close dialog",
@@ -387,18 +388,6 @@
           "default": "My notes"
         },
         {
-          "label": "Navbar help section label",
-          "default": "Help"
-        },
-        {
-          "label": "Navbar help section title",
-          "default": "Help"
-        },
-        {
-          "label": "Navbar help section body",
-          "default": "<p>The purpose of this exercise is to enhance your learning by linking your own notes to a topic map. The topic map consists of events (boxes) and connections (arrows). You must enter notes for both events and connections.</p><p>Click or tap the boxes and arrows to add a note to an event or connection. The notes you enter are automatically saved locally in the browser of the device you are using, so you can continue on or read the notes at a later time.</p><p><strong>Progress bar</strong> shows what percentage of the events and connections have received notes. 100% means you have posted notes in all available places.</p><p><strong>My notes</strong> gives you an overview of all the notes you have written. There you can print out or delete all the notes. These notes are stored locally in your internet browser, therefore it's recommended to export them using printing functionality in order to save your answers over time.</p>"
-        },
-        {
           "label": "Dialog resources labels",
           "default": "Resources"
         },
@@ -451,6 +440,10 @@
           "default": "Cancel"
         },
         {
+          "label": "Navbar progress percentage label",
+          "default": "Current progress"
+        },
+        {
           "label": "Navbar notes submit all data button label",
           "default": "Submit all data"
         },
@@ -465,9 +458,32 @@
         {
           "label": "Submit all data deny label",
           "default": "Cancel"
+        },
+        {
+          "label": "Go back to topic map label",
+          "default": "Back"
+        },
+        {
+          "label": "Descriptive text for directional arrow",
+          "default": "Arrow from @startItem to @endItem"
+        },
+        {
+          "label": "Descriptive text for bi-directional arrow",
+          "default": "Arrow between @startItem and @endItem"
+        },
+        {
+          "label": "Descriptive text for note status done",
+          "default": "Note marked as done"
+        },
+        {
+          "label": "Descriptive text for note status started",
+          "default": "Note started"
+        },
+        {
+          "label": "Descriptive text for note status default",
+          "default": "Note empty"
         }
-      ],
-      "label": "Localize"
+      ]
     }
   ]
 }
