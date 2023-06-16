@@ -598,6 +598,36 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         default: 'Back',
         type: 'text',
       },
+      {
+        label: 'Descriptive text for directional arrow',
+        name: 'directionalArrowDescriptiveText',
+        default: 'Arrow from @startItem to @endItem',
+        type: 'text',
+      },
+      {
+        label: 'Descriptive text for bi-directional arrow',
+        name: 'biDirectionalArrowDescriptiveText',
+        default: 'Arrow between @startItem and @endItem',
+        type: 'text',
+      },
+      {
+        label: 'Descriptive text for note status done',
+        name: 'noteStatusDoneDescriptiveText',
+        default: 'Note marked as done',
+        type: 'text',
+      },
+      {
+        label: 'Descriptive text for note status started',
+        name: 'noteStatusStartedDescriptiveText',
+        default: 'Note started',
+        type: 'text',
+      },
+      {
+        label: 'Descriptive text for note status default',
+        name: 'noteStatusDefaultDescriptiveText',
+        default: 'Note empty',
+        type: 'text',
+      }
     ],
   },
 ];

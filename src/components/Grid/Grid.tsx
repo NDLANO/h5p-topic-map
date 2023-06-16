@@ -9,6 +9,8 @@ import { DialogWindow } from '../Dialog-Window/DialogWindow';
 import { TopicMapItem } from '../TopicMapItem/TopicMapItem';
 import styles from './Grid.module.scss';
 import { H5P } from '../../h5p/H5P.util';
+import { getDescriptiveText } from '../../utils/arrow.utils';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export type GridDimensions = {
   numberOfColumns: number;
@@ -28,6 +30,7 @@ export const Grid: React.FC<GridProps> = ({
   backgroundImage,
   grid,
 }) => {
+  const { t } = useTranslation();
   const gridContainerRef = React.createRef<HTMLDivElement>();
   const [itemShowingDialog, setItemShowingDialog] =
     useState<CommonItemType | null>(null);
@@ -121,6 +124,7 @@ export const Grid: React.FC<GridProps> = ({
                 onClick(item);
             }}
             dialogIsOpen={itemShowingDialog === item}
+            descriptiveText={getDescriptiveText(item, items, t)}
           />
         );
       }

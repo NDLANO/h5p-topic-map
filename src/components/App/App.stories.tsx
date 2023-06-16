@@ -53,6 +53,11 @@ DenFranskeRevolusjon.args = {
       submitDataConfirmationWindowLabel: 'Submit all data',
       submitDataDenyLabel: 'Cancel',
       goToTopicMapLabel: 'Back',
+      directionalArrowDescriptiveText: 'Arrow from @startItem to @endItem.',
+      biDirectionalArrowDescriptiveText: 'Arrow between @startItem and @endItem.',
+      noteStatusDoneDescriptiveText: 'Note: done',
+      noteStatusStartedDescriptiveText: 'Note: started',
+      noteStatusDefaultDescriptiveText: 'Note: empty',
     },
     topicMap: {
       grid: {

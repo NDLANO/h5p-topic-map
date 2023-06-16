@@ -9,6 +9,8 @@ import { Position } from '../../types/Position';
 import { GridDimensions } from '../Grid/Grid';
 import styles from './Arrow.module.scss';
 import { ArrowNoteButton } from './ArrowNoteButton';
+import { getNoteStateText } from '../../utils/note.utils';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export type ArrowProps = {
   item: ArrowItemType;
@@ -17,6 +19,7 @@ export type ArrowProps = {
   dialogIsOpen: boolean;
   onTouchStart: React.TouchEventHandler;
   onKeyUp: React.KeyboardEventHandler;
+  descriptiveText: string;
 };
 
 const calculateIsHorizontal = (
@@ -36,7 +39,9 @@ export const Arrow: FC<ArrowProps> = ({
   onClick,
   onKeyUp,
   dialogIsOpen,
+  descriptiveText,
 }) => {
+  const { t } = useTranslation();
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
 
@@ -126,11 +131,9 @@ export const Arrow: FC<ArrowProps> = ({
         };
       };
       const asPoint = (position: Position): string =>
-        `${(position.x / 100) * gridElement.clientWidth},${
-          (position.y / 100) * gridElement.clientHeight
+        `${(position.x / 100) * gridElement.clientWidth},${(position.y / 100) * gridElement.clientHeight
         }`;
-      const path = `${startx},${starty} ${
-        item.relativeBreakpoints?.map(asPoint).join(' ') ?? ''
+      const path = `${startx},${starty} ${item.relativeBreakpoints?.map(asPoint).join(' ') ?? ''
       } ${endx},${endy}`;
 
       const middlePoint = findMiddlePosition(
@@ -151,7 +154,6 @@ export const Arrow: FC<ArrowProps> = ({
     <div className={styles.arrow}>
       <div
         ref={arrowContainerRef}
-        aria-label={item.label}
         className={`arrow-item ${styles.arrow}`}
       >
         <svg className={styles.arrowSvg}>
@@ -178,14 +180,15 @@ export const Arrow: FC<ArrowProps> = ({
             </marker>
           </defs>
           <polyline
-            className={styles.path}
+            aria-label={`${descriptiveText} ${getNoteStateText(buttonState, t)}`}
+            className={`${item.dialog ? styles.path : ''}`}
             points={pathDef}
             fill="transparent"
             stroke="var(--theme-color-4)"
             strokeWidth={strokeWidth}
             markerEnd={
               item.arrowType === ArrowType.BiDirectional ||
-              item.arrowType === ArrowType.Directional
+                item.arrowType === ArrowType.Directional
                 ? 'url(#arrowhead)'
                 : ''
             }

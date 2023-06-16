@@ -9,6 +9,8 @@ import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { GridDimensions } from '../Grid/Grid';
 import { NoteButton } from '../NoteButton/NoteButton';
 import styles from './TopicMapItem.module.scss';
+import { getNoteStateText } from '../../utils/note.utils';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export type TopicMapItemProps = {
   item: TopicMapItemType;
@@ -23,6 +25,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
   grid,
   gridRef,
 }) => {
+  const { t } = useTranslation();
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
 
@@ -77,32 +80,26 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
         )}
 
         <div
-          className={`${styles.inner} ${
-            item.topicImage?.path ? '' : styles.noImage
+          className={`${styles.inner} ${item.topicImage?.path ? '' : styles.noImage
           } ${item.dialog?.hasNote ? styles.withNote : ''}`}
           style={{ paddingTop: strokeWidth * 0.66 }}
         >
           <div
             className={styles.label}
-            
             dangerouslySetInnerHTML={{ __html: item.label }}
           />
           {item.description && (
             <div
               className={styles.description}
-              
               dangerouslySetInnerHTML={{ __html: item.description }}
             />
           )}
+          <span className={styles.visuallyHidden}>{getNoteStateText(btnState, t)}</span>
         </div>
       </button>
 
       {item.dialog?.hasNote ? (
-        <button
-          type="button"
-          className={styles.topicMapItemIconEdit}
-          onClick={onClick}
-        >
+        <div className={styles.topicMapItemIconEdit}>
           <div className={styles.icon}>
             <NoteButton
               backgroundColor="var(--theme-color-3)"
@@ -112,7 +109,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
               strokeWidth={strokeWidth}
             />
           </div>
-        </button>
+        </div>
       ) : (
         ''
       )}
