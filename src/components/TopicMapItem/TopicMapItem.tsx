@@ -10,7 +10,7 @@ import { GridDimensions } from '../Grid/Grid';
 import { NoteButton } from '../NoteButton/NoteButton';
 import styles from './TopicMapItem.module.scss';
 import { getNoteStateText } from '../../utils/note.utils';
-import { useL10n } from '../../hooks/useLocalization';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export type TopicMapItemProps = {
   item: TopicMapItemType;
@@ -25,6 +25,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
   grid,
   gridRef,
 }) => {
+  const { t } = useTranslation();
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
 
@@ -93,7 +94,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
               dangerouslySetInnerHTML={{ __html: item.description }}
             />
           )}
-          <span className={styles.visuallyHidden}>{getNoteStateText(btnState, useL10n)}</span>
+          <span className={styles.visuallyHidden}>{getNoteStateText(btnState, t)}</span>
         </div>
       </button>
 

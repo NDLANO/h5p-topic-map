@@ -3,7 +3,7 @@ import { TranslationKey } from '../types/TranslationKey';
 
 export const getNoteStateText = (
   state: NoteButtonIconState, 
-  t: (translationKey: TranslationKey) => string,
+  t: (key: TranslationKey) => string,
 ): string => {
   // We add a punctuation mark at the start of the string, to make sure there's
   // a reading pause before the note status text is read.

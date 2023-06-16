@@ -1,4 +1,3 @@
-import { useL10n } from '../hooks/useLocalization';
 import { ArrowItemType } from '../types/ArrowItemType';
 import { ArrowType } from '../types/ArrowType';
 import { TopicMapItemType } from '../types/TopicMapItemType';
@@ -18,7 +17,7 @@ export const findItem = (
 export const getDescriptiveText = (
   arrowItem: ArrowItemType,
   items: Array<TopicMapItemType>,
-  t: (translationKey: TranslationKey) => string,
+  t: (key: TranslationKey) => string,
 ): string => {
   const { startElementId, endElementId, arrowType } = arrowItem;
 

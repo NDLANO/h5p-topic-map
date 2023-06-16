@@ -10,7 +10,7 @@ import { GridDimensions } from '../Grid/Grid';
 import styles from './Arrow.module.scss';
 import { ArrowNoteButton } from './ArrowNoteButton';
 import { getNoteStateText } from '../../utils/note.utils';
-import { useL10n } from '../../hooks/useLocalization';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export type ArrowProps = {
   item: ArrowItemType;
@@ -41,6 +41,7 @@ export const Arrow: FC<ArrowProps> = ({
   dialogIsOpen,
   descriptiveText,
 }) => {
+  const { t } = useTranslation();
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
 
@@ -179,7 +180,7 @@ export const Arrow: FC<ArrowProps> = ({
             </marker>
           </defs>
           <polyline
-            aria-label={`${descriptiveText} ${getNoteStateText(buttonState, useL10n)}`}
+            aria-label={`${descriptiveText} ${getNoteStateText(buttonState, t)}`}
             className={`${item.dialog ? styles.path : ''}`}
             points={pathDef}
             fill="transparent"
