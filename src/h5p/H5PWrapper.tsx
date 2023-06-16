@@ -1,12 +1,13 @@
 import type { H5PExtras, IH5PContentType } from 'h5p-types';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
+import { L10nContext } from 'use-h5p';
 import { App } from '../components/App/App';
 import { ContentIdContext } from '../contexts/ContentIdContext';
 import { H5PContext } from '../contexts/H5PContext';
-import { LocalizationContext } from '../contexts/LocalizationContext';
 import { Params } from '../types/Params';
 import { Translations } from '../types/Translations';
+import { sanitizeRecord } from '../utils/h5p.utils';
 import { getEmptyParams } from '../utils/semantics.utils';
 import {
   H5P,
@@ -82,7 +83,6 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     paramsWithFallbacks = normalizeSizes(paramsWithFallbacks);
 
-    
     const l10n = params.l10n ?? ({} as Translations);
     const title = extras?.metadata.title;
 
@@ -114,7 +114,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     createRoot(this.wrapper).render(
       <ContentIdContext.Provider value={contentId}>
-        <LocalizationContext.Provider value={l10n}>
+        <L10nContext.Provider value={sanitizeRecord(l10n)}>
           <H5PContext.Provider value={this}>
             <App
               params={paramsWithFallbacks}
@@ -123,7 +123,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
               instance={this}
             />
           </H5PContext.Provider>
-        </LocalizationContext.Provider>
+        </L10nContext.Provider>
       </ContentIdContext.Provider>,
     );
   }

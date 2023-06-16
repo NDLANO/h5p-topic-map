@@ -3,8 +3,8 @@ import * as React from 'react';
 import { useEffectOnce } from 'react-use';
 import { H5P } from '../../../h5p/H5P.util';
 import { useContentId } from '../../../hooks/useContentId';
-import { useL10n } from '../../../hooks/useLocalization';
 import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData';
+import { useTranslation } from '../../../hooks/useTranslation';
 import { Link } from '../../../types/Link';
 import styles from './DialogResources.module.scss';
 
@@ -24,10 +24,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
   const [link, setLink] = React.useState('');
   const [customLinks, setCustomLinks] = React.useState<Array<JSX.Element>>([]);
   const inputFieldRef = React.useRef<HTMLInputElement>(null);
-
-  const relevantLinkLabel = useL10n('dialogResourcesRelevantLinks');
-  const customLinkLabel = useL10n('dialogResourcesCustomLinks');
-  const addLinkLabel = useL10n('dialogResourcesAdd');
+  const { t } = useTranslation();
 
   const removeCustomLink = (linkToRemove: string): void => {
     userData[contentId].dialogs[id].links = userData[contentId]?.dialogs[
@@ -161,13 +158,13 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
     >
       {relevantItems ? (
         <>
-          <p>{relevantLinkLabel}:</p>
+          <p>{t('dialogResourcesRelevantLinks')}:</p>
           <ul className={styles.ul}>{relevantItems}</ul>
         </>
       ) : null}
       {showAddLinks ? (
         <>
-          <p>{customLinkLabel}:</p>
+          <p>{t('dialogResourcesCustomLinks')}:</p>
           <ul className={styles.ul}>{customLinks}</ul>
           <div className={styles.inputContainer}>
             <input
@@ -182,7 +179,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
               type="button"
               onClick={() => updateCustomList()}
             >
-              {addLinkLabel}
+              {t('dialogResourcesAdd')}
             </button>
           </div>
         </>

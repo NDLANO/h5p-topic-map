@@ -11,7 +11,7 @@ describe(DialogNote.name, () => {
   it('Should have correct word and character counts', () => {
     const { getByTestId } = render(<DialogNote maxLength={10} id="testId" />);
     expect(getByTestId('wordCount').textContent).toBe(
-      '0 / 10 Missing translation: dialogWordsLabel',
+      '0 / 10 [Missing translation: dialogWordsLabel]',
     );
   });
 });
