@@ -1,6 +1,7 @@
 {
   "semantics": [
     {
+      "label": "Editor de mapas temáticos",
       "fields": [
         {
           "label": "Elementos do mapa temático",
@@ -96,7 +97,10 @@
           }
         },
         {
+          "label": "Frechas",
+          "entity": "arrowItem",
           "field": {
+            "label": "Frecha",
             "fields": [
               {
                 "label": "Id"
@@ -185,6 +189,7 @@
                 "label": "Mostrar a punta de frecha final"
               },
               {
+                "label": "Diálogo",
                 "fields": [
                   {
                     "label": "Mostra a zona de texto das notas"
@@ -211,7 +216,11 @@
                     ]
                   },
                   {
+                    "label": "Ligazóns",
+                    "description": "Estas ligazóns son como ligazóns auxiliares para o usuario na xanela modal do elemento",
+                    "entity": "linkItem",
                     "field": {
+                      "label": "Ligazón",
                       "fields": [
                         {
                           "label": "Id"
@@ -222,18 +231,13 @@
                         {
                           "label": "URL"
                         }
-                      ],
-                      "label": "Ligazón"
-                    },
-                    "label": "Ligazóns",
-                    "description": "Estas ligazóns son como ligazóns auxiliares para o usuario na xanela modal do elemento",
-                    "entity": "linkItem"
+                      ]
+                    }
                   },
                   {
                     "label": "Mostrar a opción de engadir ligazóns"
                   }
-                ],
-                "label": "Diálogo"
+                ]
               },
               {
                 "label": "Índice"
@@ -268,11 +272,8 @@
                   ]
                 }
               }
-            ],
-            "label": "Frecha"
-          },
-          "label": "Frechas",
-          "entity": "arrowItem"
+            ]
+          }
         },
         {
           "label": "Imaxe de fondo"
@@ -305,13 +306,13 @@
             }
           ]
         }
-      ],
-      "label": "Editor de mapas temáticos"
+      ]
     },
     {
       "label": "Configuración do comportamento"
     },
     {
+      "label": "Adaptación local",
       "fields": [
         {
           "label": "Diálogo de Peche",
@@ -379,8 +380,8 @@
           "default": "Barra de navegación"
         },
         {
-          "default": "Mapa temático",
-          "label": "Etiqueta da sección do mapa temático da barra de navegación"
+          "label": "Etiqueta da sección do mapa temático da barra de navegación",
+          "default": "Mapa temático"
         },
         {
           "label": "Etiqueta da sección de notas da barra de navegación",
@@ -439,6 +440,10 @@
           "default": "Cancelar"
         },
         {
+          "label": "Navbar progress percentage label",
+          "default": "Current progress"
+        },
+        {
           "label": "Etiqueta para o botón de envío de todos os datos das notas na barra de navegación",
           "default": "Enviar todos os datos"
         },
@@ -455,19 +460,30 @@
           "default": "Cancelar"
         },
         {
-          "label": "Etiqueta para a ventá de confirmación de envío de todas as notas",
-          "default": "Seguro de que queres enviar todos os teus datos?"
+          "label": "Go back to topic map label",
+          "default": "Back"
         },
         {
-          "label": "Etiqueta de confirmación para o envío de todos os datos",
-          "default": "Enviar"
+          "label": "Descriptive text for directional arrow",
+          "default": "Arrow from @startItem to @endItem"
         },
         {
-          "label": "Etiqueta para rexeitar o envío de todos os datos",
-          "default": "Cancelar"
+          "label": "Descriptive text for bi-directional arrow",
+          "default": "Arrow between @startItem and @endItem"
+        },
+        {
+          "label": "Descriptive text for note status done",
+          "default": "Note marked as done"
+        },
+        {
+          "label": "Descriptive text for note status started",
+          "default": "Note started"
+        },
+        {
+          "label": "Descriptive text for note status default",
+          "default": "Note empty"
         }
-      ],
-      "label": "Adaptación local"
+      ]
     }
   ]
 }

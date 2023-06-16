@@ -440,6 +440,10 @@
           "default": "Cancel"
         },
         {
+          "label": "Navbar progress percentage label",
+          "default": "Current progress"
+        },
+        {
           "label": "Navbar notes submit all data button label",
           "default": "Submit all data"
         },
