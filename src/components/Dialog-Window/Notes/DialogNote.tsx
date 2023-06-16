@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useContentId } from '../../../hooks/useContentId';
-import { useL10n } from '../../../hooks/useLocalization';
 import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData';
 import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
+import { useTranslation } from '../../../hooks/useTranslation';
 import styles from './DialogNote.module.scss';
 
 export type NoteProps = {
@@ -18,6 +18,7 @@ export const DialogNote: React.FC<NoteProps> = ({
 }) => {
   const contentId = useContentId();
   const [userData, setUserData] = useLocalStorageUserData();
+  const { t } = useTranslation();
 
   const [note, setNote] = React.useState(
     userData[contentId]?.dialogs[id]?.note ?? '',
@@ -29,14 +30,6 @@ export const DialogNote: React.FC<NoteProps> = ({
   );
   const [wordCount, setWordCount] = React.useState(0);
   const [maxWordCount, setMaxWordCount] = React.useState<number | undefined>();
-
-  const savingTextLabel = useL10n('dialogNoteSaving');
-  const savedTextLabel = useL10n('dialogNoteSaved');
-  const wordLimitExceededTextLabel = useL10n('dialogNoteLimitExceeded');
-  const doneTextLabel = useL10n('dialogNoteMarkAsDone');
-  const placeholderText = useL10n('dialogNotePlaceholder');
-  const wordTextLabel = useL10n('dialogWordsLabel');
-  const wordNoteLabel = useL10n('dialogNoteLabel');
 
   const { sendXAPIEvent } = useSendXAPIEvent();
 
@@ -62,7 +55,7 @@ export const DialogNote: React.FC<NoteProps> = ({
   };
 
   const setSavingText = (): void => {
-    setDynamicSavingText(savingTextLabel);
+    setDynamicSavingText(t('dialogNoteSaving'));
     setSavingTextTimeout(
       window.setTimeout(() => {
         const timestamp = new Date();
@@ -74,9 +67,9 @@ export const DialogNote: React.FC<NoteProps> = ({
           },
         );
         setDynamicSavingText(
-          `${
-            maxWordCount ? `${wordLimitExceededTextLabel} - ` : ''
-          } ${savedTextLabel} ${localTime}`,
+          `${maxWordCount ? `${t('dialogNoteLimitExceeded')} - ` : ''} ${t(
+            'dialogNoteSaved',
+          )} ${localTime}`,
         );
 
         sendXAPIEvent('answered', {
@@ -138,7 +131,9 @@ export const DialogNote: React.FC<NoteProps> = ({
     <form>
       <label htmlFor="note">
         <div className={styles.topGroup}>
-          {!smallScreen && <p className={styles.noteLabel}>{wordNoteLabel}</p>}
+          {!smallScreen && (
+            <p className={styles.noteLabel}>{t('dialogNoteLabel')}</p>
+          )}
           <p className={styles.dynamicSavingText}>{dynamicSavingText}</p>
         </div>
         <div
@@ -149,7 +144,7 @@ export const DialogNote: React.FC<NoteProps> = ({
           <textarea
             className={styles.textArea}
             id="note"
-            placeholder={placeholderText}
+            placeholder={t('dialogNotePlaceholder')}
             onChange={(event) => onChange(event)}
             defaultValue={note}
           />
@@ -162,7 +157,7 @@ export const DialogNote: React.FC<NoteProps> = ({
                   checked={noteDone}
                   onChange={handleNoteDone}
                 />
-                {doneTextLabel}
+                {t('dialogNoteMarkAsDone')}
               </label>
             </div>
             <div
@@ -171,7 +166,7 @@ export const DialogNote: React.FC<NoteProps> = ({
                 maxWordCount ? styles.redText : ''
               }`}
             >
-              {wordCount} / {maxLength} {wordTextLabel}
+              {wordCount} / {maxLength} {t('dialogWordsLabel')}
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useContentId } from '../../../../hooks/useContentId';
-import { useL10n } from '../../../../hooks/useLocalization';
 import { useLocalStorageUserData } from '../../../../hooks/useLocalStorageUserData';
+import { useTranslation } from '../../../../hooks/useTranslation';
 import { CommonItemType } from '../../../../types/CommonItemType';
 import { NoteButtonIconState } from '../../../../types/NoteButtonIconState';
 import { NoteButton } from '../../../NoteButton/NoteButton';
@@ -18,8 +18,7 @@ export const NotesList: React.FC<NotesListProps> = ({
 }) => {
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
-  const noItemsInListText = useL10n('navbarNotesEmptyListLabel');
-  const missingNoteText = useL10n('navbarNotesMissingNoteLabel');
+  const { t } = useTranslation();
 
   const userDataEntries = topicMapItems.map((item) => {
     const dialogData = userData[contentId]?.dialogs?.[item.id];
@@ -51,7 +50,7 @@ export const NotesList: React.FC<NotesListProps> = ({
                 <p>
                   {doesNoteExist
                     ? userData[contentId]?.dialogs[item.id].note
-                    : missingNoteText}
+                    : t('navbarNotesMissingNoteLabel')}
                 </p>
               </div>
             </div>
@@ -67,7 +66,7 @@ export const NotesList: React.FC<NotesListProps> = ({
         <div className={styles.mainBodyHeaderForPrint}>
           <p>{navbarTitle}</p>
         </div>
-        {userDataEntries || noItemsInListText}
+        {userDataEntries || t('navbarNotesEmptyListLabel')}
       </div>
     </div>
   );
