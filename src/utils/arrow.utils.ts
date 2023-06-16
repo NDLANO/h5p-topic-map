@@ -2,6 +2,7 @@ import { useL10n } from '../hooks/useLocalization';
 import { ArrowItemType } from '../types/ArrowItemType';
 import { ArrowType } from '../types/ArrowType';
 import { TopicMapItemType } from '../types/TopicMapItemType';
+import { TranslationKey } from '../types/TranslationKey';
 
 export const findItem = (
   id: string,
@@ -17,11 +18,15 @@ export const findItem = (
 export const getDescriptiveText = (
   arrowItem: ArrowItemType,
   items: Array<TopicMapItemType>,
+  t: (translationKey: TranslationKey) => string,
 ): string => {
   const { startElementId, endElementId, arrowType } = arrowItem;
 
   const startItem = findItem(startElementId, items);
   const endItem = findItem(endElementId, items);
+
+  const directionalLabel = t('directionalArrowDescriptiveText');
+  const biDirectionalLabel = t('biDirectionalArrowDescriptiveText');
 
   if (!startItem) {
     throw new Error('Start item not found');
@@ -29,9 +34,6 @@ export const getDescriptiveText = (
   if (!endItem) {
     throw new Error('End item not found');
   }
-
-  const directionalLabel = useL10n('directionalArrowDescriptiveText');
-  const biDirectionalLabel = useL10n('biDirectionalArrowDescriptiveText');
 
   if (arrowType === ArrowType.Directional) {
     return directionalLabel.replace('@startItem', startItem.label).replace('@endItem', endItem.label);

@@ -10,6 +10,7 @@ import { TopicMapItem } from '../TopicMapItem/TopicMapItem';
 import styles from './Grid.module.scss';
 import { H5P } from '../../h5p/H5P.util';
 import { getDescriptiveText } from '../../utils/arrow.utils';
+import { useL10n } from '../../hooks/useLocalization';
 
 export type GridDimensions = {
   numberOfColumns: number;
@@ -122,7 +123,7 @@ export const Grid: React.FC<GridProps> = ({
                 onClick(item);
             }}
             dialogIsOpen={itemShowingDialog === item}
-            descriptiveText={getDescriptiveText(item, items)}
+            descriptiveText={getDescriptiveText(item, items, useL10n)}
           />
         );
       }

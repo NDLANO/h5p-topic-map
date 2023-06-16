@@ -445,18 +445,6 @@
         },
         {
           "label": "Etiqueta de ventana de confirmación de envío de todas las notas",
-          "default": "¿Está seguro de querer enviar todos sus datos?"
-        },
-        {
-          "label": "Etiqueta de confirmación de envío de todos los datos",
-          "default": "Enviar"
-        },
-        {
-          "label": "Etiqueta para rechazar envío de todos los datos",
-          "default": "Cancelar"
-        },
-        {
-          "label": "Etiqueta de ventana de confirmación de envío de todas las notas",
           "default": "¿Estás seguro de que quieres enviar todos tus datos?"
         },
         {
@@ -466,6 +454,30 @@
         {
           "label": "Etiqueta para rechazar envío de todos los datos",
           "default": "Cancelar"
+        },
+        {
+          "label": "Go back to topic map label",
+          "default": "Back"
+        },
+        {
+          "label": "Descriptive text for directional arrow",
+          "default": "Arrow from @startItem to @endItem"
+        },
+        {
+          "label": "Descriptive text for bi-directional arrow",
+          "default": "Arrow between @startItem and @endItem"
+        },
+        {
+          "label": "Descriptive text for note status done",
+          "default": "Note marked as done"
+        },
+        {
+          "label": "Descriptive text for note status started",
+          "default": "Note started"
+        },
+        {
+          "label": "Descriptive text for note status default",
+          "default": "Note empty"
         }
       ]
     }

@@ -10,6 +10,7 @@ import { GridDimensions } from '../Grid/Grid';
 import styles from './Arrow.module.scss';
 import { ArrowNoteButton } from './ArrowNoteButton';
 import { getNoteStateText } from '../../utils/note.utils';
+import { useL10n } from '../../hooks/useLocalization';
 
 export type ArrowProps = {
   item: ArrowItemType;
@@ -178,7 +179,7 @@ export const Arrow: FC<ArrowProps> = ({
             </marker>
           </defs>
           <polyline
-            aria-label={`${descriptiveText} ${getNoteStateText(buttonState)}`}
+            aria-label={`${descriptiveText} ${getNoteStateText(buttonState, useL10n)}`}
             className={`${item.dialog ? styles.path : ''}`}
             points={pathDef}
             fill="transparent"

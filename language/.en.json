@@ -469,15 +469,15 @@
         },
         {
           "label": "Descriptive text for note status done",
-          "default": ". Note marked as done"
+          "default": "Note marked as done"
         },
         {
           "label": "Descriptive text for note status started",
-          "default": ". Note started"
+          "default": "Note started"
         },
         {
           "label": "Descriptive text for note status default",
-          "default": ". Note empty"
+          "default": "Note empty"
         }
       ]
     }

@@ -473,15 +473,15 @@
         },
         {
           "label": "Beskrivande tekst for notatstatus ferdig",
-          "default": ". Notat markert som ferdig"
+          "default": "Notat markert som ferdig"
         },
         {
           "label": "Beskrivande tekst for notatstatus påbegynt",
-          "default": ". Notat påbegynt"
+          "default": "Notat påbegynt"
         },
         {
           "label": "Beskrivande tekst for notatstatus ikkje påbegynt",
-          "default": ". Notat ikkje påbegynt"
+          "default": "Notat ikkje påbegynt"
         }
       ]
     }
