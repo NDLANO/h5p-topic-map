@@ -1,6 +1,6 @@
 import type { H5PImage } from 'h5p-types';
 import * as React from 'react';
-import { useL10n } from '../../../hooks/useLocalization';
+import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
 import styles from './DialogText.module.scss';
 
@@ -17,7 +17,7 @@ export const DialogText: React.FC<DialogTextProps> = ({
   bodyText,
   topicImageAltText,
 }) => {
-  const copyrightTitle = useL10n('copyrightPhoto');
+  const { t } = useTranslation();
 
   return (
     <div className={styles.dialogText}>
@@ -39,9 +39,11 @@ export const DialogText: React.FC<DialogTextProps> = ({
           {topicImage?.copyright ? (
             <div
               className={styles.copyright}
-              
               dangerouslySetInnerHTML={{
-                __html: formatCopyright(copyrightTitle, topicImage.copyright),
+                __html: formatCopyright(
+                  t('copyrightPhoto'),
+                  topicImage.copyright,
+                ),
               }}
             />
           ) : null}

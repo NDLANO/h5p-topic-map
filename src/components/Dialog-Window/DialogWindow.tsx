@@ -3,7 +3,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { FC, ReactNode } from 'react';
 import { useMedia } from 'react-use';
-import { useL10n } from '../../hooks/useLocalization';
+import { useTranslation } from '../../hooks/useTranslation';
 import { CommonItemType } from '../../types/CommonItemType';
 import styles from './DialogWindow.module.scss';
 import { DialogNote } from './Notes/DialogNote';
@@ -28,8 +28,10 @@ export const DialogWindow: FC<DialogWindowProps> = ({
   confirmWindow,
   children,
 }) => {
-  const ariaLabel = useL10n('closeDialog');
+  const { t } = useTranslation();
   const smallScreen = useMedia('(max-width: 768px)');
+
+  const ariaLabel = t('closeDialog');
 
   if (confirmWindow) {
     return (
@@ -98,7 +100,6 @@ export const DialogWindow: FC<DialogWindowProps> = ({
     <Content className={styles.dialogContent}>
       <Title
         className={styles.dialogTitle}
-        
         dangerouslySetInnerHTML={{ __html: item.label }}
       />
       {!noTabItems && <DialogTabs item={item} />}
@@ -115,7 +116,6 @@ export const DialogWindow: FC<DialogWindowProps> = ({
       >
         <Title
           className={styles.dialogTitle}
-          
           dangerouslySetInnerHTML={{ __html: item.label }}
         />
         {!noTabItems && (
