@@ -277,8 +277,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const sectionsMenu = hasNotes && (
     <>
       <button
-        className={`${styles.sectionTitle} ${
-          currentSection === NavbarSections.Notes && styles.active
+        className={`${styles.sectionTitle} ${currentSection === NavbarSections.Notes && styles.active
         }`}
         type="button"
         onClick={goToNotesPage}
@@ -302,13 +301,9 @@ export const Navbar: React.FC<NavbarProps> = ({
       >
         <div ref={navbarRef}>
           <div className={styles.navbarWrapper}>
-            <button
-              type="button"
-              className={styles.navbarTitle}
-              onClick={goToTopicMap}
-            >
+            <div className={styles.navbarTitle}>
               {navbarTitle}
-            </button>
+            </div>
             <div className={styles.sectionsMenu}>{sectionsMenu}</div>
             <div className={styles.fullscreenButton}>
               <FullscreenButton
