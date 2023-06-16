@@ -14,7 +14,8 @@ export const getNoteStateText = (
     case NoteButtonIconState.Text:
       return `. ${t('noteStatusStartedDescriptiveText')}`;
     case NoteButtonIconState.Default:
-    case NoteButtonIconState.None:
       return `. ${t('noteStatusDefaultDescriptiveText')}`;
+    case NoteButtonIconState.None:
+      return '';
   }
 };
