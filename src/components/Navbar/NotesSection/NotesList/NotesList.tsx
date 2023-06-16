@@ -37,7 +37,7 @@ export const NotesList: React.FC<NotesListProps> = ({
                 <NoteButton
                   backgroundColor="var(--theme-color-2)"
                   borderColor="var(--theme-color-3)"
-                  iconColor="var(--theme-color-4)"
+                  iconColor="#ffffff"
                   buttonState={
                     doesNoteExist && isNoteDone
                       ? NoteButtonIconState.Done

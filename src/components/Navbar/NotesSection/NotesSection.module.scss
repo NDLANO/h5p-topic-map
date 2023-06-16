@@ -58,22 +58,26 @@
 }
 
 .mainBodyButton {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--theme-color-1);
   border: none;
   border-radius: 1rem;
   cursor: pointer;
   color: #ffffff;
   padding: 0.5rem 1rem;
 
-  &:hover,
+  &:hover {
+    background-color: #ffffff;
+    color: var(--theme-color-1);
+  }
+
   &:focus {
-    text-decoration: underline;
+    outline: 2px solid #ffffff;
   }
 }
 
 .backArrow {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--theme-color-1);
   border: none;
   border-radius: 50%;
   color: inherit;
@@ -88,6 +92,15 @@
   position: absolute;
   transform: translateX(-100%);
   width: 1.5rem;
+
+  &:hover {
+    background-color: #ffffff;
+    color: var(--theme-color-1);
+  }
+
+  &:focus {
+    outline: 2px solid #ffffff;
+  }
 
   svg {
     height: 1rem;
