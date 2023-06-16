@@ -88,12 +88,9 @@ $note-btn-padding: 0.75rem;
     border: none;
     margin: 0;
     padding: 0;
+    pointer-events: none;
     position: absolute;
     right: calc(-1 * $half-note-btn-size / 2);
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 }
 
@@ -134,4 +131,15 @@ $note-btn-padding: 0.75rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.visuallyHidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
 }

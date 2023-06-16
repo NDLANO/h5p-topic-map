@@ -458,6 +458,30 @@
         {
           "label": "Avbryt",
           "default": "Cancel"
+        },
+        {
+          "label": "Gå tilbake til temakart",
+          "default": "Gå tilbake til temakart"
+        },
+        {
+          "label": "Beskrivande tekst for enveis pil",
+          "default": "Pil fra @startItem til @endItem"
+        },
+        {
+          "label": "Beskrivande tekst for toveis pil",
+          "default": "Pil mellom @startItem og @endItem"
+        },
+        {
+          "label": "Beskrivande tekst for notatstatus ferdig",
+          "default": "Notat markert som ferdig"
+        },
+        {
+          "label": "Beskrivande tekst for notatstatus påbegynt",
+          "default": "Notat påbegynt"
+        },
+        {
+          "label": "Beskrivande tekst for notatstatus ikkje påbegynt",
+          "default": "Notat ikkje påbegynt"
         }
       ]
     }

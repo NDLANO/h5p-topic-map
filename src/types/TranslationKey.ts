@@ -40,4 +40,9 @@ export type TranslationKey =
   | 'submitDataConfirmationWindowLabel'
   | 'submitDataConfirmLabel'
   | 'submitDataDenyLabel'
-  | 'goToTopicMapLabel';
+  | 'goToTopicMapLabel'
+  | 'directionalArrowDescriptiveText'
+  | 'biDirectionalArrowDescriptiveText'
+  | 'noteStatusDoneDescriptiveText'
+  | 'noteStatusStartedDescriptiveText'
+  | 'noteStatusDefaultDescriptiveText';
