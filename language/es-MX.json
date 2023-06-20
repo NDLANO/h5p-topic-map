@@ -440,8 +440,8 @@
           "default": "Cancelar"
         },
         {
-          "label": "Etiqueta de porcentaje de progreso de la barra de navegación",
-          "default": "Progreso actual"
+          "label": "Texto descriptivo de la barra de progreso",
+          "default": "Nota de progreso: @markedNotes de @totalNotes notas marcadas como hechas"
         },
         {
           "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",

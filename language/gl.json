@@ -440,8 +440,8 @@
           "default": "Cancelar"
         },
         {
-          "label": "Navbar progress percentage label",
-          "default": "Current progress"
+          "label": "Descriptive text for the progress bar",
+          "default": "Note progress: @markedNotes of @totalNotes notes marked as done"
         },
         {
           "label": "Etiqueta para o botón de envío de todos os datos das notas na barra de navegación",

@@ -35,7 +35,7 @@ export type TranslationKey =
   | 'deleteNotesConfirmationWindowLabel'
   | 'deleteNotesConfirmLabel'
   | 'deleteNotesDenyLabel'
-  | 'progressPercentageLabel'
+  | 'progressBarDescriptiveText'
   | 'navbarNotesSectionSubmitAllLabel'
   | 'submitDataConfirmationWindowLabel'
   | 'submitDataConfirmLabel'

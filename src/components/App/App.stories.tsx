@@ -47,7 +47,7 @@ DenFranskeRevolusjon.args = {
       navbarNotesSectionDeleteLabel: 'Delete',
       navbarNotesSectionPrintLabel: 'Print',
       navbarNotesSectionTitle: 'Title',
-      progressPercentageLabel: 'Progress percentage',
+      progressBarDescriptiveText: 'Note progress: @markedNotes of @totalNotes notes marked as done',
       navbarNotesSectionSubmitAllLabel: 'Submit all data',
       submitDataConfirmLabel: 'Submit',
       submitDataConfirmationWindowLabel: 'Submit all data',
