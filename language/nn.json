@@ -441,7 +441,7 @@
         },
         {
           "label": "Beskrivande tekst for framdriftsindikatoren",
-          "default": "Framdrift i notat: @markedNotes av @totalNotes notat markert som ferdige"
+          "default": "Framdrift i notat: @markedNotes av @totalNotes notat markert som ferdig"
         },
         {
           "label": "Send inn alle data-knapp",
