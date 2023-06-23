@@ -27,10 +27,9 @@ export const itemDialog: Array<H5PField> = [
       {
         label: 'Text',
         name: 'text',
-        type: 'text',
-        widget: 'html',
-        optional: true,
-        tags: ['h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'strong', 'em', 'a'],
+        type: 'library',
+        options: ['H5P.Text 1.1'],
+        optional: true
       },
       {
         label: 'Video',

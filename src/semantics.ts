@@ -60,7 +60,8 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
             {
               label: 'Description',
               name: 'description',
-              type: 'text',
+              type: 'library',
+              options: ['H5P.Text 1.1'],
               optional: true,
             },
             {
@@ -214,7 +215,8 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
               description:
                 'The description is shown on top of the background image, below the label',
               name: 'description',
-              type: 'text',
+              type: 'library',
+              options: ['H5P.Text 1.1'],
               optional: true,
             },
             {

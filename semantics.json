@@ -56,7 +56,10 @@
             {
               "label": "Description",
               "name": "description",
-              "type": "text",
+              "type": "library",
+              "options": [
+                "H5P.Text 1.1"
+              ],
               "optional": true
             },
             {
@@ -94,20 +97,9 @@
                 {
                   "label": "Text",
                   "name": "text",
-                  "type": "text",
-                  "widget": "html",
-                  "optional": true,
-                  "tags": [
-                    "h2",
-                    "h3",
-                    "h4",
-                    "h5",
-                    "h6",
-                    "p",
-                    "br",
-                    "strong",
-                    "em",
-                    "a"
+                  "type": "library",
+                  "options": [
+                    "H5P.Text 1.1"
                   ]
                 },
                 {
@@ -312,7 +304,10 @@
               "label": "Description",
               "description": "The description is shown on top of the background image, below the label",
               "name": "description",
-              "type": "text",
+              "type": "library",
+              "options": [
+                "H5P.Text 1.1"
+              ],
               "optional": true
             },
             {
@@ -378,20 +373,9 @@
                 {
                   "label": "Text",
                   "name": "text",
-                  "type": "text",
-                  "widget": "html",
-                  "optional": true,
-                  "tags": [
-                    "h2",
-                    "h3",
-                    "h4",
-                    "h5",
-                    "h6",
-                    "p",
-                    "br",
-                    "strong",
-                    "em",
-                    "a"
+                  "type": "library",
+                  "options": [
+                    "H5P.Text 1.1"
                   ]
                 },
                 {

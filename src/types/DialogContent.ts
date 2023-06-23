@@ -1,4 +1,5 @@
 import type { H5PAudio, H5PVideo } from 'h5p-types';
+import type { H5PText } from './H5PText';
 import { Link } from './Link';
 
 export type DialogContent = {
@@ -6,7 +7,7 @@ export type DialogContent = {
   links?: Array<Link>;
   showAddLinks: boolean;
   maxWordCount?: number;
-  text?: string;
+  text?: H5PText;
   video?: Array<H5PVideo>;
   audio?: {
     /**

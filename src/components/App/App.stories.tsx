@@ -72,10 +72,10 @@ DenFranskeRevolusjon.args = {
           widthPercentage: 12.903225806451612,
           heightPercentage: 15.78947368421052,
           label: 'Den amerikanske revolusjonen',
-          description: '',
+          description: { params: { text: '' } },
           dialog: {
             hasNote: true,
-            text: '',
+            text: { params: { text: '' } },
             showAddLinks: false,
           },
           topicImage: {
@@ -98,13 +98,13 @@ DenFranskeRevolusjon.args = {
           widthPercentage: 12.903225806451612,
           heightPercentage: 15.789473684210527,
           label: 'Stendersamfunnet',
-          description: '',
+          description: { params: { text: '' } },
           dialog: {
             hasNote: true,
             audio: {
               subtext: '',
             },
-            text: '',
+            text: { params: { text: '' } },
             showAddLinks: false,
           },
           topicImage: {
@@ -129,7 +129,7 @@ DenFranskeRevolusjon.args = {
           widthPercentage: 12.903225806451612,
           heightPercentage: 15.189270253466546,
           label: 'Borgerskapets fremvekst',
-          description: '',
+          description: { params: { text: '' } },
           dialog: {
             hasNote: true,
             audio: {},
@@ -154,11 +154,15 @@ DenFranskeRevolusjon.args = {
           widthPercentage: 12.903225806451612,
           heightPercentage: 15.789473684210527,
           label: 'Opplysningstiden',
-          description: '',
+          description: { params: { text: '' } },
           dialog: {
             showAddLinks: false,
             hasNote: false,
-            text: 'Opplysningstiden var en epoke i Europas intellektuelle historie der vitenskap, fornuft, frihet, toleranse og framskritt ble innsatt som nye idealer og autoriteter. Opplysningstenkerne argumenterte blant annet for ytringsfrihet, trykkefrihet, religionsfrihet, likhet for loven og demokrati. Det var også under opplysningstiden at begrepet om menneskerettigheter oppstod.',
+            text: {
+              params: {
+                text: 'Opplysningstiden var en epoke i Europas intellektuelle historie der vitenskap, fornuft, frihet, toleranse og framskritt ble innsatt som nye idealer og autoriteter. Opplysningstenkerne argumenterte blant annet for ytringsfrihet, trykkefrihet, religionsfrihet, likhet for loven og demokrati. Det var også under opplysningstiden at begrepet om menneskerettigheter oppstod.'
+              }
+            },
           },
           index: 1,
         },
@@ -169,7 +173,7 @@ DenFranskeRevolusjon.args = {
           widthPercentage: 12.903225806451612,
           heightPercentage: 42.29282673000223,
           label: 'Stenderforsamlingen',
-          description: '',
+          description: { params: { text: '' } },
           dialog: {
             showAddLinks: false,
             hasNote: true,
@@ -195,8 +199,11 @@ DenFranskeRevolusjon.args = {
           widthPercentage: 19.537884250474388,
           heightPercentage: 100,
           label: 'Den franske revolusjon',
-          description:
-            'Den franske revolusjon var en periode med store sosiale og politiske omveltningene i Frankrike i perioden 1789–1799. Året 1789 markerer det første viktige vendepunktet under revolusjonen. 14. juli dette året brøt det ut masseopprør i Paris og fengselet Bastillen ble stormet. (Store norske leksikon)',
+          description: {
+            params: {
+              text: 'Den franske revolusjon var en periode med store sosiale og politiske omveltningene i Frankrike i perioden 1789–1799. Året 1789 markerer det første viktige vendepunktet under revolusjonen. 14. juli dette året brøt det ut masseopprør i Paris og fengselet Bastillen ble stormet. (Store norske leksikon)'
+            }
+          },
           dialog: {
             hasNote: true,
             maxWordCount: 300,
@@ -240,7 +247,11 @@ DenFranskeRevolusjon.args = {
                 copyright: { license: 'U' },
               },
             ],
-            text: 'Perioden 1787–1789 kalles gjerne før-revolusjonen, men langsiktige årsaker til revolusjonen strekker seg naturligvis mye lenger tilbake i tid. De viktigste politiske, sosiale og administrative omveltninger skjedde i perioden 1789–1794. Deretter fulgte en periode hvor mange av de mest radikale tiltak fra tidligere ble moderert eller reversert, men hvor myndighetene mislyktes i å oppnå stabilitet og legitimitet. Med Napoleon Bonapartes statskupp i 1799 fikk Frankrike igjen et stabilt styre, til prisen av den politiske frihet.',
+            text: {
+              params: {
+                text: 'Perioden 1787–1789 kalles gjerne før-revolusjonen, men langsiktige årsaker til revolusjonen strekker seg naturligvis mye lenger tilbake i tid. De viktigste politiske, sosiale og administrative omveltninger skjedde i perioden 1789–1794. Deretter fulgte en periode hvor mange av de mest radikale tiltak fra tidligere ble moderert eller reversert, men hvor myndighetene mislyktes i å oppnå stabilitet og legitimitet. Med Napoleon Bonapartes statskupp i 1799 fikk Frankrike igjen et stabilt styre, til prisen av den politiske frihet.'
+              }
+            },
           },
           topicImage: {
             path: 'https://statisk.ndla.no/historie/tankekart/den_franske_revolusjon/img/01_08_ballhuseden.jpg',
@@ -261,7 +272,7 @@ DenFranskeRevolusjon.args = {
           widthPercentage: 12.903225806451612,
           heightPercentage: 15.789473684210527,
           label: 'Uår i jordbruket',
-          description: '',
+          description: { params: { text: '' } },
           dialog: {
             hasNote: true,
             audio: {},
@@ -275,7 +286,7 @@ DenFranskeRevolusjon.args = {
           widthPercentage: 9.677419354838719,
           heightPercentage: 15.789473684210527,
           label: 'Krig',
-          description: '',
+          description: { params: { text: '' } },
           dialog: {
             hasNote: true,
             audio: {},
@@ -300,7 +311,7 @@ DenFranskeRevolusjon.args = {
           widthPercentage: 25.80645161290323,
           heightPercentage: 21.052631578947377,
           label: 'Napoleon',
-          description: '',
+          description: { params: { text: '' } },
           dialog: {
             hasNote: true,
             maxWordCount: 260,
@@ -326,7 +337,7 @@ DenFranskeRevolusjon.args = {
           widthPercentage: 9.677419354838705,
           heightPercentage: 15.902011827475024,
           label: 'Reformer',
-          description: '',
+          description: { params: { text: '' } },
           dialog: {
             hasNote: true,
             audio: {},
@@ -351,13 +362,13 @@ DenFranskeRevolusjon.args = {
           widthPercentage: 9.677419354838705,
           heightPercentage: 15.78947368421052,
           label: 'Terror og kaos',
-          description: '',
+          description: { params: { text: '' } },
           dialog: {
             hasNote: true,
             audio: {
               subtext: '',
             },
-            text: '',
+            text: { params: { text: '' } },
             showAddLinks: false,
           },
           topicImage: {
@@ -377,7 +388,7 @@ DenFranskeRevolusjon.args = {
         {
           id: 'ba4c7836-85e4-49a4-ad12-1805b12fb078',
           label: 'Opplysningstiden ⟶ Den franske revolusjon',
-          description: '',
+          description: { params: { text: '' } },
           startElementId: '30088d75-76a2-4d41-bfa6-1e79356093e2',
           endElementId: '3548e78c-fc46-4226-9817-a61865b3baa8',
           arrowType: ArrowType.Directional,
@@ -387,7 +398,7 @@ DenFranskeRevolusjon.args = {
             hasNote: true,
             maxWordCount: 300,
             showAddLinks: false,
-            text: '',
+            text: { params: { text: '' } },
           },
           breakpoints: [],
           relativeBreakpoints: [],
@@ -395,7 +406,7 @@ DenFranskeRevolusjon.args = {
         {
           id: 'cf1e08d7-5e29-46a9-a177-d96e5c23ee24',
           label: 'Den amerikanske revolusjonen ⟶ Den franske revolusjon',
-          description: '',
+          description: { params: { text: '' } },
           startElementId: '23bc191f-3b67-424b-aeee-b1706bd2b66f',
           endElementId: '3548e78c-fc46-4226-9817-a61865b3baa8',
           arrowType: ArrowType.Directional,
@@ -407,7 +418,7 @@ DenFranskeRevolusjon.args = {
         {
           id: '77a2c6a3-fba7-4a05-bf53-db10ce44d614',
           label: 'Stendersamfunnet ⟶ Stenderforsamlingen',
-          description: '',
+          description: { params: { text: '' } },
           startElementId: 'aa0ca5fc-237a-4237-9fd1-e8e8d4111254',
           endElementId: '8678616e-8293-4397-ad9a-a08e10019e1a',
           arrowType: ArrowType.Directional,
@@ -419,7 +430,7 @@ DenFranskeRevolusjon.args = {
         {
           id: '695a653c-e062-411f-a803-431d82933e40',
           label: 'Uår i jordbruket ⟶ Stenderforsamlingen',
-          description: '',
+          description: { params: { text: '' } },
           startElementId: '2b72c161-313e-414c-8829-0c72d6d50b6a',
           endElementId: '8678616e-8293-4397-ad9a-a08e10019e1a',
           arrowType: ArrowType.Directional,
@@ -431,7 +442,7 @@ DenFranskeRevolusjon.args = {
         {
           id: 'c0e6873a-d197-4114-af2d-72ca0fad1325',
           label: 'Borgerskapets fremvekst ⟶ Den franske revolusjon',
-          description: '',
+          description: { params: { text: '' } },
           startElementId: '39a9ffb3-e2a6-47c3-9686-b089c90b9aa2',
           endElementId: '3548e78c-fc46-4226-9817-a61865b3baa8',
           arrowType: ArrowType.Directional,
@@ -443,7 +454,7 @@ DenFranskeRevolusjon.args = {
         {
           id: '14fbc543-2589-416f-9c3f-52909f90247e',
           label: 'Stenderforsamlingen ⟶ Den franske revolusjon',
-          description: '',
+          description: { params: { text: '' } },
           startElementId: '8678616e-8293-4397-ad9a-a08e10019e1a',
           endElementId: '3548e78c-fc46-4226-9817-a61865b3baa8',
           arrowType: ArrowType.Directional,
@@ -455,7 +466,7 @@ DenFranskeRevolusjon.args = {
         {
           id: 'a723af57-0261-4244-b878-c001284e117f',
           label: 'Den franske revolusjon ⟶ Napoleon',
-          description: '',
+          description: { params: { text: '' } },
           startElementId: '3548e78c-fc46-4226-9817-a61865b3baa8',
           endElementId: '70badd4b-72e0-4f21-b07e-1b5d9ebfba78',
           arrowType: ArrowType.Directional,
@@ -467,7 +478,7 @@ DenFranskeRevolusjon.args = {
         {
           id: 'af83139b-d6c6-4624-82a7-516d4e4b705a',
           label: 'Napoleon ⟶ Reformer',
-          description: '',
+          description: { params: { text: '' } },
           startElementId: '70badd4b-72e0-4f21-b07e-1b5d9ebfba78',
           endElementId: 'f90f4f67-08ac-4aab-a93b-12d7862a996b',
           arrowType: ArrowType.Directional,
@@ -479,7 +490,7 @@ DenFranskeRevolusjon.args = {
         {
           id: '1bb64312-521c-4ba3-a65e-a6a1d7a346c6',
           label: 'Napoleon ⟶ Krig',
-          description: '',
+          description: { params: { text: '' } },
           startElementId: '70badd4b-72e0-4f21-b07e-1b5d9ebfba78',
           endElementId: '55881391-71bf-4c04-90d9-664f8e6bc4b8',
           arrowType: ArrowType.Directional,
@@ -491,7 +502,7 @@ DenFranskeRevolusjon.args = {
         {
           id: 'cf7d7b58-392d-4f7c-8d2d-718621f3b4f3',
           label: 'Terror og kaos ⟶ Napoleon',
-          description: '',
+          description: { params: { text: '' } },
           startElementId: 'f0e3e60c-8f60-4558-b474-1a2f682474d5',
           endElementId: '70badd4b-72e0-4f21-b07e-1b5d9ebfba78',
           arrowType: ArrowType.Directional,
@@ -508,7 +519,7 @@ DenFranskeRevolusjon.args = {
         {
           id: '9f694d81-7f0a-48a1-884b-e9cee9999879',
           label: 'Den amerikanske revolusjonen ⟶ Stenderforsamlingen',
-          description: '',
+          description: { params: { text: '' } },
           startElementId: '23bc191f-3b67-424b-aeee-b1706bd2b66f',
           endElementId: '8678616e-8293-4397-ad9a-a08e10019e1a',
           arrowType: ArrowType.Directional,

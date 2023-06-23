@@ -9,7 +9,7 @@ export default {
 } satisfies Meta<typeof DialogWindow>;
 
 const Template: StoryFn<typeof DialogWindow> = (args) => (
-  
+
   <DialogWindow {...args} />
 );
 
@@ -26,7 +26,11 @@ const item: TopicMapItemType = {
     copyright: { license: 'U' },
   },
   label: 'Sheep in the distance',
-  description: 'Description for storybooks!',
+  description: {
+    params: {
+      text: 'Description for storybooks!'
+    }
+  },
   widthPercentage: 50,
   heightPercentage: 25,
   xPercentagePosition: 3,
@@ -34,7 +38,11 @@ const item: TopicMapItemType = {
   dialog: {
     showAddLinks: false,
     hasNote: false,
-    text: 'Den franske revolusjon var en periode med store sosiale og politiske omveltningene i Frankrike i perioden 1789-1799. Året 1789 markerer det første viktige vendepunktet under revolusjonen. 14. juli dette året brøt det ut masseopprør i Paris og fengselet Bastillen ble stormet.',
+    text: {
+      params: {
+        text: 'Den franske revolusjon var en periode med store sosiale og politiske omveltningene i Frankrike i perioden 1789-1799. Året 1789 markerer det første viktige vendepunktet under revolusjonen. 14. juli dette året brøt det ut masseopprør i Paris og fengselet Bastillen ble stormet.'
+      }
+    },
   },
 };
 
@@ -53,9 +61,13 @@ DialogWindowLong.args = {
       ...item.dialog,
       hasNote: false,
       showAddLinks: false,
-      text: `You don't want to kill all your dark areas they are very important. I really recommend you use odorless thinner or your spouse is gonna run you right out into the yard and you'll be working by yourself. There we go. There's nothing wrong with having a tree as a friend.
+      text: {
+        params: {
+          text: `You don't want to kill all your dark areas they are very important. I really recommend you use odorless thinner or your spouse is gonna run you right out into the yard and you'll be working by yourself. There we go. There's nothing wrong with having a tree as a friend.
 
-  You can create anything that makes you happy. If we're going to have animals around we all have to be concerned about them and take care of them. Just use the old one inch brush. We spend so much of our life looking - but never seeing. Here we're limited by the time we have.`,
+          You can create anything that makes you happy. If we're going to have animals around we all have to be concerned about them and take care of them. Just use the old one inch brush. We spend so much of our life looking - but never seeing. Here we're limited by the time we have.`
+        }
+      },
     },
   },
   open: true,
@@ -96,12 +108,16 @@ DialogWindowWithOnlyNote.args = {
   item: {
     ...item,
     id: '2',
-    description: '',
+    description: { params: { text: '' } },
     topicImage: undefined,
     dialog: {
       ...item.dialog,
       hasNote: true,
-      text: '',
+      text: {
+        params: {
+          text: ''
+        }
+      },
       showAddLinks: false,
     },
   },

@@ -2,8 +2,8 @@
   "title": "NDLA Topic Map",
   "machineName": "H5P.TopicMap",
   "majorVersion": 0,
-  "minorVersion": 1,
-  "patchVersion": 123,
+  "minorVersion": 2,
+  "patchVersion": 0,
   "runnable": 1,
   "embedTypes": ["iframe"],
   "license": "MIT",
@@ -19,7 +19,7 @@
     {
       "machineName": "H5PEditor.TopicMap",
       "majorVersion": 0,
-      "minorVersion": 1
+      "minorVersion": 2
     },
     {
       "machineName": "H5PEditor.UUIDWidget",

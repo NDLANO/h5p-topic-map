@@ -24,7 +24,11 @@ type Translation = {
 const defaultTabValue = (item: CommonItemType) => {
   const { description, topicImage, dialog } = item;
   switch (true) {
-    case dialog?.text !== '' || topicImage !== undefined || description !== '':
+    case (
+      dialog?.text?.params.text !== '' ||
+      topicImage !== undefined ||
+      description?.params.text !== ''
+    ):
       return 'Text';
     case (dialog?.links &&
       dialog?.links?.filter((link) => Boolean(link.url)).length > 0) ||
@@ -99,8 +103,8 @@ const tabItems = (item: CommonItemType): JSX.Element[] => {
         <DialogText
           topicImage={topicImage}
           topicImageAltText={topicImageAltText}
-          introduction={description}
-          bodyText={dialog?.text}
+          introduction={description?.params.text}
+          bodyText={dialog?.text?.params.text}
         />
       </Content>,
     )

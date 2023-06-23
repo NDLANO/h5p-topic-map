@@ -91,7 +91,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
           {item.description && (
             <div
               className={styles.description}
-              dangerouslySetInnerHTML={{ __html: item.description }}
+              dangerouslySetInnerHTML={{ __html: item.description?.params.text }}
             />
           )}
           {item.dialog?.hasNote && <span className={styles.visuallyHidden}>{getNoteStateText(btnState, t)}</span>}

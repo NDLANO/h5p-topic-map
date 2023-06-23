@@ -18,6 +18,7 @@ import {
   normalizeSizes,
   normalizeTopicMapItemPaths,
 } from './H5P.util';
+import { stripHTML } from '../utils/text.utils';
 
 export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
   public containerElement: HTMLElement | undefined;
@@ -32,6 +33,17 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
   constructor(params: Params, contentId: string, extras?: H5PExtras) {
     super();
+
+    // Reshape item description values to match behavior of v0.1.x
+    if (params.topicMap?.topicMapItems) {
+      params.topicMap.topicMapItems = params.topicMap.topicMapItems.map((item) => {
+        const newItem = item;
+        if (newItem.description?.params.text) {
+          newItem.description.params.text = stripHTML(newItem.description.params.text);
+        }
+        return newItem;
+      });
+    }
 
     this.isIPhoneFullscreenActive = false;
 

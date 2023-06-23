@@ -17,10 +17,18 @@ describe(DialogTabs.name, () => {
     const item = {
       id: 'testid',
       label: 'Test label',
-      description: 'Testing',
+      description: {
+        params: {
+          text: 'Testing'
+        }
+      },
       dialog: {
         hasNote: true,
-        text: 'Dialog test',
+        text: {
+          params: {
+            text: 'Dialog test'
+          }
+        },
         showAddLinks: false,
       },
     };
