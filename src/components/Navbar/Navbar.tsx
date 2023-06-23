@@ -274,7 +274,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       >
         <div className={styles.progressBar}>
           <span style={{ width: `${progressPercentage}%` }}>
-            <span className={styles.visuallyHidden}>{`${progressPercentage}%`}</span>
+            <span className={styles.visuallyHidden}>{progressPercentage}%</span>
           </span>
         </div>
       </progress>
