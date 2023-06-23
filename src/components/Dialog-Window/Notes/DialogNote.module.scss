@@ -17,11 +17,12 @@ form {
 
 .dynamicSavingText,
 .wordCounter {
-  color: var(--theme-color-2);
+  color: #555555;
 }
 
 .textAreaWrapper {
   border: 2px solid #eeeeee;
+  border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -47,7 +48,7 @@ form {
 }
 
 .markAsDoneCheckbox {
-  color: var(--theme-color-2);
+  color: #555555;
 
   input[type="checkbox"] {
     height: 20px;
