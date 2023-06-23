@@ -38,9 +38,15 @@ $grid-z-index: 1;
 .sectionTitle {
   background-color: transparent;
   border: none;
+  border-radius: 2rem;
   cursor: pointer;
   color: #ffffff;
+  padding: 0.5rem 1rem;
   white-space: nowrap;
+
+  &:hover {
+    background-color: var(--theme-color-3);
+  }
 
   &.active {
     text-decoration: underline;
