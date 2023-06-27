@@ -371,8 +371,12 @@
           "default": "Palabras"
         },
         {
-          "label": "Etiqueta botón pantalla completa",
-          "default": "Alternar el modo de pantalla completa"
+          "label": "Etiqueta de botón de pantalla completa - ingresar",
+          "default": "Entrar en modo de pantalla completa"
+        },
+        {
+          "label": "Etiqueta de botón de pantalla completa - salir",
+          "default": "Salir del modo de pantalla completa"
         },
         {
           "label": "Etiqueta de la lista de pestañas de la barra de navegación",

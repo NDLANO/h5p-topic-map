@@ -371,8 +371,12 @@
           "default": "Palabras"
         },
         {
-          "label": "Etiqueta do botón de pantalla completa",
-          "default": "Alterna o modo de pantalla completa"
+          "label": "Fullscreen button label - enter",
+          "default": "Enter fullscreen mode"
+        },
+        {
+          "label": "Fullscreen button label - exit",
+          "default": "Exit fullscreen mode"
         },
         {
           "label": "Etiqueta da lista de pestanas da barra de navegación",

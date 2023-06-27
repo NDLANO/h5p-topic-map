@@ -371,8 +371,12 @@
           "default": "Words"
         },
         {
-          "label": "Fullscreen button label",
-          "default": "Toggle fullscreen mode"
+          "label": "Fullscreen button label - enter",
+          "default": "Enter fullscreen mode"
+        },
+        {
+          "label": "Fullscreen button label - exit",
+          "default": "Exit fullscreen mode"
         },
         {
           "label": "Navbar tabs list label",

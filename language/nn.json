@@ -371,8 +371,12 @@
           "default": "Ord"
         },
         {
-          "label": "Tittel på fullskjerm-knapp",
-          "default": "Slå fullskjerm av/på"
+          "label": "Tittel på fullskjerm-knapp - på",
+          "default": "Slå på fullskjerm"
+        },
+        {
+          "label": "Tittel på fullskjerm-knapp - av",
+          "default": "Slå av fullskjerm"
         },
         {
           "label": "Navigasjonslinje",

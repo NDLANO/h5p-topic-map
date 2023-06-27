@@ -16,7 +16,9 @@ export const FullscreenButton: React.FC<FullscreenButtonProps> = ({
 }) => {
   const h5pInstance = useH5PInstance();
   const { t } = useTranslation();
-  const fullscreenButtonLabel = t('fullscreenButtonLabel');
+  const fullscreenButtonLabelEnter = t('fullscreenButtonLabelEnter');
+  const fullscreenButtonLabelExit = t('fullscreenButtonLabelExit');
+  const isFullscreen = H5P.isFullscreen || (isIOS && isIOSFullscreenActive);
 
   const handleFullscreen = (): void => {
     if (isIOS) {
@@ -36,7 +38,7 @@ export const FullscreenButton: React.FC<FullscreenButtonProps> = ({
     <button
       className={styles.fullscreenButton}
       type="button"
-      aria-label={fullscreenButtonLabel}
+      aria-label={isFullscreen ? fullscreenButtonLabelExit : fullscreenButtonLabelEnter}
       onClick={handleFullscreen}
     >
       <svg
@@ -46,10 +48,9 @@ export const FullscreenButton: React.FC<FullscreenButtonProps> = ({
       >
         <path
           fill="#333333"
-          d={
-            H5P.isFullscreen || (isIOS && isIOSFullscreenActive)
-              ? 'M0 11H3V14H5V9H0V11ZM3 3H0V5H5V0H3V3ZM9 14H11V11H14V9H9V14ZM11 3V0H9V5H14V3H11Z'
-              : 'M2 9H0V14H5V12H2V9ZM0 5H2V2H5V0H0V5ZM12 12H9V14H14V9H12V12ZM9 0V2H12V5H14V0H9Z'
+          d={isFullscreen
+            ? 'M0 11H3V14H5V9H0V11ZM3 3H0V5H5V0H3V3ZM9 14H11V11H14V9H9V14ZM11 3V0H9V5H14V3H11Z'
+            : 'M2 9H0V14H5V12H2V9ZM0 5H2V2H5V0H0V5ZM12 12H9V14H14V9H12V12ZM9 0V2H12V5H14V0H9Z'
           }
         />
       </svg>
