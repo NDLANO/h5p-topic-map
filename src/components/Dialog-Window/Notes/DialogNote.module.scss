@@ -9,10 +9,12 @@ form {
   width: 100%;
   font-size: inherit;
   font-family: inherit;
+  line-height: 1.4;
   border: none;
   outline: none;
   flex-grow: 1;
   padding: 0.5rem;
+  overflow-y: scroll;
 }
 
 .dynamicSavingText,
@@ -25,7 +27,6 @@ form {
   border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
-  overflow: auto;
   height: 100%;
   position: relative;
   top: 0.5rem;
