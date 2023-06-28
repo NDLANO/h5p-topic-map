@@ -459,9 +459,15 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         type: 'text',
       },
       {
-        label: 'Fullscreen button label',
-        name: 'fullscreenButtonLabel',
-        default: 'Toggle fullscreen mode',
+        label: 'Fullscreen button label - enter',
+        name: 'fullscreenButtonLabelEnter',
+        default: 'Enter fullscreen mode',
+        type: 'text',
+      },
+      {
+        label: 'Fullscreen button label - exit',
+        name: 'fullscreenButtonLabelExit',
+        default: 'Exit fullscreen mode',
         type: 'text',
       },
       {
@@ -563,9 +569,9 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         type: 'text',
       },
       {
-        label: 'Navbar progress percentage label',
-        name: 'progressPercentageLabel',
-        default: 'Current progress',
+        label: 'Descriptive text for the progress bar',
+        name: 'progressBarDescriptiveText',
+        default: 'Note progress: @markedNotes of @totalNotes notes marked as done',
         type: 'text',
       },
       {

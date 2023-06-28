@@ -371,8 +371,12 @@
           "default": "Words"
         },
         {
-          "label": "Fullscreen button label",
-          "default": "Toggle fullscreen mode"
+          "label": "Fullscreen button label - enter",
+          "default": "Enter fullscreen mode"
+        },
+        {
+          "label": "Fullscreen button label - exit",
+          "default": "Exit fullscreen mode"
         },
         {
           "label": "Navbar tabs list label",
@@ -440,8 +444,8 @@
           "default": "Cancel"
         },
         {
-          "label": "Navbar progress percentage label",
-          "default": "Current progress"
+          "label": "Descriptive text for the progress bar",
+          "default": "Note progress: @markedNotes of @totalNotes notes marked as done"
         },
         {
           "label": "Navbar notes submit all data button label",

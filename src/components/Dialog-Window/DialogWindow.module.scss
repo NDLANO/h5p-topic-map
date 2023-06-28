@@ -11,14 +11,26 @@
 }
 
 .closeButton {
-  position: fixed;
-  top: 0.625rem;
-  right: 0.625rem;
-  padding: 0;
-  border: none;
   background: none;
-  cursor: pointer;
+  border: none;
+  border-radius: 2rem;
   color: black;
+  cursor: pointer;
+  padding: 0.25rem;
+  position: fixed;
+  right: 0.625rem;
+  top: 0.625rem;
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  svg {
+    display: block;
+    margin: auto;
+    height: 1.2rem;
+    width: 1.2rem;
+  }
 }
 
 .dialogContent,

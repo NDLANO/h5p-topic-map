@@ -11,6 +11,7 @@ import styles from './Arrow.module.scss';
 import { ArrowNoteButton } from './ArrowNoteButton';
 import { getNoteStateText } from '../../utils/note.utils';
 import { useTranslation } from '../../hooks/useTranslation';
+import { H5P } from '../../h5p/H5P.util';
 
 export type ArrowProps = {
   item: ArrowItemType;
@@ -44,6 +45,9 @@ export const Arrow: FC<ArrowProps> = ({
   const { t } = useTranslation();
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
+
+  const arrowHeadID = H5P.createUUID();
+  const arrowTailID = H5P.createUUID();
 
   const [pathDef, setPathDef] = React.useState<string>('');
   const [strokeWidth, setStrokeWidth] = React.useState<number>(4);
@@ -159,29 +163,29 @@ export const Arrow: FC<ArrowProps> = ({
         <svg className={styles.arrowSvg}>
           <defs>
             <marker
-              id="arrowhead"
+              id={arrowHeadID}
               markerWidth="10"
               markerHeight="10"
               refX="0.7"
               refY="1"
               orient="auto"
             >
-              <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" />
+              <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className={styles.path} />
             </marker>
             <marker
-              id="arrowtail"
+              id={arrowTailID}
               markerWidth="10"
               markerHeight="10"
               refX="0.7"
               refY="1"
               orient="auto-start-reverse"
             >
-              <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" />
+              <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className={styles.path} />
             </marker>
           </defs>
           <polyline
             aria-label={`${descriptiveText} ${getNoteStateText(buttonState, t)}`}
-            className={`${item.dialog ? styles.path : ''}`}
+            className={`${item.dialog ? styles.polyline : ''}`}
             points={pathDef}
             fill="transparent"
             stroke="var(--theme-color-4)"
@@ -189,12 +193,12 @@ export const Arrow: FC<ArrowProps> = ({
             markerEnd={
               item.arrowType === ArrowType.BiDirectional ||
                 item.arrowType === ArrowType.Directional
-                ? 'url(#arrowhead)'
+                ? `url(#${arrowHeadID})`
                 : ''
             }
             markerStart={
               item.arrowType === ArrowType.BiDirectional
-                ? 'url(#arrowtail)'
+                ? `url(#${arrowTailID})`
                 : ''
             }
             onClick={onClick}

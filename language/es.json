@@ -371,8 +371,12 @@
           "default": "Palabras"
         },
         {
-          "label": "Etiqueta botón pantalla completa",
-          "default": "Alternar el modo de pantalla completa"
+          "label": "Etiqueta de botón de pantalla completa - ingresar",
+          "default": "Entrar en modo de pantalla completa"
+        },
+        {
+          "label": "Etiqueta de botón de pantalla completa - salir",
+          "default": "Salir del modo de pantalla completa"
         },
         {
           "label": "Etiqueta de la lista de pestañas de la barra de navegación",
@@ -440,8 +444,8 @@
           "default": "Cancelar"
         },
         {
-          "label": "Etiqueta de porcentaje de progreso de la barra de navegación",
-          "default": "Progreso actual"
+          "label": "Texto descriptivo de la barra de progreso",
+          "default": "Nota de progreso: @markedNotes de @totalNotes notas marcadas como hechas"
         },
         {
           "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",
