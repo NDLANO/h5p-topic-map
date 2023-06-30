@@ -3,6 +3,7 @@ import { useContentId } from '../../../hooks/useContentId';
 import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData';
 import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
 import { useTranslation } from '../../../hooks/useTranslation';
+import { useAriaLive } from '../../../hooks/useAriaLive';
 import styles from './DialogNote.module.scss';
 
 export type NoteProps = {
@@ -19,6 +20,7 @@ export const DialogNote: React.FC<NoteProps> = ({
   const contentId = useContentId();
   const [userData, setUserData] = useLocalStorageUserData();
   const { t } = useTranslation();
+  const { ariaLiveText, setAriaLiveText } = useAriaLive();
 
   const [note, setNote] = React.useState(
     userData[contentId]?.dialogs[id]?.note ?? '',
@@ -89,9 +91,15 @@ export const DialogNote: React.FC<NoteProps> = ({
     const tooManyWords = count > maxLength;
     if (tooManyWords) {
       setMaxWordCount(count);
+      if (ariaLiveText !== t('dialogNoteLimitExceeded')) {
+        setAriaLiveText(t('dialogNoteLimitExceeded'));
+      }
     }
     else {
       setMaxWordCount(undefined);
+      if (ariaLiveText !== '') {
+        setAriaLiveText('');
+      }
     }
   }, [maxLength, note, savingTextTimeout]);
 
@@ -137,8 +145,7 @@ export const DialogNote: React.FC<NoteProps> = ({
           <p className={styles.dynamicSavingText}>{dynamicSavingText}</p>
         </div>
         <div
-          className={`${styles.textAreaWrapper} ${
-            maxWordCount ? styles.maxWords : ''
+          className={`${styles.textAreaWrapper} ${maxWordCount ? styles.maxWords : ''
           }`}
         >
           <textarea
@@ -162,8 +169,7 @@ export const DialogNote: React.FC<NoteProps> = ({
             </div>
             <div
               data-testid="wordCount"
-              className={`${styles.wordCounter} ${
-                maxWordCount ? styles.redText : ''
+              className={`${styles.wordCounter} ${maxWordCount ? styles.redText : ''
               }`}
             >
               {wordCount} / {maxLength} {t('dialogWordsLabel')}
