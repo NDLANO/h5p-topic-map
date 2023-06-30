@@ -4,6 +4,7 @@ import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData'
 import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { useAriaLive } from '../../../hooks/useAriaLive';
+import { H5P } from '../../../h5p/H5P.util';
 import styles from './DialogNote.module.scss';
 
 export type NoteProps = {
@@ -34,6 +35,9 @@ export const DialogNote: React.FC<NoteProps> = ({
   const [maxWordCount, setMaxWordCount] = React.useState<number | undefined>();
 
   const { sendXAPIEvent } = useSendXAPIEvent();
+
+  const noteTextareaID = H5P.createUUID();
+  const noteCheckboxID = H5P.createUUID();
 
   const handleNoteDone = (): void => {
     if (!userData[contentId]) {
@@ -137,7 +141,7 @@ export const DialogNote: React.FC<NoteProps> = ({
 
   return (
     <form>
-      <label htmlFor="note">
+      <label htmlFor={noteTextareaID}>
         <div className={styles.topGroup}>
           {!smallScreen && (
             <p className={styles.noteLabel}>{t('dialogNoteLabel')}</p>
@@ -150,16 +154,16 @@ export const DialogNote: React.FC<NoteProps> = ({
         >
           <textarea
             className={styles.textArea}
-            id="note"
+            id={noteTextareaID}
             placeholder={t('dialogNotePlaceholder')}
             onChange={(event) => onChange(event)}
             defaultValue={note}
           />
           <div className={styles.bottomGroup}>
             <div className={styles.markAsDoneCheckbox}>
-              <label htmlFor="note-done-checkbox">
+              <label htmlFor={noteCheckboxID}>
                 <input
-                  id="note-done-checkbox"
+                  id={noteCheckboxID}
                   type="checkbox"
                   checked={noteDone}
                   onChange={handleNoteDone}
