@@ -103,7 +103,9 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
       (entries) => {
         if (entries[0].intersectionRatio === 1) {
           this.observer.unobserve(this.containerElement as Element); // Only need instantiate once.
-          this.trigger('resize');
+          window.requestAnimationFrame(() => {
+            this.trigger('resize');
+          });
         }
       },
       {
