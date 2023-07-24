@@ -1,10 +1,10 @@
 {
   "name": "h5p-topic-map",
-  "version": "1.0.0",
+  "version": "0.1.124",
   "description": "",
   "main": "index.js",
   "keywords": [],
-  "author": "",
+  "author": "NDLA",
   "license": "MIT",
   "scripts": {
     "watch": "webpack --watch --mode=development",
