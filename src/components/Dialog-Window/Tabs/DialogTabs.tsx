@@ -160,20 +160,21 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
       defaultValue={defaultTabValue(item)}
       orientation="vertical"
     >
-      <List
-        className={showTabs ? styles.list : ''}
-        aria-label={t('dialogTabListAriaLabel')}
-      >
-        {showTabs && tabLabelItems(item, translation)}
-        {smallScreen && hasNote ? (
-          <Trigger key="notes" className={styles.trigger} value="notes">
-            {t('dialogNoteLabel')}
-          </Trigger>
-        ) : null}
-      </List>
+      {showTabs ? (
+        <List
+          className={styles.list}
+          aria-label={t('dialogTabListAriaLabel')}
+        >
+          {tabLabelItems(item, translation)}
+          {smallScreen && hasNote ? (
+            <Trigger key="notes" className={styles.trigger} value="notes">
+              {t('dialogNoteLabel')}
+            </Trigger>
+          ) : null}
+        </List>
+      ) : null}
       <div
-        className={`${styles.tabItemWrapper} ${
-          !showTabs ? styles.marginTop : ''
+        className={`${styles.tabItemWrapper} ${!showTabs ? styles.marginTop : ''
         }`}
       >
         {tabItems(item)}
