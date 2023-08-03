@@ -4,7 +4,6 @@ import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData'
 import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { useAriaLive } from '../../../hooks/useAriaLive';
-import { H5P } from '../../../h5p/H5P.util';
 import styles from './DialogNote.module.scss';
 
 export type NoteProps = {
@@ -36,8 +35,8 @@ export const DialogNote: React.FC<NoteProps> = ({
 
   const { sendXAPIEvent } = useSendXAPIEvent();
 
-  const noteTextareaID = H5P.createUUID();
-  const noteCheckboxID = H5P.createUUID();
+  const noteTextareaID = `note-textarea_${id}`;
+  const noteCheckboxID = `note-checkbox_${id}`;
 
   const handleNoteDone = (): void => {
     if (!userData[contentId]) {
@@ -172,7 +171,7 @@ export const DialogNote: React.FC<NoteProps> = ({
               </label>
             </div>
             <div
-              data-testid="wordCount"
+              data-testid={`testId-note-wordCount_${id}`}
               className={`${styles.wordCounter} ${maxWordCount ? styles.redText : ''
               }`}
             >
