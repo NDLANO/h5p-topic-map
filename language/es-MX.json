@@ -445,7 +445,7 @@
         },
         {
           "label": "Texto descriptivo de la barra de progreso",
-          "default": "Nota de progreso: @markedNotes de @totalNotes notas marcadas como hechas"
+          "default": "¿Estás seguro de que quieres enviar todos tus datos?"
         },
         {
           "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",
@@ -456,28 +456,28 @@
           "default": "¿Estás seguro de que quieres enviar todos tus datos?"
         },
         {
-          "label": "Etiqueta de confirmación de envío de todos los datos",
-          "default": "Enviar"
+          "label": "Etiqueta de regresar a mapa de tópico",
+          "default": "Regresar"
         },
         {
-          "label": "Etiqueta para rechazar envío de todos los datos",
-          "default": "Cancelar"
+          "label": "Texto descriptivo para flecha direccional",
+          "default": "Flecha de @startItem a @endItem"
         },
         {
-          "label": "Go back to topic map label",
-          "default": "Back"
+          "label": "Texto descriptivo para flecha bi-direccional",
+          "default": "Flecha entre @startItem y @endItem"
         },
         {
-          "label": "Descriptive text for directional arrow",
-          "default": "Arrow from @startItem to @endItem"
+          "label": "Texto descriptivo para nota estado hecho",
+          "default": "Nota marcada como hecho"
         },
         {
-          "label": "Descriptive text for bi-directional arrow",
-          "default": "Arrow between @startItem and @endItem"
+          "label": "Texto descriptivo para nota estado iniciado",
+          "default": "Nota iniciado"
         },
         {
-          "label": "Descriptive text for note status done",
-          "default": "Note marked as done"
+          "label": "Texto descriptivo para nota estado predeterminado",
+          "default": "Nota vacío"
         },
         {
           "label": "Descriptive text for note status started",
