@@ -3,7 +3,6 @@ import { useContentId } from '../../../hooks/useContentId';
 import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData';
 import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
 import { useTranslation } from '../../../hooks/useTranslation';
-import { useAriaLive } from '../../../hooks/useAriaLive';
 import styles from './DialogNote.module.scss';
 
 export type NoteProps = {
@@ -20,7 +19,6 @@ export const DialogNote: React.FC<NoteProps> = ({
   const contentId = useContentId();
   const [userData, setUserData] = useLocalStorageUserData();
   const { t } = useTranslation();
-  const { ariaLiveText, setAriaLiveText } = useAriaLive();
 
   const [note, setNote] = React.useState(
     userData[contentId]?.dialogs[id]?.note ?? '',
@@ -33,10 +31,15 @@ export const DialogNote: React.FC<NoteProps> = ({
   const [characterCount, setCharacterCount] = React.useState(0);
   const [maxLengthExceeded, setMaxLengthExceeded] = React.useState<number | undefined>();
 
+  const [characterCountText, setCharacterCountText] = React.useState('');
+  const [ariaLiveText, setAriaLiveText] = React.useState('');
+
   const { sendXAPIEvent } = useSendXAPIEvent();
 
   const noteTextareaID = `note-textarea_${id}`;
   const noteCheckboxID = `note-checkbox_${id}`;
+  const noteTextareaDescriptionID = `note-textarea-description_${id}`;
+  const textareaDescription = t('noteTextareaDescriptiveText').replace('@max', maxLength?.toString() ?? '');
 
   const handleNoteDone = (): void => {
     if (!userData[contentId]) {
@@ -71,11 +74,7 @@ export const DialogNote: React.FC<NoteProps> = ({
             minute: '2-digit',
           },
         );
-        setDynamicSavingText(
-          `${maxLengthExceeded ? `${t('dialogNoteLimitExceeded')} - ` : ''} ${t(
-            'dialogNoteSaved',
-          )} ${localTime}`,
-        );
+        setDynamicSavingText(`${t('dialogNoteSaved')} ${localTime}`);
 
         sendXAPIEvent('answered', {
           itemId: id,
@@ -86,23 +85,20 @@ export const DialogNote: React.FC<NoteProps> = ({
   };
 
   const countCharacters = React.useCallback((): void => {
+    if (!maxLength) return;
+
     const count = note.valueOf().length;
     setCharacterCount(count);
+    const text = t('noteCharacterCountDescriptiveText').replace('@count', count.toString()).replace('@max', maxLength.toString());
+    setCharacterCountText(text);
 
-    if (!maxLength) return;
-    const countOverMaxLength = count > maxLength;
-
-    if (countOverMaxLength) {
+    if (count > maxLength) {
       setMaxLengthExceeded(count);
-      if (ariaLiveText !== t('dialogNoteLimitExceeded')) {
-        setAriaLiveText(t('dialogNoteLimitExceeded'));
-      }
+      setAriaLiveText(t('dialogNoteLimitExceeded'));
     }
     else {
       setMaxLengthExceeded(undefined);
-      if (ariaLiveText !== '') {
-        setAriaLiveText('');
-      }
+      setAriaLiveText('');
     }
   }, [maxLength, note, savingTextTimeout]);
 
@@ -143,44 +139,48 @@ export const DialogNote: React.FC<NoteProps> = ({
 
   return (
     <form>
-      <label htmlFor={noteTextareaID}>
-        <div className={styles.topGroup}>
-          {!smallScreen && (
-            <p className={styles.noteLabel}>{t('dialogNoteLabel')}</p>
-          )}
-          <p className={styles.dynamicSavingText}>{dynamicSavingText}</p>
-        </div>
-        <div className={`${styles.textAreaWrapper} ${maxLengthExceeded ? styles.lengthExceeded : ''}`}>
-          <textarea
-            className={styles.textArea}
-            id={noteTextareaID}
-            placeholder={t('dialogNotePlaceholder')}
-            onChange={(event) => onChange(event)}
-            defaultValue={note}
-            maxLength={maxLength}
-          />
-          <div className={styles.bottomGroup}>
-            <div className={styles.markAsDoneCheckbox}>
-              <label htmlFor={noteCheckboxID}>
-                <input
-                  id={noteCheckboxID}
-                  type="checkbox"
-                  checked={noteDone}
-                  onChange={handleNoteDone}
-                />
-                {t('dialogNoteMarkAsDone')}
-              </label>
-            </div>
-            {maxLength && (
-              <div className={`${styles.counter} ${maxLengthExceeded ? styles.redText : ''}`}>
-                <span data-testid={`testId-note-characterCount_${id}`}>{characterCount}</span>
-                <span> / </span>
-                <span data-testid={`testId-note-maximum_${id}`}>{maxLength}</span>
-              </div>
-            )}
+      <div className={styles.topGroup}>
+        <label htmlFor={noteTextareaID}>
+          <p className={!smallScreen ? styles.noteLabel : styles.visuallyHidden}>{t('dialogNoteLabel')}</p>
+        </label>
+        <p className={styles.dynamicSavingText}>{dynamicSavingText}</p>
+      </div>
+      <div className={`${styles.textAreaWrapper} ${maxLengthExceeded ? styles.lengthExceeded : ''}`}>
+        <textarea
+          className={styles.textArea}
+          id={noteTextareaID}
+          aria-describedby={maxLength ? noteTextareaDescriptionID : undefined}
+          placeholder={t('dialogNotePlaceholder')}
+          onChange={(event) => onChange(event)}
+          defaultValue={note}
+          maxLength={maxLength}
+        />
+        {maxLength && (
+          <span id={noteTextareaDescriptionID} className={styles.visuallyHidden}>{textareaDescription}</span>
+        )}
+        <div className={styles.bottomGroup}>
+          <div className={styles.markAsDoneCheckbox}>
+            <label htmlFor={noteCheckboxID}>
+              <input
+                id={noteCheckboxID}
+                type="checkbox"
+                checked={noteDone}
+                onChange={handleNoteDone}
+              />
+              {t('dialogNoteMarkAsDone')}
+            </label>
           </div>
+          {maxLength && (
+            <div className={`${styles.counter} ${maxLengthExceeded ? styles.redText : ''}`}>
+              <span data-testid={`testId-note-characterCount_${id}`} aria-hidden="true">{characterCount}</span>
+              <span aria-hidden="true"> / </span>
+              <span data-testid={`testId-note-maximum_${id}`} aria-hidden="true">{maxLength}</span>
+              <span className={styles.visuallyHidden}>{characterCountText}</span>
+            </div>
+          )}
         </div>
-      </label>
+        <div aria-live="polite" className={styles.visuallyHidden}>{ariaLiveText}</div>
+      </div>
     </form>
   );
 };

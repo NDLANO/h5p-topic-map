@@ -45,4 +45,6 @@ export type TranslationKey =
   | 'biDirectionalArrowDescriptiveText'
   | 'noteStatusDoneDescriptiveText'
   | 'noteStatusStartedDescriptiveText'
-  | 'noteStatusDefaultDescriptiveText';
+  | 'noteStatusDefaultDescriptiveText'
+  | 'noteTextareaDescriptiveText'
+  | 'noteCharacterCountDescriptiveText';

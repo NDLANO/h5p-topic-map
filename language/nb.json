@@ -482,6 +482,14 @@
         {
           "label": "Beskrivende tekst for notatstatus ikke påbegynt",
           "default": "Notat ikke påbegynt"
+        },
+        {
+          "label": "Beskrivende tekst for notatets tekstområde",
+          "default": "Tekstområde med plass til @max tegn."
+        },
+        {
+          "label": "Beskrivende tekst for antall tegn i notatet",
+          "default": "@count av @max tegn"
         }
       ]
     }

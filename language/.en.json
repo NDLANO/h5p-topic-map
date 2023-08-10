@@ -482,6 +482,14 @@
         {
           "label": "Descriptive text for note status default",
           "default": "Note empty"
+        },
+        {
+          "label": "Descriptive text for note textarea",
+          "default": "Textarea with @max character limit."
+        },
+        {
+          "label": "Descriptive text for note character count",
+          "default": "@count of @max characters"
         }
       ]
     }

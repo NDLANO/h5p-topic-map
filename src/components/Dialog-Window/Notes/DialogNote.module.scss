@@ -1,3 +1,5 @@
+@use "./../../../abstracts/mixins" as *;
+
 form {
   position: relative;
   width: 100%;
@@ -34,7 +36,7 @@ form {
   &:focus-within {
     border: 2px solid #2360c5;
   }
-  
+
   &.lengthExceeded {
     &:focus-within {
       border: 2px solid #cd2026;
@@ -65,7 +67,6 @@ form {
 .topGroup {
   align-items: flex-end;
   display: flex;
-  flex-direction: row-reverse;
   flex-wrap: wrap;
   justify-content: space-between;
 }
@@ -93,4 +94,8 @@ form {
   font-size: 1rem;
   font-weight: 700;
   order: 2;
+}
+
+.visuallyHidden {
+  @include visually-hidden;
 }

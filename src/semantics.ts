@@ -627,7 +627,19 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         name: 'noteStatusDefaultDescriptiveText',
         default: 'Note empty',
         type: 'text',
-      }
+      },
+      {
+        label: 'Descriptive text for note textarea',
+        name: 'noteTextareaDescriptiveText',
+        default: 'Textarea with @max character limit.',
+        type: 'text',
+      },
+      {
+        label: 'Descriptive text for note character count',
+        name: 'noteCharacterCountDescriptiveText',
+        default: '@count of @max characters',
+        type: 'text',
+      },
     ],
   },
 ];

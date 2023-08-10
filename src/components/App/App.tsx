@@ -7,8 +7,6 @@ import { Params } from '../../types/Params';
 import { defaultTheme } from '../../utils/semantics.utils';
 import { Navbar } from '../Navbar/Navbar';
 import styles from './App.module.scss';
-import { AriaLiveContext } from '../../contexts/AriaLiveContext';
-import { AriaLive } from '../AriaLive/AriaLive';
 
 export type AppProps = {
   params: Params;
@@ -34,7 +32,6 @@ export const App: React.FC<AppProps> = ({
 
   const containerRef = React.useRef<HTMLDivElement>(null);
   const [width, setWidth] = React.useState(0);
-  const [ariaLiveText, setAriaLiveText] = useState('');
 
   React.useEffect(() => {
     const initialWidth =
@@ -67,30 +64,27 @@ export const App: React.FC<AppProps> = ({
         isIPhoneFullscreenActive ? styles.iPhoneFullscreenStyle : undefined
       }
     >
-      <AriaLiveContext.Provider value={{ ariaLiveText, setAriaLiveText }}>
-        <AppWidthContext.Provider value={width}>
-          <div
-            className={`${themeClassName} ${isIPhoneFullscreenActive && styles.iPhoneFullscreenThemeStyle
-            }`}
+      <AppWidthContext.Provider value={width}>
+        <div
+          className={`${themeClassName} ${isIPhoneFullscreenActive && styles.iPhoneFullscreenThemeStyle
+          }`}
+        >
+          <FullScreen
+            className={styles.fullscreenStyle}
+            handle={fullscreenHandle}
           >
-            <FullScreen
-              className={styles.fullscreenStyle}
-              handle={fullscreenHandle}
-            >
-              <div className={styles.navbarWrapper} ref={containerRef}>
-                <Navbar
-                  navbarTitle={title ?? ''}
-                  params={params}
-                  toggleIPhoneFullscreen={handleToggleIPhoneFullscreen}
-                  isIPhoneFullscreenActive={isIPhoneFullscreenActive}
-                  instance={instance}
-                />
-              </div>
-              <AriaLive />
-            </FullScreen>
-          </div>
-        </AppWidthContext.Provider>
-      </AriaLiveContext.Provider>
+            <div className={styles.navbarWrapper} ref={containerRef}>
+              <Navbar
+                navbarTitle={title ?? ''}
+                params={params}
+                toggleIPhoneFullscreen={handleToggleIPhoneFullscreen}
+                isIPhoneFullscreenActive={isIPhoneFullscreenActive}
+                instance={instance}
+              />
+            </div>
+          </FullScreen>
+        </div>
+      </AppWidthContext.Provider>
     </div>
   );
 };

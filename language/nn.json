@@ -482,6 +482,14 @@
         {
           "label": "Beskrivande tekst for notatstatus ikkje påbegynt",
           "default": "Notat ikkje påbegynt"
+        },
+        {
+          "label": "Beskrivande tekst for notatets tekstområde",
+          "default": "Tekstområde med plass til @max teikn."
+        },
+        {
+          "label": "Beskrivande tekst for talet på teikn i notatet",
+          "default": "@count av @max teikn"
         }
       ]
     }

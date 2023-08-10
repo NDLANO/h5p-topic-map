@@ -58,6 +58,8 @@ DenFranskeRevolusjon.args = {
       noteStatusDoneDescriptiveText: 'Note: done',
       noteStatusStartedDescriptiveText: 'Note: started',
       noteStatusDefaultDescriptiveText: 'Note: empty',
+      noteTextareaDescriptiveText: 'Textarea with @max character limit.',
+      noteCharacterCountDescriptiveText: '@count of @max characters.',
     },
     topicMap: {
       grid: {
