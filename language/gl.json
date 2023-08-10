@@ -45,8 +45,8 @@
                     "label": "Mostra a zona de texto das notas"
                   },
                   {
-                    "label": "Número máximo de palabras",
-                    "description": "Especifica o número máximo de palabras para a nota. O valor predeterminado é 160 palabras."
+                    "label": "Número máximo de caracteres",
+                    "description": "Especifica o número máximo de caracteres para a nota."
                   },
                   {
                     "label": "Texto"
@@ -195,8 +195,8 @@
                     "label": "Mostra a zona de texto das notas"
                   },
                   {
-                    "label": "Número máximo de palabras",
-                    "description": "Especifica o número máximo de palabras para a nota. O valor predeterminado é 160 palabras."
+                    "label": "Número máximo de caracteres",
+                    "description": "Especifica o número máximo de caracteres para a nota."
                   },
                   {
                     "label": "Texto"
@@ -343,8 +343,8 @@
           "default": "Gardado"
         },
         {
-          "label": "Etiqueta para límite de palabras superado",
-          "default": "Demasiadas palabras"
+          "label": "Etiqueta de límite de caracteres excedido",
+          "default": "Límite de caracteres excedido"
         },
         {
           "label": "Marcador de posición de nota",
@@ -365,10 +365,6 @@
         {
           "label": "Etiquetas de recursos de diálogo: Engadir",
           "default": "Engadir"
-        },
-        {
-          "label": "Etiqueta de texto para palabras de diálogo",
-          "default": "Palabras"
         },
         {
           "label": "Fullscreen button label - enter",

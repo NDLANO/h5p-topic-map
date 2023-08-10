@@ -87,7 +87,7 @@ export const DialogWindow: FC<DialogWindowProps> = ({
       {noTabItems && hasNote && (
         <div className={`${styles.noteWrapper} ${styles.fullWidth}`}>
           <DialogNote
-            maxLength={item.dialog.maxWordCount ?? 160}
+            maxLength={item.dialog.maxLength}
             id={item.id}
           />
         </div>
@@ -124,12 +124,11 @@ export const DialogWindow: FC<DialogWindowProps> = ({
           </div>
         )}
         <div
-          className={`${styles.noteWrapper} ${
-            noTabItems ? styles.fullWidth : ''
+          className={`${styles.noteWrapper} ${noTabItems ? styles.fullWidth : ''
           }`}
         >
           <DialogNote
-            maxLength={item.dialog.maxWordCount ?? 160}
+            maxLength={item.dialog.maxLength}
             id={item.id}
           />
         </div>

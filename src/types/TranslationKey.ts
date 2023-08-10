@@ -17,7 +17,6 @@ export type TranslationKey =
   | 'dialogResourcesRelevantLinks'
   | 'dialogResourcesCustomLinks'
   | 'dialogResourcesAdd'
-  | 'dialogWordsLabel'
   | 'fullscreenButtonLabelEnter'
   | 'fullscreenButtonLabelExit'
   | 'navbarTabsListAriaLabel'

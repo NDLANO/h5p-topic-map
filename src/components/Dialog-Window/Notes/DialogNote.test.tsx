@@ -8,10 +8,9 @@ describe(DialogNote.name, () => {
     expect(dialogNote.querySelector('form')).toBeTruthy();
   });
 
-  it('Should have correct word and character counts', () => {
+  it('Should have correct maximum and character count', () => {
     const { getByTestId } = render(<DialogNote maxLength={10} id="item1" />);
-    expect(getByTestId('testId-note-wordCount_item1').textContent).toBe(
-      '0 / 10 [Missing translation: dialogWordsLabel]',
-    );
+    expect(getByTestId('testId-note-maximum_item1').textContent).toBe('10');
+    expect(getByTestId('testId-note-characterCount_item1').textContent).toBe('0');
   });
 });

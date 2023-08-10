@@ -16,13 +16,12 @@ export const itemDialog: Array<H5PField> = [
         default: true,
       },
       {
-        label: 'Maximum number of words',
+        label: 'Maximum number of characters',
         description:
-          'Specifies the maximum number of words for the note. Default is 160 words.',
-        name: 'maxWordCount',
+          'Specifies the maximum number of characters for the note.',
+        name: 'maxLength',
         type: 'number',
         optional: true,
-        default: 160,
       },
       {
         label: 'Text',

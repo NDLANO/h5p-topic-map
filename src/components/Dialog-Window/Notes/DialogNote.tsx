@@ -7,7 +7,7 @@ import { useAriaLive } from '../../../hooks/useAriaLive';
 import styles from './DialogNote.module.scss';
 
 export type NoteProps = {
-  maxLength: number;
+  maxLength: number | undefined;
   id: string;
   smallScreen?: boolean;
 };
@@ -30,8 +30,8 @@ export const DialogNote: React.FC<NoteProps> = ({
   const [noteDone, setMarkedAsDone] = React.useState(
     userData[contentId]?.dialogs[id]?.noteDone ?? false,
   );
-  const [wordCount, setWordCount] = React.useState(0);
-  const [maxWordCount, setMaxWordCount] = React.useState<number | undefined>();
+  const [characterCount, setCharacterCount] = React.useState(0);
+  const [maxLengthExceeded, setMaxLengthExceeded] = React.useState<number | undefined>();
 
   const { sendXAPIEvent } = useSendXAPIEvent();
 
@@ -72,7 +72,7 @@ export const DialogNote: React.FC<NoteProps> = ({
           },
         );
         setDynamicSavingText(
-          `${maxWordCount ? `${t('dialogNoteLimitExceeded')} - ` : ''} ${t(
+          `${maxLengthExceeded ? `${t('dialogNoteLimitExceeded')} - ` : ''} ${t(
             'dialogNoteSaved',
           )} ${localTime}`,
         );
@@ -85,21 +85,21 @@ export const DialogNote: React.FC<NoteProps> = ({
     );
   };
 
-  const countWords = React.useCallback((): void => {
-    const count = note.split(/\s/).filter((word) => word.length > 0).length;
-    setWordCount(count);
+  const countCharacters = React.useCallback((): void => {
+    const count = note.valueOf().length;
+    setCharacterCount(count);
 
-    // TODO: Enforce max length when pasting in text,
-    // perhaps by removing all words past the max length mark.
-    const tooManyWords = count > maxLength;
-    if (tooManyWords) {
-      setMaxWordCount(count);
+    if (!maxLength) return;
+    const countOverMaxLength = count > maxLength;
+
+    if (countOverMaxLength) {
+      setMaxLengthExceeded(count);
       if (ariaLiveText !== t('dialogNoteLimitExceeded')) {
         setAriaLiveText(t('dialogNoteLimitExceeded'));
       }
     }
     else {
-      setMaxWordCount(undefined);
+      setMaxLengthExceeded(undefined);
       if (ariaLiveText !== '') {
         setAriaLiveText('');
       }
@@ -117,7 +117,10 @@ export const DialogNote: React.FC<NoteProps> = ({
     }
 
     userData[contentId].dialogs[id].note = note;
-    countWords();
+
+    if (maxLength) {
+      countCharacters();
+    }
     // ensure there's no memory leak on component unmount during timeout
     return () => {
       if (savingTextTimeout != null) clearTimeout(savingTextTimeout);
@@ -128,7 +131,7 @@ export const DialogNote: React.FC<NoteProps> = ({
     note,
     setUserData,
     savingTextTimeout,
-    countWords,
+    countCharacters,
     contentId,
   ]);
 
@@ -147,16 +150,14 @@ export const DialogNote: React.FC<NoteProps> = ({
           )}
           <p className={styles.dynamicSavingText}>{dynamicSavingText}</p>
         </div>
-        <div
-          className={`${styles.textAreaWrapper} ${maxWordCount ? styles.maxWords : ''
-          }`}
-        >
+        <div className={`${styles.textAreaWrapper} ${maxLengthExceeded ? styles.lengthExceeded : ''}`}>
           <textarea
             className={styles.textArea}
             id={noteTextareaID}
             placeholder={t('dialogNotePlaceholder')}
             onChange={(event) => onChange(event)}
             defaultValue={note}
+            maxLength={maxLength}
           />
           <div className={styles.bottomGroup}>
             <div className={styles.markAsDoneCheckbox}>
@@ -170,13 +171,13 @@ export const DialogNote: React.FC<NoteProps> = ({
                 {t('dialogNoteMarkAsDone')}
               </label>
             </div>
-            <div
-              data-testid={`testId-note-wordCount_${id}`}
-              className={`${styles.wordCounter} ${maxWordCount ? styles.redText : ''
-              }`}
-            >
-              {wordCount} / {maxLength} {t('dialogWordsLabel')}
-            </div>
+            {maxLength && (
+              <div className={`${styles.counter} ${maxLengthExceeded ? styles.redText : ''}`}>
+                <span data-testid={`testId-note-characterCount_${id}`}>{characterCount}</span>
+                <span> / </span>
+                <span data-testid={`testId-note-maximum_${id}`}>{maxLength}</span>
+              </div>
+            )}
           </div>
         </div>
       </label>

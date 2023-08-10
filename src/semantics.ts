@@ -417,9 +417,9 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         type: 'text',
       },
       {
-        label: 'Word limit exceeded label',
+        label: 'Character limit exceeded label',
         name: 'dialogNoteLimitExceeded',
-        default: 'Too many words',
+        default: 'Character limit exceeded',
         type: 'text',
       },
       {
@@ -450,12 +450,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Dialog resources labels: Add',
         name: 'dialogResourcesAdd',
         default: 'Add',
-        type: 'text',
-      },
-      {
-        label: 'Dialog words text label',
-        name: 'dialogWordsLabel',
-        default: 'Words',
         type: 'text',
       },
       {
