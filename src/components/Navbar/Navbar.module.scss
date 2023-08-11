@@ -1,3 +1,5 @@
+@use "./../../abstracts/mixins" as *;
+
 $grid-z-index: 1;
 
 .navbarWrapper {
@@ -14,7 +16,6 @@ $grid-z-index: 1;
   border: none;
   border-radius: 0;
   color: #ffffff;
-  cursor: pointer;
   flex-grow: 1;
   padding-left: 0.25rem;
   text-align: left;
@@ -37,9 +38,15 @@ $grid-z-index: 1;
 .sectionTitle {
   background-color: transparent;
   border: none;
+  border-radius: 2rem;
   cursor: pointer;
   color: #ffffff;
+  padding: 0.5rem 1rem;
   white-space: nowrap;
+
+  &:hover {
+    background-color: var(--theme-color-3);
+  }
 
   &.active {
     text-decoration: underline;
@@ -89,7 +96,64 @@ $grid-z-index: 1;
     text-align: right;
   }
 
+  .progress[value] {
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* Get rid of default border in Firefox. */
+    border: none;
+
+    /* Set dimensions */
+    width: 10rem;
+    height: 1.25rem;
+
+    /* For Firefox */
+    background-color: var(--theme-color-1);
+    border-radius: 0.625rem;
+
+    &::-webkit-progress-bar {
+      background-color: var(--theme-color-1);
+      border-radius: 0.625rem;
+    }
+
+    &::-webkit-progress-value {
+      background-color: var(--theme-color-4);
+      border-radius: 0.625rem;
+      transition: width 1s ease-in-out 0s;
+    }
+
+    /* For Firefox */
+    &::-moz-progress-bar {
+      background-color: var(--theme-color-4);
+      border-radius: 0.625rem;
+      /* Transition is not working in Firefox */
+    }
+  }
+
+  /* HTML fallback for progress element */
   .progressBar {
     width: 10rem;
+    height: 1.25rem;
+    border: none;
+    border-radius: 0.625rem;
+    background-color: var(--theme-color-1);
+    position: relative;
+    display: block;
+
+    & > span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      background-color: var(--theme-color-4);
+      border-radius: 0.625rem;
+      transition: width 1s ease-in-out 0s;
+    }
+  }
+
+  .visuallyHidden {
+    @include visually-hidden;
   }
 }

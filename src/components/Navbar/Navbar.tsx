@@ -1,4 +1,3 @@
-import ProgressBar from '@ramonak/react-progress-bar';
 import type { IH5PContentType } from 'h5p-types';
 import * as React from 'react';
 import { useState } from 'react';
@@ -262,23 +261,30 @@ export const Navbar: React.FC<NavbarProps> = ({
     <>
       <div
         className={styles.progressPercentage}
-        aria-label={t('progressPercentageLabel')}
+        aria-hidden="true"
       >{`${progressPercentage}%`}</div>
-      <ProgressBar
-        className={styles.progressBar}
-        completed={progressPercentage}
-        baseBgColor="var(--theme-color-1)"
-        bgColor="var(--theme-color-4)"
-        isLabelVisible={false}
-      />
+      <progress
+        className={styles.progress}
+        aria-label={t('progressBarDescriptiveText').replace('@markedNotes', `${progressBarValue}`).replace('@totalNotes', `${totalNotesToComplete}`)}
+        value={progressPercentage}
+        aria-valuemin={0}
+        aria-valuenow={progressPercentage}
+        aria-valuemax={100}
+        max={100}
+      >
+        <div className={styles.progressBar}>
+          <span style={{ width: `${progressPercentage}%` }}>
+            <span className={styles.visuallyHidden}>{progressPercentage}%</span>
+          </span>
+        </div>
+      </progress>
     </>
   );
 
   const sectionsMenu = hasNotes && (
     <>
       <button
-        className={`${styles.sectionTitle} ${
-          currentSection === NavbarSections.Notes && styles.active
+        className={`${styles.sectionTitle} ${currentSection === NavbarSections.Notes && styles.active
         }`}
         type="button"
         onClick={goToNotesPage}
@@ -302,13 +308,9 @@ export const Navbar: React.FC<NavbarProps> = ({
       >
         <div ref={navbarRef}>
           <div className={styles.navbarWrapper}>
-            <button
-              type="button"
-              className={styles.navbarTitle}
-              onClick={goToTopicMap}
-            >
+            <div className={styles.navbarTitle}>
               {navbarTitle}
-            </button>
+            </div>
             <div className={styles.sectionsMenu}>{sectionsMenu}</div>
             <div className={styles.fullscreenButton}>
               <FullscreenButton

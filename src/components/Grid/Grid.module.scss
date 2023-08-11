@@ -31,11 +31,6 @@ $navbar-height: var(--h5p-tm-navbar-height);
 
 .itemWrapper {
   border-radius: 0.25rem;
-  box-shadow: 0 0 0 2px var(--theme-color-4), 0 1px 4px rgba(0, 0, 0, 0.3);
   position: absolute;
   z-index: $item-z-index;
-
-  &:focus-within {
-    box-shadow: 0 0 0 2px #2360c5, 0 0 0 3px rgb(255, 255, 255);
-  }
 }

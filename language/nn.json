@@ -371,8 +371,12 @@
           "default": "Ord"
         },
         {
-          "label": "Tittel på fullskjerm-knapp",
-          "default": "Slå fullskjerm av/på"
+          "label": "Tittel på fullskjerm-knapp - på",
+          "default": "Slå på fullskjerm"
+        },
+        {
+          "label": "Tittel på fullskjerm-knapp - av",
+          "default": "Slå av fullskjerm"
         },
         {
           "label": "Navigasjonslinje",
@@ -440,8 +444,8 @@
           "default": "Avbryt"
         },
         {
-          "label": "Prosent fullført",
-          "default": "Prosent fullført"
+          "label": "Beskrivande tekst for framdriftsindikatoren",
+          "default": "Framdrift i notat: @markedNotes av @totalNotes notat markert som ferdig"
         },
         {
           "label": "Send inn alle data-knapp",

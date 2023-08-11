@@ -371,8 +371,12 @@
           "default": "Palabras"
         },
         {
-          "label": "Etiqueta do botón de pantalla completa",
-          "default": "Alterna o modo de pantalla completa"
+          "label": "Fullscreen button label - enter",
+          "default": "Enter fullscreen mode"
+        },
+        {
+          "label": "Fullscreen button label - exit",
+          "default": "Exit fullscreen mode"
         },
         {
           "label": "Etiqueta da lista de pestanas da barra de navegación",
@@ -440,8 +444,8 @@
           "default": "Cancelar"
         },
         {
-          "label": "Navbar progress percentage label",
-          "default": "Current progress"
+          "label": "Descriptive text for the progress bar",
+          "default": "Note progress: @markedNotes of @totalNotes notes marked as done"
         },
         {
           "label": "Etiqueta para o botón de envío de todos os datos das notas na barra de navegación",

@@ -371,8 +371,12 @@
           "default": "Ord"
         },
         {
-          "label": "Tittel på fullskjerm-knapp",
-          "default": "Slå fullskjerm av/på"
+          "label": "Tittel på fullskjerm-knapp - på",
+          "default": "Slå på fullskjerm"
+        },
+        {
+          "label": "Tittel på fullskjerm-knapp - av",
+          "default": "Slå av fullskjerm"
         },
         {
           "label": "Navigasjonslinje",
@@ -385,7 +389,7 @@
         },
         {
           "label": "Navigasjonslinje-valg: Mine notater",
-          "default": "My notes"
+          "default": "Mine notater"
         },
         {
           "label": "Fanetittel i dialog: Ressurser",
@@ -440,8 +444,8 @@
           "default": "Avbryt"
         },
         {
-          "label": "Prosent fullført",
-          "default": "Prosent fullført"
+          "label": "Beskrivende tekst for fremdriftsindikatoren",
+          "default": "Fremdrift i notater: @markedNotes av @totalNotes notater markert som ferdig"
         },
         {
           "label": "Send inn alle data-knapp",
