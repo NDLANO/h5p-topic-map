@@ -29,10 +29,11 @@ export const DialogNote: React.FC<NoteProps> = ({
     userData[contentId]?.dialogs[id]?.noteDone ?? false,
   );
   const [characterCount, setCharacterCount] = React.useState(0);
-  const [maxLengthExceeded, setMaxLengthExceeded] = React.useState<number | undefined>();
-
-  const [characterCountText, setCharacterCountText] = React.useState('');
-  const [ariaLiveText, setAriaLiveText] = React.useState('');
+  const maxLengthExceeded = maxLength ? characterCount > maxLength : false;
+  const characterCountText =
+    t('noteCharacterCountDescriptiveText')
+      .replace('@count', characterCount.toString())
+      .replace('@max', maxLength?.toString() ?? '');
 
   const { sendXAPIEvent } = useSendXAPIEvent();
 
@@ -85,21 +86,8 @@ export const DialogNote: React.FC<NoteProps> = ({
   };
 
   const countCharacters = React.useCallback((): void => {
-    if (!maxLength) return;
-
     const count = note.valueOf().length;
     setCharacterCount(count);
-    const text = t('noteCharacterCountDescriptiveText').replace('@count', count.toString()).replace('@max', maxLength.toString());
-    setCharacterCountText(text);
-
-    if (count > maxLength) {
-      setMaxLengthExceeded(count);
-      setAriaLiveText(t('dialogNoteLimitExceeded'));
-    }
-    else {
-      setMaxLengthExceeded(undefined);
-      setAriaLiveText('');
-    }
   }, [maxLength, note, savingTextTimeout]);
 
   React.useEffect(() => {
@@ -179,7 +167,9 @@ export const DialogNote: React.FC<NoteProps> = ({
             </div>
           )}
         </div>
-        <div aria-live="polite" className={styles.visuallyHidden}>{ariaLiveText}</div>
+        <div aria-live="polite" className={styles.visuallyHidden}>
+          {maxLengthExceeded ? t('dialogNoteLimitExceeded') : ''}
+        </div>
       </div>
     </form>
   );
