@@ -39,7 +39,7 @@
     "@storybook/addon-essentials": "^7.1.0",
     "@storybook/addon-links": "^7.1.0",
     "@storybook/react": "^7.1.0",
-    "@storybook/react-webpack5": "^7.1.0",
+    "@storybook/react-webpack5": "^7.3.1",
     "@testing-library/react": "^14.0.0",
     "@types/he": "^1.2.0",
     "@types/jest": "^29.5.3",
