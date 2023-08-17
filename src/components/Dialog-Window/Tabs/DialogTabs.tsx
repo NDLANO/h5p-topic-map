@@ -21,6 +21,58 @@ type Translation = {
   text: string;
 };
 
+const getItemInfo = (item: CommonItemType): {
+  hasText: boolean;
+  hasLinks: boolean;
+  hasVideo: boolean;
+  hasAudio: boolean;
+  showNote: boolean;
+  showTabs: boolean;
+} => {
+  const { description, topicImage, dialog } = item;
+
+  const smallScreen = useMedia('(max-width: 768px)');
+  const hasNote = (item.dialog?.hasNote && smallScreen) ?? false;
+  const showNote = hasNote && smallScreen;
+
+  const hasText = (dialog?.text || topicImage || description) ? true : false;
+  const hasLinks =
+    ((dialog?.links &&
+      dialog?.links?.filter((link) => Boolean(link.url)).length > 0) ||
+      dialog?.showAddLinks) ? true : false;
+  const hasVideo = (dialog?.video?.[0]?.path) ? true : false;
+  const hasAudio = (dialog?.audio?.audioFile?.[0]?.path) ? true : false;
+
+  var content = 0;
+  if (hasText) {
+    content++; 
+  }
+  if (hasLinks) {
+    content++; 
+  }
+  if (hasVideo) {
+    content++; 
+  }
+  if (hasAudio) {
+    content++; 
+  }
+  if (showNote) {
+    content++; 
+  }
+
+  // Only show tabs if there is more than one item to choose from
+  const showTabs = content > 1;
+
+  return {
+    hasText,
+    hasLinks,
+    hasVideo,
+    hasAudio,
+    showNote,
+    showTabs,
+  };
+};
+
 const defaultTabValue = (item: CommonItemType) => {
   const { description, topicImage, dialog } = item;
   switch (true) {
@@ -43,37 +95,31 @@ const tabLabelItems = (
   item: CommonItemType,
   translation: Translation,
 ): JSX.Element[] => {
-  const { description, topicImage, dialog } = item;
+  const { hasText, hasLinks, hasVideo, hasAudio } = getItemInfo(item);
   const items = [];
 
-  const showTextTab = dialog?.text || topicImage || description;
-  const showLinksTab =
-    (dialog?.links &&
-      dialog?.links?.filter((link) => Boolean(link.url)).length > 0) ||
-    dialog?.showAddLinks;
-
-  showTextTab
+  hasText
     ? items.push(
       <Trigger key="Text" value="Text" className={styles.trigger}>
         {translation.text}
       </Trigger>,
     )
     : null;
-  showLinksTab
+  hasLinks
     ? items.push(
       <Trigger key="links" className={styles.trigger} value="Resources">
         {translation.links}
       </Trigger>,
     )
     : null;
-  dialog?.video?.[0]?.path
+  hasVideo
     ? items.push(
       <Trigger key="video" className={styles.trigger} value="Video">
         {translation.video}
       </Trigger>,
     )
     : null;
-  dialog?.audio?.audioFile?.[0]?.path
+  hasAudio
     ? items.push(
       <Trigger key="audio" className={styles.trigger} value="Audio">
         {translation.audio}
@@ -83,61 +129,80 @@ const tabLabelItems = (
   return items;
 };
 
-const tabItems = (item: CommonItemType): JSX.Element[] => {
+const dialogContent = (item: CommonItemType): JSX.Element[] => {
   const { id, description, topicImage, topicImageAltText, dialog } = item;
+  const { hasText, hasLinks, hasVideo, hasAudio, showTabs } = getItemInfo(item);
   const items: JSX.Element[] = [];
 
-  const showTextTab = dialog?.text || topicImage || description;
-  const showLinksTab =
-    (dialog?.links &&
-      dialog?.links?.filter((link) => Boolean(link.url)).length > 0) ||
-    dialog?.showAddLinks;
-
-  showTextTab
-    ? items.push(
+  // Dialog text
+  if (hasText) {
+    const dialogText = (
+      <DialogText
+        topicImage={topicImage}
+        topicImageAltText={topicImageAltText}
+        introduction={description}
+        bodyText={dialog?.text}
+      />
+    );
+    items.push(showTabs ? (
       <Content key="text" value="Text">
-        <DialogText
-          topicImage={topicImage}
-          topicImageAltText={topicImageAltText}
-          introduction={description}
-          bodyText={dialog?.text}
-        />
-      </Content>,
-    )
-    : null;
-  showLinksTab
-    ? items.push(
+        {dialogText}
+      </Content>) : (
+      dialogText
+    ));
+  }
+
+  // Dialog links
+  if (hasLinks && dialog) {
+    const dialogLinks = (
+      <DialogResources
+        relevantLinks={dialog.links}
+        showAddLinks={dialog.showAddLinks}
+        id={id}
+      />
+    );
+    items.push(showTabs ? (
       <Content key="links" value="Resources">
-        <DialogResources
-          relevantLinks={dialog.links}
-          showAddLinks={dialog.showAddLinks}
-          id={id}
-        />
-      </Content>,
-    )
-    : null;
-  dialog?.video?.[0]?.path
-    ? items.push(
+        {dialogLinks}
+      </Content>) : (
+      dialogLinks
+    ));
+  }
+
+  // Dialog video
+  if (hasVideo && dialog?.video) {
+    const dialogVideo = (
+      <DialogVideo sources={dialog.video} />
+    );
+    items.push(showTabs ? (
       <Content key="video" value="Video">
-        <DialogVideo sources={dialog.video} />
-      </Content>,
-    )
-    : null;
-  dialog?.audio?.audioFile?.[0]?.path
-    ? items.push(
+        {dialogVideo}
+      </Content>) : (
+      dialogVideo
+    ));
+  }
+
+  // Dialog audio
+  if (hasAudio && dialog?.audio?.audioFile) {
+    const dialogAudio = (
+      <DialogAudio
+        audioTrack={dialog.audio.audioFile[0]}
+        subtext={dialog.audio.subtext}
+      />
+    );
+    items.push(showTabs ? (
       <Content key="audio" value="Audio">
-        <DialogAudio
-          audioTrack={dialog.audio.audioFile[0]}
-          subtext={dialog.audio.subtext}
-        />
-      </Content>,
-    )
-    : null;
+        {dialogAudio}
+      </Content>) : (
+      dialogAudio
+    ));
+  }
   return items;
 };
 
 export const DialogTabs: React.FC<TabProps> = ({ item }) => {
   const { t } = useTranslation();
+  const { showNote, showTabs } = getItemInfo(item);
 
   const translation: Translation = {
     audio: t('copyrightAudio'),
@@ -146,13 +211,13 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
     text: t('dialogTextLabel'),
   };
 
-  const smallScreen = useMedia('(max-width: 768px)');
-
-  const hasNote = item.dialog?.hasNote;
-
-  // Only show tabs if there is more than one item to choose from
-  const tabItemslength = tabItems(item).length;
-  const showTabs = tabItemslength + (hasNote && smallScreen ? 1 : 0) > 1;
+  const dialogNote = (
+    <DialogNote
+      maxLength={item.dialog?.maxWordCount ?? 160}
+      id={item.id}
+      smallScreen
+    />
+  );
 
   return (
     <Root
@@ -160,32 +225,30 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
       defaultValue={defaultTabValue(item)}
       orientation="vertical"
     >
-      <List
-        className={showTabs ? styles.list : ''}
-        aria-label={t('dialogTabListAriaLabel')}
-      >
-        {showTabs && tabLabelItems(item, translation)}
-        {smallScreen && hasNote ? (
-          <Trigger key="notes" className={styles.trigger} value="notes">
-            {t('dialogNoteLabel')}
-          </Trigger>
-        ) : null}
-      </List>
+      {showTabs ? (
+        <List
+          className={showTabs ? styles.list : ''}
+          aria-label={t('dialogTabListAriaLabel')}
+        >
+          {showTabs && tabLabelItems(item, translation)}
+          {showNote ? (
+            <Trigger key="notes" className={styles.trigger} value="notes">
+              {t('dialogNoteLabel')}
+            </Trigger>
+          ) : null}
+        </List>
+      ) : null}
       <div
-        className={`${styles.tabItemWrapper} ${
-          !showTabs ? styles.marginTop : ''
+        className={`${styles.tabItemWrapper} ${!showTabs ? styles.marginTop : ''
         }`}
       >
-        {tabItems(item)}
-        {smallScreen && hasNote ? (
+        {dialogContent(item)}
+        {showNote ? (showTabs ? (
           <Content key="notes" value="notes" className={styles.noteWrapper}>
-            <DialogNote
-              maxLength={item.dialog?.maxWordCount ?? 160}
-              id={item.id}
-              smallScreen
-            />
-          </Content>
-        ) : null}
+            {dialogNote}
+          </Content>) : (
+          dialogNote
+        )) : null}
       </div>
     </Root>
   );
