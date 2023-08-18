@@ -223,7 +223,7 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
     <Root
       className={styles.tabs}
       defaultValue={defaultTabValue(item)}
-      orientation="vertical"
+      orientation="horizontal"
     >
       {showTabs ? (
         <List
