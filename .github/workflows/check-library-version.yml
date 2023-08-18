@@ -1,12 +1,17 @@
 name: Check H5P library version
 
 on:
-  pull_request_target:
+  pull_request:
     types:
       - opened # PR opens
       - labeled # PR is labeled
       - unlabeled # A label is removed from PR
       - synchronize # A commit is added - i.e. the PR's code is changed
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
 
 jobs:
   check-h5p-library-version:
@@ -16,4 +21,4 @@ jobs:
 
     steps:
       - name: Check library version
-        uses: boyum/comment-h5p-library-version-action@v2.3 # https://github.com/boyum/comment-h5p-library-version-action
+        uses: boyum/comment-h5p-library-version-action@v2.2 # https://github.com/boyum/comment-h5p-library-version-action
