@@ -21,50 +21,11 @@ type Translation = {
   text: string;
 };
 
-const useItemInfo = (item: CommonItemType): {
+type DialogContentInfo = {
   hasText: boolean;
   hasLinks: boolean;
   hasVideo: boolean;
   hasAudio: boolean;
-  showNote: boolean;
-  showTabs: boolean;
-} => {
-  const { description, topicImage, dialog } = item;
-
-  if (!dialog) {
-    return {
-      hasText: false,
-      hasLinks: false,
-      hasVideo: false,
-      hasAudio: false,
-      showNote: false,
-      showTabs: false,
-    };
-  }
-
-  const smallScreen = useMedia('(max-width: 768px)');
-  const showNote = dialog.hasNote && smallScreen;
-
-  const hasText = !!(dialog.text || topicImage || description);
-  const hasLinks =
-    !!((dialog.links &&
-      dialog.links?.filter((link) => Boolean(link.url)).length > 0) ||
-      dialog.showAddLinks);
-  const hasVideo = !!(dialog.video?.[0]?.path);
-  const hasAudio = !!(dialog.audio?.audioFile?.[0]?.path);
-
-  // Only show tabs if there is more than one item to choose from
-  const numberOfContentItems = [hasText, hasLinks, hasVideo, hasAudio, showNote].filter(Boolean).length;
-  const showTabs = numberOfContentItems > 1;
-
-  return {
-    hasText,
-    hasLinks,
-    hasVideo,
-    hasAudio,
-    showNote,
-    showTabs,
-  };
 };
 
 const defaultTabValue = (item: CommonItemType) => {
@@ -86,10 +47,10 @@ const defaultTabValue = (item: CommonItemType) => {
 };
 
 const tabLabelItems = (
-  item: CommonItemType,
+  dialogContentInfo: DialogContentInfo,
   translation: Translation,
 ): JSX.Element[] => {
-  const { hasText, hasLinks, hasVideo, hasAudio } = useItemInfo(item);
+  const { hasText, hasLinks, hasVideo, hasAudio } = dialogContentInfo;
   const items = [];
 
   hasText
@@ -123,9 +84,13 @@ const tabLabelItems = (
   return items;
 };
 
-const dialogContent = (item: CommonItemType): JSX.Element[] => {
+const dialogContent = (
+  dialogContentInfo: DialogContentInfo,
+  item: CommonItemType,
+  showTabs: boolean
+): JSX.Element[] => {
   const { id, description, topicImage, topicImageAltText, dialog } = item;
-  const { hasText, hasLinks, hasVideo, hasAudio, showTabs } = useItemInfo(item);
+  const { hasText, hasLinks, hasVideo, hasAudio } = dialogContentInfo;
   const items: JSX.Element[] = [];
 
   // Dialog text
@@ -195,8 +160,9 @@ const dialogContent = (item: CommonItemType): JSX.Element[] => {
 };
 
 export const DialogTabs: React.FC<TabProps> = ({ item }) => {
+  const { description, dialog, topicImage } = item;
+  const smallScreen = useMedia('(max-width: 768px)');
   const { t } = useTranslation();
-  const { showNote, showTabs } = useItemInfo(item);
 
   const translation: Translation = {
     audio: t('copyrightAudio'),
@@ -204,6 +170,28 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
     links: t('dialogResourcesLabel'),
     text: t('dialogTextLabel'),
   };
+
+  const showNote = dialog?.hasNote && smallScreen;
+
+  const dialogContentInfo: DialogContentInfo = {
+    hasText: !!(dialog?.text || topicImage || description),
+    hasLinks:
+      !!((dialog?.links &&
+        dialog.links?.filter((link) => Boolean(link.url)).length > 0) ||
+        dialog?.showAddLinks),
+    hasVideo: !!(dialog?.video?.[0]?.path),
+    hasAudio: !!(dialog?.audio?.audioFile?.[0]?.path),
+  };
+
+  // Only show tabs if there is more than one item to choose from
+  const numberOfContentItems = [
+    dialogContentInfo.hasText,
+    dialogContentInfo.hasLinks,
+    dialogContentInfo.hasVideo,
+    dialogContentInfo.hasAudio,
+    showNote
+  ].filter(Boolean).length;
+  const showTabs = numberOfContentItems > 1;
 
   const dialogNote = (
     <DialogNote
@@ -221,10 +209,10 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
     >
       {showTabs && (
         <List
-          className={showTabs ? styles.list : ''}
+          className={styles.list}
           aria-label={t('dialogTabListAriaLabel')}
         >
-          {showTabs && tabLabelItems(item, translation)}
+          {tabLabelItems(dialogContentInfo, translation)}
           {showNote ? (
             <Trigger key="notes" className={styles.trigger} value="notes">
               {t('dialogNoteLabel')}
@@ -236,7 +224,7 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
         className={`${styles.tabItemWrapper} ${!showTabs ? styles.marginTop : ''
         }`}
       >
-        {dialogContent(item)}
+        {dialogContent(dialogContentInfo, item, showTabs)}
         {showNote && (showTabs ? (
           <Content key="notes" value="notes" className={styles.noteWrapper}>
             {dialogNote}
