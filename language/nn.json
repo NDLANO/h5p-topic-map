@@ -343,8 +343,8 @@
           "default": "Lagret"
         },
         {
-          "label": "Tekst som vises når maks antall tegn er overskredet",
-          "default": "Tegngrensen er overskredet"
+          "label": "Tekst som blir vist når talet på teikn er overskride",
+          "default": "Teikngrensa er overskriden"
         },
         {
           "label": "Forslagstekst i notatfelt",
