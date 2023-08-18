@@ -31,37 +31,31 @@ const useItemInfo = (item: CommonItemType): {
 } => {
   const { description, topicImage, dialog } = item;
 
+  if (!dialog) {
+    return {
+      hasText: false,
+      hasLinks: false,
+      hasVideo: false,
+      hasAudio: false,
+      showNote: false,
+      showTabs: false,
+    };
+  }
+
   const smallScreen = useMedia('(max-width: 768px)');
-  const hasNote = (item.dialog?.hasNote && smallScreen) ?? false;
-  const showNote = hasNote && smallScreen;
+  const showNote = dialog.hasNote && smallScreen;
 
-  const hasText = !!(dialog?.text || topicImage || description);
+  const hasText = !!(dialog.text || topicImage || description);
   const hasLinks =
-    !!((dialog?.links &&
-      dialog?.links?.filter((link) => Boolean(link.url)).length > 0) ||
-      dialog?.showAddLinks);
-  const hasVideo = !!(dialog?.video?.[0]?.path);
-  const hasAudio = !!(dialog?.audio?.audioFile?.[0]?.path);
-
-  let content = 0;
-  if (hasText) {
-    content++;
-  }
-  if (hasLinks) {
-    content++;
-  }
-  if (hasVideo) {
-    content++;
-  }
-  if (hasAudio) {
-    content++;
-  }
-  if (showNote) {
-    content++;
-  }
+    !!((dialog.links &&
+      dialog.links?.filter((link) => Boolean(link.url)).length > 0) ||
+      dialog.showAddLinks);
+  const hasVideo = !!(dialog.video?.[0]?.path);
+  const hasAudio = !!(dialog.audio?.audioFile?.[0]?.path);
 
   // Only show tabs if there is more than one item to choose from
-  const showTabs = content > 1;
+  const numberOfContentItems = [hasText, hasLinks, hasVideo, hasAudio, showNote].filter(Boolean).length;
+  const showTabs = numberOfContentItems > 1;
 
   return {
     hasText,
@@ -225,7 +219,7 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
       defaultValue={defaultTabValue(item)}
       orientation="horizontal"
     >
-      {showTabs ? (
+      {showTabs && (
         <List
           className={showTabs ? styles.list : ''}
           aria-label={t('dialogTabListAriaLabel')}
@@ -237,18 +231,18 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
             </Trigger>
           ) : null}
         </List>
-      ) : null}
+      )}
       <div
         className={`${styles.tabItemWrapper} ${!showTabs ? styles.marginTop : ''
         }`}
       >
         {dialogContent(item)}
-        {showNote ? (showTabs ? (
+        {showNote && (showTabs ? (
           <Content key="notes" value="notes" className={styles.noteWrapper}>
             {dialogNote}
           </Content>) : (
           dialogNote
-        )) : null}
+        ))}
       </div>
     </Root>
   );
