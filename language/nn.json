@@ -45,8 +45,8 @@
                     "label": "Vis notatfelt"
                   },
                   {
-                    "label": "Maks antall tegn",
-                    "description": "Spesifiserer maks antall tegn for notatet."
+                    "label": "Maksimalt tal på skrivne teikn",
+                    "description": "Spesifiserer maksimalt tal på skrivne teikn for notatet."
                   },
                   {
                     "label": "Tekst"
@@ -195,8 +195,8 @@
                     "label": "Vis notatfelt"
                   },
                   {
-                    "label": "Maks antall tegn",
-                    "description": "Spesifiserer maks antall tegn for notatet."
+                    "label": "Maksimalt tal på skrivne teikn",
+                    "description": "Spesifiserer maksimalt tal på skrivne teikn for notatet."
                   },
                   {
                     "label": "Tekst"
