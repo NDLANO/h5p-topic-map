@@ -21,7 +21,7 @@ type Translation = {
   text: string;
 };
 
-const getItemInfo = (item: CommonItemType): {
+const useItemInfo = (item: CommonItemType): {
   hasText: boolean;
   hasLinks: boolean;
   hasVideo: boolean;
@@ -35,29 +35,29 @@ const getItemInfo = (item: CommonItemType): {
   const hasNote = (item.dialog?.hasNote && smallScreen) ?? false;
   const showNote = hasNote && smallScreen;
 
-  const hasText = (dialog?.text || topicImage || description) ? true : false;
+  const hasText = !!(dialog?.text || topicImage || description);
   const hasLinks =
-    ((dialog?.links &&
+    !!((dialog?.links &&
       dialog?.links?.filter((link) => Boolean(link.url)).length > 0) ||
-      dialog?.showAddLinks) ? true : false;
-  const hasVideo = (dialog?.video?.[0]?.path) ? true : false;
-  const hasAudio = (dialog?.audio?.audioFile?.[0]?.path) ? true : false;
+      dialog?.showAddLinks);
+  const hasVideo = !!(dialog?.video?.[0]?.path);
+  const hasAudio = !!(dialog?.audio?.audioFile?.[0]?.path);
 
-  var content = 0;
+  let content = 0;
   if (hasText) {
-    content++; 
+    content++;
   }
   if (hasLinks) {
-    content++; 
+    content++;
   }
   if (hasVideo) {
-    content++; 
+    content++;
   }
   if (hasAudio) {
-    content++; 
+    content++;
   }
   if (showNote) {
-    content++; 
+    content++;
   }
 
   // Only show tabs if there is more than one item to choose from
@@ -95,7 +95,7 @@ const tabLabelItems = (
   item: CommonItemType,
   translation: Translation,
 ): JSX.Element[] => {
-  const { hasText, hasLinks, hasVideo, hasAudio } = getItemInfo(item);
+  const { hasText, hasLinks, hasVideo, hasAudio } = useItemInfo(item);
   const items = [];
 
   hasText
@@ -131,7 +131,7 @@ const tabLabelItems = (
 
 const dialogContent = (item: CommonItemType): JSX.Element[] => {
   const { id, description, topicImage, topicImageAltText, dialog } = item;
-  const { hasText, hasLinks, hasVideo, hasAudio, showTabs } = getItemInfo(item);
+  const { hasText, hasLinks, hasVideo, hasAudio, showTabs } = useItemInfo(item);
   const items: JSX.Element[] = [];
 
   // Dialog text
@@ -202,7 +202,7 @@ const dialogContent = (item: CommonItemType): JSX.Element[] => {
 
 export const DialogTabs: React.FC<TabProps> = ({ item }) => {
   const { t } = useTranslation();
-  const { showNote, showTabs } = getItemInfo(item);
+  const { showNote, showTabs } = useItemInfo(item);
 
   const translation: Translation = {
     audio: t('copyrightAudio'),
