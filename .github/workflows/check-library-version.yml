@@ -1,7 +1,7 @@
 name: Check H5P library version
 
 on:
-  pull_request:
+  pull_request_target:
     types:
       - opened # PR opens
       - labeled # PR is labeled
