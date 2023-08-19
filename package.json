@@ -37,7 +37,7 @@
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
     "@storybook/addon-essentials": "^7.1.0",
-    "@storybook/addon-links": "^7.1.0",
+    "@storybook/addon-links": "^7.3.2",
     "@storybook/react": "^7.1.0",
     "@storybook/react-webpack5": "^7.1.0",
     "@testing-library/react": "^14.0.0",
