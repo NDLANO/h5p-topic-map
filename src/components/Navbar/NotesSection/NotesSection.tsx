@@ -3,6 +3,7 @@ import * as React from 'react';
 import { H5PIntegration } from '../../../h5p/H5P.util';
 import { useSizeClassNames } from '../../../hooks/useSizeClassNames';
 import { useTranslation } from '../../../hooks/useTranslation';
+import { ConfirmWindow } from '../../ConfirmWindow/ConfirmWindow';
 import styles from './NotesSection.module.scss';
 
 export type NotesSectionProps = {
@@ -10,6 +11,12 @@ export type NotesSectionProps = {
   setSubmitAllConfirmationVisibility: (isVisible: boolean) => void;
   handlePrint: () => void;
   goToTopicMap: () => void;
+  isSubmitAllConfirmationVisible: boolean;
+  isDeleteConfirmationVisible: boolean;
+  confirmSubmitAll: () => void;
+  confirmDeletion: () => void;
+  denySubmitAll: () => void;
+  denyDeletion: () => void;
 };
 
 export const NotesSection: React.FC<NotesSectionProps> = ({
@@ -17,6 +24,12 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
   setSubmitAllConfirmationVisibility,
   handlePrint,
   goToTopicMap,
+  isSubmitAllConfirmationVisible,
+  isDeleteConfirmationVisible,
+  confirmSubmitAll,
+  confirmDeletion,
+  denySubmitAll,
+  denyDeletion,
 }) => {
   const { t } = useTranslation();
 
@@ -54,23 +67,43 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
               {printText}
             </button>
             {H5PIntegration.reportingIsEnabled ? (
-              <button
-                className={styles.mainBodyButton}
-                type="button"
-                aria-label={exportAllUserDataText}
-                onClick={() => setSubmitAllConfirmationVisibility(true)}
-              >
-                {exportAllUserDataText}
-              </button>
+              <ConfirmWindow
+                title={t('submitDataConfirmationWindowLabel')}
+                open={isSubmitAllConfirmationVisible}
+                onOpenChange={(isOpen) => {
+                  if (!isOpen) denySubmitAll();
+                }}
+                confirmWindow={{
+                  confirmAction: confirmSubmitAll,
+                  denyAction: denySubmitAll,
+                  confirmText: t('submitDataConfirmLabel'),
+                  denyText: t('submitDataDenyLabel'),
+                }}
+                button={{
+                  className: styles.mainBodyButton,
+                  label: exportAllUserDataText,
+                  onClick: () => setSubmitAllConfirmationVisibility(true),
+                }}
+              />
             ) : null}
-            <button
-              className={styles.mainBodyButton}
-              type="button"
-              aria-label={deleteText}
-              onClick={() => setDeleteConfirmationVisibility(true)}
-            >
-              {deleteText}
-            </button>
+            <ConfirmWindow
+              title={t('deleteNotesConfirmationWindowLabel')}
+              open={isDeleteConfirmationVisible}
+              onOpenChange={(isOpen) => {
+                if (!isOpen) denyDeletion();
+              }}
+              confirmWindow={{
+                confirmAction: confirmDeletion,
+                denyAction: denyDeletion,
+                confirmText: t('deleteNotesConfirmLabel'),
+                denyText: t('deleteNotesDenyLabel'),
+              }}
+              button={{
+                className: styles.mainBodyButton,
+                label: deleteText,
+                onClick: () => setDeleteConfirmationVisibility(true),
+              }}
+            />
           </div>
         </div>
       </div>

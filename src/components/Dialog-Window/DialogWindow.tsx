@@ -1,7 +1,7 @@
-import { Close, Content, Overlay, Root, Title } from '@radix-ui/react-dialog';
+import { Close, Content, Overlay, Title } from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { useMedia } from 'react-use';
 import { useTranslation } from '../../hooks/useTranslation';
 import { CommonItemType } from '../../types/CommonItemType';
@@ -11,58 +11,15 @@ import { DialogTabs } from './Tabs/DialogTabs';
 
 export type DialogWindowProps = {
   item: CommonItemType;
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  confirmWindow?: {
-    confirmAction: () => void;
-    denyAction: () => void;
-    confirmText: string;
-    denyText: string;
-  };
-} & { children?: ReactNode };
+};
 
 export const DialogWindow: FC<DialogWindowProps> = ({
   item,
-  open,
-  onOpenChange,
-  confirmWindow,
-  children,
 }) => {
   const { t } = useTranslation();
   const smallScreen = useMedia('(max-width: 768px)');
 
   const ariaLabel = t('closeDialog');
-
-  if (confirmWindow) {
-    return (
-      <Root open={open} onOpenChange={onOpenChange}>
-        <Overlay className={styles.overlay} />
-        <Content className={styles.confirmWindowContent}>
-          <Title className={styles.dialogTitle}>{item.label}</Title>
-          {children}
-          <div className={styles.confirmationButtons}>
-            <button
-              type="button"
-              className={styles.confirmButton}
-              onClick={confirmWindow.confirmAction}
-            >
-              {confirmWindow.confirmText}
-            </button>
-            <button
-              type="button"
-              className={styles.denyButton}
-              onClick={confirmWindow.denyAction}
-            >
-              {confirmWindow.denyText}
-            </button>
-          </div>
-          <Close className={styles.closeButton} aria-label={ariaLabel}>
-            <Cross2Icon />
-          </Close>
-        </Content>
-      </Root>
-    );
-  }
 
   if (!item.dialog) {
     return null;
@@ -140,9 +97,9 @@ export const DialogWindow: FC<DialogWindowProps> = ({
   }
 
   return (
-    <Root open={open} onOpenChange={onOpenChange}>
+    <>
       <Overlay className={styles.overlay} />
       {content}
-    </Root>
+    </>
   );
 };

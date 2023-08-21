@@ -3,15 +3,12 @@ import { getByText, render } from '@testing-library/react';
 import { DialogWindow } from './DialogWindow';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
 
-// eslint-disable-next-line no-console
-const onOpenChange = console.info;
-
 Object.defineProperty(window, 'matchMedia', {
   value: () => {
     return {
       matches: false,
-      addListener: () => {},
-      removeListener: () => {},
+      addListener: () => { },
+      removeListener: () => { },
     };
   },
 });
@@ -38,7 +35,7 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <DialogWindow item={item} open={false} onOpenChange={onOpenChange} />,
+      <DialogWindow item={item} />,
     ).container;
 
     setTimeout(() => {
@@ -68,7 +65,7 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <DialogWindow item={item} open={false} onOpenChange={onOpenChange} />,
+      <DialogWindow item={item} />,
     ).container;
 
     setTimeout(() => {
