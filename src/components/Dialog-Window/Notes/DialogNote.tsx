@@ -33,7 +33,7 @@ export const DialogNote: React.FC<NoteProps> = ({
   const characterCountText =
     t('noteCharacterCountDescriptiveText')
       .replace('@count', characterCount.toString())
-      .replace('@max', maxLength?.toString() ?? '');
+      .replace('@max', maxLength!.toString()); // We only show this text when `maxLength` is set.
 
   const { sendXAPIEvent } = useSendXAPIEvent();
 
