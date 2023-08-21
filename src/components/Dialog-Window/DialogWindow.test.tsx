@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getByText, render } from '@testing-library/react';
 import { DialogWindow } from './DialogWindow';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
+import { Root } from '@radix-ui/react-dialog';
 
 Object.defineProperty(window, 'matchMedia', {
   value: () => {
@@ -35,7 +36,9 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <DialogWindow item={item} />,
+      <Root open={true}>
+        <DialogWindow item={item} />
+      </Root>,
     ).container;
 
     setTimeout(() => {
@@ -65,7 +68,9 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <DialogWindow item={item} />,
+      <Root open={true}>
+        <DialogWindow item={item} />
+      </Root>,
     ).container;
 
     setTimeout(() => {
