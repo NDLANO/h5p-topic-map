@@ -45,8 +45,8 @@
                     "label": "Show notes textarea"
                   },
                   {
-                    "label": "Maximum number of words",
-                    "description": "Specifies the maximum number of words for the note. Default is 160 words."
+                    "label": "Maximum number of characters",
+                    "description": "Specifies the maximum number of characters for the note."
                   },
                   {
                     "label": "Text"
@@ -195,8 +195,8 @@
                     "label": "Show notes textarea"
                   },
                   {
-                    "label": "Maximum number of words",
-                    "description": "Specifies the maximum number of words for the note. Default is 160 words."
+                    "label": "Maximum number of characters",
+                    "description": "Specifies the maximum number of characters for the note"
                   },
                   {
                     "label": "Text"
@@ -343,8 +343,8 @@
           "default": "Saved"
         },
         {
-          "label": "Word limit exceeded label",
-          "default": "Too many words"
+          "label": "Character limit exceeded label",
+          "default": "Character limit exceeded"
         },
         {
           "label": "Note placeholder",
@@ -365,10 +365,6 @@
         {
           "label": "Dialog resources labels: Add",
           "default": "Add"
-        },
-        {
-          "label": "Dialog words text label",
-          "default": "Words"
         },
         {
           "label": "Fullscreen button label - enter",
@@ -486,6 +482,14 @@
         {
           "label": "Descriptive text for note status default",
           "default": "Note empty"
+        },
+        {
+          "label": "Descriptive text for note textarea",
+          "default": "Textarea with @max character limit."
+        },
+        {
+          "label": "Descriptive text for note character count",
+          "default": "@count of @max characters"
         }
       ]
     }

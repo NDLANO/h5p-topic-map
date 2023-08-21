@@ -45,8 +45,8 @@
                     "label": "Mostrar área de texto de notas"
                   },
                   {
-                    "label": "Número máximo de palabras",
-                    "description": "Especifica el número máximo de palabras para la nota. El valor predeterminado es de 160 palabras."
+                    "label": "Número máximo de caracteres",
+                    "description": "Especifica el número máximo de caracteres para la nota."
                   },
                   {
                     "label": "Texto"
@@ -195,8 +195,8 @@
                     "label": "Mostrar área de texto de notas"
                   },
                   {
-                    "label": "Número máximo de palabras",
-                    "description": "Especifica el número máximo de palabras para la nota. El valor predeterminado es de 160 palabras."
+                    "label": "Número máximo de caracteres",
+                    "description": "Especifica el número máximo de caracteres para la nota."
                   },
                   {
                     "label": "Texto"
@@ -343,8 +343,8 @@
           "default": "Guardada"
         },
         {
-          "label": "Etiqueta de límite de palabras excedido",
-          "default": "Demasiadas palabras"
+          "label": "Etiqueta de límite de caracteres excedido",
+          "default": "Límite de caracteres excedido"
         },
         {
           "label": "Marcador de posición de nota",
@@ -365,10 +365,6 @@
         {
           "label": "Etiquetas de recursos de diálogo: Agregar",
           "default": "Agregar"
-        },
-        {
-          "label": "Etiqueta de texto de palabras de diálogo",
-          "default": "Palabras"
         },
         {
           "label": "Etiqueta de botón de pantalla completa - ingresar",
@@ -486,6 +482,14 @@
         {
           "label": "Descriptive text for note status default",
           "default": "Note empty"
+        },
+        {
+          "label": "Descriptive text for note textarea",
+          "default": "Textarea with @max character limit."
+        },
+        {
+          "label": "Descriptive text for note character count",
+          "default": "@count of @max characters"
         }
       ]
     }

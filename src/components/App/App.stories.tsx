@@ -23,13 +23,12 @@ DenFranskeRevolusjon.args = {
       copyrightVideo: 'Video',
       dialogNoteSaving: 'Saving…',
       dialogNoteSaved: 'Saved',
-      dialogNoteLimitExceeded: 'Too many words',
+      dialogNoteLimitExceeded: 'Character limit exceeded',
       dialogNotePlaceholder: 'Write your notes here…',
       dialogNoteMarkAsDone: 'Mark as done',
       dialogResourcesRelevantLinks: 'Relevant links',
       dialogResourcesCustomLinks: 'Your links',
       dialogResourcesAdd: 'Add',
-      dialogWordsLabel: 'Words',
       fullscreenButtonLabelEnter: 'Enter fullscreen mode',
       fullscreenButtonLabelExit: 'Exit fullscreen mode',
       navbarTabsListAriaLabel: 'Navigation bar',
@@ -59,6 +58,8 @@ DenFranskeRevolusjon.args = {
       noteStatusDoneDescriptiveText: 'Note: done',
       noteStatusStartedDescriptiveText: 'Note: started',
       noteStatusDefaultDescriptiveText: 'Note: empty',
+      noteTextareaDescriptiveText: 'Textarea with @max character limit.',
+      noteCharacterCountDescriptiveText: '@count of @max characters.',
     },
     topicMap: {
       grid: {
@@ -200,7 +201,7 @@ DenFranskeRevolusjon.args = {
             'Den franske revolusjon var en periode med store sosiale og politiske omveltningene i Frankrike i perioden 1789–1799. Året 1789 markerer det første viktige vendepunktet under revolusjonen. 14. juli dette året brøt det ut masseopprør i Paris og fengselet Bastillen ble stormet. (Store norske leksikon)',
           dialog: {
             hasNote: true,
-            maxWordCount: 300,
+            maxLength: 300,
             audio: {
               audioFile: [
                 { path: 'https://bigsoundbank.com/UPLOAD/mp3/0001.mp3' },
@@ -304,7 +305,7 @@ DenFranskeRevolusjon.args = {
           description: '',
           dialog: {
             hasNote: true,
-            maxWordCount: 260,
+            maxLength: 260,
             audio: {},
             showAddLinks: false,
           },
@@ -386,7 +387,7 @@ DenFranskeRevolusjon.args = {
           endPosition: { x: 36.29032258064516, y: 7.894736842105263 },
           dialog: {
             hasNote: true,
-            maxWordCount: 300,
+            maxLength: 300,
             showAddLinks: false,
             text: '',
           },
@@ -500,7 +501,7 @@ DenFranskeRevolusjon.args = {
           endPosition: { x: 72.58064516129032, y: 65.78947368421053 },
           dialog: {
             hasNote: true,
-            maxWordCount: 300,
+            maxLength: 300,
             showAddLinks: false,
           },
           breakpoints: [],
