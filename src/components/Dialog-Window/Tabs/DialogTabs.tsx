@@ -195,7 +195,7 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
 
   const dialogNote = (
     <DialogNote
-      maxLength={item.dialog?.maxWordCount ?? 160}
+      maxLength={item.dialog?.maxLength}
       id={item.id}
       smallScreen
     />

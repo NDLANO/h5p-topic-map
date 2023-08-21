@@ -66,8 +66,7 @@ export const App: React.FC<AppProps> = ({
     >
       <AppWidthContext.Provider value={width}>
         <div
-          className={`${themeClassName} ${
-            isIPhoneFullscreenActive && styles.iPhoneFullscreenThemeStyle
+          className={`${themeClassName} ${isIPhoneFullscreenActive && styles.iPhoneFullscreenThemeStyle
           }`}
         >
           <FullScreen

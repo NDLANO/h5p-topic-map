@@ -49,7 +49,7 @@ $note-btn-padding: 0.75rem;
         padding: 1em 1.25em;
 
         &.withNote:not(.noImage) {
-          padding: calc(1em + $note-btn-padding) 1.25em 1em;
+          padding: calc(1em + $note-btn-padding) 1.75em 1em;
         }
       }
     }
@@ -61,7 +61,7 @@ $note-btn-padding: 0.75rem;
         padding: 0.75em 1em;
 
         &.withNote:not(.noImage) {
-          padding: calc(0.75em + $note-btn-padding) 1em 0.75em;
+          padding: calc(0.75em + $note-btn-padding) 1.5em 0.75em;
         }
       }
     }
@@ -74,8 +74,15 @@ $note-btn-padding: 0.75rem;
         padding: 0.75em;
 
         &.withNote:not(.noImage) {
-          padding: calc(0.75em + $note-btn-padding) 0.75em 0.75em;
+          padding: calc(0.75em + $note-btn-padding) 1.25em 0.75em;
         }
+      }
+    }
+
+    &.xSmall,
+    &.xxSmall {
+      .description {
+        @include visually-hidden;
       }
     }
 
@@ -136,7 +143,7 @@ $note-btn-padding: 0.75rem;
 }
 
 .description {
-  font-size: 0.625em;
+  font-size: 0.813em;
   margin-top: 0.5em;
   overflow: hidden;
   text-overflow: ellipsis;

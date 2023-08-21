@@ -17,7 +17,6 @@ export type TranslationKey =
   | 'dialogResourcesRelevantLinks'
   | 'dialogResourcesCustomLinks'
   | 'dialogResourcesAdd'
-  | 'dialogWordsLabel'
   | 'fullscreenButtonLabelEnter'
   | 'fullscreenButtonLabelExit'
   | 'navbarTabsListAriaLabel'
@@ -46,4 +45,6 @@ export type TranslationKey =
   | 'biDirectionalArrowDescriptiveText'
   | 'noteStatusDoneDescriptiveText'
   | 'noteStatusStartedDescriptiveText'
-  | 'noteStatusDefaultDescriptiveText';
+  | 'noteStatusDefaultDescriptiveText'
+  | 'noteTextareaDescriptiveText'
+  | 'noteCharacterCountDescriptiveText';
