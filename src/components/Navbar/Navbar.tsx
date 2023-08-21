@@ -45,10 +45,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const [sectionMaxHeight, setSectionMaxHeight] = useState(0);
   const [notesListMaxHeight, setNotesListMaxHeight] = useState(0);
-  const [isDeleteConfirmationVisible, setIsDeleteConfirmationVisible] =
-    useState(false);
-  const [isSubmitAllConfirmationVisible, setIsSubmitAllConfirmationVisible] =
-    useState(false);
 
   const sizeClassNames = useSizeClassNames(styles);
 
@@ -162,16 +158,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       }
     });
     setUserData(userData);
-    setIsDeleteConfirmationVisible(false);
-  };
-
-  const confirmDeletion = (): void => {
-    deleteAllNotes();
-    setIsDeleteConfirmationVisible(false);
-  };
-
-  const denyDeletion = (): void => {
-    setIsDeleteConfirmationVisible(false);
   };
 
   const submitAllNotes = (): void => {
@@ -180,16 +166,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
 
     exportAllUserData(contentId, h5pInstance);
-    setIsSubmitAllConfirmationVisible(false);
-  };
-
-  const confirmSubmitAll = (): void => {
-    submitAllNotes();
-    setIsSubmitAllConfirmationVisible(false);
-  };
-
-  const denySubmitAll = (): void => {
-    setIsSubmitAllConfirmationVisible(false);
   };
 
   const goToTopicMap = (): void => setCurrentSection(NavbarSections.TopicMap);
@@ -199,16 +175,10 @@ export const Navbar: React.FC<NavbarProps> = ({
     <>
       <div ref={notesSectionRef}>
         <NotesSection
-          setSubmitAllConfirmationVisibility={setIsSubmitAllConfirmationVisible}
-          setDeleteConfirmationVisibility={setIsDeleteConfirmationVisible}
           handlePrint={handlePrint}
           goToTopicMap={goToTopicMap}
-          isSubmitAllConfirmationVisible={isSubmitAllConfirmationVisible}
-          isDeleteConfirmationVisible={isDeleteConfirmationVisible}
-          confirmSubmitAll={confirmSubmitAll}
-          confirmDeletion={confirmDeletion}
-          denySubmitAll={denySubmitAll}
-          denyDeletion={denyDeletion}
+          confirmSubmitAll={submitAllNotes}
+          confirmDeletion={deleteAllNotes}
         />
       </div>
       <div

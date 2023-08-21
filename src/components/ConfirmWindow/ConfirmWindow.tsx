@@ -7,16 +7,12 @@ import styles from './ConfirmWindow.module.scss';
 
 export type ConfirmWindowProps = {
   title: string;
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
   confirmWindow: {
     confirmAction: () => void;
-    denyAction: () => void;
     confirmText: string;
     denyText: string;
   };
   button: {
-    onClick: () => void;
     className: string;
     label: string;
   };
@@ -24,8 +20,6 @@ export type ConfirmWindowProps = {
 
 export const ConfirmWindow: FC<ConfirmWindowProps> = ({
   title,
-  open,
-  onOpenChange,
   confirmWindow,
   button,
   children,
@@ -33,11 +27,18 @@ export const ConfirmWindow: FC<ConfirmWindowProps> = ({
   const { t } = useTranslation();
   const ariaLabel = t('closeDialog');
 
+  const [windowOpen, setWindowOpen] = React.useState(false);
+
+  const handleConfirm = () => {
+    confirmWindow.confirmAction();
+    setWindowOpen(false);
+  };
+
   return (
-    <Root open={open} onOpenChange={onOpenChange}>
+    <Root open={windowOpen} onOpenChange={setWindowOpen}>
       <Overlay className={styles.overlay} />
       <Trigger asChild>
-        <button type="button" className={button.className} onClick={button.onClick}>
+        <button type="button" className={button.className} onClick={() => setWindowOpen(true)}>
           {button.label}
         </button>
       </Trigger>
@@ -48,14 +49,14 @@ export const ConfirmWindow: FC<ConfirmWindowProps> = ({
           <button
             type="button"
             className={styles.confirmButton}
-            onClick={confirmWindow.confirmAction}
+            onClick={handleConfirm}
           >
             {confirmWindow.confirmText}
           </button>
           <button
             type="button"
             className={styles.denyButton}
-            onClick={confirmWindow.denyAction}
+            onClick={() => setWindowOpen(false)}
           >
             {confirmWindow.denyText}
           </button>
