@@ -178,7 +178,7 @@
                     "label": "Direccional"
                   },
                   {
-                    "label": "Bidireccional"
+                    "label": "Bi-direccional"
                   },
                   {
                     "label": "No direccional"
@@ -335,7 +335,7 @@
           "default": "Vídeo"
         },
         {
-          "label": "Etiqueta de guardado de notas",
+          "label": "Etiqueta de guardando notas",
           "default": "Guardando…"
         },
         {
@@ -348,7 +348,7 @@
         },
         {
           "label": "Remplazable de nota",
-          "default": "Escribe tus notas aquí…"
+          "default": "Escriba sus notas aquí…"
         },
         {
           "label": "Marcar nota como hecha",
@@ -360,7 +360,7 @@
         },
         {
           "label": "Etiquetas de recursos de diálogo: Enlaces personalizados",
-          "default": "Tus enlaces"
+          "default": "Sus enlaces"
         },
         {
           "label": "Etiquetas de recursos de diálogo: Agregar",
@@ -441,7 +441,7 @@
         },
         {
           "label": "Texto descriptivo de la barra de progreso",
-          "default": "¿Estás seguro de que quieres enviar todos tus datos?"
+          "default": "Nota de progreso: @markedNotes de @totalNotes notas marcadas como hechas"
         },
         {
           "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",
@@ -449,15 +449,23 @@
         },
         {
           "label": "Etiqueta de ventana de confirmación de envío de todas las notas",
-          "default": "¿Estás seguro de que quieres enviar todos tus datos?"
+          "default": "¿Está seguro de que quiere enviar todos sus datos?"
         },
         {
           "label": "Etiqueta de regresar a mapa de tópico",
+          "default": "Enviar"
+        },
+        {
+          "label": "Etiqueta negar enviar todos los datos",
+          "default": "Cancelar"
+        },
+        {
+          "label": "Etiqueta regresar a mapa de tópicos",
           "default": "Regresar"
         },
         {
           "label": "Texto descriptivo para flecha direccional",
-          "default": "Flecha de @startItem a @endItem"
+          "default": "Flecha desde @startItem a @endItem"
         },
         {
           "label": "Texto descriptivo para flecha bi-direccional",
@@ -465,31 +473,23 @@
         },
         {
           "label": "Texto descriptivo para nota estado hecho",
-          "default": "Nota marcada como hecho"
+          "default": "Nota marcada como hecha"
         },
         {
-          "label": "Texto descriptivo para nota estado iniciado",
-          "default": "Nota iniciado"
+          "label": "Texto descriptivo para estado de nota iniciado",
+          "default": "Nota iniciada"
         },
         {
-          "label": "Texto descriptivo para nota estado predeterminado",
-          "default": "Nota vacío"
+          "label": "Texto descriptivo para estado de nota predeterminado",
+          "default": "Nota vacía"
         },
         {
-          "label": "Descriptive text for note status started",
-          "default": "Note started"
+          "label": "Texto descriptivo para área de texto de nota",
+          "default": "Área de texto con límite de @max caracteres."
         },
         {
-          "label": "Descriptive text for note status default",
-          "default": "Note empty"
-        },
-        {
-          "label": "Descriptive text for note textarea",
-          "default": "Textarea with @max character limit."
-        },
-        {
-          "label": "Descriptive text for note character count",
-          "default": "@count of @max characters"
+          "label": "Texto descriptivo para número de caracteres de nota",
+          "default": "@count de @max caracteres"
         }
       ]
     }
