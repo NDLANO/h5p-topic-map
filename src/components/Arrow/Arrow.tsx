@@ -199,10 +199,9 @@ export const Arrow: FC<ArrowProps> = ({
                     ? `url(#${arrowTailID})`
                     : ''
                 }
-                onClick={() => setDialogOpen(true)}
                 role="button"
                 tabIndex={0}
-                onTouchStart={() => setDialogOpen(true)}
+                onPointerDown={() => setDialogOpen(true)}
                 onKeyUp={(event) => {
                   // Space will move to the bottom of the content if onKeyDown is used
                   if (event.key === ' ' && !dialogOpen) {
