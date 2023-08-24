@@ -2,16 +2,12 @@
   box-sizing: border-box;
 }
 
-:root {
-  --overlay-z-index: 2; // Higher than topic map items' z-indices
-}
-
 .overlay {
   opacity: 0.5;
   background-color: black;
   position: fixed;
   inset: 0;
-  z-index: calc(var(--overlay-z-index) + 1);
+  z-index: var(--overlay-z-index);
 }
 
 .closeButton {
@@ -49,7 +45,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   height: 85vh;
-  z-index: calc(var(--overlay-z-index) + 1);
+  z-index: var(--dialog-z-index);
   padding: 1.5625rem;
   overflow: auto;
   overflow-y: hidden;
@@ -95,7 +91,6 @@
   color: black;
   font-size: 1.25rem;
   line-height: 1.2;
-  z-index: calc(var(--overlay-z-index) + 1);
 }
 
 @keyframes show-overlay {
