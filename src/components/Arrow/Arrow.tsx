@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FC, MouseEventHandler } from 'react';
+import { FC } from 'react';
 import { useContentId } from '../../hooks/useContentId';
 import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
 import { ArrowItemType } from '../../types/ArrowItemType';
@@ -12,14 +12,12 @@ import { ArrowNoteButton } from './ArrowNoteButton';
 import { getNoteStateText } from '../../utils/note.utils';
 import { useTranslation } from '../../hooks/useTranslation';
 import { H5P } from '../../h5p/H5P.util';
+import { Portal, Root, Trigger } from '@radix-ui/react-dialog';
+import { DialogWindow } from '../Dialog-Window/DialogWindow';
 
 export type ArrowProps = {
   item: ArrowItemType;
-  onClick: MouseEventHandler;
   grid?: GridDimensions;
-  dialogIsOpen: boolean;
-  onTouchStart: React.TouchEventHandler;
-  onKeyUp: React.KeyboardEventHandler;
   descriptiveText: string;
 };
 
@@ -36,10 +34,6 @@ const calculateIsHorizontal = (
 export const Arrow: FC<ArrowProps> = ({
   item,
   grid,
-  onTouchStart,
-  onClick,
-  onKeyUp,
-  dialogIsOpen,
   descriptiveText,
 }) => {
   const { t } = useTranslation();
@@ -62,6 +56,8 @@ export const Arrow: FC<ArrowProps> = ({
     item.endPosition,
   );
 
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+
   React.useEffect(() => {
     const dialogData = userData[contentId]?.dialogs[item.id];
 
@@ -78,7 +74,7 @@ export const Arrow: FC<ArrowProps> = ({
       default:
         setButtonState(NoteButtonIconState.None);
     }
-  }, [item, buttonState, setButtonState, userData, dialogIsOpen, contentId]);
+  }, [item, buttonState, setButtonState, userData, contentId]);
 
   const findMiddlePosition = (
     startx: number,
@@ -156,64 +152,81 @@ export const Arrow: FC<ArrowProps> = ({
 
   return (
     <div className={styles.arrow}>
-      <div
-        ref={arrowContainerRef}
-        className={`arrow-item ${styles.arrow}`}
-      >
-        <svg className={styles.arrowSvg}>
-          <defs>
-            <marker
-              id={arrowHeadID}
-              markerWidth="10"
-              markerHeight="10"
-              refX="0.7"
-              refY="1"
-              orient="auto"
-            >
-              <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className={styles.path} />
-            </marker>
-            <marker
-              id={arrowTailID}
-              markerWidth="10"
-              markerHeight="10"
-              refX="0.7"
-              refY="1"
-              orient="auto-start-reverse"
-            >
-              <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className={styles.path} />
-            </marker>
-          </defs>
-          <polyline
-            aria-label={`${descriptiveText} ${getNoteStateText(buttonState, t)}`}
-            className={`${item.dialog ? styles.polyline : ''}`}
-            points={pathDef}
-            fill="transparent"
-            stroke="var(--theme-color-4)"
-            strokeWidth={strokeWidth}
-            markerEnd={
-              item.arrowType === ArrowType.BiDirectional ||
-                item.arrowType === ArrowType.Directional
-                ? `url(#${arrowHeadID})`
-                : ''
-            }
-            markerStart={
-              item.arrowType === ArrowType.BiDirectional
-                ? `url(#${arrowTailID})`
-                : ''
-            }
-            onClick={onClick}
-            role="button"
-            tabIndex={0}
-            onTouchStart={onTouchStart}
-            onKeyUp={onKeyUp}
-          />
-        </svg>
-      </div>
-      <ArrowNoteButton
-        position={{ x: middleX, y: middleY }}
-        buttonState={buttonState}
-        strokeWidth={strokeWidth}
-      />
+      <Root open={dialogOpen} onOpenChange={setDialogOpen}>
+        <div
+          ref={arrowContainerRef}
+          className={`arrow-item ${styles.arrow}`}
+        >
+          <svg className={styles.arrowSvg}>
+            <defs>
+              <marker
+                id={arrowHeadID}
+                markerWidth="10"
+                markerHeight="10"
+                refX="0.7"
+                refY="1"
+                orient="auto"
+              >
+                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className={styles.path} />
+              </marker>
+              <marker
+                id={arrowTailID}
+                markerWidth="10"
+                markerHeight="10"
+                refX="0.7"
+                refY="1"
+                orient="auto-start-reverse"
+              >
+                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className={styles.path} />
+              </marker>
+            </defs>
+            <Trigger asChild>
+              <polyline
+                aria-label={`${descriptiveText} ${getNoteStateText(buttonState, t)}`}
+                className={`${item.dialog ? styles.polyline : ''}`}
+                points={pathDef}
+                fill="transparent"
+                stroke="var(--theme-color-4)"
+                strokeWidth={strokeWidth}
+                markerEnd={
+                  item.arrowType === ArrowType.BiDirectional ||
+                    item.arrowType === ArrowType.Directional
+                    ? `url(#${arrowHeadID})`
+                    : ''
+                }
+                markerStart={
+                  item.arrowType === ArrowType.BiDirectional
+                    ? `url(#${arrowTailID})`
+                    : ''
+                }
+                role="button"
+                tabIndex={0}
+                onPointerDown={() => setDialogOpen(true)}
+                onKeyUp={(event) => {
+                  // Space will move to the bottom of the content if onKeyDown is used
+                  if (event.key === ' ' && !dialogOpen) {
+                    setDialogOpen(true);
+                  }
+                }}
+                onKeyDown={(event) => {
+                  // Enter will open the dialog on 'close' if onKeyUp is used
+                  if (event.key === 'Enter' && !dialogOpen) {
+                    setDialogOpen(true);
+                  }
+                }}
+              />
+            </Trigger>
+          </svg>
+        </div>
+        <ArrowNoteButton
+          position={{ x: middleX, y: middleY }}
+          buttonState={buttonState}
+          strokeWidth={strokeWidth}
+        />
+        <Portal>
+          <DialogWindow item={item} />
+        </Portal>
+      </Root>
     </div>
   );
 };

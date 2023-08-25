@@ -23,10 +23,8 @@ describe(TopicMapItem.name, () => {
       },
     };
 
-    const onClick = jest.fn();
-
     const { container } = render(
-      <TopicMapItem item={item} onClick={onClick} />,
+      <TopicMapItem item={item} />,
     );
 
     expect(container.querySelector('button')).toBeTruthy();

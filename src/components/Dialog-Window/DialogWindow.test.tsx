@@ -2,16 +2,14 @@ import * as React from 'react';
 import { getByText, render } from '@testing-library/react';
 import { DialogWindow } from './DialogWindow';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
-
-// eslint-disable-next-line no-console
-const onOpenChange = console.info;
+import { Root } from '@radix-ui/react-dialog';
 
 Object.defineProperty(window, 'matchMedia', {
   value: () => {
     return {
       matches: false,
-      addListener: () => {},
-      removeListener: () => {},
+      addListener: () => { },
+      removeListener: () => { },
     };
   },
 });
@@ -38,7 +36,9 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <DialogWindow item={item} open={false} onOpenChange={onOpenChange} />,
+      <Root open={true}>
+        <DialogWindow item={item} />
+      </Root>,
     ).container;
 
     setTimeout(() => {
@@ -68,7 +68,9 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <DialogWindow item={item} open={false} onOpenChange={onOpenChange} />,
+      <Root open={true}>
+        <DialogWindow item={item} />
+      </Root>,
     ).container;
 
     setTimeout(() => {

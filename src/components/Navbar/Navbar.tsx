@@ -12,7 +12,6 @@ import { CommonItemType } from '../../types/CommonItemType';
 import { NavbarSections } from '../../types/NavbarSections';
 import { Params } from '../../types/Params';
 import { exportAllUserData } from '../../utils/user-data.utils';
-import { DialogWindow } from '../Dialog-Window/DialogWindow';
 import { FullscreenButton } from '../FullscreenButton/FullscreenButton';
 import { Grid } from '../Grid/Grid';
 import styles from './Navbar.module.scss';
@@ -46,10 +45,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const [sectionMaxHeight, setSectionMaxHeight] = useState(0);
   const [notesListMaxHeight, setNotesListMaxHeight] = useState(0);
-  const [isDeleteConfirmationVisible, setIsDeleteConfirmationVisible] =
-    useState(false);
-  const [isSubmitAllConfirmationVisible, setIsSubmitAllConfirmationVisible] =
-    useState(false);
 
   const sizeClassNames = useSizeClassNames(styles);
 
@@ -163,16 +158,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       }
     });
     setUserData(userData);
-    setIsDeleteConfirmationVisible(false);
-  };
-
-  const confirmDeletion = (): void => {
-    deleteAllNotes();
-    setIsDeleteConfirmationVisible(false);
-  };
-
-  const denyDeletion = (): void => {
-    setIsDeleteConfirmationVisible(false);
   };
 
   const submitAllNotes = (): void => {
@@ -181,54 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
 
     exportAllUserData(contentId, h5pInstance);
-    setIsSubmitAllConfirmationVisible(false);
   };
-
-  const confirmSubmitAll = (): void => {
-    submitAllNotes();
-    setIsSubmitAllConfirmationVisible(false);
-  };
-
-  const denySubmitAll = (): void => {
-    setIsSubmitAllConfirmationVisible(false);
-  };
-
-  const fakeItem = {
-    id: 'id',
-    label: t('deleteNotesConfirmationWindowLabel'),
-  };
-
-  const deleteConfirmation = (
-    <DialogWindow
-      item={fakeItem}
-      open={isDeleteConfirmationVisible}
-      onOpenChange={(isOpen) => {
-        if (!isOpen) denyDeletion();
-      }}
-      confirmWindow={{
-        confirmAction: confirmDeletion,
-        denyAction: denyDeletion,
-        confirmText: t('deleteNotesConfirmLabel'),
-        denyText: t('deleteNotesDenyLabel'),
-      }}
-    />
-  );
-
-  const submitAllConfirmation = (
-    <DialogWindow
-      item={{ id: '', label: t('submitDataConfirmationWindowLabel') }}
-      open={isSubmitAllConfirmationVisible}
-      onOpenChange={(isOpen) => {
-        if (!isOpen) denySubmitAll();
-      }}
-      confirmWindow={{
-        confirmAction: confirmSubmitAll,
-        denyAction: denySubmitAll,
-        confirmText: t('submitDataConfirmLabel'),
-        denyText: t('submitDataDenyLabel'),
-      }}
-    />
-  );
 
   const goToTopicMap = (): void => setCurrentSection(NavbarSections.TopicMap);
   const goToNotesPage = (): void => setCurrentSection(NavbarSections.Notes);
@@ -237,10 +175,10 @@ export const Navbar: React.FC<NavbarProps> = ({
     <>
       <div ref={notesSectionRef}>
         <NotesSection
-          setSubmitAllConfirmationVisibility={setIsSubmitAllConfirmationVisible}
-          setDeleteConfirmationVisibility={setIsDeleteConfirmationVisible}
           handlePrint={handlePrint}
           goToTopicMap={goToTopicMap}
+          confirmSubmitAll={submitAllNotes}
+          confirmDeletion={deleteAllNotes}
         />
       </div>
       <div
@@ -335,8 +273,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           )}
         </div>
       </div>
-      {deleteConfirmation}
-      {submitAllConfirmation}
     </>
   );
 };

@@ -8,11 +8,13 @@ export default {
 } satisfies Meta<typeof NotesSection>;
 
 const Template: StoryFn<typeof NotesSection> = (args) => (
-  
   <NotesSection {...args} />
 );
 
 export const Notes = Template.bind({});
 Notes.args = {
-  setDeleteConfirmationVisibility: () => null,
+  handlePrint: () => { },
+  goToTopicMap: () => { },
+  confirmSubmitAll: () => { },
+  confirmDeletion: () => { },
 };

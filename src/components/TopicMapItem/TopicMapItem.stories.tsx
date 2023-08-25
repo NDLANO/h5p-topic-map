@@ -27,14 +27,8 @@ const item: TopicMapItemType = {
   },
 };
 
-const onClick = (): void => {
-  // eslint-disable-next-line no-console
-  console.info('Click');
-};
-
 const defaultArgs: TopicMapItemProps = {
   item,
-  onClick,
 };
 
 export const NoContainer: StoryFn<typeof TopicMapItem> = () => {
