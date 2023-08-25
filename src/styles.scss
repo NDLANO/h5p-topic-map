@@ -3,7 +3,7 @@ $h5p-navbar-z-index: 600;
 :root {
   --item-z-index: 1;
   --notesection-z-index: calc(var(--item-z-index) + 1);
-  --overlay-z-index: calc(var(--item-z-index) + 1); // Higher than topic map items' z-indices
+  --overlay-z-index: calc(var(--item-z-index) + 1);
   --dialog-z-index: calc(var(--overlay-z-index) + 1);
 }
 
