@@ -1,21 +1,20 @@
-import { ArrowLeftIcon } from '@radix-ui/react-icons';
+import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { H5PIntegration } from '../../../h5p/H5P.util';
 import { useSizeClassNames } from '../../../hooks/useSizeClassNames';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { ConfirmWindow } from '../../ConfirmWindow/ConfirmWindow';
+import { Close, Title } from '@radix-ui/react-dialog';
 import styles from './NotesSection.module.scss';
 
 export type NotesSectionProps = {
   handlePrint: () => void;
-  goToTopicMap: () => void;
   confirmSubmitAll: () => void;
   confirmDeletion: () => void;
 };
 
 export const NotesSection: React.FC<NotesSectionProps> = ({
   handlePrint,
-  goToTopicMap,
   confirmSubmitAll,
   confirmDeletion,
 }) => {
@@ -31,15 +30,18 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
     <div className={`${styles.mainBody} ${sizeClassNames}`}>
       <div className={styles.mainBodyContent}>
         <div className={styles.mainBodyTitle}>
-          <button
-            type="button"
-            onClick={goToTopicMap}
-            className={styles.backArrow}
-            aria-label={t('goToTopicMapLabel')}
-          >
-            <ArrowLeftIcon width={22} height={22} />
-          </button>
-          <p>{t('navbarNotesSectionTitle')}</p>
+          <Close asChild>
+            <button
+              type="button"
+              className={styles.closeButton}
+              aria-label={t('closeDialog')}
+            >
+              <Cross2Icon />
+            </button>
+          </Close>
+          <Title asChild>
+            <p>{t('navbarNotesSectionTitle')}</p>
+          </Title>
         </div>
         <div className={styles.mainBodyTextWrapper}>
           <div className={styles.mainBodyText}>

@@ -23,16 +23,6 @@
   position: relative;
 }
 
-.sectionContentWrapper {
-  background-color: #ffffff;
-  overflow-y: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  z-index: var(--notesection-z-index);
-}
-
 .sectionTitle {
   background-color: transparent;
   border: none;
@@ -154,4 +144,13 @@
   .visuallyHidden {
     @include visually-hidden;
   }
+}
+
+.overlay {
+  @include modal-overlay;
+}
+
+.dialogContent {
+  @include modal-content;
+  padding: 0;
 }

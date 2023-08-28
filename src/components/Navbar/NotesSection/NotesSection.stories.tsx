@@ -14,7 +14,6 @@ const Template: StoryFn<typeof NotesSection> = (args) => (
 export const Notes = Template.bind({});
 Notes.args = {
   handlePrint: () => { },
-  goToTopicMap: () => { },
   confirmSubmitAll: () => { },
   confirmDeletion: () => { },
 };

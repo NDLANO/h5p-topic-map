@@ -83,7 +83,6 @@ export const App: React.FC<AppProps> = ({
                 params={params}
                 toggleIPhoneFullscreen={handleToggleIPhoneFullscreen}
                 isIPhoneFullscreenActive={isIPhoneFullscreenActive}
-                instance={instance}
               />
             </div>
           </FullScreen>

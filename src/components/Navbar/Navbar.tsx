@@ -1,29 +1,26 @@
-import type { IH5PContentType } from 'h5p-types';
 import * as React from 'react';
 import { useState } from 'react';
 import { useReactToPrint } from 'react-to-print';
-import { H5P } from '../../h5p/H5P.util';
 import { useContentId } from '../../hooks/useContentId';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
 import { useSizeClassNames } from '../../hooks/useSizeClassNames';
 import { useTranslation } from '../../hooks/useTranslation';
 import { CommonItemType } from '../../types/CommonItemType';
-import { NavbarSections } from '../../types/NavbarSections';
 import { Params } from '../../types/Params';
 import { exportAllUserData } from '../../utils/user-data.utils';
 import { FullscreenButton } from '../FullscreenButton/FullscreenButton';
 import { Grid } from '../Grid/Grid';
-import styles from './Navbar.module.scss';
 import { NotesList } from './NotesSection/NotesList/NotesList';
 import { NotesSection } from './NotesSection/NotesSection';
+import { Content, Overlay, Portal, Root, Trigger } from '@radix-ui/react-dialog';
+import styles from './Navbar.module.scss';
 
 export type NavbarProps = {
   navbarTitle: string;
   params: Params;
   toggleIPhoneFullscreen: () => void;
   isIPhoneFullscreenActive: boolean;
-  instance: IH5PContentType;
 };
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -31,20 +28,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   params,
   toggleIPhoneFullscreen,
   isIPhoneFullscreenActive,
-  instance,
 }) => {
   const contentId = useContentId();
   const h5pInstance = useH5PInstance();
   const { t } = useTranslation();
   const [userData, setUserData] = useLocalStorageUserData();
-  const [currentSection, setCurrentSection] = useState(NavbarSections.TopicMap);
+  const [notesOpen, setNotesOpen] = useState(false);
 
   const [progressBarValue, setProgressBarValue] = useState(0);
   const [progressPercentage, setProgressPercentage] =
     useState(progressBarValue);
-
-  const [sectionMaxHeight, setSectionMaxHeight] = useState(0);
-  const [notesListMaxHeight, setNotesListMaxHeight] = useState(0);
 
   const sizeClassNames = useSizeClassNames(styles);
 
@@ -64,67 +57,8 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const gridRef = React.useRef<HTMLDivElement>(null);
   const navbarRef = React.useRef<HTMLDivElement>(null);
-  const notesSectionRef = React.useRef<HTMLDivElement>(null);
 
   const navbarHeight = navbarRef.current?.getBoundingClientRect().height ?? 0;
-  const notesSectionHeight =
-    notesSectionRef.current?.getBoundingClientRect().height ?? 0;
-
-  /*
-   * React supplies useResizeObserver hook, but H5P may trigger `resize` not
-   * only when the window resizes
-   */
-  instance.on('resize', () => {
-    window.requestAnimationFrame(() => {
-      if (!gridRef.current) {
-        return;
-      }
-
-      const contentRect = gridRef.current.getBoundingClientRect();
-      if (currentSection === NavbarSections.TopicMap) {
-        setSectionMaxHeight(0);
-      }
-      else if (contentRect.height > 0) {
-        if (H5P.isFullscreen && contentRect.height <= window.innerHeight) {
-          setSectionMaxHeight(window.innerHeight - navbarHeight);
-        }
-        else {
-          setSectionMaxHeight(contentRect.height);
-        }
-      }
-    });
-  });
-
-  React.useEffect(() => {
-    if (currentSection === NavbarSections.TopicMap) {
-      setSectionMaxHeight(0);
-    }
-    else {
-      const initialHeight =
-        gridRef.current?.getBoundingClientRect().height ?? 0;
-      if (initialHeight > 0) {
-        if (H5P.isFullscreen && initialHeight <= window.innerHeight) {
-          setSectionMaxHeight(window.innerHeight - navbarHeight);
-        }
-        else {
-          setSectionMaxHeight(initialHeight);
-        }
-      }
-    }
-  }, [currentSection, navbarHeight]);
-
-  React.useEffect(() => {
-    if (currentSection === NavbarSections.Notes) {
-      if (H5P.isFullscreen) {
-        setNotesListMaxHeight(
-          window.innerHeight - navbarHeight - notesSectionHeight,
-        );
-      }
-      else {
-        setNotesListMaxHeight(sectionMaxHeight - notesSectionHeight);
-      }
-    }
-  }, [currentSection, navbarHeight, notesSectionHeight, sectionMaxHeight]);
 
   React.useEffect(() => {
     const newProgressBarValue = allItems.filter(
@@ -168,35 +102,40 @@ export const Navbar: React.FC<NavbarProps> = ({
     exportAllUserData(contentId, h5pInstance);
   };
 
-  const goToTopicMap = (): void => setCurrentSection(NavbarSections.TopicMap);
-  const goToNotesPage = (): void => setCurrentSection(NavbarSections.Notes);
-
   const notesSection = (
-    <>
-      <div ref={notesSectionRef}>
-        <NotesSection
-          handlePrint={handlePrint}
-          goToTopicMap={goToTopicMap}
-          confirmSubmitAll={submitAllNotes}
-          confirmDeletion={deleteAllNotes}
-        />
-      </div>
-      <div
-        className={styles.notesList}
-        ref={notesListRef}
-        title={navbarTitleForPrint}
-        style={{
-          minHeight: notesListMaxHeight,
-          maxHeight: notesListMaxHeight,
-        }}
-      >
-        <NotesList topicMapItems={allItems} navbarTitle={navbarTitle} />
-      </div>
-    </>
+    <Root open={notesOpen} onOpenChange={setNotesOpen}>
+      <Trigger asChild>
+        <button
+          className={`${styles.sectionTitle} ${notesOpen && styles.active
+          }`}
+          type="button"
+          onClick={() => setNotesOpen(true)}
+        >
+          {t('navbarNotesSectionLabel')}
+        </button>
+      </Trigger>
+      <Portal container={h5pInstance?.containerElement}>
+        <Overlay className={styles.overlay} />
+        <Content className={styles.dialogContent}>
+          <NotesSection
+            handlePrint={handlePrint}
+            confirmSubmitAll={submitAllNotes}
+            confirmDeletion={deleteAllNotes}
+          />
+          <div
+            className={styles.notesList}
+            ref={notesListRef}
+            title={navbarTitleForPrint}
+          >
+            <NotesList topicMapItems={allItems} navbarTitle={navbarTitle} />
+          </div>
+        </Content>
+      </Portal>
+    </Root>
   );
 
   const progressBar = (
-    <>
+    <div className={styles.progressBarWrapper}>
       <div
         className={styles.progressPercentage}
         aria-hidden="true"
@@ -216,22 +155,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </span>
         </div>
       </progress>
-    </>
-  );
-
-  const sectionsMenu = hasNotes && (
-    <>
-      <button
-        className={`${styles.sectionTitle} ${currentSection === NavbarSections.Notes && styles.active
-        }`}
-        type="button"
-        onClick={goToNotesPage}
-      >
-        {t('navbarNotesSectionLabel')}
-      </button>
-
-      <div className={styles.progressBarWrapper}>{progressBar}</div>
-    </>
+    </div>
   );
 
   return (
@@ -249,7 +173,12 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className={styles.navbarTitle}>
               {navbarTitle}
             </div>
-            <div className={styles.sectionsMenu}>{sectionsMenu}</div>
+            {hasNotes && (
+              <div className={styles.sectionsMenu}>
+                {notesSection}
+                {progressBar}
+              </div>
+            )}
             <div className={styles.fullscreenButton}>
               <FullscreenButton
                 toggleIOSFullscreen={toggleIPhoneFullscreen}
@@ -268,9 +197,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               grid={params.topicMap?.grid}
             />
           </div>
-          {currentSection === NavbarSections.Notes && (
-            <div className={styles.sectionContentWrapper}>{notesSection}</div>
-          )}
         </div>
       </div>
     </>
