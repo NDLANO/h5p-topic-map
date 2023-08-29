@@ -5,33 +5,21 @@
 }
 
 .closeButton {
-  background: none;
-  border: none;
-  border-radius: 2rem;
-  color: black;
-  cursor: pointer;
-  padding: 0.25rem;
-  position: fixed;
-  right: 0.625rem;
-  top: 0.625rem;
+  @include modal-close-button;
+}
 
-  &:hover {
-    background-color: #eee;
-  }
-
-  svg {
-    display: block;
-    margin: auto;
-    height: 1.2rem;
-    width: 1.2rem;
-  }
+.contentWrapper {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
 }
 
 .dialogContent,
 .dialogContentWide,
 .dialogContentSmallScreen {
   @include modal-content;
-  overflow-y: hidden;
+  overflow-y: unset;
 }
 
 .dialogContent {
@@ -43,7 +31,7 @@
 }
 
 .dialogContentSmallScreen {
-  width: 95vw;
+  width: 90vw;
 }
 
 .tabWrapper {

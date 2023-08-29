@@ -13,8 +13,9 @@ import { FullscreenButton } from '../FullscreenButton/FullscreenButton';
 import { Grid } from '../Grid/Grid';
 import { NotesList } from './NotesSection/NotesList/NotesList';
 import { NotesSection } from './NotesSection/NotesSection';
-import { Content, Overlay, Portal, Root, Trigger } from '@radix-ui/react-dialog';
+import { Close, Content, Overlay, Portal, Root, Trigger } from '@radix-ui/react-dialog';
 import styles from './Navbar.module.scss';
+import { Cross2Icon } from '@radix-ui/react-icons';
 
 export type NavbarProps = {
   navbarTitle: string;
@@ -117,18 +118,29 @@ export const Navbar: React.FC<NavbarProps> = ({
       <Portal container={h5pInstance?.containerElement}>
         <Overlay className={styles.overlay} />
         <Content className={styles.dialogContent}>
-          <NotesSection
-            handlePrint={handlePrint}
-            confirmSubmitAll={submitAllNotes}
-            confirmDeletion={deleteAllNotes}
-          />
-          <div
-            className={styles.notesList}
-            ref={notesListRef}
-            title={navbarTitleForPrint}
-          >
-            <NotesList topicMapItems={allItems} navbarTitle={navbarTitle} />
+          <div className={styles.contentWrapper}>
+            <NotesSection
+              handlePrint={handlePrint}
+              confirmSubmitAll={submitAllNotes}
+              confirmDeletion={deleteAllNotes}
+            />
+            <div
+              className={styles.notesList}
+              ref={notesListRef}
+              title={navbarTitleForPrint}
+            >
+              <NotesList topicMapItems={allItems} navbarTitle={navbarTitle} />
+            </div>
           </div>
+          <Close asChild>
+            <button
+              type="button"
+              className={styles.closeButton}
+              aria-label={t('closeDialog')}
+            >
+              <Cross2Icon />
+            </button>
+          </Close>
         </Content>
       </Portal>
     </Root>

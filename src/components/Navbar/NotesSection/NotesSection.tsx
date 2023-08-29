@@ -30,15 +30,6 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
     <div className={`${styles.mainBody} ${sizeClassNames}`}>
       <div className={styles.mainBodyContent}>
         <div className={styles.mainBodyTitle}>
-          <Close asChild>
-            <button
-              type="button"
-              className={styles.closeButton}
-              aria-label={t('closeDialog')}
-            >
-              <Cross2Icon />
-            </button>
-          </Close>
           <Title asChild>
             <p>{t('navbarNotesSectionTitle')}</p>
           </Title>
