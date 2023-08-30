@@ -409,7 +409,7 @@
         },
         {
           "label": "Cuerpo de la sección de notas de la barra de navegación",
-          "default": "Aquí tiene un resumen de todas las notas que ha escrito. Las notas se guardan localmente en este navegador. Para guardar las notas en otro lugar, puede imprimir o copiar las notas en un documento."
+          "default": "This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document."
         },
         {
           "label": "Etiqueta del botón de impresión de notas de la barra de navegación",
