@@ -13,7 +13,10 @@ const Template: StoryFn<typeof NotesSection> = (args) => (
 
 export const Notes = Template.bind({});
 Notes.args = {
-  handlePrint: () => { },
   confirmSubmitAll: () => { },
   confirmDeletion: () => { },
+  notesOpen: false,
+  setNotesOpen: () => { },
+  navbarTitle: 'Navbar Title',
+  allItems: [],
 };

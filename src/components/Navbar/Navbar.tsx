@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useReactToPrint } from 'react-to-print';
 import { useContentId } from '../../hooks/useContentId';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
@@ -11,11 +10,8 @@ import { Params } from '../../types/Params';
 import { exportAllUserData } from '../../utils/user-data.utils';
 import { FullscreenButton } from '../FullscreenButton/FullscreenButton';
 import { Grid } from '../Grid/Grid';
-import { NotesList } from './NotesSection/NotesList/NotesList';
 import { NotesSection } from './NotesSection/NotesSection';
-import { Close, Content, Overlay, Portal, Root, Trigger } from '@radix-ui/react-dialog';
 import styles from './Navbar.module.scss';
-import { Cross2Icon } from '@radix-ui/react-icons';
 
 export type NavbarProps = {
   navbarTitle: string;
@@ -73,18 +69,6 @@ export const Navbar: React.FC<NavbarProps> = ({
     );
   }, [allItems, contentId, totalNotesToComplete, userData]);
 
-  let navbarTitleForPrint = '';
-  const updateNavbarTitleForPrint = (): void => {
-    navbarTitleForPrint = navbarTitleForPrint ? '' : navbarTitle;
-  };
-  const notesListRef = React.useRef(null);
-  const handlePrint = useReactToPrint({
-    content: () => notesListRef.current,
-    documentTitle: navbarTitle,
-    onBeforeGetContent: updateNavbarTitleForPrint,
-    onAfterPrint: updateNavbarTitleForPrint,
-  });
-
   const deleteAllNotes = (): void => {
     allItems.forEach((item) => {
       if (userData[contentId]?.dialogs?.[item.id]) {
@@ -102,49 +86,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
     exportAllUserData(contentId, h5pInstance);
   };
-
-  const notesSection = (
-    <Root open={notesOpen} onOpenChange={setNotesOpen}>
-      <Trigger asChild>
-        <button
-          className={`${styles.sectionTitle} ${notesOpen && styles.active
-          }`}
-          type="button"
-          onClick={() => setNotesOpen(true)}
-        >
-          {t('navbarNotesSectionLabel')}
-        </button>
-      </Trigger>
-      <Portal container={h5pInstance?.containerElement}>
-        <Overlay className={styles.overlay} />
-        <Content className={styles.dialogContent}>
-          <div className={styles.contentWrapper}>
-            <NotesSection
-              handlePrint={handlePrint}
-              confirmSubmitAll={submitAllNotes}
-              confirmDeletion={deleteAllNotes}
-            />
-            <div
-              className={styles.notesList}
-              ref={notesListRef}
-              title={navbarTitleForPrint}
-            >
-              <NotesList topicMapItems={allItems} navbarTitle={navbarTitle} />
-            </div>
-          </div>
-          <Close asChild>
-            <button
-              type="button"
-              className={styles.closeButton}
-              aria-label={t('closeDialog')}
-            >
-              <Cross2Icon />
-            </button>
-          </Close>
-        </Content>
-      </Portal>
-    </Root>
-  );
 
   const progressBar = (
     <div className={styles.progressBarWrapper}>
@@ -187,7 +128,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             </div>
             {hasNotes && (
               <div className={styles.sectionsMenu}>
-                {notesSection}
+                <NotesSection
+                  confirmSubmitAll={submitAllNotes}
+                  confirmDeletion={deleteAllNotes}
+                  notesOpen={notesOpen}
+                  setNotesOpen={setNotesOpen}
+                  navbarTitle={navbarTitle}
+                  allItems={allItems}
+                />
                 {progressBar}
               </div>
             )}

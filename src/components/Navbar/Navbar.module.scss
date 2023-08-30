@@ -23,24 +23,6 @@
   position: relative;
 }
 
-.sectionTitle {
-  background-color: transparent;
-  border: none;
-  border-radius: 2rem;
-  cursor: pointer;
-  color: #ffffff;
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
-
-  &:hover {
-    background-color: var(--theme-color-3);
-  }
-
-  &.active {
-    text-decoration: underline;
-  }
-}
-
 .sectionsMenu {
   display: flex;
   flex-direction: row;
@@ -48,12 +30,6 @@
 
 .progressBarWrapper {
   display: none;
-}
-
-.notesList {
-  @media print {
-    max-height: unset !important;
-  }
 }
 
 .fullscreenButton {
@@ -144,25 +120,4 @@
   .visuallyHidden {
     @include visually-hidden;
   }
-}
-
-.overlay {
-  @include modal-overlay;
-}
-
-.dialogContent {
-  @include modal-content;
-  padding: 0;
-  overflow: unset;
-}
-
-.closeButton {
-  @include modal-close-button;
-}
-
-.contentWrapper {
-  flex: 1;
-  height: 100%;
-  width: 100%;
-  overflow-y: auto;
 }
