@@ -9,17 +9,19 @@
 }
 
 .contentWrapper {
-  flex: 1;
-  height: 100%;
-  width: 100%;
-  overflow-y: auto;
+  @include modal-wrapper;
+}
+
+.contentWrapperSmallScreen {
+  @include modal-wrapper;
+  display: flex;
+  flex-direction: column;
 }
 
 .dialogContent,
 .dialogContentWide,
 .dialogContentSmallScreen {
   @include modal-content;
-  overflow-y: unset;
 }
 
 .dialogContent {
@@ -43,7 +45,7 @@
 .noteWrapper {
   float: right;
   width: 47%;
-  height: 80%;
+  height: 90%;
 
   &.fullWidth {
     float: left;

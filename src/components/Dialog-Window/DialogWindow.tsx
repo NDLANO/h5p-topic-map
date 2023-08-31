@@ -39,7 +39,7 @@ export const DialogWindow: FC<DialogWindowProps> = ({
 
   let content = smallScreen ? (
     <Content className={styles.dialogContentSmallScreen}>
-      <div className={styles.contentWrapper}>
+      <div className={styles.contentWrapperSmallScreen}>
         <Title className={styles.dialogTitle}>{item.label}</Title>
         {!noTabItems && <DialogTabs item={item} />}
         {noTabItems && hasNote && (
