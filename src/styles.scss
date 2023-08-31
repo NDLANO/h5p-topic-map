@@ -5,6 +5,8 @@ $h5p-navbar-z-index: 600;
   --notesection-z-index: calc(var(--item-z-index) + 1);
   --overlay-z-index: calc(var(--item-z-index) + 1);
   --dialog-z-index: calc(var(--overlay-z-index) + 1);
+  --confirm-overlay-z-index: calc(var(--dialog-z-index) + 1);
+  --confirm-dialog-z-index: calc(var(--confirm-overlay-z-index) + 1);
 }
 
 .h5p-topic-map {

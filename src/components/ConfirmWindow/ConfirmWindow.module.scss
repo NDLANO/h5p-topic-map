@@ -1,34 +1,16 @@
 @use "./../../abstracts/mixins" as *;
 
 .overlay {
-  opacity: 0.5;
-  background-color: black;
-  position: fixed;
-  inset: 0;
-  z-index: var(--overlay-z-index);
+  @include modal-overlay;
+  z-index: var(--confirm-overlay-z-index);
+}
+
+.contentWrapper {
+  @include modal-wrapper;
 }
 
 .closeButton {
-  background: none;
-  border: none;
-  border-radius: 2rem;
-  color: black;
-  cursor: pointer;
-  padding: 0.25rem;
-  position: fixed;
-  right: 0.625rem;
-  top: 0.625rem;
-
-  &:hover {
-    background-color: #eee;
-  }
-
-  svg {
-    display: block;
-    margin: auto;
-    height: 1.2rem;
-    width: 1.2rem;
-  }
+  @include modal-close-button;
 }
 
 .dialogTitle {
@@ -43,7 +25,8 @@
   @include modal-content;
   height: auto;
   max-height: 85vh;
-  width: 40vw;
+  width: 52vw;
+  z-index: var(--confirm-dialog-z-index);
 
   @media (prefers-reduced-motion: no-preference) {
     animation: show-dialog 150ms cubic-bezier(0.16, 1, 0.3, 1);
