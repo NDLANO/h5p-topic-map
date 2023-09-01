@@ -444,7 +444,7 @@
           "default": "Nota de progreso: @markedNotes de @totalNotes notas marcadas como hechas"
         },
         {
-          "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",
+          "label": "Etiqueta de envío de todos los datos de notas en la barra de navegación",
           "default": "Enviar todos los datos"
         },
         {
@@ -452,16 +452,16 @@
           "default": "¿Estás seguro de que quieres enviar todos tus datos?"
         },
         {
-          "label": "Submit all data confirm label",
-          "default": "Submit"
+          "label": "Etiqueta de confirmación de enviar todos los datos",
+          "default": "Enviar"
         },
         {
-          "label": "Submit all data deny label",
-          "default": "Cancel"
+          "label": "Etiqueta negar enviar todos los datos",
+          "default": "Cancelar"
         },
         {
           "label": "Texto descriptivo para flecha direccional",
-          "default": "Flecha de @startItem a @endItem"
+          "default": "Flecha desde @startItem a @endItem"
         },
         {
           "label": "Texto descriptivo para flecha bi-direccional",
@@ -469,23 +469,23 @@
         },
         {
           "label": "Texto descriptivo para nota estado hecho",
-          "default": "Nota marcada como hecho"
+          "default": "Nota marcada como hecha"
         },
         {
-          "label": "Texto descriptivo para nota estado iniciado",
-          "default": "Nota iniciado"
+          "label": "Texto descriptivo para estado de nota iniciado",
+          "default": "Nota iniciada"
         },
         {
-          "label": "Texto descriptivo para nota estado predeterminado",
-          "default": "Nota vacío"
+          "label": "Texto descriptivo para estado de nota predeterminado",
+          "default": "Nota vacía"
         },
         {
-          "label": "Descriptive text for note textarea",
-          "default": "Textarea with @max character limit."
+          "label": "Texto descriptivo para área de texto de nota",
+          "default": "Área de texto con límite de @max caracteres."
         },
         {
-          "label": "Descriptive text for note character count",
-          "default": "@count of @max characters"
+          "label": "Texto descriptivo para número de caracteres de nota",
+          "default": "@count de @max caracteres"
         }
       ]
     }
