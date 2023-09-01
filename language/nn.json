@@ -460,10 +460,6 @@
           "default": "Cancel"
         },
         {
-          "label": "Gå tilbake til temakart",
-          "default": "Gå tilbake til temakart"
-        },
-        {
           "label": "Beskrivande tekst for enveis pil",
           "default": "Pil fra @startItem til @endItem"
         },

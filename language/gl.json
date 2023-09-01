@@ -460,10 +460,6 @@
           "default": "Cancelar"
         },
         {
-          "label": "Go back to topic map label",
-          "default": "Back"
-        },
-        {
           "label": "Descriptive text for directional arrow",
           "default": "Arrow from @startItem to @endItem"
         },
