@@ -43,13 +43,10 @@
 .tabs {
   display: flex;
   flex-direction: column;
-  width: 300;
-  height: 100%;
+  flex-grow: 2;
 }
 
 .tabItemWrapper {
-  overflow-y: scroll;
-  overflow: auto;
   height: 100%;
 
   &.marginTop {
@@ -58,5 +55,5 @@
 }
 
 .noteWrapper {
-  height: 80%;
+  height: 100%;
 }

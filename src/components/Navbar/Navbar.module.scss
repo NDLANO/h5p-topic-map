@@ -23,34 +23,6 @@
   position: relative;
 }
 
-.sectionContentWrapper {
-  background-color: #ffffff;
-  overflow-y: auto;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 100%;
-  z-index: var(--notesection-z-index);
-}
-
-.sectionTitle {
-  background-color: transparent;
-  border: none;
-  border-radius: 2rem;
-  cursor: pointer;
-  color: #ffffff;
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
-
-  &:hover {
-    background-color: var(--theme-color-3);
-  }
-
-  &.active {
-    text-decoration: underline;
-  }
-}
-
 .sectionsMenu {
   display: flex;
   flex-direction: row;
@@ -58,12 +30,6 @@
 
 .progressBarWrapper {
   display: none;
-}
-
-.notesList {
-  @media print {
-    max-height: unset !important;
-  }
 }
 
 .fullscreenButton {

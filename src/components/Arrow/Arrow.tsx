@@ -14,6 +14,7 @@ import { useTranslation } from '../../hooks/useTranslation';
 import { H5P } from '../../h5p/H5P.util';
 import { Portal, Root, Trigger } from '@radix-ui/react-dialog';
 import { DialogWindow } from '../Dialog-Window/DialogWindow';
+import { useH5PInstance } from '../../hooks/useH5PInstance';
 
 export type ArrowProps = {
   item: ArrowItemType;
@@ -37,6 +38,7 @@ export const Arrow: FC<ArrowProps> = ({
   descriptiveText,
 }) => {
   const { t } = useTranslation();
+  const h5pInstance = useH5PInstance();
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
 
@@ -223,7 +225,7 @@ export const Arrow: FC<ArrowProps> = ({
           buttonState={buttonState}
           strokeWidth={strokeWidth}
         />
-        <Portal>
+        <Portal container={h5pInstance?.containerElement}>
           <DialogWindow item={item} />
         </Portal>
       </Root>
