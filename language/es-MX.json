@@ -452,10 +452,6 @@
           "default": "¿Estás seguro de que quieres enviar todos tus datos?"
         },
         {
-          "label": "Etiqueta de regresar a mapa de tópico",
-          "default": "Regresar"
-        },
-        {
           "label": "Texto descriptivo para flecha direccional",
           "default": "Flecha de @startItem a @endItem"
         },
