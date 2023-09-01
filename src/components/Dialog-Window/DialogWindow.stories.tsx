@@ -9,14 +9,8 @@ export default {
 } satisfies Meta<typeof DialogWindow>;
 
 const Template: StoryFn<typeof DialogWindow> = (args) => (
-  
   <DialogWindow {...args} />
 );
-
-const openClose = (open: boolean): void => {
-  // eslint-disable-next-line no-console
-  console.info('Toggle dialog', { open });
-};
 
 const item: TopicMapItemType = {
   id: '1',
@@ -41,8 +35,6 @@ const item: TopicMapItemType = {
 export const DialogWindowSimple = Template.bind({});
 DialogWindowSimple.args = {
   item,
-  open: true,
-  onOpenChange: openClose,
 };
 
 export const DialogWindowLong = Template.bind({});
@@ -58,7 +50,6 @@ DialogWindowLong.args = {
   You can create anything that makes you happy. If we're going to have animals around we all have to be concerned about them and take care of them. Just use the old one inch brush. We spend so much of our life looking - but never seeing. Here we're limited by the time we have.`,
     },
   },
-  open: true,
 };
 
 export const DialogWindowTabs = Template.bind({});
@@ -75,7 +66,6 @@ DialogWindowTabs.args = {
       showAddLinks: true,
     },
   },
-  open: true,
 };
 
 export const DialogWindowWithNote = Template.bind({});
@@ -88,7 +78,6 @@ DialogWindowWithNote.args = {
       showAddLinks: false,
     },
   },
-  open: true,
 };
 
 export const DialogWindowWithOnlyNote = Template.bind({});
@@ -105,5 +94,4 @@ DialogWindowWithOnlyNote.args = {
       showAddLinks: false,
     },
   },
-  open: true,
 };

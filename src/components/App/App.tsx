@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { FullScreen, useFullScreenHandle } from 'react-full-screen';
 import type { IH5PContentType } from 'h5p-types';
 import { AppWidthContext } from '../../contexts/AppWidthContext';
+import { useH5PInstance } from '../../hooks/useH5PInstance';
 import { Params } from '../../types/Params';
 import { defaultTheme } from '../../utils/semantics.utils';
 import { Navbar } from '../Navbar/Navbar';
@@ -44,6 +45,10 @@ export const App: React.FC<AppProps> = ({
     [params.topicMap?.colorTheme],
   );
 
+  // Make sure theme is applied to the root element
+  const h5pInstance = useH5PInstance();
+  h5pInstance?.containerElement?.classList.add(themeClassName);
+
   /*
    * React supplies useResizeObserver hook, but H5P may trigger `resize` not
    * only when the window resizes
@@ -66,8 +71,7 @@ export const App: React.FC<AppProps> = ({
     >
       <AppWidthContext.Provider value={width}>
         <div
-          className={`${themeClassName} ${isIPhoneFullscreenActive && styles.iPhoneFullscreenThemeStyle
-          }`}
+          className={isIPhoneFullscreenActive ? styles.iPhoneFullscreenThemeStyle : ''}
         >
           <FullScreen
             className={styles.fullscreenStyle}
@@ -79,7 +83,6 @@ export const App: React.FC<AppProps> = ({
                 params={params}
                 toggleIPhoneFullscreen={handleToggleIPhoneFullscreen}
                 isIPhoneFullscreenActive={isIPhoneFullscreenActive}
-                instance={instance}
               />
             </div>
           </FullScreen>

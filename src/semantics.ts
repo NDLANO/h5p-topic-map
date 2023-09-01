@@ -517,7 +517,7 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Navbar notes section body',
         name: 'navbarNotesSectionBody',
         default:
-          'Here you have an overview of all the notes you have written. The notes are saved locally in this browser. To save the notes elsewhere, you can print or copy the notes into a document.',
+          'This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document.',
         type: 'text',
       },
       {

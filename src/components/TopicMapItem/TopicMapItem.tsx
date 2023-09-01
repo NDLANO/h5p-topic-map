@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FC, MouseEventHandler } from 'react';
+import { FC } from 'react';
 import { useAppWidth } from '../../hooks/useAppWidth';
 import { useContentId } from '../../hooks/useContentId';
 import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
@@ -11,21 +11,23 @@ import { NoteButton } from '../NoteButton/NoteButton';
 import styles from './TopicMapItem.module.scss';
 import { getNoteStateText } from '../../utils/note.utils';
 import { useTranslation } from '../../hooks/useTranslation';
+import { Portal, Root, Trigger } from '@radix-ui/react-dialog';
+import { DialogWindow } from '../Dialog-Window/DialogWindow';
+import { useH5PInstance } from '../../hooks/useH5PInstance';
 
 export type TopicMapItemProps = {
   item: TopicMapItemType;
-  onClick: MouseEventHandler;
   grid?: GridDimensions;
   gridRef?: React.RefObject<HTMLDivElement>;
 };
 
 export const TopicMapItem: FC<TopicMapItemProps> = ({
   item,
-  onClick,
   grid,
   gridRef,
 }) => {
   const { t } = useTranslation();
+  const h5pInstance = useH5PInstance();
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
 
@@ -35,6 +37,8 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
 
   const sizeClassNames = useSizeClassNames(styles);
   const className = [styles.topicMapItem, sizeClassNames].join(' ');
+
+  const [dialogOpen, setDialogOpen] = React.useState(false);
 
   React.useEffect(() => {
     if (gridRef) {
@@ -63,56 +67,63 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
 
   return (
     <div className={styles.topicMapItemContainer}>
-      <button
-        type="button"
-        className={className}
-        onClick={onClick}
-        ref={buttonElement}
-      >
-        {item.topicImage?.path && (
-          <img
-            className={styles.image}
-            src={item.topicImage.path}
-            alt={item.topicImageAltText ?? ''}
-            width={item.topicImage.width}
-            height={item.topicImage.height}
-          />
-        )}
+      <Root open={dialogOpen} onOpenChange={setDialogOpen}>
+        <Trigger asChild>
+          <button
+            type="button"
+            className={className}
+            onClick={() => setDialogOpen(true)}
+            ref={buttonElement}
+          >
+            {item.topicImage?.path && (
+              <img
+                className={styles.image}
+                src={item.topicImage.path}
+                alt={item.topicImageAltText ?? ''}
+                width={item.topicImage.width}
+                height={item.topicImage.height}
+              />
+            )}
 
-        <div
-          className={`${styles.inner} ${item.topicImage?.path ? '' : styles.noImage
-          } ${item.dialog?.hasNote ? styles.withNote : ''}`}
-          style={{ paddingTop: strokeWidth * 0.66 }}
-        >
-          <div
-            className={styles.label}
-            dangerouslySetInnerHTML={{ __html: item.label }}
-          />
-          {item.description && (
             <div
-              className={styles.description}
-              dangerouslySetInnerHTML={{ __html: item.description }}
-            />
-          )}
-          {item.dialog?.hasNote && <span className={styles.visuallyHidden}>{getNoteStateText(btnState, t)}</span>}
-        </div>
-      </button>
+              className={`${styles.inner} ${item.topicImage?.path ? '' : styles.noImage
+              } ${item.dialog?.hasNote ? styles.withNote : ''}`}
+              style={{ paddingTop: strokeWidth * 0.66 }}
+            >
+              <div
+                className={styles.label}
+                dangerouslySetInnerHTML={{ __html: item.label }}
+              />
+              {item.description && (
+                <div
+                  className={styles.description}
+                  dangerouslySetInnerHTML={{ __html: item.description }}
+                />
+              )}
+              {item.dialog?.hasNote && <span className={styles.visuallyHidden}>{getNoteStateText(btnState, t)}</span>}
+            </div>
+          </button>
+        </Trigger>
 
-      {item.dialog?.hasNote ? (
-        <div className={styles.topicMapItemIconEdit}>
-          <div className={styles.icon}>
-            <NoteButton
-              backgroundColor="var(--theme-color-3)"
-              borderColor="white"
-              iconColor="white"
-              buttonState={btnState}
-              strokeWidth={strokeWidth}
-            />
+        {item.dialog?.hasNote ? (
+          <div className={styles.topicMapItemIconEdit}>
+            <div className={styles.icon}>
+              <NoteButton
+                backgroundColor="var(--theme-color-3)"
+                borderColor="white"
+                iconColor="white"
+                buttonState={btnState}
+                strokeWidth={strokeWidth}
+              />
+            </div>
           </div>
-        </div>
-      ) : (
-        ''
-      )}
+        ) : (
+          ''
+        )}
+        <Portal container={h5pInstance?.containerElement}>
+          <DialogWindow item={item} />
+        </Portal>
+      </Root>
     </div>
   );
 };

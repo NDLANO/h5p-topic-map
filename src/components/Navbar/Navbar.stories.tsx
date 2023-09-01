@@ -1,5 +1,4 @@
 import { Meta, StoryFn } from '@storybook/react';
-import type { IH5PContentType } from 'h5p-types';
 import * as React from 'react';
 import { Navbar, NavbarProps } from './Navbar';
 
@@ -13,11 +12,6 @@ const defaultArgs: NavbarProps = {
   params: {},
   toggleIPhoneFullscreen: () => null,
   isIPhoneFullscreenActive: false,
-  instance: {
-    on: () => {
-      /* Empty */
-    },
-  } as unknown as IH5PContentType,
 };
 
 export const NavBar: StoryFn<typeof Navbar> = () => {
@@ -264,6 +258,6 @@ export const NavBar: StoryFn<typeof Navbar> = () => {
       },
     },
   };
-  
+
   return <Navbar {...args} />;
 };
