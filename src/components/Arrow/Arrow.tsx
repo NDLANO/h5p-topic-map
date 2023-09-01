@@ -107,50 +107,54 @@ export const Arrow: FC<ArrowProps> = ({
   };
 
   React.useEffect(() => {
-    if (arrowContainerRef.current) {
-      const gridElement = arrowContainerRef.current;
+    const handleResize = () => {
+      if (arrowContainerRef.current) {
+        const gridElement = arrowContainerRef.current;
 
-      if (grid) {
-        if (isHorizontal) {
-          setStrokeWidth((gridElement.clientHeight / grid.numberOfRows) * 0.66);
+        if (grid) {
+          if (isHorizontal) {
+            setStrokeWidth((gridElement.clientHeight / grid.numberOfRows) * 0.66);
+          }
+          else {
+            setStrokeWidth(
+              (gridElement.clientWidth / grid.numberOfColumns) * 0.66,
+            );
+          }
         }
-        else {
-          setStrokeWidth(
-            (gridElement.clientWidth / grid.numberOfColumns) * 0.66,
-          );
-        }
-      }
 
-      const startx = (item.startPosition.x / 100) * gridElement.clientWidth;
-      const starty = (item.startPosition.y / 100) * gridElement.clientHeight;
-      const endx = (item.endPosition.x / 100) * gridElement.clientWidth;
-      const endy = (item.endPosition.y / 100) * gridElement.clientHeight;
+        const startx = (item.startPosition.x / 100) * gridElement.clientWidth;
+        const starty = (item.startPosition.y / 100) * gridElement.clientHeight;
+        const endx = (item.endPosition.x / 100) * gridElement.clientWidth;
+        const endy = (item.endPosition.y / 100) * gridElement.clientHeight;
 
-      const asAabolutePosition = (position: Position): Position => {
-        return {
-          x: (position.x / 100) * gridElement.clientWidth,
-          y: (position.y / 100) * gridElement.clientHeight,
+        const asAabolutePosition = (position: Position): Position => {
+          return {
+            x: (position.x / 100) * gridElement.clientWidth,
+            y: (position.y / 100) * gridElement.clientHeight,
+          };
         };
-      };
-      const asPoint = (position: Position): string =>
-        `${(position.x / 100) * gridElement.clientWidth},${(position.y / 100) * gridElement.clientHeight
-        }`;
-      const path = `${startx},${starty} ${item.relativeBreakpoints?.map(asPoint).join(' ') ?? ''
-      } ${endx},${endy}`;
+        const asPoint = (position: Position): string =>
+          `${(position.x / 100) * gridElement.clientWidth},${(position.y / 100) * gridElement.clientHeight
+          }`;
+        const path = `${startx},${starty} ${item.relativeBreakpoints?.map(asPoint).join(' ') ?? ''
+        } ${endx},${endy}`;
 
-      const middlePoint = findMiddlePosition(
-        startx,
-        starty,
-        item.relativeBreakpoints,
-        endx,
-        endy,
-        asAabolutePosition,
-      );
-      setMiddleX(middlePoint.x);
-      setMiddleY(middlePoint.y);
-      setPathDef(path);
-    }
-  }, [arrowContainerRef, item, grid, buttonState, isHorizontal]);
+        const middlePoint = findMiddlePosition(
+          startx,
+          starty,
+          item.relativeBreakpoints,
+          endx,
+          endy,
+          asAabolutePosition,
+        );
+        setMiddleX(middlePoint.x);
+        setMiddleY(middlePoint.y);
+        setPathDef(path);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [arrowContainerRef, item, grid, isHorizontal]);
 
   return (
     <div className={styles.arrow}>
