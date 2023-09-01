@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { StoryFn, Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { NotesSection } from './NotesSection';
 
 export default {
@@ -7,16 +6,15 @@ export default {
   component: NotesSection,
 } satisfies Meta<typeof NotesSection>;
 
-const Template: StoryFn<typeof NotesSection> = (args) => (
-  <NotesSection {...args} />
-);
+type Story = StoryObj<typeof NotesSection>;
 
-export const Notes = Template.bind({});
-Notes.args = {
-  confirmSubmitAll: () => { },
-  confirmDeletion: () => { },
-  notesOpen: false,
-  setNotesOpen: () => { },
-  navbarTitle: 'Navbar Title',
-  allItems: [],
+export const Notes: Story = {
+  args: {
+    confirmSubmitAll: () => {},
+    confirmDeletion: () => {},
+    notesOpen: false,
+    setNotesOpen: () => {},
+    navbarTitle: 'Navbar Title',
+    allItems: [],
+  },
 };
