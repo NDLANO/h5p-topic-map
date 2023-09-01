@@ -90,9 +90,7 @@ export const DialogNote: React.FC<NoteProps> = ({
     setCharacterCount(count);
   }, [maxLength, note, savingTextTimeout]);
 
-  React.useEffect(() => {
-    // TODO: If this becomes laggy, add a debounce-timer to avoid saving more often than, say, every 100ms.
-
+  const handleSetUserData = (note: string): void => {
     if (!userData[contentId]) {
       userData[contentId] = { dialogs: {} };
     }
@@ -101,28 +99,19 @@ export const DialogNote: React.FC<NoteProps> = ({
     }
 
     userData[contentId].dialogs[id].note = note;
+    setUserData(userData);
+  };
+
+  const onChange = ({ target }: React.ChangeEvent<HTMLTextAreaElement>): void => {
+    const newValue = target.value;
+
+    setSavingText();
+    setNote(newValue);
+    handleSetUserData(newValue);
 
     if (maxLength) {
       countCharacters();
     }
-    // ensure there's no memory leak on component unmount during timeout
-    return () => {
-      if (savingTextTimeout != null) clearTimeout(savingTextTimeout);
-    };
-  }, [
-    userData,
-    id,
-    note,
-    setUserData,
-    savingTextTimeout,
-    countCharacters,
-    contentId,
-  ]);
-
-  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    setSavingText();
-    setNote(e.target.value);
-    setUserData(userData);
   };
 
   return (
