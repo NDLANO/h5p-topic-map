@@ -24,8 +24,9 @@
 .confirmWindowContent {
   @include modal-content;
   height: auto;
-  max-height: 85vh;
   width: 52vw;
+  max-height: 85vh;
+  max-width: 35rem;
   z-index: var(--confirm-dialog-z-index);
 
   @media (prefers-reduced-motion: no-preference) {
