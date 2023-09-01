@@ -440,8 +440,8 @@
           "default": "Cancelar"
         },
         {
-          "label": "Texto descriptivo de la barra de progreso",
-          "default": "¿Estás seguro de que quieres enviar todos tus datos?"
+          "label": "Descriptive text for the progress bar",
+          "default": "Note progress: @markedNotes of @totalNotes notes marked as done"
         },
         {
           "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",
@@ -450,6 +450,14 @@
         {
           "label": "Etiqueta de ventana de confirmación de envío de todas las notas",
           "default": "¿Estás seguro de que quieres enviar todos tus datos?"
+        },
+        {
+          "label": "Submit all data confirm label",
+          "default": "Submit"
+        },
+        {
+          "label": "Submit all data deny label",
+          "default": "Cancel"
         },
         {
           "label": "Texto descriptivo para flecha direccional",
@@ -470,14 +478,6 @@
         {
           "label": "Texto descriptivo para nota estado predeterminado",
           "default": "Nota vacío"
-        },
-        {
-          "label": "Descriptive text for note status started",
-          "default": "Note started"
-        },
-        {
-          "label": "Descriptive text for note status default",
-          "default": "Note empty"
         },
         {
           "label": "Descriptive text for note textarea",

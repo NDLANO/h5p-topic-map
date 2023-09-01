@@ -452,6 +452,14 @@
           "default": "¿Estás seguro de que quieres enviar todos tus datos?"
         },
         {
+          "label": "Submit all data confirm label",
+          "default": "Submit"
+        },
+        {
+          "label": "Submit all data deny label",
+          "default": "Cancel"
+        },
+        {
           "label": "Texto descriptivo para flecha direccional",
           "default": "Flecha de @startItem a @endItem"
         },
@@ -470,14 +478,6 @@
         {
           "label": "Texto descriptivo para nota estado predeterminado",
           "default": "Nota vacío"
-        },
-        {
-          "label": "Descriptive text for note status started",
-          "default": "Note started"
-        },
-        {
-          "label": "Descriptive text for note status default",
-          "default": "Note empty"
         },
         {
           "label": "Descriptive text for note textarea",
