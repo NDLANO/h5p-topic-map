@@ -1,5 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
-import * as React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 import { DialogTabs } from './DialogTabs';
 
 export default {
@@ -7,12 +6,8 @@ export default {
   component: DialogTabs,
 } satisfies Meta<typeof DialogTabs>;
 
-const Template: StoryFn<typeof DialogTabs> = (args) => (
-  
-  <DialogTabs {...args} />
-);
+type Story = StoryObj<typeof DialogTabs>;
 
-export const Tabs = Template.bind({});
 const item = {
   id: 'storybookid',
   label: 'Just another label',
@@ -65,9 +60,11 @@ const item = {
     },
   },
 };
-Tabs.args = { item };
 
-export const TabsWithOnlyImage = Template.bind({});
+export const Tabs: Story = {
+  args: { item },
+};
+
 const itemWithOnlyImage = {
   id: 'storybookid',
   label: 'Just another label',
@@ -116,13 +113,14 @@ const itemWithOnlyImage = {
   },
 };
 
-TabsWithOnlyImage.args = {
-  item: {
-    ...itemWithOnlyImage,
+export const TabsWithOnlyImage: Story = {
+  args: {
+    item: {
+      ...itemWithOnlyImage,
+    },
   },
 };
 
-export const TabsWithoutImage = Template.bind({});
 const itemWithoutImage = {
   id: 'storybookid',
   label: 'Just another label',
@@ -164,8 +162,10 @@ const itemWithoutImage = {
   },
 };
 
-TabsWithoutImage.args = {
-  item: {
-    ...itemWithoutImage,
+export const TabsWithoutImage: Story = {
+  args: {
+    item: {
+      ...itemWithoutImage,
+    },
   },
 };

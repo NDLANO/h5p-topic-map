@@ -1,21 +1,21 @@
-import { Meta, StoryFn } from '@storybook/react';
-import * as React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 import { DialogExternalResources } from './ExternalResources';
 
 export default {
   title: 'molecules/Dialog Content/Dialog External Resources',
   component: DialogExternalResources,
+  render: (args) => (
+    <div style={{ height: '2000px', width: '1000px' }}>
+      <DialogExternalResources {...args} />
+    </div>
+  ),
 } satisfies Meta<typeof DialogExternalResources>;
 
-const Template: StoryFn<typeof DialogExternalResources> = (args) => (
-  <div style={{ height: '2000px', width: '1000px' }}>
-    <DialogExternalResources {...args} />
-  </div>
-);
+type Story = StoryObj<typeof DialogExternalResources>;
 
-export const ExternalResource = Template.bind({});
-
-ExternalResource.args = {
-  url: 'https://www.ndla.no',
-  label: 'External example',
+export const ExternalResource: Story = {
+  args: {
+    url: 'https://www.ndla.no',
+    label: 'External example',
+  },
 };

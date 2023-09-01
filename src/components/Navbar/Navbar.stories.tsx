@@ -1,11 +1,5 @@
-import { Meta, StoryFn } from '@storybook/react';
-import * as React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Navbar, NavbarProps } from './Navbar';
-
-export default {
-  title: 'Molecules/Navbar/Navbar',
-  component: Navbar,
-} satisfies Meta<typeof Navbar>;
 
 const defaultArgs: NavbarProps = {
   navbarTitle: 'National romanticism',
@@ -14,8 +8,16 @@ const defaultArgs: NavbarProps = {
   isIPhoneFullscreenActive: false,
 };
 
-export const NavBar: StoryFn<typeof Navbar> = () => {
-  const args: NavbarProps = {
+export default {
+  title: 'Molecules/Navbar/Navbar',
+  component: Navbar,
+  args: defaultArgs,
+} satisfies Meta<typeof Navbar>;
+
+type Story = StoryObj<typeof Navbar>;
+
+export const NavBar: Story = {
+  args: {
     ...defaultArgs,
     params: {
       topicMap: {
@@ -257,7 +259,5 @@ export const NavBar: StoryFn<typeof Navbar> = () => {
         ],
       },
     },
-  };
-
-  return <Navbar {...args} />;
+  },
 };
