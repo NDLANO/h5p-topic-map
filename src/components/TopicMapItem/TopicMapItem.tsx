@@ -38,18 +38,14 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    const handleResize = () => {
-      if (gridRef) {
-        const gridElement = gridRef.current;
-        if (grid && gridElement) {
-          setStrokeWidth((gridElement.clientWidth / grid.numberOfColumns) * 0.66);
-        }
+  const handleResize = () => {
+    if (gridRef) {
+      const gridElement = gridRef.current;
+      if (grid && gridElement) {
+        setStrokeWidth((gridElement.clientWidth / grid.numberOfColumns) * 0.66);
       }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [grid, gridRef]);
+    }
+  };
 
   let btnState: NoteButtonIconState = NoteButtonIconState.Default;
   if (item.dialog?.hasNote) {
@@ -66,6 +62,8 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
         btnState = NoteButtonIconState.Default;
     }
   }
+
+  h5pInstance?.on('resize', handleResize);
 
   return (
     <div className={styles.topicMapItemContainer}>
