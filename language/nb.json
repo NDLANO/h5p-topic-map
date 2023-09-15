@@ -416,6 +416,10 @@
           "default": "Skriv ut"
         },
         {
+          "label": "Kopier notater",
+          "default": "Kopier notater"
+        },
+        {
           "label": "Slett alle notater",
           "default": "Slett alle notater"
         },

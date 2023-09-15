@@ -14,6 +14,7 @@ import styles from './NotesSection.module.scss';
 export type NotesSectionProps = {
   confirmSubmitAll: () => void;
   confirmDeletion: () => void;
+  onCopy: () => void;
   notesOpen: boolean;
   setNotesOpen: (open: boolean) => void;
   navbarTitle: string;
@@ -23,6 +24,7 @@ export type NotesSectionProps = {
 export const NotesSection: React.FC<NotesSectionProps> = ({
   confirmSubmitAll,
   confirmDeletion,
+  onCopy,
   notesOpen,
   setNotesOpen,
   navbarTitle,
@@ -32,6 +34,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
   const h5pInstance = useH5PInstance();
 
   const printText = t('navbarNotesSectionPrintLabel');
+  const copyText = t('navbarNotesSectionCopyLabel');
   const exportAllUserDataText = t('navbarNotesSectionSubmitAllLabel');
   const deleteText = t('navbarNotesSectionDeleteLabel');
 
@@ -108,10 +111,16 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
                 <button
                   className={styles.mainBodyButton}
                   type="button"
-                  aria-label={printText}
                   onClick={handlePrint}
                 >
                   {printText}
+                </button>
+                <button
+                  className={styles.mainBodyButton}
+                  type="button"
+                  onClick={onCopy}
+                >
+                  {copyText}
                 </button>
                 {H5PIntegration.reportingIsEnabled ? (
                   exportAllButtonAndWindow

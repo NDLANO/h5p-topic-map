@@ -29,6 +29,7 @@ export type TranslationKey =
   | 'navbarNotesSectionTitle'
   | 'navbarNotesSectionBody'
   | 'navbarNotesSectionPrintLabel'
+  | 'navbarNotesSectionCopyLabel'
   | 'navbarNotesSectionDeleteLabel'
   | 'navbarNotesEmptyListLabel'
   | 'navbarNotesMissingNoteLabel'
