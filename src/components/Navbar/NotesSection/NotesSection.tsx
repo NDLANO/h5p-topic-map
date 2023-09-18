@@ -84,12 +84,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
 
   // Only show the copy button if the browser supports it.
   // Available only in secure contexts (HTTPS), in some or all supporting browsers.
-  const showCopyButton = React.useMemo(() => {
-    if ('clipboard' in navigator) {
-      return true;
-    }
-    return false;
-  }, []);
+  const showCopyButton = 'clipboard' in navigator;
 
   return (
     <Root open={notesOpen} onOpenChange={setNotesOpen}>
