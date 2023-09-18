@@ -416,6 +416,10 @@
           "default": "Imprimir"
         },
         {
+          "label": "Navbar notes copy button label",
+          "default": "Copy"
+        },
+        {
           "label": "Etiqueta para borrar todas as notas na barra de navegación",
           "default": "Elimina todas as notas"
         },

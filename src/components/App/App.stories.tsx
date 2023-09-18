@@ -43,6 +43,7 @@ export const DenFranskeRevolusjon: Story = {
         navbarNotesSectionBody: '',
         navbarNotesSectionDeleteLabel: 'Delete',
         navbarNotesSectionPrintLabel: 'Print',
+        navbarNotesSectionCopyLabel: 'Copy',
         navbarNotesSectionTitle: 'Title',
         progressBarDescriptiveText:
           'Note progress: @markedNotes of @totalNotes notes marked as done',
