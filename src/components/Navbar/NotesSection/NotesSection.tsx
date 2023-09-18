@@ -82,6 +82,15 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
     />
   );
 
+  // Only show the copy button if the browser supports it.
+  // Available only in secure contexts (HTTPS), in some or all supporting browsers.
+  const showCopyButton = React.useMemo(() => {
+    if ('clipboard' in navigator) {
+      return true;
+    }
+    return false;
+  }, []);
+
   return (
     <Root open={notesOpen} onOpenChange={setNotesOpen}>
       <Trigger asChild>
@@ -115,13 +124,15 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
                 >
                   {printText}
                 </button>
-                <button
-                  className={styles.mainBodyButton}
-                  type="button"
-                  onClick={onCopy}
-                >
-                  {copyText}
-                </button>
+                {showCopyButton && (
+                  <button
+                    className={styles.mainBodyButton}
+                    type="button"
+                    onClick={onCopy}
+                  >
+                    {copyText}
+                  </button>
+                )}
                 {H5PIntegration.reportingIsEnabled ? (
                   exportAllButtonAndWindow
                 ) : null}
