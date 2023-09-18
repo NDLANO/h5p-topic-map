@@ -416,8 +416,8 @@
           "default": "Skriv ut"
         },
         {
-          "label": "Kopier notater",
-          "default": "Kopier notater"
+          "label": "Kopier",
+          "default": "Kopier"
         },
         {
           "label": "Slett alle notater",
