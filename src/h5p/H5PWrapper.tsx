@@ -6,9 +6,9 @@ import { App } from '../components/App/App';
 import { ContentIdContext } from '../contexts/ContentIdContext';
 import { H5PContext } from '../contexts/H5PContext';
 import { Params } from '../types/Params';
-import { Translations } from '../types/Translations';
 import { sanitizeRecord } from '../utils/h5p.utils';
 import { getEmptyParams } from '../utils/semantics.utils';
+import { defaultTranslations } from '../constants/defaultTranslations';
 import {
   H5P,
   normalizeArrowDialogAudioPaths,
@@ -83,7 +83,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     paramsWithFallbacks = normalizeSizes(paramsWithFallbacks);
 
-    const l10n = params.l10n ?? ({} as Translations);
+    const l10n = { ...defaultTranslations, ...params.l10n };
     const title = extras?.metadata.title;
 
     this.on('enterFullScreen', () => {
