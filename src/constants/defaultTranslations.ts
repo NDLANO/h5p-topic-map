@@ -1,7 +1,7 @@
 import { Translations } from '../types/Translations';
 
 /**
-  * This default translations for Topic Map.
+  * The default translations for Topic Map.
   */
 export const defaultTranslations: Translations = {
   closeDialog: 'Close dialog',
