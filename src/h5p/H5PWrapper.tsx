@@ -83,7 +83,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     paramsWithFallbacks = normalizeSizes(paramsWithFallbacks);
 
-    const l10n = { ...defaultTranslations, ...params.l10n };
+    const l10n = sanitizeRecord({ ...defaultTranslations, ...params.l10n });
     const title = extras?.metadata.title;
 
     this.on('enterFullScreen', () => {
@@ -116,7 +116,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     createRoot(this.wrapper).render(
       <ContentIdContext.Provider value={contentId}>
-        <L10nContext.Provider value={sanitizeRecord(l10n)}>
+        <L10nContext.Provider value={l10n}>
           <H5PContext.Provider value={this}>
             <App
               params={paramsWithFallbacks}
