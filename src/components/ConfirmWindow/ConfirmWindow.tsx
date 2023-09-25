@@ -45,7 +45,7 @@ export const ConfirmWindow: FC<ConfirmWindowProps> = ({
       </Trigger>
       <Portal container={h5pInstance?.containerElement}>
         <Overlay className={styles.overlay} />
-        <Content className={styles.confirmWindowContent}>
+        <Content aria-modal="true" className={styles.confirmWindowContent}>
           <div className={styles.contentWrapper}>
             <Title className={styles.dialogTitle}>{title}</Title>
             {children}

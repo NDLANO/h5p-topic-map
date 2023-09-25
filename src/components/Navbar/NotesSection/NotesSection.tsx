@@ -100,7 +100,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
       </Trigger>
       <Portal container={h5pInstance?.containerElement}>
         <Overlay className={styles.overlay} />
-        <Content className={styles.dialogContent}>
+        <Content aria-modal="true" className={styles.dialogContent}>
           <div className={styles.contentWrapper}>
             <div className={`${styles.mainBody} ${sizeClassNames}`}>
               <Title asChild>
