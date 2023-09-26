@@ -1,6 +1,8 @@
 import "!style-loader!css-loader!sass-loader!../src/styles.scss";
+import * as React from "react";
 import { FC } from "react";
 import { L10nContext } from "use-h5p";
+import { defaultTranslations } from "../src/constants/defaultTranslations";
 import { ContentIdContext } from "../src/contexts/ContentIdContext";
 import { H5PContext } from "../src/contexts/H5PContext";
 import { H5PWrapper } from "../src/h5p/H5PWrapper";
@@ -39,17 +41,23 @@ const translations = Object.fromEntries(
   }),
 );
 
+const l10n = { ...defaultTranslations, ...translations };
+
 const h5pInstance = new H5PWrapper(
   {
     behaviour: {},
     // @ts-ignore
-    l10n: {},
+    l10n: l10n,
     topicMap: {},
   },
   "1",
   {
     metadata: {
       title: "",
+      license: "",
+      extraTitle: "",
+      authors: [],
+      changes: []
     },
     standalone: false,
   },
@@ -58,7 +66,7 @@ const h5pInstance = new H5PWrapper(
 export const decorators = [
   (Story: FC) => (
     <ContentIdContext.Provider value="1">
-      <L10nContext.Provider value={translations}>
+      <L10nContext.Provider value={l10n}>
         <H5PContext.Provider value={h5pInstance}>
           <Story />
         </H5PContext.Provider>
