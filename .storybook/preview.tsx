@@ -6,7 +6,6 @@ import { defaultTranslations } from "../src/constants/defaultTranslations";
 import { ContentIdContext } from "../src/contexts/ContentIdContext";
 import { H5PContext } from "../src/contexts/H5PContext";
 import { H5PWrapper } from "../src/h5p/H5PWrapper";
-import { semantics } from "../src/semantics";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -34,20 +33,10 @@ export const parameters = {
   },
 };
 
-const translations = Object.fromEntries(
-  semantics[2].fields.map((field) => {
-    const defaultValue = field["default"] ?? field.name;
-    return [field.name, defaultValue];
-  }),
-);
-
-const l10n = { ...defaultTranslations, ...translations };
-
 const h5pInstance = new H5PWrapper(
   {
     behaviour: {},
-    // @ts-ignore
-    l10n: l10n,
+    l10n: defaultTranslations,
     topicMap: {},
   },
   "1",
@@ -66,7 +55,7 @@ const h5pInstance = new H5PWrapper(
 export const decorators = [
   (Story: FC) => (
     <ContentIdContext.Provider value="1">
-      <L10nContext.Provider value={l10n}>
+      <L10nContext.Provider value={defaultTranslations}>
         <H5PContext.Provider value={h5pInstance}>
           <Story />
         </H5PContext.Provider>
