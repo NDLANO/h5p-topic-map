@@ -1,7 +1,7 @@
 import type { H5PField } from 'h5p-types';
 import { ColorTheme } from '../types/ColorTheme';
+import { defaultTranslations } from '../constants/defaultTranslations';
 import { Params } from '../types/Params';
-import { Translations } from '../types/Translations';
 
 export const itemDialog: Array<H5PField> = [
   {
@@ -113,6 +113,6 @@ export const getEmptyParams = (): Required<Params> => {
       colorTheme: defaultTheme,
     },
     behaviour: null,
-    l10n: {} as Translations,
+    l10n: defaultTranslations,
   };
 };
