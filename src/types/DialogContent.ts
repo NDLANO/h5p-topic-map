@@ -5,7 +5,7 @@ export type DialogContent = {
   hasNote: boolean;
   links?: Array<Link>;
   showAddLinks: boolean;
-  maxWordCount?: number;
+  maxLength?: number;
   text?: string;
   video?: Array<H5PVideo>;
   audio?: {

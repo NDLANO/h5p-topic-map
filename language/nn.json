@@ -45,8 +45,8 @@
                     "label": "Vis notatfelt"
                   },
                   {
-                    "label": "Maks antall ord i notatfeltet",
-                    "description": "Hvis det ikke endres vil antallet være 160 ord."
+                    "label": "Maksimalt tal på skrivne teikn",
+                    "description": "Spesifiserer maksimalt tal på skrivne teikn for notatet."
                   },
                   {
                     "label": "Tekst"
@@ -195,8 +195,8 @@
                     "label": "Vis notatfelt"
                   },
                   {
-                    "label": "Maks antall ord i notatfeltet",
-                    "description": "Hvis det ikke endres vil antallet være 160 ord."
+                    "label": "Maksimalt tal på skrivne teikn",
+                    "description": "Spesifiserer maksimalt tal på skrivne teikn for notatet."
                   },
                   {
                     "label": "Tekst"
@@ -343,8 +343,8 @@
           "default": "Lagret"
         },
         {
-          "label": "Tekst som vises når maks antall ord er overskredet",
-          "default": "For mange ord"
+          "label": "Tekst som blir vist når talet på teikn er overskride",
+          "default": "Teikngrensa er overskriden"
         },
         {
           "label": "Forslagstekst i notatfelt",
@@ -365,10 +365,6 @@
         {
           "label": "Legg til lenke",
           "default": "Legg til"
-        },
-        {
-          "label": "Ord (bak ordteller)",
-          "default": "Ord"
         },
         {
           "label": "Tittel på fullskjerm-knapp - på",
@@ -413,11 +409,15 @@
         },
         {
           "label": "Beskrivese på notatside",
-          "default": "Here you have an overview of all the notes you have written. The notes are saved locally in this browser. To save the notes elsewhere, you can print or copy the notes into a document."
+          "default": "Dette er ei oversikt over notata dine. Dei er lagra lokalt i denne nettlesaren. Du kan skriva ut eller kopiera notata dine inn i eit dokument."
         },
         {
           "label": "Skriv ut",
           "default": "Skriv ut"
+        },
+        {
+          "label": "Kopier",
+          "default": "Kopier"
         },
         {
           "label": "Slett alle notater",
@@ -464,10 +464,6 @@
           "default": "Cancel"
         },
         {
-          "label": "Gå tilbake til temakart",
-          "default": "Gå tilbake til temakart"
-        },
-        {
           "label": "Beskrivande tekst for enveis pil",
           "default": "Pil fra @startItem til @endItem"
         },
@@ -486,6 +482,14 @@
         {
           "label": "Beskrivande tekst for notatstatus ikkje påbegynt",
           "default": "Notat ikkje påbegynt"
+        },
+        {
+          "label": "Beskrivande tekst for notatets tekstområde",
+          "default": "Tekstområde med plass til @max teikn."
+        },
+        {
+          "label": "Beskrivande tekst for talet på teikn i notatet",
+          "default": "@count av @max teikn"
         }
       ]
     }

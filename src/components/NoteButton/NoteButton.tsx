@@ -47,7 +47,6 @@ export const NoteButton: React.FC<NoteButtonProps> = ({
   return (
     <div
       aria-hidden="true"
-      data-testid="svgBtn"
       className={className}
       style={{
         backgroundColor,

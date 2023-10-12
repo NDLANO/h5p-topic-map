@@ -5,11 +5,13 @@ module.exports = {
     '../src/**/*.stories.mdx',
     '../src/**/*.stories.@(js|jsx|ts|tsx)',
   ],
+
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     'storybook-addon-themes',
   ],
+
   webpackFinal: async (config) => {
     // Removing the global alias as it conflicts with the global npm pkg (https://github.com/storybookjs/storybook/issues/21242)
     const { global, ...alias } = config.resolve.alias;
@@ -19,10 +21,15 @@ module.exports = {
 
     return config;
   },
+
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
   },
+
+  docs: {
+    autodocs: true
+  }
 };
 function addScssSupport(config) {
   config.plugins.push(new MiniCssExtractPlugin());

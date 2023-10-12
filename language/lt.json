@@ -45,8 +45,8 @@
                     "label": "Show notes textarea"
                   },
                   {
-                    "label": "Maximum number of words",
-                    "description": "Specifies the maximum number of words for the note. Default is 160 words."
+                    "label": "Maximum number of characters",
+                    "description": "Specifies the maximum number of characters for the note."
                   },
                   {
                     "label": "Text"
@@ -195,8 +195,8 @@
                     "label": "Show notes textarea"
                   },
                   {
-                    "label": "Maximum number of words",
-                    "description": "Specifies the maximum number of words for the note. Default is 160 words."
+                    "label": "Maximum number of characters",
+                    "description": "Specifies the maximum number of characters for the note."
                   },
                   {
                     "label": "Text"
@@ -343,8 +343,8 @@
           "default": "Saved"
         },
         {
-          "label": "Word limit exceeded label",
-          "default": "Too many words"
+          "label": "Character limit exceeded label",
+          "default": "Character limit exceeded"
         },
         {
           "label": "Note placeholder",
@@ -365,10 +365,6 @@
         {
           "label": "Dialog resources labels: Add",
           "default": "Add"
-        },
-        {
-          "label": "Dialog words text label",
-          "default": "Words"
         },
         {
           "label": "Fullscreen button label - enter",
@@ -413,11 +409,15 @@
         },
         {
           "label": "Navbar notes section body",
-          "default": "Here you have an overview of all the notes you have written. The notes are saved locally in this browser. To save the notes elsewhere, you can print or copy the notes into a document."
+          "default": "This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document."
         },
         {
           "label": "Navbar notes print button label",
           "default": "Print"
+        },
+        {
+          "label": "Navbar notes copy button label",
+          "default": "Copy"
         },
         {
           "label": "Navbar notes delete all notes button label",
@@ -464,10 +464,6 @@
           "default": "Cancel"
         },
         {
-          "label": "Go back to topic map label",
-          "default": "Back"
-        },
-        {
           "label": "Descriptive text for directional arrow",
           "default": "Arrow from @startItem to @endItem"
         },
@@ -486,6 +482,14 @@
         {
           "label": "Descriptive text for note status default",
           "default": "Note empty"
+        },
+        {
+          "label": "Descriptive text for note textarea",
+          "default": "Textarea with @max character limit."
+        },
+        {
+          "label": "Descriptive text for note character count",
+          "default": "@count of @max characters"
         }
       ]
     }

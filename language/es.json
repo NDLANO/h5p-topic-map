@@ -45,8 +45,8 @@
                     "label": "Mostrar área de texto de notas"
                   },
                   {
-                    "label": "Número máximo de palabras",
-                    "description": "Especifica el número máximo de palabras para la nota. El valor predeterminado es de 160 palabras."
+                    "label": "Número máximo de caracteres",
+                    "description": "Especifica el número máximo de caracteres para la nota."
                   },
                   {
                     "label": "Texto"
@@ -195,8 +195,8 @@
                     "label": "Mostrar área de texto de notas"
                   },
                   {
-                    "label": "Número máximo de palabras",
-                    "description": "Especifica el número máximo de palabras para la nota. El valor predeterminado es de 160 palabras."
+                    "label": "Número máximo de caracteres",
+                    "description": "Especifica el número máximo de caracteres para la nota."
                   },
                   {
                     "label": "Texto"
@@ -343,8 +343,8 @@
           "default": "Guardada"
         },
         {
-          "label": "Etiqueta de límite de palabras excedido",
-          "default": "Demasiadas palabras"
+          "label": "Etiqueta de límite de caracteres excedido",
+          "default": "Límite de caracteres excedido"
         },
         {
           "label": "Marcador de posición de nota",
@@ -365,10 +365,6 @@
         {
           "label": "Etiquetas de recursos de diálogo: Agregar",
           "default": "Agregar"
-        },
-        {
-          "label": "Etiqueta de texto de palabras de diálogo",
-          "default": "Palabras"
         },
         {
           "label": "Etiqueta de botón de pantalla completa - ingresar",
@@ -413,11 +409,15 @@
         },
         {
           "label": "Cuerpo de la sección de notas de la barra de navegación",
-          "default": "Aquí tienes un resumen de todas las notas que has escrito. Las notas se guardan localmente en este navegador. Para guardar las notas en otro lugar, puedes imprimir o copiar las notas en un documento."
+          "default": "This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document."
         },
         {
           "label": "Etiqueta del botón de impresión de notas de la barra de navegación",
           "default": "Imprimir"
+        },
+        {
+          "label": "Navbar notes copy button label",
+          "default": "Copy"
         },
         {
           "label": "Etiqueta de borrado de todas las notas en la barra de navegación",
@@ -448,7 +448,7 @@
           "default": "Nota de progreso: @markedNotes de @totalNotes notas marcadas como hechas"
         },
         {
-          "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",
+          "label": "Etiqueta de envío de todos los datos de notas en la barra de navegación",
           "default": "Enviar todos los datos"
         },
         {
@@ -456,36 +456,40 @@
           "default": "¿Estás seguro de que quieres enviar todos tus datos?"
         },
         {
-          "label": "Etiqueta de confirmación de envío de todos los datos",
+          "label": "Etiqueta de confirmación de enviar todos los datos",
           "default": "Enviar"
         },
         {
-          "label": "Etiqueta para rechazar envío de todos los datos",
+          "label": "Etiqueta negar enviar todos los datos",
           "default": "Cancelar"
         },
         {
-          "label": "Go back to topic map label",
-          "default": "Back"
+          "label": "Texto descriptivo para flecha direccional",
+          "default": "Flecha desde @startItem a @endItem"
         },
         {
-          "label": "Descriptive text for directional arrow",
-          "default": "Arrow from @startItem to @endItem"
+          "label": "Texto descriptivo para flecha bi-direccional",
+          "default": "Flecha entre @startItem y @endItem"
         },
         {
-          "label": "Descriptive text for bi-directional arrow",
-          "default": "Arrow between @startItem and @endItem"
+          "label": "Texto descriptivo para nota estado hecho",
+          "default": "Nota marcada como hecha"
         },
         {
-          "label": "Descriptive text for note status done",
-          "default": "Note marked as done"
+          "label": "Texto descriptivo para estado de nota iniciado",
+          "default": "Nota iniciada"
         },
         {
-          "label": "Descriptive text for note status started",
-          "default": "Note started"
+          "label": "Texto descriptivo para estado de nota predeterminado",
+          "default": "Nota vacía"
         },
         {
-          "label": "Descriptive text for note status default",
-          "default": "Note empty"
+          "label": "Texto descriptivo para área de texto de nota",
+          "default": "Área de texto con límite de @max caracteres."
+        },
+        {
+          "label": "Texto descriptivo para número de caracteres de nota",
+          "default": "@count de @max caracteres"
         }
       ]
     }

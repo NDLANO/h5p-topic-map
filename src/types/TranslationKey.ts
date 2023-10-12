@@ -17,7 +17,6 @@ export type TranslationKey =
   | 'dialogResourcesRelevantLinks'
   | 'dialogResourcesCustomLinks'
   | 'dialogResourcesAdd'
-  | 'dialogWordsLabel'
   | 'fullscreenButtonLabelEnter'
   | 'fullscreenButtonLabelExit'
   | 'navbarTabsListAriaLabel'
@@ -30,6 +29,7 @@ export type TranslationKey =
   | 'navbarNotesSectionTitle'
   | 'navbarNotesSectionBody'
   | 'navbarNotesSectionPrintLabel'
+  | 'navbarNotesSectionCopyLabel'
   | 'navbarNotesSectionDeleteLabel'
   | 'navbarNotesEmptyListLabel'
   | 'navbarNotesMissingNoteLabel'
@@ -41,9 +41,10 @@ export type TranslationKey =
   | 'submitDataConfirmationWindowLabel'
   | 'submitDataConfirmLabel'
   | 'submitDataDenyLabel'
-  | 'goToTopicMapLabel'
   | 'directionalArrowDescriptiveText'
   | 'biDirectionalArrowDescriptiveText'
   | 'noteStatusDoneDescriptiveText'
   | 'noteStatusStartedDescriptiveText'
-  | 'noteStatusDefaultDescriptiveText';
+  | 'noteStatusDefaultDescriptiveText'
+  | 'noteTextareaDescriptiveText'
+  | 'noteCharacterCountDescriptiveText';

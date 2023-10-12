@@ -1,11 +1,8 @@
 import type { H5PImage } from 'h5p-types';
 import * as React from 'react';
-import { useState } from 'react';
 import { ArrowItemType } from '../../types/ArrowItemType';
-import { CommonItemType } from '../../types/CommonItemType';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { Arrow } from '../Arrow/Arrow';
-import { DialogWindow } from '../Dialog-Window/DialogWindow';
 import { TopicMapItem } from '../TopicMapItem/TopicMapItem';
 import styles from './Grid.module.scss';
 import { H5P } from '../../h5p/H5P.util';
@@ -32,8 +29,6 @@ export const Grid: React.FC<GridProps> = ({
 }) => {
   const { t } = useTranslation();
   const gridContainerRef = React.createRef<HTMLDivElement>();
-  const [itemShowingDialog, setItemShowingDialog] =
-    useState<CommonItemType | null>(null);
 
   const isArrow = (
     item: ArrowItemType | TopicMapItemType,
@@ -92,10 +87,6 @@ export const Grid: React.FC<GridProps> = ({
   };
 
   const allMapItems = React.useMemo(() => {
-    const onClick = (item: ArrowItemType): void => {
-      setItemShowingDialog(item);
-    };
-
     const sortedItems = items.concat().sort((a, b) => sortItems(a, b));
     let allItems: Array<TopicMapItemType | ArrowItemType> = sortedItems;
 
@@ -117,13 +108,6 @@ export const Grid: React.FC<GridProps> = ({
             key={item.id}
             item={item}
             grid={grid}
-            onClick={() => onClick(item)}
-            onTouchStart={() => onClick(item)}
-            onKeyUp={(event) => {
-              if (event.key === 'Enter' || event.code === 'Space')
-                onClick(item);
-            }}
-            dialogIsOpen={itemShowingDialog === item}
             descriptiveText={getDescriptiveText(item, items, t)}
           />
         );
@@ -143,21 +127,17 @@ export const Grid: React.FC<GridProps> = ({
         >
           <TopicMapItem
             item={item}
-            onClick={() => setItemShowingDialog(item)}
             grid={grid}
             gridRef={gridContainerRef}
           />
         </div>
       );
     });
-
-    // We want to update re-render the elements whenever `itemShowingDialog` changes (i.e. the dialog window is closed).
   }, [
     arrowItems,
     grid,
     items,
     sortArrowItems,
-    itemShowingDialog,
     gridContainerRef,
   ]);
 
@@ -185,13 +165,6 @@ export const Grid: React.FC<GridProps> = ({
     >
       <div className={styles.grid} ref={gridContainerRef}>
         {allMapItems}
-        {itemShowingDialog?.dialog ? (
-          <DialogWindow
-            item={itemShowingDialog}
-            open={!!itemShowingDialog}
-            onOpenChange={() => setItemShowingDialog(null)}
-          />
-        ) : null}
       </div>
     </div>
   );

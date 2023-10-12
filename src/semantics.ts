@@ -417,9 +417,9 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         type: 'text',
       },
       {
-        label: 'Word limit exceeded label',
+        label: 'Character limit exceeded label',
         name: 'dialogNoteLimitExceeded',
-        default: 'Too many words',
+        default: 'Character limit exceeded',
         type: 'text',
       },
       {
@@ -450,12 +450,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Dialog resources labels: Add',
         name: 'dialogResourcesAdd',
         default: 'Add',
-        type: 'text',
-      },
-      {
-        label: 'Dialog words text label',
-        name: 'dialogWordsLabel',
-        default: 'Words',
         type: 'text',
       },
       {
@@ -523,13 +517,19 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Navbar notes section body',
         name: 'navbarNotesSectionBody',
         default:
-          'Here you have an overview of all the notes you have written. The notes are saved locally in this browser. To save the notes elsewhere, you can print or copy the notes into a document.',
+          'This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document.',
         type: 'text',
       },
       {
         label: 'Navbar notes print button label',
         name: 'navbarNotesSectionPrintLabel',
         default: 'Print',
+        type: 'text',
+      },
+      {
+        label: 'Navbar notes copy button label',
+        name: 'navbarNotesSectionCopyLabel',
+        default: 'Copy',
         type: 'text',
       },
       {
@@ -599,12 +599,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         type: 'text',
       },
       {
-        label: 'Go back to topic map label',
-        name: 'goToTopicMapLabel',
-        default: 'Back',
-        type: 'text',
-      },
-      {
         label: 'Descriptive text for directional arrow',
         name: 'directionalArrowDescriptiveText',
         default: 'Arrow from @startItem to @endItem',
@@ -633,7 +627,19 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         name: 'noteStatusDefaultDescriptiveText',
         default: 'Note empty',
         type: 'text',
-      }
+      },
+      {
+        label: 'Descriptive text for note textarea',
+        name: 'noteTextareaDescriptiveText',
+        default: 'Textarea with @max character limit.',
+        type: 'text',
+      },
+      {
+        label: 'Descriptive text for note character count',
+        name: 'noteCharacterCountDescriptiveText',
+        default: '@count of @max characters',
+        type: 'text',
+      },
     ],
   },
 ];

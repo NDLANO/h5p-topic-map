@@ -1,7 +1,7 @@
 import type { H5PField } from 'h5p-types';
 import { ColorTheme } from '../types/ColorTheme';
+import { defaultTranslations } from '../constants/defaultTranslations';
 import { Params } from '../types/Params';
-import { Translations } from '../types/Translations';
 
 export const itemDialog: Array<H5PField> = [
   {
@@ -16,13 +16,12 @@ export const itemDialog: Array<H5PField> = [
         default: true,
       },
       {
-        label: 'Maximum number of words',
+        label: 'Maximum number of characters',
         description:
-          'Specifies the maximum number of words for the note. Default is 160 words.',
-        name: 'maxWordCount',
+          'Specifies the maximum number of characters for the note.',
+        name: 'maxLength',
         type: 'number',
         optional: true,
-        default: 160,
       },
       {
         label: 'Text',
@@ -114,6 +113,6 @@ export const getEmptyParams = (): Required<Params> => {
       colorTheme: defaultTheme,
     },
     behaviour: null,
-    l10n: {} as Translations,
+    l10n: defaultTranslations,
   };
 };
