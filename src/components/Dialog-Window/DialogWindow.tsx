@@ -38,7 +38,7 @@ export const DialogWindow: FC<DialogWindowProps> = ({
   const hasNote = item.dialog?.hasNote;
 
   let content = smallScreen ? (
-    <Content className={styles.dialogContentSmallScreen}>
+    <Content aria-modal="true" className={styles.dialogContentSmallScreen}>
       <div className={styles.contentWrapperSmallScreen}>
         <Title className={styles.dialogTitle}>{item.label}</Title>
         {!noTabItems && <DialogTabs item={item} />}
@@ -56,7 +56,7 @@ export const DialogWindow: FC<DialogWindowProps> = ({
       </Close>
     </Content>
   ) : (
-    <Content className={styles.dialogContent}>
+    <Content aria-modal="true" className={styles.dialogContent}>
       <div className={styles.contentWrapper}>
         <Title
           className={styles.dialogTitle}
@@ -73,6 +73,7 @@ export const DialogWindow: FC<DialogWindowProps> = ({
   if (hasNote && !smallScreen) {
     content = (
       <Content
+        aria-modal="true"
         className={noTabItems ? styles.dialogContent : styles.dialogContentWide}
       >
         <div className={styles.contentWrapper}>
