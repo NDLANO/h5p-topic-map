@@ -527,6 +527,12 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         type: 'text',
       },
       {
+        label: 'Navbar notes copy button label',
+        name: 'navbarNotesSectionCopyLabel',
+        default: 'Copy',
+        type: 'text',
+      },
+      {
         label: 'Navbar notes delete all notes button label',
         name: 'navbarNotesSectionDeleteLabel',
         default: 'Delete all notes',
