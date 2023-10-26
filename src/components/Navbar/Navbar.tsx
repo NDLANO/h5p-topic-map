@@ -87,6 +87,25 @@ export const Navbar: React.FC<NavbarProps> = ({
     exportAllUserData(contentId, h5pInstance);
   };
 
+  const handleCopy = (): void => {
+    const itemsText = allItems.map((item): string => {
+      const itemHasNote = item.dialog?.hasNote;
+      const noteFilledIn = userData[contentId]?.dialogs?.[item.id]?.note;
+      const noteMissing = t('navbarNotesMissingNoteLabel');
+
+      if (itemHasNote) {
+        if (noteFilledIn) {
+          return `${item.label}\n${noteFilledIn}`;
+        }
+        return `${item.label}\n${noteMissing}`;
+      }
+      return '';
+    });
+
+    const cleanedText = itemsText.filter(Boolean).join('\n\n');
+    navigator.clipboard.writeText(cleanedText);
+  };
+
   const progressBar = (
     <div className={styles.progressBarWrapper}>
       <div
@@ -131,6 +150,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <NotesSection
                   confirmSubmitAll={submitAllNotes}
                   confirmDeletion={deleteAllNotes}
+                  onCopy={handleCopy}
                   notesOpen={notesOpen}
                   setNotesOpen={setNotesOpen}
                   navbarTitle={navbarTitle}

@@ -1,10 +1,11 @@
 import "!style-loader!css-loader!sass-loader!../src/styles.scss";
+import * as React from "react";
 import { FC } from "react";
 import { L10nContext } from "use-h5p";
+import { defaultTranslations } from "../src/constants/defaultTranslations";
 import { ContentIdContext } from "../src/contexts/ContentIdContext";
 import { H5PContext } from "../src/contexts/H5PContext";
 import { H5PWrapper } from "../src/h5p/H5PWrapper";
-import { semantics } from "../src/semantics";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -32,24 +33,20 @@ export const parameters = {
   },
 };
 
-const translations = Object.fromEntries(
-  semantics[2].fields.map((field) => {
-    const defaultValue = field["default"] ?? field.name;
-    return [field.name, defaultValue];
-  }),
-);
-
 const h5pInstance = new H5PWrapper(
   {
     behaviour: {},
-    // @ts-ignore
-    l10n: {},
+    l10n: defaultTranslations,
     topicMap: {},
   },
   "1",
   {
     metadata: {
       title: "",
+      license: "",
+      extraTitle: "",
+      authors: [],
+      changes: []
     },
     standalone: false,
   },
@@ -58,7 +55,7 @@ const h5pInstance = new H5PWrapper(
 export const decorators = [
   (Story: FC) => (
     <ContentIdContext.Provider value="1">
-      <L10nContext.Provider value={translations}>
+      <L10nContext.Provider value={defaultTranslations}>
         <H5PContext.Provider value={h5pInstance}>
           <Story />
         </H5PContext.Provider>

@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ArrowType } from '../../types/ArrowType';
 import { ColorTheme } from '../../types/ColorTheme';
+import { defaultTranslations } from '../../constants/defaultTranslations';
 import { App } from './App';
 
 export default {
@@ -13,52 +14,7 @@ type Story = StoryObj<typeof App>;
 export const DenFranskeRevolusjon: Story = {
   args: {
     params: {
-      l10n: {
-        closeDialog: 'Close dialog',
-        copyrightAudio: 'Audio',
-        copyrightPhoto: 'Photo',
-        copyrightVideo: 'Video',
-        dialogNoteSaving: 'Saving…',
-        dialogNoteSaved: 'Saved',
-        dialogNoteLimitExceeded: 'Character limit exceeded',
-        dialogNotePlaceholder: 'Write your notes here…',
-        dialogNoteMarkAsDone: 'Mark as done',
-        dialogResourcesRelevantLinks: 'Relevant links',
-        dialogResourcesCustomLinks: 'Your links',
-        dialogResourcesAdd: 'Add',
-        fullscreenButtonLabelEnter: 'Enter fullscreen mode',
-        fullscreenButtonLabelExit: 'Exit fullscreen mode',
-        navbarTabsListAriaLabel: 'Navigation bar',
-        navbarTopicMapSectionLabel: 'Topic map',
-        navbarNotesSectionLabel: 'My notes',
-        dialogResourcesLabel: 'Resources',
-        dialogTextLabel: 'Text',
-        dialogNoteLabel: 'Note',
-        dialogTabListAriaLabel: 'Tabs List',
-        deleteNotesConfirmLabel: 'Delete',
-        deleteNotesConfirmationWindowLabel: 'Delete',
-        deleteNotesDenyLabel: 'Cancel',
-        navbarNotesEmptyListLabel: 'Empty',
-        navbarNotesMissingNoteLabel: 'Missing',
-        navbarNotesSectionBody: '',
-        navbarNotesSectionDeleteLabel: 'Delete',
-        navbarNotesSectionPrintLabel: 'Print',
-        navbarNotesSectionTitle: 'Title',
-        progressBarDescriptiveText:
-          'Note progress: @markedNotes of @totalNotes notes marked as done',
-        navbarNotesSectionSubmitAllLabel: 'Submit all data',
-        submitDataConfirmLabel: 'Submit',
-        submitDataConfirmationWindowLabel: 'Submit all data',
-        submitDataDenyLabel: 'Cancel',
-        directionalArrowDescriptiveText: 'Arrow from @startItem to @endItem.',
-        biDirectionalArrowDescriptiveText:
-          'Arrow between @startItem and @endItem.',
-        noteStatusDoneDescriptiveText: 'Note: done',
-        noteStatusStartedDescriptiveText: 'Note: started',
-        noteStatusDefaultDescriptiveText: 'Note: empty',
-        noteTextareaDescriptiveText: 'Textarea with @max character limit.',
-        noteCharacterCountDescriptiveText: '@count of @max characters.',
-      },
+      l10n: defaultTranslations,
       topicMap: {
         grid: {
           numberOfColumns: 31,
