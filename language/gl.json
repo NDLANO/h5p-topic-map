@@ -367,12 +367,12 @@
           "default": "Engadir"
         },
         {
-          "label": "Fullscreen button label - enter",
-          "default": "Enter fullscreen mode"
+          "label": "Etiqueta do botón de paso a pantalla completa",
+          "default": "Pasar a pantalla completa"
         },
         {
-          "label": "Fullscreen button label - exit",
-          "default": "Exit fullscreen mode"
+          "label": "Etiqueta do botón de saída de pantalla completa",
+          "default": "Saír de pantalla completa"
         },
         {
           "label": "Etiqueta da lista de pestanas da barra de navegación",
@@ -409,7 +409,7 @@
         },
         {
           "label": "Corpo da sección de notas da barra de navegación",
-          "default": "This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document."
+          "default": "Esta é unha visión xeral das túas notas. Gárdanse localmente neste navegador. Podes imprimir ou copiar as notas nun documento."
         },
         {
           "label": "Etiqueta do botón de impresión de notas da barra de navegación",
@@ -440,8 +440,8 @@
           "default": "Borrar"
         },
         {
-          "label": "Etiqueta para rexeitar o borrado de todas as notas",
-          "default": "Cancelar"
+          "label": "Texto descritivo para a barra de progreso",
+          "default": "Progreso da nota: @markedNotes das notas de @totalNotes marcadas como feitas"
         },
         {
           "label": "Descriptive text for the progress bar",
@@ -460,36 +460,36 @@
           "default": "Enviar"
         },
         {
-          "label": "Etiqueta para rexeitar o envío de todos os datos",
-          "default": "Cancelar"
+          "label": "Volver á etiqueta do mapa de temas",
+          "default": "Atrás"
         },
         {
-          "label": "Descriptive text for directional arrow",
-          "default": "Arrow from @startItem to @endItem"
+          "label": "Texto descritivo para a frecha direccional",
+          "default": "Frecha de @startItem a @endItem"
         },
         {
-          "label": "Descriptive text for bi-directional arrow",
-          "default": "Arrow between @startItem and @endItem"
+          "label": "Texto descritivo para a frecha bidireccional",
+          "default": "Frecha entre @startItem e @endItem"
         },
         {
-          "label": "Descriptive text for note status done",
-          "default": "Note marked as done"
+          "label": "Texto descritivo do estado de nota feita",
+          "default": "Nota marcada como feita"
         },
         {
-          "label": "Descriptive text for note status started",
-          "default": "Note started"
+          "label": "Texto descritivo do estado de nota empezada",
+          "default": "Nota empezada"
         },
         {
-          "label": "Descriptive text for note status default",
-          "default": "Note empty"
+          "label": "Texto descritivo para o estado da nota predeterminado",
+          "default": "Nota baleira"
         },
         {
-          "label": "Descriptive text for note textarea",
-          "default": "Textarea with @max character limit."
+          "label": "Texto descritivo para a área de texto da nota",
+          "default": "Área de texto con límite de caracteres @max."
         },
         {
-          "label": "Descriptive text for note character count",
-          "default": "@count of @max characters"
+          "label": "Texto descritivo para o reconto de caracteres da nota",
+          "default": "@count de @max caracteres"
         }
       ]
     }
