@@ -1,5 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react';
-import * as React from 'react';
+import { Meta } from '@storybook/react';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { DialogWindow } from './DialogWindow';
 
@@ -7,16 +6,6 @@ export default {
   title: 'Organisms/DialogWindow',
   component: DialogWindow,
 } satisfies Meta<typeof DialogWindow>;
-
-const Template: StoryFn<typeof DialogWindow> = (args) => (
-  
-  <DialogWindow {...args} />
-);
-
-const openClose = (open: boolean): void => {
-  // eslint-disable-next-line no-console
-  console.info('Toggle dialog', { open });
-};
 
 const item: TopicMapItemType = {
   id: '1',
@@ -38,72 +27,71 @@ const item: TopicMapItemType = {
   },
 };
 
-export const DialogWindowSimple = Template.bind({});
-DialogWindowSimple.args = {
-  item,
-  open: true,
-  onOpenChange: openClose,
+export const DialogWindowSimple = {
+  args: {
+    item,
+  },
 };
 
-export const DialogWindowLong = Template.bind({});
-DialogWindowLong.args = {
-  item: {
-    ...item,
-    dialog: {
-      ...item.dialog,
-      hasNote: false,
-      showAddLinks: false,
-      text: `You don't want to kill all your dark areas they are very important. I really recommend you use odorless thinner or your spouse is gonna run you right out into the yard and you'll be working by yourself. There we go. There's nothing wrong with having a tree as a friend.
+export const DialogWindowLong = {
+  args: {
+    item: {
+      ...item,
+      dialog: {
+        ...item.dialog,
+        hasNote: false,
+        showAddLinks: false,
+        text: `You don't want to kill all your dark areas they are very important. I really recommend you use odorless thinner or your spouse is gonna run you right out into the yard and you'll be working by yourself. There we go. There's nothing wrong with having a tree as a friend.
 
-  You can create anything that makes you happy. If we're going to have animals around we all have to be concerned about them and take care of them. Just use the old one inch brush. We spend so much of our life looking - but never seeing. Here we're limited by the time we have.`,
+    You can create anything that makes you happy. If we're going to have animals around we all have to be concerned about them and take care of them. Just use the old one inch brush. We spend so much of our life looking - but never seeing. Here we're limited by the time we have.`,
+      },
     },
   },
-  open: true,
 };
 
-export const DialogWindowTabs = Template.bind({});
-DialogWindowTabs.args = {
-  item: {
-    ...item,
-    dialog: {
-      ...item.dialog,
-      hasNote: false,
-      links: [
-        { id: 'link-1', label: 'Google', url: 'www.google.com' },
-        { id: 'link-2', label: 'YouTube', url: 'www.youtube.com' },
-      ],
-      showAddLinks: true,
+export const DialogWindowTabs = {
+  args: {
+    item: {
+      ...item,
+      dialog: {
+        ...item.dialog,
+        hasNote: false,
+        links: [
+          { id: 'link-1', label: 'Google', url: 'www.google.com' },
+          { id: 'link-2', label: 'YouTube', url: 'www.youtube.com' },
+        ],
+        showAddLinks: true,
+      },
     },
   },
-  open: true,
 };
 
-export const DialogWindowWithNote = Template.bind({});
-DialogWindowWithNote.args = {
-  item: {
-    ...item,
-    dialog: {
-      ...item.dialog,
-      hasNote: true,
-      showAddLinks: false,
+export const DialogWindowWithNote = {
+  args: {
+    item: {
+      ...item,
+      dialog: {
+        ...item.dialog,
+        hasNote: true,
+        showAddLinks: false,
+      },
     },
   },
-  open: true,
 };
 
-export const DialogWindowWithOnlyNote = Template.bind({});
-DialogWindowWithOnlyNote.args = {
-  item: {
-    ...item,
-    id: '2',
-    description: '',
-    topicImage: undefined,
-    dialog: {
-      ...item.dialog,
-      hasNote: true,
-      text: '',
-      showAddLinks: false,
+export const DialogWindowWithOnlyNote = {
+  args: {
+    item: {
+      ...item,
+      id: '2',
+      description: '',
+      topicImage: undefined,
+      dialog: {
+        ...item.dialog,
+        hasNote: true,
+        text: '',
+        showAddLinks: false,
+      },
     },
   },
-  open: true,
 };
