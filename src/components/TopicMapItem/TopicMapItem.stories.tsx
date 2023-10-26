@@ -1,12 +1,6 @@
-import { Meta, StoryFn } from '@storybook/react';
-import * as React from 'react';
+import { Meta, StoryObj } from '@storybook/react';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { TopicMapItem, TopicMapItemProps } from './TopicMapItem';
-
-export default {
-  title: 'Molecules/TopicMapItem',
-  component: TopicMapItem,
-} satisfies Meta<typeof TopicMapItem>;
 
 const item: TopicMapItemType = {
   id: '1',
@@ -31,14 +25,18 @@ const defaultArgs: TopicMapItemProps = {
   item,
 };
 
-export const NoContainer: StoryFn<typeof TopicMapItem> = () => {
-  const args: TopicMapItemProps = { ...defaultArgs };
-  return <TopicMapItem {...args} />;
-};
+export default {
+  title: 'Molecules/TopicMapItem',
+  component: TopicMapItem,
+  args: defaultArgs,
+} satisfies Meta<typeof TopicMapItem>;
 
-export const Square: StoryFn<typeof TopicMapItem> = () => {
-  const args: TopicMapItemProps = { ...defaultArgs };
-  return (
+type Story = StoryObj<typeof TopicMapItem>;
+
+export const NoContainer: Story = {};
+
+export const Square: Story = {
+  render: (args) => (
     <div
       style={{
         height: 'min(95vw, 95vh)',
@@ -47,12 +45,11 @@ export const Square: StoryFn<typeof TopicMapItem> = () => {
     >
       <TopicMapItem {...args} />
     </div>
-  );
+  ),
 };
 
-export const Wide: StoryFn<typeof TopicMapItem> = () => {
-  const args: TopicMapItemProps = { ...defaultArgs };
-  return (
+export const Wide: Story = {
+  render: (args) => (
     <div
       style={{
         height: 'min(40vw, 40vh)',
@@ -61,12 +58,11 @@ export const Wide: StoryFn<typeof TopicMapItem> = () => {
     >
       <TopicMapItem {...args} />
     </div>
-  );
+  ),
 };
 
-export const Tall: StoryFn<typeof TopicMapItem> = () => {
-  const args: TopicMapItemProps = { ...defaultArgs };
-  return (
+export const Tall: Story = {
+  render: (args) => (
     <div
       style={{
         height: 'min(95vw, 95vh)',
@@ -75,5 +71,5 @@ export const Tall: StoryFn<typeof TopicMapItem> = () => {
     >
       <TopicMapItem {...args} />
     </div>
-  );
+  ),
 };

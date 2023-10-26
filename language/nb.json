@@ -409,11 +409,15 @@
         },
         {
           "label": "Beskrivese på notatside",
-          "default": "Here you have an overview of all the notes you have written. The notes are saved locally in this browser. To save the notes elsewhere, you can print or copy the notes into a document."
+          "default": "Dette er en oversikt over notatene dine. De er lagret lokalt i denne nettleseren. Du kan skrive ut eller kopiere notatene dine inn i et dokument."
         },
         {
           "label": "Skriv ut",
           "default": "Skriv ut"
+        },
+        {
+          "label": "Kopier",
+          "default": "Kopier"
         },
         {
           "label": "Slett alle notater",
@@ -458,10 +462,6 @@
         {
           "label": "Avbryt",
           "default": "Cancel"
-        },
-        {
-          "label": "Gå tilbake til temakart",
-          "default": "Gå tilbake til temakart"
         },
         {
           "label": "Beskrivende tekst for enveis pil",

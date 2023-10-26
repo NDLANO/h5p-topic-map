@@ -409,11 +409,15 @@
         },
         {
           "label": "Corpo da sección de notas da barra de navegación",
-          "default": "Aquí tes unha visión xeral de todas as notas que escribiches. As notas gárdanse localmente neste navegador. Para gardar as notas noutro lugar, podes imprimir ou copiar as notas nun documento."
+          "default": "This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document."
         },
         {
           "label": "Etiqueta do botón de impresión de notas da barra de navegación",
           "default": "Imprimir"
+        },
+        {
+          "label": "Navbar notes copy button label",
+          "default": "Copy"
         },
         {
           "label": "Etiqueta para borrar todas as notas na barra de navegación",
@@ -458,10 +462,6 @@
         {
           "label": "Etiqueta para rexeitar o envío de todos os datos",
           "default": "Cancelar"
-        },
-        {
-          "label": "Go back to topic map label",
-          "default": "Back"
         },
         {
           "label": "Descriptive text for directional arrow",

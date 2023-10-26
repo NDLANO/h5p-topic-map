@@ -517,13 +517,19 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Navbar notes section body',
         name: 'navbarNotesSectionBody',
         default:
-          'Here you have an overview of all the notes you have written. The notes are saved locally in this browser. To save the notes elsewhere, you can print or copy the notes into a document.',
+          'This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document.',
         type: 'text',
       },
       {
         label: 'Navbar notes print button label',
         name: 'navbarNotesSectionPrintLabel',
         default: 'Print',
+        type: 'text',
+      },
+      {
+        label: 'Navbar notes copy button label',
+        name: 'navbarNotesSectionCopyLabel',
+        default: 'Copy',
         type: 'text',
       },
       {
@@ -590,12 +596,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Submit all data deny label',
         name: 'submitDataDenyLabel',
         default: 'Cancel',
-        type: 'text',
-      },
-      {
-        label: 'Go back to topic map label',
-        name: 'goToTopicMapLabel',
-        default: 'Back',
         type: 'text',
       },
       {

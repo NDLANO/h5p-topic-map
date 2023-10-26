@@ -38,28 +38,32 @@ export const DialogWindow: FC<DialogWindowProps> = ({
   const hasNote = item.dialog?.hasNote;
 
   let content = smallScreen ? (
-    <Content className={styles.dialogContentSmallScreen}>
-      <Title className={styles.dialogTitle}>{item.label}</Title>
-      {!noTabItems && <DialogTabs item={item} />}
-      {noTabItems && hasNote && (
-        <div className={`${styles.noteWrapper} ${styles.fullWidth}`}>
-          <DialogNote
-            maxLength={item.dialog.maxLength}
-            id={item.id}
-          />
-        </div>
-      )}
+    <Content aria-modal="true" className={styles.dialogContentSmallScreen}>
+      <div className={styles.contentWrapperSmallScreen}>
+        <Title className={styles.dialogTitle}>{item.label}</Title>
+        {!noTabItems && <DialogTabs item={item} />}
+        {noTabItems && hasNote && (
+          <div className={`${styles.noteWrapper} ${styles.fullWidth}`}>
+            <DialogNote
+              maxLength={item.dialog.maxLength}
+              id={item.id}
+            />
+          </div>
+        )}
+      </div>
       <Close className={styles.closeButton} aria-label={ariaLabel}>
         <Cross2Icon />
       </Close>
     </Content>
   ) : (
-    <Content className={styles.dialogContent}>
-      <Title
-        className={styles.dialogTitle}
-        dangerouslySetInnerHTML={{ __html: item.label }}
-      />
-      {!noTabItems && <DialogTabs item={item} />}
+    <Content aria-modal="true" className={styles.dialogContent}>
+      <div className={styles.contentWrapper}>
+        <Title
+          className={styles.dialogTitle}
+          dangerouslySetInnerHTML={{ __html: item.label }}
+        />
+        {!noTabItems && <DialogTabs item={item} />}
+      </div>
       <Close className={styles.closeButton} aria-label={ariaLabel}>
         <Cross2Icon />
       </Close>
@@ -69,25 +73,28 @@ export const DialogWindow: FC<DialogWindowProps> = ({
   if (hasNote && !smallScreen) {
     content = (
       <Content
+        aria-modal="true"
         className={noTabItems ? styles.dialogContent : styles.dialogContentWide}
       >
-        <Title
-          className={styles.dialogTitle}
-          dangerouslySetInnerHTML={{ __html: item.label }}
-        />
-        {!noTabItems && (
-          <div className={styles.tabWrapper}>
-            <DialogTabs item={item} />
-          </div>
-        )}
-        <div
-          className={`${styles.noteWrapper} ${noTabItems ? styles.fullWidth : ''
-          }`}
-        >
-          <DialogNote
-            maxLength={item.dialog.maxLength}
-            id={item.id}
+        <div className={styles.contentWrapper}>
+          <Title
+            className={styles.dialogTitle}
+            dangerouslySetInnerHTML={{ __html: item.label }}
           />
+          {!noTabItems && (
+            <div className={styles.tabWrapper}>
+              <DialogTabs item={item} />
+            </div>
+          )}
+          <div
+            className={`${styles.noteWrapper} ${noTabItems ? styles.fullWidth : ''
+            }`}
+          >
+            <DialogNote
+              maxLength={item.dialog.maxLength}
+              id={item.id}
+            />
+          </div>
         </div>
         <Close className={styles.closeButton} aria-label={ariaLabel}>
           <Cross2Icon />

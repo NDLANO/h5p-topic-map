@@ -409,11 +409,15 @@
         },
         {
           "label": "Cuerpo de la sección de notas de la barra de navegación",
-          "default": "Aquí tienes un resumen de todas las notas que has escrito. Las notas se guardan localmente en este navegador. Para guardar las notas en otro lugar, puedes imprimir o copiar las notas en un documento."
+          "default": "This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document."
         },
         {
           "label": "Etiqueta del botón de impresión de notas de la barra de navegación",
           "default": "Imprimir"
+        },
+        {
+          "label": "Navbar notes copy button label",
+          "default": "Copy"
         },
         {
           "label": "Etiqueta de borrado de todas las notas en la barra de navegación",
@@ -444,7 +448,7 @@
           "default": "Nota de progreso: @markedNotes de @totalNotes notas marcadas como hechas"
         },
         {
-          "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",
+          "label": "Etiqueta de envío de todos los datos de notas en la barra de navegación",
           "default": "Enviar todos los datos"
         },
         {
@@ -452,12 +456,16 @@
           "default": "¿Estás seguro de que quieres enviar todos tus datos?"
         },
         {
-          "label": "Etiqueta de regresar a mapa de tópico",
-          "default": "Regresar"
+          "label": "Etiqueta de confirmación de enviar todos los datos",
+          "default": "Enviar"
+        },
+        {
+          "label": "Etiqueta negar enviar todos los datos",
+          "default": "Cancelar"
         },
         {
           "label": "Texto descriptivo para flecha direccional",
-          "default": "Flecha de @startItem a @endItem"
+          "default": "Flecha desde @startItem a @endItem"
         },
         {
           "label": "Texto descriptivo para flecha bi-direccional",
@@ -465,31 +473,23 @@
         },
         {
           "label": "Texto descriptivo para nota estado hecho",
-          "default": "Nota marcada como hecho"
+          "default": "Nota marcada como hecha"
         },
         {
-          "label": "Texto descriptivo para nota estado iniciado",
-          "default": "Nota iniciado"
+          "label": "Texto descriptivo para estado de nota iniciado",
+          "default": "Nota iniciada"
         },
         {
-          "label": "Texto descriptivo para nota estado predeterminado",
-          "default": "Nota vacío"
+          "label": "Texto descriptivo para estado de nota predeterminado",
+          "default": "Nota vacía"
         },
         {
-          "label": "Descriptive text for note status started",
-          "default": "Note started"
+          "label": "Texto descriptivo para área de texto de nota",
+          "default": "Área de texto con límite de @max caracteres."
         },
         {
-          "label": "Descriptive text for note status default",
-          "default": "Note empty"
-        },
-        {
-          "label": "Descriptive text for note textarea",
-          "default": "Textarea with @max character limit."
-        },
-        {
-          "label": "Descriptive text for note character count",
-          "default": "@count of @max characters"
+          "label": "Texto descriptivo para número de caracteres de nota",
+          "default": "@count de @max caracteres"
         }
       ]
     }
