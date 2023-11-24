@@ -432,7 +432,7 @@
           "default": "━ Aún no se han añadido notas"
         },
         {
-          "label": "Ventana de confirmación de eliminación de todas las notas",
+          "label": "Etiqueta de ventana de confirmación de eliminación de todas las notas",
           "default": "¿Está seguro de querer eliminar todas sus notas?"
         },
         {
@@ -448,7 +448,7 @@
           "default": "Nota de progreso: @markedNotes de @totalNotes notas marcadas como hechas"
         },
         {
-          "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",
+          "label": "Etiqueta de botón de enviar todos los datos de notas en la barra de navegación",
           "default": "Enviar todos los datos"
         },
         {
@@ -457,7 +457,7 @@
         },
         {
           "label": "Etiqueta de confirmar enviar todos los datos",
-          "default": "Submit"
+          "default": "Enviar"
         },
         {
           "label": "Etiqueta negar enviar todos los datos",

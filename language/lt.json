@@ -31,7 +31,7 @@
                 "label": "Description"
               },
               {
-                "label": "Topic image",
+                "label": "Temos paveikslėlis",
                 "description": "Background image for card and image above text in dialog"
               },
               {
@@ -45,8 +45,8 @@
                     "label": "Show notes textarea"
                   },
                   {
-                    "label": "Maximum number of characters",
-                    "description": "Specifies the maximum number of characters for the note."
+                    "label": "Didžiausias simbolių skaičius",
+                    "description": "Nurodomas didžiausias pastabos simbolių skaičius."
                   },
                   {
                     "label": "Text"
@@ -195,8 +195,8 @@
                     "label": "Show notes textarea"
                   },
                   {
-                    "label": "Maximum number of characters",
-                    "description": "Specifies the maximum number of characters for the note."
+                    "label": "Didžiausias simbolių skaičius",
+                    "description": "Nurodomas didžiausias pastabos simbolių skaičius."
                   },
                   {
                     "label": "Text"
@@ -368,16 +368,16 @@
         },
         {
           "label": "Fullscreen button label - enter",
-          "default": "Enter fullscreen mode"
+          "default": "Pereiti į viso ekrano režimą"
         },
         {
           "label": "Fullscreen button label - exit",
-          "default": "Exit fullscreen mode"
+          "default": "Išeiti iš viso ekrano režimo"
         },
         {
           "label": "Navbar tabs list label",
           "description": "Used by screen readers",
-          "default": "Navigation bar"
+          "default": "Navigacijos juosta"
         },
         {
           "label": "Navbar topic map section label",
@@ -385,27 +385,27 @@
         },
         {
           "label": "Navbar notes section label",
-          "default": "My notes"
+          "default": "Mano pastabos"
         },
         {
           "label": "Dialog resources labels",
-          "default": "Resources"
+          "default": "Ištekliai"
         },
         {
-          "label": "Text",
-          "default": "Text"
+          "label": "Tekstas",
+          "default": "Tekstas"
         },
         {
-          "label": "Note",
-          "default": "Note"
+          "label": "Pastaba",
+          "default": "Pastaba"
         },
         {
-          "label": "Tabs list",
-          "default": "Tabs list"
+          "label": "Skirtukų sąrašas",
+          "default": "Skirtukų sąrašas"
         },
         {
           "label": "Navbar notes section title",
-          "default": "My notes"
+          "default": "Mano pastabos"
         },
         {
           "label": "Navbar notes section body",
