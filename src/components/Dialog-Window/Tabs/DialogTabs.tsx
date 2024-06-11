@@ -88,7 +88,7 @@ const dialogContent = (
   dialogContentInfo: DialogContentInfo,
   item: CommonItemType,
   showTabs: boolean
-): JSX.Element[] => {
+): JSX.Element[] | JSX.Element => {
   const { id, description, topicImage, topicImageAltText, dialog } = item;
   const { hasText, hasLinks, hasVideo, hasAudio } = dialogContentInfo;
   const items: JSX.Element[] = [];
@@ -103,12 +103,17 @@ const dialogContent = (
         bodyText={dialog?.text}
       />
     );
-    items.push(showTabs ? (
-      <Content key="text" value="Text">
-        {dialogText}
-      </Content>) : (
-      dialogText
-    ));
+
+    if (showTabs) {
+      items.push(
+        <Content key="text" value="Text">
+          {dialogText}
+        </Content>
+      );
+    }
+    else {
+      return dialogText;
+    }
   }
 
   // Dialog links
@@ -120,12 +125,17 @@ const dialogContent = (
         id={id}
       />
     );
-    items.push(showTabs ? (
-      <Content key="links" value="Resources">
-        {dialogLinks}
-      </Content>) : (
-      dialogLinks
-    ));
+
+    if (showTabs) {
+      items.push(
+        <Content key="links" value="Resources">
+          {dialogLinks}
+        </Content>
+      );
+    }
+    else {
+      return dialogLinks;
+    }
   }
 
   // Dialog video
@@ -133,12 +143,17 @@ const dialogContent = (
     const dialogVideo = (
       <DialogVideo sources={dialog.video} />
     );
-    items.push(showTabs ? (
-      <Content key="video" value="Video">
-        {dialogVideo}
-      </Content>) : (
-      dialogVideo
-    ));
+
+    if (showTabs) {
+      items.push(
+        <Content key="video" value="Video">
+          {dialogVideo}
+        </Content>
+      );
+    }
+    else {
+      return dialogVideo;
+    }
   }
 
   // Dialog audio
@@ -149,13 +164,19 @@ const dialogContent = (
         subtext={dialog.audio.subtext}
       />
     );
-    items.push(showTabs ? (
-      <Content key="audio" value="Audio">
-        {dialogAudio}
-      </Content>) : (
-      dialogAudio
-    ));
+
+    if (showTabs) {
+      items.push(
+        <Content key="audio" value="Audio">
+          {dialogAudio}
+        </Content>
+      );
+    }
+    else {
+      return dialogAudio;
+    }
   }
+
   return items;
 };
 
