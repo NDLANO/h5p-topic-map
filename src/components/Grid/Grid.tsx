@@ -145,7 +145,7 @@ export const Grid: React.FC<GridProps> = ({
     ? `url(${backgroundImage.path})`
     : undefined;
 
-  const gridWrapperClasses = React.useMemo(
+  const gridWrapperClasses = React.useCallback(
     () =>
       [
         styles.gridWrapper,
@@ -158,7 +158,7 @@ export const Grid: React.FC<GridProps> = ({
 
   return (
     <div
-      className={gridWrapperClasses}
+      className={gridWrapperClasses()}
       style={{
         backgroundImage: bgImageStyle,
       }}
