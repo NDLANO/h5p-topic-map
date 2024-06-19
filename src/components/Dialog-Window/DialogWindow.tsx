@@ -13,9 +13,9 @@ export type DialogWindowProps = {
   item: CommonItemType;
 };
 
-export const DialogWindow: FC<DialogWindowProps> = ({
-  item,
-}) => {
+export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivElement, DialogWindowProps>((
+  { item }, forwardedRef
+) => {
   const { t } = useTranslation();
   const smallScreen = useMedia('(max-width: 768px)');
 
@@ -104,9 +104,9 @@ export const DialogWindow: FC<DialogWindowProps> = ({
   }
 
   return (
-    <>
+    <div ref={forwardedRef}>
       <Overlay className={styles.overlay} />
       {content}
-    </>
+    </div>
   );
-};
+});
