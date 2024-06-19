@@ -1,9 +1,7 @@
 .github
-.storybook
 build_info
 node_modules
 src
-storybook-static
 .babelrc
 .eslintignore
 .eslintrc.json
