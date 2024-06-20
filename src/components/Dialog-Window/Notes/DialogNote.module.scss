@@ -20,6 +20,10 @@ form {
   flex-grow: 1;
   padding: 0.5rem;
   overflow-y: scroll;
+  background: transparent;
+  caret-color: rgb(0, 0, 0);
+  color: transparent;
+  position: relative;
 }
 
 .dynamicSavingText,
@@ -97,6 +101,22 @@ form {
   font-size: 1rem;
   font-weight: 700;
   order: 2;
+}
+
+.textareaMirror {
+  border-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  user-select: none;
+  overflow: hidden;
+  pointer-events: none;
+
+  a {
+    pointer-events: auto;
+  }
 }
 
 .visuallyHidden {

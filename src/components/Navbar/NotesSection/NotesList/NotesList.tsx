@@ -5,6 +5,7 @@ import { useTranslation } from '../../../../hooks/useTranslation';
 import { CommonItemType } from '../../../../types/CommonItemType';
 import { NoteButtonIconState } from '../../../../types/NoteButtonIconState';
 import { NoteButton } from '../../../NoteButton/NoteButton';
+import { createLinksFromString } from '../../../../utils/link.utils';
 import styles from './NotesList.module.scss';
 
 export type NotesListProps = {
@@ -25,6 +26,7 @@ export const NotesList: React.FC<NotesListProps> = ({
 
     const doesNoteExist = dialogData?.note;
     const isNoteDone = doesNoteExist && dialogData.noteDone;
+    const noteContent = doesNoteExist ? createLinksFromString(dialogData.note) : t('navbarNotesMissingNoteLabel');
 
     return (
       item.dialog?.hasNote && (
@@ -47,11 +49,10 @@ export const NotesList: React.FC<NotesListProps> = ({
               </div>
               <div className={styles.mainBodyList}>
                 <p className={styles.mainBodyListElementHeader}>{item.label}</p>
-                <p>
-                  {doesNoteExist
-                    ? userData[contentId]?.dialogs[item.id].note
-                    : t('navbarNotesMissingNoteLabel')}
-                </p>
+                <div
+                  className={styles.mainBodyListElementContent}
+                  dangerouslySetInnerHTML={{ __html: noteContent }}
+                />
               </div>
             </div>
           </div>

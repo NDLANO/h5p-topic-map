@@ -4,6 +4,7 @@ import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData'
 import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
 import { useTranslation } from '../../../hooks/useTranslation';
 import styles from './DialogNote.module.scss';
+import { createLinksFromString } from '../../../utils/link.utils';
 
 export type NoteProps = {
   maxLength: number | undefined;
@@ -36,6 +37,9 @@ export const DialogNote: React.FC<NoteProps> = ({
       .replace('@max', maxLength?.toString() ?? ''); // We only show this text when `maxLength` is set.
 
   const { sendXAPIEvent } = useSendXAPIEvent();
+
+  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
+  const mirroredTextareaRef = React.useRef<HTMLDivElement>(null);
 
   const noteTextareaID = `note-textarea_${id}`;
   const noteCheckboxID = `note-checkbox_${id}`;
@@ -102,6 +106,51 @@ export const DialogNote: React.FC<NoteProps> = ({
     setUserData(userData);
   };
 
+  const updateMirroredTextarea = (): void => {
+    if (textAreaRef.current && mirroredTextareaRef.current) {
+      const textArea = textAreaRef.current;
+      const mirroredTextarea = mirroredTextareaRef.current;
+
+      mirroredTextarea.textContent = textArea.value;
+      const textAreaStyles = window.getComputedStyle(textArea);
+      [
+        'border',
+        'boxSizing',
+        'fontFamily',
+        'fontSize',
+        'fontWeight',
+        'letterSpacing',
+        'lineHeight',
+        'padding',
+        'textDecoration',
+        'textIndent',
+        'textTransform',
+        'whiteSpace',
+        'wordSpacing',
+        'wordWrap',
+      ].forEach((property: any) => {
+        mirroredTextarea.style[property] = textAreaStyles[property];
+      });
+
+      const textareaResizeObserver = new ResizeObserver(() => {
+        mirroredTextarea.style.width = `${textArea.clientWidth}px`;
+        mirroredTextarea.style.height = `${textArea.clientHeight}px`;
+      });
+      textareaResizeObserver.observe(textArea);
+
+      textArea.addEventListener('scroll', () => {
+        mirroredTextarea.scrollTop = textArea.scrollTop;
+        mirroredTextarea.scrollLeft = textArea.scrollLeft;
+      });
+
+      const findLinks = () => {
+        mirroredTextarea.innerHTML = createLinksFromString(textArea.value);
+      };
+
+      findLinks();
+    }
+  };
+
   const onChange = ({ target }: React.ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = target.value;
 
@@ -112,7 +161,14 @@ export const DialogNote: React.FC<NoteProps> = ({
     if (maxLength) {
       countCharacters();
     }
+
+    updateMirroredTextarea();
   };
+
+  React.useEffect(() => {
+    updateMirroredTextarea();
+  }, [textAreaRef]);
+
 
   return (
     <form>
@@ -126,11 +182,17 @@ export const DialogNote: React.FC<NoteProps> = ({
         <textarea
           className={styles.textArea}
           id={noteTextareaID}
+          ref={textAreaRef}
           aria-describedby={maxLength ? noteTextareaDescriptionID : undefined}
           placeholder={t('dialogNotePlaceholder')}
           onChange={(event) => onChange(event)}
           defaultValue={note}
           maxLength={maxLength}
+        />
+        <div
+          ref={mirroredTextareaRef}
+          className={styles.textareaMirror}
+          aria-hidden="true"
         />
         {maxLength && (
           <span id={noteTextareaDescriptionID} className={styles.visuallyHidden}>{textareaDescription}</span>
