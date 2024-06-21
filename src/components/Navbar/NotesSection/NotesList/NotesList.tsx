@@ -26,7 +26,9 @@ export const NotesList: React.FC<NotesListProps> = ({
 
     const doesNoteExist = dialogData?.note;
     const isNoteDone = doesNoteExist && dialogData.noteDone;
-    const noteContent = doesNoteExist ? createLinksFromString(dialogData.note) : t('navbarNotesMissingNoteLabel');
+    const noteContent = doesNoteExist
+      ? createLinksFromString(dialogData.note)
+      : t('navbarNotesMissingNoteLabel');
 
     return (
       item.dialog?.hasNote && (
