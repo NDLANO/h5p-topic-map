@@ -2,6 +2,14 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { DialogNote } from './DialogNote';
 
+Object.defineProperty(window, 'ResizeObserver', {
+  value: jest.fn().mockImplementation(() => ({
+    observe: jest.fn(),
+    unobserve: jest.fn(),
+    disconnect: jest.fn(),
+  })),
+});
+
 describe(DialogNote.name, () => {
   it('should render', () => {
     const dialogNote = render(<DialogNote maxLength={0} id="item1" />).container;
