@@ -114,7 +114,6 @@ export const DialogNote: React.FC<NoteProps> = ({
     if (!textAreaRef.current || !mirroredTextareaWrapperRef.current || !mirroredTextareaRef.current) {
       return;
     }
-
     const textArea = textAreaRef.current;
     const mirroredTextarea = mirroredTextareaRef.current;
     const mirroredTextareaWrapper = mirroredTextareaWrapperRef.current;
@@ -125,22 +124,16 @@ export const DialogNote: React.FC<NoteProps> = ({
   };
 
   const updateMirroredTextarea = (): void => {
-    if (textAreaRef.current && mirroredTextareaRef.current && mirroredTextareaWrapperRef.current) {
-      const textArea = textAreaRef.current;
-      const mirroredTextarea = mirroredTextareaRef.current;
-      const mirroredTextareaWrapper = mirroredTextareaWrapperRef.current;
-
-      mirroredTextarea.textContent = textArea.value;
-
-      resizeMirroredTextarea();
-
-      textArea.addEventListener('scroll', () => {
-        mirroredTextareaWrapper.scrollTop = textArea.scrollTop;
-        mirroredTextareaWrapper.scrollLeft = textArea.scrollLeft;
-      });
-
-      mirroredTextarea.innerHTML = createLinksFromString(textArea.value);
+    if (!textAreaRef.current || !mirroredTextareaRef.current) {
+      return;
     }
+    const textArea = textAreaRef.current;
+    const mirroredTextarea = mirroredTextareaRef.current;
+
+    mirroredTextarea.textContent = textArea.value;
+    mirroredTextarea.innerHTML = createLinksFromString(textArea.value);
+
+    resizeMirroredTextarea();
   };
 
   const onChange = ({ target }: React.ChangeEvent<HTMLTextAreaElement>): void => {
@@ -154,6 +147,17 @@ export const DialogNote: React.FC<NoteProps> = ({
     if (maxLength) {
       countCharacters();
     }
+  };
+
+  const onScroll = (): void => {
+    if (!textAreaRef.current || !mirroredTextareaWrapperRef.current) {
+      return;
+    }
+    const textArea = textAreaRef.current;
+    const mirroredTextareaWrapper = mirroredTextareaWrapperRef.current;
+
+    mirroredTextareaWrapper.scrollTop = textArea.scrollTop;
+    mirroredTextareaWrapper.scrollLeft = textArea.scrollLeft;
   };
 
   React.useEffect(() => {
@@ -184,6 +188,7 @@ export const DialogNote: React.FC<NoteProps> = ({
           aria-describedby={maxLength ? noteTextareaDescriptionID : undefined}
           placeholder={t('dialogNotePlaceholder')}
           onChange={(event) => onChange(event)}
+          onScroll={onScroll}
           defaultValue={note}
           maxLength={maxLength}
         />
