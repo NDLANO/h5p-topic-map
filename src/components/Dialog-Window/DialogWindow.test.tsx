@@ -17,14 +17,6 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-Object.defineProperty(window, 'ResizeObserver', {
-  value: jest.fn().mockImplementation(() => ({
-    observe: jest.fn(),
-    unobserve: jest.fn(),
-    disconnect: jest.fn(),
-  })),
-});
-
 describe(DialogWindow.name, () => {
   it('should render', () => {
     const item: TopicMapItemType = {

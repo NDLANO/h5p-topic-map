@@ -3,8 +3,9 @@ import { useContentId } from '../../../hooks/useContentId';
 import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData';
 import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
 import { useTranslation } from '../../../hooks/useTranslation';
-import styles from './DialogNote.module.scss';
+import { useH5PInstance } from '../../../hooks/useH5PInstance';
 import { createLinksFromString } from '../../../utils/link.utils';
+import styles from './DialogNote.module.scss';
 
 export type NoteProps = {
   maxLength: number | undefined;
@@ -18,6 +19,7 @@ export const DialogNote: React.FC<NoteProps> = ({
   smallScreen,
 }) => {
   const contentId = useContentId();
+  const h5pInstance = useH5PInstance();
   const [userData, setUserData] = useLocalStorageUserData();
   const { t } = useTranslation();
 
@@ -107,6 +109,23 @@ export const DialogNote: React.FC<NoteProps> = ({
     setUserData(userData);
   };
 
+
+  const resizeMirroredTextarea = (): void => {
+    if (!textAreaRef.current || !mirroredTextareaWrapperRef.current || !mirroredTextareaRef.current) {
+      return;
+    }
+
+    const textArea = textAreaRef.current;
+    const mirroredTextarea = mirroredTextareaRef.current;
+    const mirroredTextareaWrapper = mirroredTextareaWrapperRef.current;
+
+    mirroredTextarea.style.width = `${textArea.clientWidth}px`;
+    mirroredTextarea.style.height = `${textArea.scrollHeight}px`;
+
+    mirroredTextareaWrapper.style.width = `${textArea.clientWidth}px`;
+    mirroredTextareaWrapper.style.height = `${textArea.clientHeight}px`;
+  };
+
   const updateMirroredTextarea = (): void => {
     if (textAreaRef.current && mirroredTextareaRef.current && mirroredTextareaWrapperRef.current) {
       const textArea = textAreaRef.current;
@@ -135,25 +154,14 @@ export const DialogNote: React.FC<NoteProps> = ({
         mirroredTextarea.style[property] = textAreaStyles[property];
       });
 
-      const textareaResizeObserver = new ResizeObserver(() => {
-        mirroredTextarea.style.width = `${textArea.clientWidth}px`;
-        mirroredTextarea.style.height = `${textArea.scrollHeight}px`;
-
-        mirroredTextareaWrapper.style.width = `${textArea.clientWidth}px`;
-        mirroredTextareaWrapper.style.height = `${textArea.clientHeight}px`;
-      });
-      textareaResizeObserver.observe(textArea);
+      resizeMirroredTextarea();
 
       textArea.addEventListener('scroll', () => {
         mirroredTextareaWrapper.scrollTop = textArea.scrollTop;
         mirroredTextareaWrapper.scrollLeft = textArea.scrollLeft;
       });
 
-      const findLinks = () => {
-        mirroredTextarea.innerHTML = createLinksFromString(textArea.value);
-      };
-
-      findLinks();
+      mirroredTextarea.innerHTML = createLinksFromString(textArea.value);
     }
   };
 
@@ -176,6 +184,11 @@ export const DialogNote: React.FC<NoteProps> = ({
     }
   }, [textAreaRef]);
 
+  h5pInstance?.on('resize', () => {
+    window.requestAnimationFrame(() => {
+      resizeMirroredTextarea();
+    });
+  });
 
   return (
     <form>
