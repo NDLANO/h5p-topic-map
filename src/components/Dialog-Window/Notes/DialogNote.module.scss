@@ -9,16 +9,28 @@ form {
   height: 100%;
 }
 
+.textArea,
+.textareaMirror {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: normal;
+  line-height: 1.4;
+  outline: none;
+  padding: 0.5rem;
+  text-decoration: none;
+  text-indent: 0px;
+  text-transform: none;
+  white-space: pre-wrap;
+  width: 100%;
+  word-spacing: 0px;
+  word-wrap: break-word;
+}
+
 .textArea {
   resize: none;
-  width: 100%;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: 1.4;
-  border: none;
-  outline: none;
   flex-grow: 1;
-  padding: 0.5rem;
   overflow-y: scroll;
   background: transparent;
   caret-color: rgb(0, 0, 0);

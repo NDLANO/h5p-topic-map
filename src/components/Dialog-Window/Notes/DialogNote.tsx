@@ -119,9 +119,7 @@ export const DialogNote: React.FC<NoteProps> = ({
     const mirroredTextarea = mirroredTextareaRef.current;
     const mirroredTextareaWrapper = mirroredTextareaWrapperRef.current;
 
-    mirroredTextarea.style.width = `${textArea.clientWidth}px`;
     mirroredTextarea.style.height = `${textArea.scrollHeight}px`;
-
     mirroredTextareaWrapper.style.width = `${textArea.clientWidth}px`;
     mirroredTextareaWrapper.style.height = `${textArea.clientHeight}px`;
   };
@@ -133,26 +131,6 @@ export const DialogNote: React.FC<NoteProps> = ({
       const mirroredTextareaWrapper = mirroredTextareaWrapperRef.current;
 
       mirroredTextarea.textContent = textArea.value;
-
-      const textAreaStyles = window.getComputedStyle(textArea);
-      [
-        'border',
-        'boxSizing',
-        'fontFamily',
-        'fontSize',
-        'fontWeight',
-        'letterSpacing',
-        'lineHeight',
-        'padding',
-        'textDecoration',
-        'textIndent',
-        'textTransform',
-        'whiteSpace',
-        'wordSpacing',
-        'wordWrap',
-      ].forEach((property: any) => {
-        mirroredTextarea.style[property] = textAreaStyles[property];
-      });
 
       resizeMirroredTextarea();
 
