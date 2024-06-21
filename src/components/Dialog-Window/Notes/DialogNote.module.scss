@@ -103,7 +103,7 @@ form {
   order: 2;
 }
 
-.textareaMirror {
+.textareaMirrorWrapper {
   border-color: transparent;
   position: absolute;
   top: 0;
@@ -113,7 +113,9 @@ form {
   user-select: none;
   overflow: hidden;
   pointer-events: none;
+}
 
+.textareaMirror {
   a {
     color: rgba(31, 103, 199, 1);
     pointer-events: auto;

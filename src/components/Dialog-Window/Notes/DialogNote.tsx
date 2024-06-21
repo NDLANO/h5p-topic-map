@@ -40,6 +40,7 @@ export const DialogNote: React.FC<NoteProps> = ({
 
   const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
   const mirroredTextareaRef = React.useRef<HTMLDivElement>(null);
+  const mirroredTextareaWrapperRef = React.useRef<HTMLDivElement>(null);
 
   const noteTextareaID = `note-textarea_${id}`;
   const noteCheckboxID = `note-checkbox_${id}`;
@@ -107,11 +108,13 @@ export const DialogNote: React.FC<NoteProps> = ({
   };
 
   const updateMirroredTextarea = (): void => {
-    if (textAreaRef.current && mirroredTextareaRef.current) {
+    if (textAreaRef.current && mirroredTextareaRef.current && mirroredTextareaWrapperRef.current) {
       const textArea = textAreaRef.current;
       const mirroredTextarea = mirroredTextareaRef.current;
+      const mirroredTextareaWrapper = mirroredTextareaWrapperRef.current;
 
       mirroredTextarea.textContent = textArea.value;
+
       const textAreaStyles = window.getComputedStyle(textArea);
       [
         'border',
@@ -134,13 +137,16 @@ export const DialogNote: React.FC<NoteProps> = ({
 
       const textareaResizeObserver = new ResizeObserver(() => {
         mirroredTextarea.style.width = `${textArea.clientWidth}px`;
-        mirroredTextarea.style.height = `${textArea.clientHeight}px`;
+        mirroredTextarea.style.height = `${textArea.scrollHeight}px`;
+
+        mirroredTextareaWrapper.style.width = `${textArea.clientWidth}px`;
+        mirroredTextareaWrapper.style.height = `${textArea.clientHeight}px`;
       });
       textareaResizeObserver.observe(textArea);
 
       textArea.addEventListener('scroll', () => {
-        mirroredTextarea.scrollTop = textArea.scrollTop;
-        mirroredTextarea.scrollLeft = textArea.scrollLeft;
+        mirroredTextareaWrapper.scrollTop = textArea.scrollTop;
+        mirroredTextareaWrapper.scrollLeft = textArea.scrollLeft;
       });
 
       const findLinks = () => {
@@ -154,6 +160,7 @@ export const DialogNote: React.FC<NoteProps> = ({
   const onChange = ({ target }: React.ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = target.value;
 
+    updateMirroredTextarea();
     setSavingText();
     setNote(newValue);
     handleSetUserData(newValue);
@@ -161,12 +168,12 @@ export const DialogNote: React.FC<NoteProps> = ({
     if (maxLength) {
       countCharacters();
     }
-
-    updateMirroredTextarea();
   };
 
   React.useEffect(() => {
-    updateMirroredTextarea();
+    if (textAreaRef.current) {
+      updateMirroredTextarea();
+    }
   }, [textAreaRef]);
 
 
@@ -190,10 +197,15 @@ export const DialogNote: React.FC<NoteProps> = ({
           maxLength={maxLength}
         />
         <div
-          ref={mirroredTextareaRef}
-          className={styles.textareaMirror}
+          ref={mirroredTextareaWrapperRef}
+          className={styles.textareaMirrorWrapper}
           aria-hidden="true"
-        />
+        >
+          <div
+            ref={mirroredTextareaRef}
+            className={styles.textareaMirror}
+          />
+        </div>
         {maxLength && (
           <span id={noteTextareaDescriptionID} className={styles.visuallyHidden}>{textareaDescription}</span>
         )}
