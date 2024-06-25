@@ -27,6 +27,12 @@
   margin-block-start: 1rem;
 }
 
+.mainBodyListElementContent {
+  a {
+    color: rgba(31, 103, 199, 1);
+  }
+}
+
 .mainBodyHeaderForPrint {
   font-size: large;
   font-weight: bold;
