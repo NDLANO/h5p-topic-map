@@ -416,6 +416,10 @@
           "default": "Print"
         },
         {
+          "label": "Navbar notes copy button label",
+          "default": "Copy"
+        },
+        {
           "label": "Navbar notes delete all notes button label",
           "default": "Delete all notes"
         },

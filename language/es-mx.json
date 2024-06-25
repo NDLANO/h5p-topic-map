@@ -409,11 +409,15 @@
         },
         {
           "label": "Cuerpo de la sección de notas de la barra de navegación",
-          "default": "This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document."
+          "default": "Esta es una vista general de sus notas. Están guardadas localmente en este navegador. Usted puede imprimirlas o copiarla a un documento."
         },
         {
           "label": "Etiqueta del botón de impresión de notas de la barra de navegación",
           "default": "Imprimir"
+        },
+        {
+          "label": "Etiqueta de botón para copiar notas en la barra de navegación",
+          "default": "Copiar"
         },
         {
           "label": "Etiqueta de borrado de todas las notas en la barra de navegación",
@@ -428,7 +432,7 @@
           "default": "━ Aún no se han añadido notas"
         },
         {
-          "label": "Ventana de confirmación de eliminación de todas las notas",
+          "label": "Etiqueta de ventana de confirmación de eliminación de todas las notas",
           "default": "¿Está seguro de querer eliminar todas sus notas?"
         },
         {
@@ -444,7 +448,7 @@
           "default": "Nota de progreso: @markedNotes de @totalNotes notas marcadas como hechas"
         },
         {
-          "label": "Etiqueta de envío de todas los datos de notas en la barra de navegación",
+          "label": "Etiqueta de botón de enviar todos los datos de notas en la barra de navegación",
           "default": "Enviar todos los datos"
         },
         {
@@ -452,8 +456,8 @@
           "default": "¿Está seguro de que quiere enviar todos sus datos?"
         },
         {
-          "label": "Submit all data confirm label",
-          "default": "Submit"
+          "label": "Etiqueta de confirmar enviar todos los datos",
+          "default": "Enviar"
         },
         {
           "label": "Etiqueta negar enviar todos los datos",
