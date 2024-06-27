@@ -2,6 +2,7 @@ import type { H5PImage } from 'h5p-types';
 import * as React from 'react';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
+import { Description } from '@radix-ui/react-dialog';
 import styles from './DialogText.module.scss';
 
 export type DialogTextProps = {
@@ -22,7 +23,7 @@ export const DialogText: React.FC<DialogTextProps> = ({
   return (
     <div className={styles.dialogText}>
       {introduction ? (
-        <div
+        <Description
           className={styles.description}
           dangerouslySetInnerHTML={{ __html: introduction }}
         />
