@@ -1,4 +1,4 @@
-import { Close, Content, Overlay, Portal, Root, Title, Trigger } from '@radix-ui/react-dialog';
+import { Close, Content, Description, Overlay, Portal, Root, Title, Trigger } from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { FC, ReactNode } from 'react';
@@ -46,6 +46,7 @@ export const ConfirmWindow: FC<ConfirmWindowProps> = ({
       <Portal container={h5pInstance?.containerElement}>
         <Overlay className={styles.overlay} />
         <Content aria-modal="true" className={styles.confirmWindowContent}>
+          <Description className={styles.visuallyHidden} aria-hidden="true" />
           <div className={styles.contentWrapper}>
             <Title className={styles.dialogTitle}>{title}</Title>
             {children}

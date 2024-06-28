@@ -66,6 +66,10 @@
   line-height: 1.2;
 }
 
+.visuallyHidden {
+  @include visually-hidden;
+}
+
 @keyframes show-overlay {
   from {
     opacity: 0;
