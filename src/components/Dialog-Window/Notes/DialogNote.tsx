@@ -194,7 +194,6 @@ export const DialogNote: React.FC<NoteProps> = ({
         <div
           ref={mirroredTextareaWrapperRef}
           className={styles.textareaMirrorWrapper}
-          aria-hidden="true"
         >
           <div
             ref={mirroredTextareaRef}
