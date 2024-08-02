@@ -1,4 +1,4 @@
-const linkRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+const linkRegex = /(http(s)?:\/\/)?[-a-zA-Z0-9:%._\+~=]{2,256}\.[a-z]{2,63}([-a-zA-Z0-9@:%_\+~#?&//=]*)(\.[a-z0-9]{1,4})?/g;
 
 export const normalizeLinkPath = (linkPath: string): string => {
   const pathAlreadyAbsolute =
