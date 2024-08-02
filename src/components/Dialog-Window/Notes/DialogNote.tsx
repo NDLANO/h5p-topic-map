@@ -4,7 +4,7 @@ import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData'
 import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { useH5PInstance } from '../../../hooks/useH5PInstance';
-import { createLinksFromString, replaceCharacters } from '../../../utils/link.utils';
+import { createLinksFromString } from '../../../utils/link.utils';
 import styles from './DialogNote.module.scss';
 
 export type NoteProps = {
@@ -129,8 +129,7 @@ export const DialogNote: React.FC<NoteProps> = ({
     const textArea = textAreaRef.current;
     const mirroredTextarea = mirroredTextareaRef.current;
 
-    const sanitizedNote = replaceCharacters(textArea.value);
-    mirroredTextarea.innerHTML = createLinksFromString(sanitizedNote);
+    mirroredTextarea.innerHTML = createLinksFromString(textArea.value);
 
     resizeMirroredTextarea();
   };

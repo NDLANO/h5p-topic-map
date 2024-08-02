@@ -5,7 +5,7 @@ import { useTranslation } from '../../../../hooks/useTranslation';
 import { CommonItemType } from '../../../../types/CommonItemType';
 import { NoteButtonIconState } from '../../../../types/NoteButtonIconState';
 import { NoteButton } from '../../../NoteButton/NoteButton';
-import { createLinksFromString, replaceCharacters } from '../../../../utils/link.utils';
+import { createLinksFromString } from '../../../../utils/link.utils';
 import styles from './NotesList.module.scss';
 
 export type NotesListProps = {
@@ -27,7 +27,7 @@ export const NotesList: React.FC<NotesListProps> = ({
     const doesNoteExist = dialogData?.note;
     const isNoteDone = doesNoteExist && dialogData.noteDone;
     const noteContent = doesNoteExist
-      ? createLinksFromString(replaceCharacters(dialogData.note))
+      ? createLinksFromString(dialogData.note)
       : t('navbarNotesMissingNoteLabel');
 
     return (
