@@ -6,6 +6,7 @@ import { useContentId } from '../../../hooks/useContentId';
 import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { Link } from '../../../types/Link';
+import { normalizeLinkPath } from '../../../utils/link.utils';
 import styles from './DialogResources.module.scss';
 
 export type DialogResourceProps = {
@@ -35,17 +36,6 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
     // we can disable this check since this function will not be called before the page is rendered
     // eslint-disable-next-line no-use-before-define
     populateCustomLinks();
-  };
-
-  const normalizeLinkPath = (linkPath: string): string => {
-    const pathAlreadyAbsolute =
-      linkPath.startsWith('http://') || linkPath.startsWith('https://');
-
-    if (pathAlreadyAbsolute) {
-      return linkPath;
-    }
-
-    return `https://${linkPath}`;
   };
 
   const getRootUrl = (linkPath: string): string => {
