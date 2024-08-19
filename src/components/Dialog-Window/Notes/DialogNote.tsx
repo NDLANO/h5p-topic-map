@@ -3,6 +3,8 @@ import { useContentId } from '../../../hooks/useContentId';
 import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData';
 import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
 import { useTranslation } from '../../../hooks/useTranslation';
+import { useH5PInstance } from '../../../hooks/useH5PInstance';
+import { createLinksFromString } from '../../../utils/link.utils';
 import styles from './DialogNote.module.scss';
 
 export type NoteProps = {
@@ -17,6 +19,7 @@ export const DialogNote: React.FC<NoteProps> = ({
   smallScreen,
 }) => {
   const contentId = useContentId();
+  const h5pInstance = useH5PInstance();
   const [userData, setUserData] = useLocalStorageUserData();
   const { t } = useTranslation();
 
@@ -36,6 +39,10 @@ export const DialogNote: React.FC<NoteProps> = ({
       .replace('@max', maxLength?.toString() ?? ''); // We only show this text when `maxLength` is set.
 
   const { sendXAPIEvent } = useSendXAPIEvent();
+
+  const textAreaRef = React.useRef<HTMLTextAreaElement>(null);
+  const mirroredTextareaRef = React.useRef<HTMLDivElement>(null);
+  const mirroredTextareaWrapperRef = React.useRef<HTMLDivElement>(null);
 
   const noteTextareaID = `note-textarea_${id}`;
   const noteCheckboxID = `note-checkbox_${id}`;
@@ -102,9 +109,35 @@ export const DialogNote: React.FC<NoteProps> = ({
     setUserData(userData);
   };
 
+  const resizeMirroredTextarea = (): void => {
+    if (!textAreaRef.current || !mirroredTextareaWrapperRef.current || !mirroredTextareaRef.current) {
+      return;
+    }
+    const textArea = textAreaRef.current;
+    const mirroredTextarea = mirroredTextareaRef.current;
+    const mirroredTextareaWrapper = mirroredTextareaWrapperRef.current;
+
+    mirroredTextarea.style.height = `${textArea.scrollHeight}px`;
+    mirroredTextareaWrapper.style.width = `${textArea.clientWidth}px`;
+    mirroredTextareaWrapper.style.height = `${textArea.clientHeight}px`;
+  };
+
+  const updateMirroredTextarea = (): void => {
+    if (!textAreaRef.current || !mirroredTextareaRef.current) {
+      return;
+    }
+    const textArea = textAreaRef.current;
+    const mirroredTextarea = mirroredTextareaRef.current;
+
+    mirroredTextarea.innerHTML = createLinksFromString(textArea.value);
+
+    resizeMirroredTextarea();
+  };
+
   const onChange = ({ target }: React.ChangeEvent<HTMLTextAreaElement>): void => {
     const newValue = target.value;
 
+    updateMirroredTextarea();
     setSavingText();
     setNote(newValue);
     handleSetUserData(newValue);
@@ -113,6 +146,29 @@ export const DialogNote: React.FC<NoteProps> = ({
       countCharacters();
     }
   };
+
+  const onScroll = (): void => {
+    if (!textAreaRef.current || !mirroredTextareaWrapperRef.current) {
+      return;
+    }
+    const textArea = textAreaRef.current;
+    const mirroredTextareaWrapper = mirroredTextareaWrapperRef.current;
+
+    mirroredTextareaWrapper.scrollTop = textArea.scrollTop;
+    mirroredTextareaWrapper.scrollLeft = textArea.scrollLeft;
+  };
+
+  React.useEffect(() => {
+    if (textAreaRef.current) {
+      updateMirroredTextarea();
+    }
+  }, [textAreaRef]);
+
+  h5pInstance?.on('resize', () => {
+    window.requestAnimationFrame(() => {
+      resizeMirroredTextarea();
+    });
+  });
 
   return (
     <form>
@@ -126,12 +182,23 @@ export const DialogNote: React.FC<NoteProps> = ({
         <textarea
           className={styles.textArea}
           id={noteTextareaID}
+          ref={textAreaRef}
           aria-describedby={maxLength ? noteTextareaDescriptionID : undefined}
           placeholder={t('dialogNotePlaceholder')}
           onChange={(event) => onChange(event)}
+          onScroll={onScroll}
           defaultValue={note}
           maxLength={maxLength}
         />
+        <div
+          ref={mirroredTextareaWrapperRef}
+          className={styles.textareaMirrorWrapper}
+        >
+          <div
+            ref={mirroredTextareaRef}
+            className={styles.textareaMirror}
+          />
+        </div>
         {maxLength && (
           <span id={noteTextareaDescriptionID} className={styles.visuallyHidden}>{textareaDescription}</span>
         )}
