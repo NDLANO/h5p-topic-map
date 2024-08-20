@@ -48,7 +48,7 @@
     "esbuild-runner": "^2.2.2",
     "eslint": "^8.57.0",
     "eslint-config-ndla-h5p": "github:ndlano/eslint-config-ndla-h5p",
-    "h5p-types": "^4.3.0",
+    "h5p-types": "^5.4.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
