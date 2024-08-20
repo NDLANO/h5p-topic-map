@@ -4,7 +4,7 @@ import { H5PIntegration } from '../../../h5p/H5P.util';
 import { useSizeClassNames } from '../../../hooks/useSizeClassNames';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { ConfirmWindow } from '../../ConfirmWindow/ConfirmWindow';
-import { Close, Content, Overlay, Portal, Root, Title, Trigger } from '@radix-ui/react-dialog';
+import { Close, Content, Description, Overlay, Portal, Root, Title, Trigger } from '@radix-ui/react-dialog';
 import { useH5PInstance } from '../../../hooks/useH5PInstance';
 import { NotesList } from './NotesList/NotesList';
 import { CommonItemType } from '../../../types/CommonItemType';
@@ -108,9 +108,9 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
                   {t('navbarNotesSectionTitle')}
                 </p>
               </Title>
-              <div className={styles.mainBodyTextWrapper}>
+              <Description className={styles.mainBodyTextWrapper}>
                 {t('navbarNotesSectionBody')}
-              </div>
+              </Description>
               <div className={styles.mainBodyButtons}>
                 <button
                   className={styles.mainBodyButton}

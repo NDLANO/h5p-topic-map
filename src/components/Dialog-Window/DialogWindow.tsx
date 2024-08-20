@@ -1,4 +1,4 @@
-import { Close, Content, Overlay, Title } from '@radix-ui/react-dialog';
+import { Close, Content, Description, Overlay, Title } from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { FC } from 'react';
@@ -39,6 +39,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
 
   let content = smallScreen ? (
     <Content aria-modal="true" className={styles.dialogContentSmallScreen}>
+      <Description className={styles.visuallyHidden} aria-hidden="true" />
       <div className={styles.contentWrapperSmallScreen}>
         <Title className={styles.dialogTitle}>{item.label}</Title>
         {!noTabItems && <DialogTabs item={item} />}
@@ -57,6 +58,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
     </Content>
   ) : (
     <Content aria-modal="true" className={styles.dialogContent}>
+      <Description className={styles.visuallyHidden} aria-hidden="true" />
       <div className={styles.contentWrapper}>
         <Title
           className={styles.dialogTitle}
@@ -76,6 +78,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
         aria-modal="true"
         className={noTabItems ? styles.dialogContent : styles.dialogContentWide}
       >
+        <Description className={styles.visuallyHidden} aria-hidden="true" />
         <div className={styles.contentWrapper}>
           <Title
             className={styles.dialogTitle}

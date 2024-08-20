@@ -74,6 +74,10 @@
   margin: 1rem 0 0;
 }
 
+.visuallyHidden {
+  @include visually-hidden;
+}
+
 @keyframes show-overlay {
   from {
     opacity: 0;
