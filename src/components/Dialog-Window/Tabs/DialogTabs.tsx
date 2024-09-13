@@ -243,7 +243,7 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
       )}
       <div
         className={`${styles.tabItemWrapper} ${!showTabs ? styles.marginTop : ''
-          }`}
+        }`}
       >
         {dialogContent(dialogContentInfo, item, showTabs)}
         {showNote && (showTabs ? (

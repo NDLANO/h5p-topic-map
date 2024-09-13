@@ -91,7 +91,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
           )}
           <div
             className={`${styles.noteWrapper} ${noTabItems ? styles.fullWidth : ''
-              }`}
+            }`}
           >
             <DialogNote
               maxLength={item.dialog.maxLength}

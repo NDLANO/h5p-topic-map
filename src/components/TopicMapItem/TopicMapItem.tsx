@@ -87,7 +87,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
 
             <div
               className={`${styles.inner} ${item.topicImage?.path ? '' : styles.noImage
-                } ${item.dialog?.hasNote ? styles.withNote : ''}`}
+              } ${item.dialog?.hasNote ? styles.withNote : ''}`}
               style={{ paddingTop: strokeWidth * 0.66 }}
             >
               <div

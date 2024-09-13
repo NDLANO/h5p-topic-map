@@ -136,7 +136,7 @@ export const Arrow: FC<ArrowProps> = ({
         `${(position.x / 100) * gridElement.clientWidth},${(position.y / 100) * gridElement.clientHeight
         }`;
       const path = `${startx},${starty} ${item.relativeBreakpoints?.map(asPoint).join(' ') ?? ''
-        } ${endx},${endy}`;
+      } ${endx},${endy}`;
 
       const middlePoint = findMiddlePosition(
         startx,

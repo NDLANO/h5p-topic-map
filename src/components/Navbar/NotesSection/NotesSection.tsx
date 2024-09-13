@@ -91,7 +91,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
       <Trigger asChild>
         <button
           className={`${styles.sectionTitle} ${notesOpen && styles.active
-            }`}
+          }`}
           type="button"
           onClick={() => setNotesOpen(true)}
         >
