@@ -5,7 +5,7 @@ import { FC } from 'react';
 import { useMedia } from 'react-use';
 import { useTranslation } from '../../hooks/useTranslation';
 import { CommonItemType } from '../../types/CommonItemType';
-import styles from './DialogWindow.module.scss';
+import * as styles from './DialogWindow.module.scss';
 import { DialogNote } from './Notes/DialogNote';
 import { DialogTabs } from './Tabs/DialogTabs';
 
@@ -91,7 +91,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
           )}
           <div
             className={`${styles.noteWrapper} ${noTabItems ? styles.fullWidth : ''
-            }`}
+              }`}
           >
             <DialogNote
               maxLength={item.dialog.maxLength}

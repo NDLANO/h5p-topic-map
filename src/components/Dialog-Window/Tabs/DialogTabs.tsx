@@ -8,7 +8,7 @@ import { DialogNote } from '../Notes/DialogNote';
 import { DialogResources } from '../Resources/DialogResources';
 import { DialogText } from '../Text/DialogText';
 import { DialogVideo } from '../Video/DialogVideo';
-import styles from './DialogTabs.module.scss';
+import * as styles from './DialogTabs.module.scss';
 
 export type TabProps = {
   item: CommonItemType;
@@ -243,7 +243,7 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
       )}
       <div
         className={`${styles.tabItemWrapper} ${!showTabs ? styles.marginTop : ''
-        }`}
+          }`}
       >
         {dialogContent(dialogContentInfo, item, showTabs)}
         {showNote && (showTabs ? (

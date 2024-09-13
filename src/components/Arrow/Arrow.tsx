@@ -7,7 +7,7 @@ import { ArrowType } from '../../types/ArrowType';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { Position } from '../../types/Position';
 import { GridDimensions } from '../Grid/Grid';
-import styles from './Arrow.module.scss';
+import * as styles from './Arrow.module.scss';
 import { ArrowNoteButton } from './ArrowNoteButton';
 import { getNoteStateText } from '../../utils/note.utils';
 import { useTranslation } from '../../hooks/useTranslation';
@@ -136,7 +136,7 @@ export const Arrow: FC<ArrowProps> = ({
         `${(position.x / 100) * gridElement.clientWidth},${(position.y / 100) * gridElement.clientHeight
         }`;
       const path = `${startx},${starty} ${item.relativeBreakpoints?.map(asPoint).join(' ') ?? ''
-      } ${endx},${endy}`;
+        } ${endx},${endy}`;
 
       const middlePoint = findMiddlePosition(
         startx,
