@@ -7,7 +7,7 @@ import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData'
 import { useTranslation } from '../../../hooks/useTranslation';
 import { Link } from '../../../types/Link';
 import { normalizeLinkPath } from '../../../utils/link.utils';
-import styles from './DialogResources.module.scss';
+import * as styles from './DialogResources.module.scss';
 
 export type DialogResourceProps = {
   relevantLinks: Link[] | undefined;

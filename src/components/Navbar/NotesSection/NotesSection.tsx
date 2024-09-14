@@ -9,7 +9,7 @@ import { useH5PInstance } from '../../../hooks/useH5PInstance';
 import { NotesList } from './NotesList/NotesList';
 import { CommonItemType } from '../../../types/CommonItemType';
 import { useReactToPrint } from 'react-to-print';
-import styles from './NotesSection.module.scss';
+import * as styles from './NotesSection.module.scss';
 
 export type NotesSectionProps = {
   confirmSubmitAll: () => void;

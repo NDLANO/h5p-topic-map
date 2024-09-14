@@ -3,7 +3,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { FC, ReactNode } from 'react';
 import { useTranslation } from '../../hooks/useTranslation';
-import styles from './ConfirmWindow.module.scss';
+import * as styles from './ConfirmWindow.module.scss';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 
 export type ConfirmWindowProps = {
