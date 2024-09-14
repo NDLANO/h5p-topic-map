@@ -11,7 +11,7 @@ import { exportAllUserData } from '../../utils/user-data.utils';
 import { FullscreenButton } from '../FullscreenButton/FullscreenButton';
 import { Grid } from '../Grid/Grid';
 import { NotesSection } from './NotesSection/NotesSection';
-import styles from './Navbar.module.scss';
+import * as styles from './Navbar.module.scss';
 
 export type NavbarProps = {
   navbarTitle: string;

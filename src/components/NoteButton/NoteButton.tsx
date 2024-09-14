@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSizeClassNames } from '../../hooks/useSizeClassNames';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { DoneIcon, EditIcon, IconProps, NoteIcon } from '../Icons/Icons';
-import styles from './NoteButton.module.scss';
+import * as styles from './NoteButton.module.scss';
 
 const icons: Record<NoteButtonIconState, React.FC<IconProps>> = {
   [NoteButtonIconState.Done]: DoneIcon,

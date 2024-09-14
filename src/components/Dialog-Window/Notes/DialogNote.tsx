@@ -5,7 +5,7 @@ import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { useH5PInstance } from '../../../hooks/useH5PInstance';
 import { createLinksFromString } from '../../../utils/link.utils';
-import styles from './DialogNote.module.scss';
+import * as styles from './DialogNote.module.scss';
 
 export type NoteProps = {
   maxLength: number | undefined;

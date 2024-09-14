@@ -7,7 +7,7 @@ import { useH5PInstance } from '../../hooks/useH5PInstance';
 import { Params } from '../../types/Params';
 import { defaultTheme } from '../../utils/semantics.utils';
 import { Navbar } from '../Navbar/Navbar';
-import styles from './App.module.scss';
+import * as styles from './App.module.scss';
 
 export type AppProps = {
   params: Params;

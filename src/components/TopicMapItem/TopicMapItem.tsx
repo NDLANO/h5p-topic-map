@@ -8,7 +8,7 @@ import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { GridDimensions } from '../Grid/Grid';
 import { NoteButton } from '../NoteButton/NoteButton';
-import styles from './TopicMapItem.module.scss';
+import * as styles from './TopicMapItem.module.scss';
 import { getNoteStateText } from '../../utils/note.utils';
 import { useTranslation } from '../../hooks/useTranslation';
 import { Portal, Root, Trigger } from '@radix-ui/react-dialog';
