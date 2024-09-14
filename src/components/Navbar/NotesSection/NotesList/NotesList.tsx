@@ -6,7 +6,7 @@ import { CommonItemType } from '../../../../types/CommonItemType';
 import { NoteButtonIconState } from '../../../../types/NoteButtonIconState';
 import { NoteButton } from '../../../NoteButton/NoteButton';
 import { createLinksFromString } from '../../../../utils/link.utils';
-import styles from './NotesList.module.scss';
+import * as styles from './NotesList.module.scss';
 
 export type NotesListProps = {
   topicMapItems: CommonItemType[];
@@ -36,7 +36,7 @@ export const NotesList: React.FC<NotesListProps> = ({
           <div className={styles.mainBodyListElementWrapper}>
             <div className={styles.pageBreak} />
             <div className={styles.mainBodyListElement}>
-              <div className={styles.mainBodyButton}>
+              <div>
                 <NoteButton
                   backgroundColor="var(--theme-color-2)"
                   borderColor="var(--theme-color-3)"
@@ -49,7 +49,7 @@ export const NotesList: React.FC<NotesListProps> = ({
                   strokeWidth={undefined}
                 />
               </div>
-              <div className={styles.mainBodyList}>
+              <div>
                 <p className={styles.mainBodyListElementHeader}>{item.label}</p>
                 <div
                   className={styles.mainBodyListElementContent}

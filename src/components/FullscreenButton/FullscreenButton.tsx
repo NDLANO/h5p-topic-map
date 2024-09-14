@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useTranslation } from 'use-h5p';
 import { H5P } from '../../h5p/H5P.util';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
-import styles from './FullscreenButton.module.scss';
+import * as styles from './FullscreenButton.module.scss';
 
 export type FullscreenButtonProps = {
   toggleIOSFullscreen: () => void;
