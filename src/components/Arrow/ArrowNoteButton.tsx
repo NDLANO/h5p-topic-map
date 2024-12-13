@@ -33,6 +33,7 @@ export const ArrowNoteButton: FC<ArrowNoteButtonProps> = ({
         position: 'absolute',
         top: position.y - offsetY,
         left: position.x - offsetX,
+        zIndex: 1,
       }}
     >
       {buttonState !== NoteButtonIconState.None && (

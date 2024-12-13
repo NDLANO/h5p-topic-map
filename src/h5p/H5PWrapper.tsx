@@ -1,5 +1,4 @@
 import type { H5PExtras, IH5PContentType } from 'h5p-types';
-import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { L10nContext } from 'use-h5p';
 import { App } from '../components/App/App';
@@ -93,9 +92,29 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     });
 
     this.on('exitFullScreen', () => {
+      this.trigger('resize');
       setTimeout(() => {
         this.trigger('resize');
       }, 250); // DOM might need time to change size
+    });
+
+    const root = createRoot(this.wrapper);
+
+    this.on('resize', () => {
+      root.render(
+        <ContentIdContext.Provider value={contentId}>
+          <L10nContext.Provider value={l10n}>
+            <H5PContext.Provider value={this}>
+              <App
+                params={paramsWithFallbacks}
+                title={title}
+                toggleIPhoneFullscreen={this.toggleIPhoneFullscreen}
+                instance={this}
+              />
+            </H5PContext.Provider>
+          </L10nContext.Provider>
+        </ContentIdContext.Provider>,
+      );
     });
 
     // React components require 'resize' once H5P container attached to DOM
@@ -112,21 +131,6 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
         root: document.documentElement,
         threshold: [1],
       },
-    );
-
-    createRoot(this.wrapper).render(
-      <ContentIdContext.Provider value={contentId}>
-        <L10nContext.Provider value={l10n}>
-          <H5PContext.Provider value={this}>
-            <App
-              params={paramsWithFallbacks}
-              title={title}
-              toggleIPhoneFullscreen={this.toggleIPhoneFullscreen}
-              instance={this}
-            />
-          </H5PContext.Provider>
-        </L10nContext.Provider>
-      </ContentIdContext.Provider>,
     );
   }
 
