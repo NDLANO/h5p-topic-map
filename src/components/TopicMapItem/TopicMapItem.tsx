@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { FC } from 'react';
-import { useAppWidth } from '../../hooks/useAppWidth';
 import { useContentId } from '../../hooks/useContentId';
 import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
 import { useSizeClassNames } from '../../hooks/useSizeClassNames';
@@ -31,23 +30,22 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
 
-  const appWidth = useAppWidth();
   const buttonElement = React.useRef<HTMLButtonElement>(null);
-  const [strokeWidth, setStrokeWidth] = React.useState(4);
+  const [strokeWidth, setStrokeWidth] = React.useState<number>(4);
 
   const sizeClassNames = useSizeClassNames(styles);
   const className = [styles.topicMapItem, sizeClassNames].join(' ');
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
 
-  React.useEffect(() => {
+  const handleResize = () => {
     if (gridRef) {
       const gridElement = gridRef.current;
       if (grid && gridElement) {
         setStrokeWidth((gridElement.clientWidth / grid.numberOfColumns) * 0.66);
       }
     }
-  }, [appWidth, grid, gridRef, buttonElement]);
+  };
 
   let btnState: NoteButtonIconState = NoteButtonIconState.Default;
   if (item.dialog?.hasNote) {
@@ -64,6 +62,8 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
         btnState = NoteButtonIconState.Default;
     }
   }
+
+  h5pInstance?.on('resize', handleResize);
 
   return (
     <div className={styles.topicMapItemContainer}>
