@@ -41,14 +41,15 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
   const sizeClassNames = useSizeClassNames(styles);
 
   let navbarTitleForPrint = '';
-  const updateNavbarTitleForPrint = (): void => {
+  const updateNavbarTitleForPrint = (): Promise<void> => {
     navbarTitleForPrint = navbarTitleForPrint ? '' : navbarTitle;
+    return Promise.resolve();
   };
-  const notesListRef = React.useRef(null);
+  const notesListRef = React.useRef<HTMLDivElement>(null);
   const handlePrint = useReactToPrint({
-    content: () => notesListRef.current,
+    contentRef: notesListRef,
     documentTitle: navbarTitle,
-    onBeforeGetContent: updateNavbarTitleForPrint,
+    onBeforePrint: updateNavbarTitleForPrint,
     onAfterPrint: updateNavbarTitleForPrint,
   });
 
