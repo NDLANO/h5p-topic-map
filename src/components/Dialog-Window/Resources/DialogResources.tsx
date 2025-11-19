@@ -23,7 +23,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
   const contentId = useContentId();
   const [userData, setUserData] = useLocalStorageUserData();
   const [link, setLink] = React.useState('');
-  const [customLinks, setCustomLinks] = React.useState<Array<JSX.Element>>([]);
+  const [customLinks, setCustomLinks] = React.useState<React.ReactNode[]>([]);
   const inputFieldRef = React.useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
 
