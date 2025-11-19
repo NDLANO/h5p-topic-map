@@ -33,8 +33,6 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
     ].links?.filter((item: Link) => item.id !== linkToRemove);
 
     setUserData(userData);
-    // we can disable this check since this function will not be called before the page is rendered
-    // eslint-disable-next-line no-use-before-define
     populateCustomLinks();
   };
 

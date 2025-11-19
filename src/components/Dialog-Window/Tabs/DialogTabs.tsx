@@ -53,34 +53,34 @@ const tabLabelItems = (
   const { hasText, hasLinks, hasVideo, hasAudio } = dialogContentInfo;
   const items = [];
 
-  hasText
-    ? items.push(
+  if (hasText) {
+    items.push(
       <Trigger key="Text" value="Text" className={styles.trigger}>
         {translation.text}
       </Trigger>,
-    )
-    : null;
-  hasLinks
-    ? items.push(
+    );
+  }
+  if (hasLinks) {
+    items.push(
       <Trigger key="links" className={styles.trigger} value="Resources">
         {translation.links}
       </Trigger>,
-    )
-    : null;
-  hasVideo
-    ? items.push(
+    );
+  }
+  if (hasVideo) {
+    items.push(
       <Trigger key="video" className={styles.trigger} value="Video">
         {translation.video}
       </Trigger>,
-    )
-    : null;
-  hasAudio
-    ? items.push(
+    );
+  }
+  if (hasAudio) {
+    items.push(
       <Trigger key="audio" className={styles.trigger} value="Audio">
         {translation.audio}
       </Trigger>,
-    )
-    : null;
+    );
+  }
   return items;
 };
 

@@ -25,7 +25,6 @@ export const sendXAPIEvent = (
   h5pInstance: EventDispatcher,
   contentId: string,
 ): void => {
-  // eslint-disable-next-line no-param-reassign
   data.contentId = contentId;
 
   const xAPIEvent = h5pInstance.createXAPIEventTemplate(verb, data);
