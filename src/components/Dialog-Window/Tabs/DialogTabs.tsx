@@ -49,7 +49,7 @@ const defaultTabValue = (item: CommonItemType) => {
 const tabLabelItems = (
   dialogContentInfo: DialogContentInfo,
   translation: Translation,
-): JSX.Element[] => {
+): React.ReactElement[] => {
   const { hasText, hasLinks, hasVideo, hasAudio } = dialogContentInfo;
   const items = [];
 
@@ -88,10 +88,10 @@ const dialogContent = (
   dialogContentInfo: DialogContentInfo,
   item: CommonItemType,
   showTabs: boolean
-): JSX.Element[] | JSX.Element => {
+): React.ReactElement[] | React.ReactElement => {
   const { id, description, topicImage, topicImageAltText, dialog } = item;
   const { hasText, hasLinks, hasVideo, hasAudio } = dialogContentInfo;
-  const items: JSX.Element[] = [];
+  const items: React.ReactElement[] = [];
 
   // Dialog text
   if (hasText) {
