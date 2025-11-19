@@ -18,7 +18,7 @@ import { useH5PInstance } from '../../hooks/useH5PInstance';
 export type TopicMapItemProps = {
   item: TopicMapItemType;
   grid?: GridDimensions;
-  gridRef?: React.RefObject<HTMLDivElement>;
+  gridRef?: React.RefObject<HTMLDivElement | null>;
 };
 
 export const TopicMapItem: FC<TopicMapItemProps> = ({

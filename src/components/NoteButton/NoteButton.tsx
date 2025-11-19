@@ -16,7 +16,7 @@ const renderIcon = (
   state: NoteButtonIconState,
   iconColor: string,
   strokeWidth: number | undefined,
-): JSX.Element => {
+): React.ReactElement => {
   const Icon = icons[state];
   const size = strokeWidth ? strokeWidth * 0.75 : undefined;
   return <Icon iconColor={iconColor} width={size} height={size} />;
@@ -36,7 +36,7 @@ export const NoteButton: React.FC<NoteButtonProps> = ({
   iconColor,
   buttonState,
   strokeWidth,
-}): JSX.Element => {
+}): React.ReactElement => {
   const sizeClassNames = useSizeClassNames(styles);
 
   const classNames = `${styles.button} ${strokeWidth ? '' : styles.fixed_size}`;
