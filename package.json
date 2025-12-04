@@ -9,7 +9,7 @@
   "scripts": {
     "watch": "webpack --watch --mode=development",
     "build": "webpack --mode=production",
-    "lint": "eslint ./src --ext .ts,.tsx,.js,.jsx",
+    "lint": "eslint './src/**/*'",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest",
     "generate-semantics": "esr generate-semantics.ts",
