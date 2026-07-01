@@ -1,9 +1,9 @@
 import type { H5PImage } from 'h5p-types';
-import { GridDimensions } from '../components/Grid/Grid';
-import { ArrowItemType } from './ArrowItemType';
-import { ColorTheme } from './ColorTheme';
-import { TopicMapItemType } from './TopicMapItemType';
-import { Translations } from './Translations';
+import type { GridDimensions } from '../components/Grid/Grid';
+import type { ArrowItemType } from './ArrowItemType';
+import type { ColorTheme } from './ColorTheme';
+import type { TopicMapItemType } from './TopicMapItemType';
+import type { Translations } from './Translations';
 
 export type Params = Readonly<{
   behaviour?: unknown;

@@ -5,7 +5,10 @@ import { DialogAudio } from './DialogAudio';
 describe(DialogAudio.name, () => {
   it('should have rendered', () => {
     const audio = render(
-      <DialogAudio audioTrack={{ path: '' }} subtext="<p>Subtext</p>" />,
+      <DialogAudio
+        audioTrack={{ path: 'https://example.com/audio.mp3' }}
+        subtext="<p>Subtext</p>"
+      />,
     ).container;
 
     expect(audio.querySelector('audio')).toBeTruthy();

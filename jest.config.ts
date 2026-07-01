@@ -10,6 +10,7 @@ const config: Config.InitialOptions = {
   },
   testPathIgnorePatterns: [...defaults.testPathIgnorePatterns, 'e2e'],
   testEnvironment: 'jsdom',
+  setupFiles: ['<rootDir>/jest.setup.ts'],
 };
 
 export default config;

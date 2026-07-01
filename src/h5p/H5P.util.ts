@@ -1,7 +1,7 @@
 import type { H5PAudio, H5PIntegrationObject, H5PObject } from 'h5p-types';
-import { ArrowItemType } from '../types/ArrowItemType';
-import { Params } from '../types/Params';
-import { TopicMapItemType } from '../types/TopicMapItemType';
+import type { ArrowItemType } from '../types/ArrowItemType';
+import type { Params } from '../types/Params';
+import type { TopicMapItemType } from '../types/TopicMapItemType';
 
 // TODO: Why was this not typed correctly to begin with?
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
