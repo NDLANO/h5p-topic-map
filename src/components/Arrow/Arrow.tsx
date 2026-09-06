@@ -106,7 +106,7 @@ export const Arrow: FC<ArrowProps> = ({
     return { x: (startx + endx) / 2, y: (starty + endy) / 2 };
   };
 
-  React.useEffect(() => {
+  const handleResize = () => {
     if (arrowContainerRef.current) {
       const gridElement = arrowContainerRef.current;
 
@@ -150,7 +150,9 @@ export const Arrow: FC<ArrowProps> = ({
       setMiddleY(middlePoint.y);
       setPathDef(path);
     }
-  }, [arrowContainerRef, item, grid, buttonState, isHorizontal]);
+  };
+
+  h5pInstance?.on('resize', handleResize);
 
   return (
     <div className={styles.arrow}>
