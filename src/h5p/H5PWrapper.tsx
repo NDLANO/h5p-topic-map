@@ -71,32 +71,11 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
       ...getEmptyParams(),
       ...params,
     };
-
-    paramsWithFallbacks = normalizeTopicMapItemPaths(
-      paramsWithFallbacks,
-      contentId,
-    );
-
-    paramsWithFallbacks = normalizeArrowItemPaths(
-      paramsWithFallbacks,
-      contentId,
-    );
-
-    paramsWithFallbacks = normalizeGridBackgroundImagePath(
-      paramsWithFallbacks,
-      contentId,
-    );
-
-    paramsWithFallbacks = normalizeDialogAudioPaths(
-      paramsWithFallbacks,
-      contentId,
-    );
-
-    paramsWithFallbacks = normalizeArrowDialogAudioPaths(
-      paramsWithFallbacks,
-      contentId,
-    );
-
+    paramsWithFallbacks = normalizeTopicMapItemPaths(paramsWithFallbacks, contentId);
+    paramsWithFallbacks = normalizeArrowItemPaths(paramsWithFallbacks, contentId);
+    paramsWithFallbacks = normalizeGridBackgroundImagePath(paramsWithFallbacks, contentId);
+    paramsWithFallbacks = normalizeDialogAudioPaths(paramsWithFallbacks, contentId);
+    paramsWithFallbacks = normalizeArrowDialogAudioPaths(paramsWithFallbacks, contentId);
     paramsWithFallbacks = normalizeSizes(paramsWithFallbacks);
 
     this.contentId = contentId;
@@ -138,6 +117,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     );
 
     // React components require 'resize' once H5P container attached to DOM
+    // TODO: Use common onceVisible helper function
     this.observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].intersectionRatio === 1) {
@@ -216,6 +196,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     this.observer.observe(this.containerElement as Element);
   }
 
+  // TODO: What is this good for?! Overengineering
   private static createWrapperElement(): HTMLDivElement {
     return document.createElement('div');
   }
