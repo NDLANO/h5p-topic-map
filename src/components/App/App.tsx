@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { FullScreen, useFullScreenHandle } from 'react-full-screen';
 import type { IH5PContentType } from 'h5p-types';
 import { AppWidthContext } from '../../contexts/AppWidthContext';
@@ -32,13 +32,27 @@ export const App: React.FC<AppProps> = ({
   };
 
   const containerRef = React.useRef<HTMLDivElement>(null);
-  const [width, setWidth] = React.useState(0);
+  const [width, setWidth] = useState(0);
+
+  // Single stable 'resize' subscription feeding the AppWidthContext. The
+  // listener identity never changes, so it can be cleaned up reliably.
+  // H5P triggers 'resize' for window resizes and fullscreen changes, so no
+  // window-level listener is needed.
+  const updateWidth = useCallback((): void => {
+    setWidth(containerRef.current?.getBoundingClientRect().width ?? 0);
+  }, []);
+
+  const handleResize = useCallback((): void => {
+    window.requestAnimationFrame(updateWidth);
+  }, [updateWidth]);
 
   React.useEffect(() => {
-    const initialWidth =
-      containerRef.current?.getBoundingClientRect().width ?? 0;
-    setWidth(initialWidth);
-  }, []);
+    instance.on('resize', handleResize);
+    updateWidth();
+    return (): void => {
+      instance.off('resize', handleResize);
+    };
+  }, [handleResize, instance, updateWidth]);
 
   const themeClassName = React.useMemo(
     () => `theme-${params.topicMap?.colorTheme ?? defaultTheme}`,
@@ -48,20 +62,6 @@ export const App: React.FC<AppProps> = ({
   // Make sure theme is applied to the root element
   const h5pInstance = useH5PInstance();
   h5pInstance?.containerElement?.classList.add(themeClassName);
-
-  /*
-   * React supplies useResizeObserver hook, but H5P may trigger `resize` not
-   * only when the window resizes
-   */
-  instance.on('resize', () => {
-    window.requestAnimationFrame(() => {
-      if (!containerRef.current) {
-        return;
-      }
-
-      setWidth(containerRef.current.getBoundingClientRect().width);
-    });
-  });
 
   return (
     <div

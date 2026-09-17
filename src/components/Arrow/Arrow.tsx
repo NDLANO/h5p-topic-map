@@ -42,8 +42,8 @@ export const Arrow: FC<ArrowProps> = ({
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
 
-  const arrowHeadID = H5P.createUUID();
-  const arrowTailID = H5P.createUUID();
+  const arrowHeadID = H5P!.createUUID();
+  const arrowTailID = H5P!.createUUID();
 
   const [pathDef, setPathDef] = React.useState<string>('');
   const [strokeWidth, setStrokeWidth] = React.useState<number>(4);

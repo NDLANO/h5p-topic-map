@@ -1,15 +1,22 @@
-import type { H5PAudio, H5PIntegrationObject, H5PObject } from 'h5p-types';
+import type { H5PAudio } from 'h5p-types';
 import type { ArrowItemType } from '../types/ArrowItemType';
 import type { Params } from '../types/Params';
 import type { TopicMapItemType } from '../types/TopicMapItemType';
 
-// TODO: Why was this not typed correctly to begin with?
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const H5P = (window as any).H5P as H5PObject;
+/**
+ * The H5P core runtime object.
+ *
+ * Both properties are global, so both can change.
+ */
+export const H5P = window.H5P;
 
-// TODO: Why was this not typed correctly to begin with?
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const H5PIntegration = (window as any).H5P as H5PIntegrationObject;
+/**
+ * The H5P integration object, injected by H5P core into the global scope.
+ *
+ * This is **not** part of `window.H5P` — it is a separate global
+ * (`window.H5PIntegration`). It is undefined outside an H5P core environment.
+ */
+export const H5PIntegration = window.H5PIntegration;
 
 export const normalizeAssetPath = (path: string, contentId: string): string => {
   const pathAlreadyAbsolute =
@@ -18,7 +25,7 @@ export const normalizeAssetPath = (path: string, contentId: string): string => {
   if (pathAlreadyAbsolute) {
     return path;
   }
-  return H5P.getPath(path, contentId);
+  return H5P!.getPath(path, contentId);
 };
 
 /**

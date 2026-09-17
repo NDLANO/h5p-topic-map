@@ -90,15 +90,9 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
               } ${item.dialog?.hasNote ? styles.withNote : ''}`}
               style={{ paddingTop: strokeWidth * 0.66 }}
             >
-              <div
-                className={styles.label}
-                dangerouslySetInnerHTML={{ __html: item.label }}
-              />
+              <div className={styles.label}>{item.label}</div>
               {item.description && (
-                <div
-                  className={styles.description}
-                  dangerouslySetInnerHTML={{ __html: item.description }}
-                />
+                <div className={styles.description}>{item.description}</div>
               )}
               {item.dialog?.hasNote && <span className={styles.visuallyHidden}>{getNoteStateText(btnState, t)}</span>}
             </div>

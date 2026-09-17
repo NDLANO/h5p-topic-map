@@ -20,12 +20,9 @@ export const DialogAudio: React.FC<DialogAudioProps> = ({
       <audio src={audioTrack.path} controls />
 
       {audioTrack.copyright ? (
-        <p
-          className={styles.copyright}
-          dangerouslySetInnerHTML={{
-            __html: formatCopyright(t('copyrightAudio'), audioTrack.copyright),
-          }}
-        />
+        <p className={styles.copyright}>
+          {formatCopyright(t('copyrightAudio'), audioTrack.copyright)}
+        </p>
       ) : null}
 
       {subtext ? (

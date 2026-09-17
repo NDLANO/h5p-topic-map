@@ -129,7 +129,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
                     {copyText}
                   </button>
                 )}
-                {H5PIntegration.reportingIsEnabled ? (
+                {H5PIntegration?.reportingIsEnabled ? (
                   exportAllButtonAndWindow
                 ) : null}
                 {deleteButtonAndWindow}
