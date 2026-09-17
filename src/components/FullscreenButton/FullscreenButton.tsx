@@ -18,7 +18,7 @@ export const FullscreenButton: React.FC<FullscreenButtonProps> = ({
   const { t } = useTranslation();
   const fullscreenButtonLabelEnter = t('fullscreenButtonLabelEnter');
   const fullscreenButtonLabelExit = t('fullscreenButtonLabelExit');
-  const isFullscreen = H5P.isFullscreen || (isIOS && isIOSFullscreenActive);
+  const isFullscreen = H5P?.isFullscreen || (isIOS && isIOSFullscreenActive);
 
   const handleFullscreen = (): void => {
     if (isIOS) {

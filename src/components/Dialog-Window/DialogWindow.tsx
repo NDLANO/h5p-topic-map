@@ -60,10 +60,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
     <Content aria-modal="true" className={styles.dialogContent}>
       <Description className={styles.visuallyHidden} aria-hidden="true" />
       <div className={styles.contentWrapper}>
-        <Title
-          className={styles.dialogTitle}
-          dangerouslySetInnerHTML={{ __html: item.label }}
-        />
+        <Title className={styles.dialogTitle}>{item.label}</Title>
         {!noTabItems && <DialogTabs item={item} />}
       </div>
       <Close className={styles.closeButton} aria-label={ariaLabel}>
@@ -80,10 +77,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
       >
         <Description className={styles.visuallyHidden} aria-hidden="true" />
         <div className={styles.contentWrapper}>
-          <Title
-            className={styles.dialogTitle}
-            dangerouslySetInnerHTML={{ __html: item.label }}
-          />
+          <Title className={styles.dialogTitle}>{item.label}</Title>
           {!noTabItems && (
             <div className={styles.tabWrapper}>
               <DialogTabs item={item} />

@@ -1,4 +1,5 @@
 import type { H5PExtras, IH5PContentType } from 'h5p-types';
+import type { Root } from 'react-dom/client';
 import { createRoot } from 'react-dom/client';
 import { L10nContext } from 'use-h5p';
 import { App } from '../components/App/App';
@@ -29,6 +30,19 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
   private observer: IntersectionObserver;
 
+  private root: Root;
+
+  public contentId: string;
+
+  public params: Required<Params>;
+
+  private title: string | undefined;
+
+  private l10n: Record<string, string>;
+
+  /** Body overflow value from before iPhone fullscreen, if we changed it. */
+  private savedBodyOverflow: string | undefined;
+
   constructor(params: Params, contentId: string, extras?: H5PExtras) {
     super();
 
@@ -36,9 +50,12 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     this.toggleIPhoneFullscreen = () => {
       this.isIPhoneFullscreenActive = !this.isIPhoneFullscreenActive;
+      if (this.isIPhoneFullscreenActive) {
+        this.savedBodyOverflow = document.body.style.overflow;
+      }
       document.body.style.overflow = this.isIPhoneFullscreenActive
         ? 'hidden'
-        : 'auto';
+        : this.savedBodyOverflow ?? 'auto';
       const topicMapContainer = document.querySelector('.h5p-topic-map');
       if (this.isIPhoneFullscreenActive) {
         topicMapContainer?.classList.add('iPhoneFullscreenStyle');
@@ -82,8 +99,10 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     paramsWithFallbacks = normalizeSizes(paramsWithFallbacks);
 
-    const l10n = sanitizeRecord({ ...defaultTranslations, ...params.l10n });
-    const title = extras?.metadata.title;
+    this.contentId = contentId;
+    this.params = paramsWithFallbacks;
+    this.l10n = sanitizeRecord({ ...defaultTranslations, ...params.l10n });
+    this.title = extras?.metadata.title;
 
     this.on('enterFullScreen', () => {
       setTimeout(() => {
@@ -98,24 +117,25 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
       }, 250); // DOM might need time to change size
     });
 
-    const root = createRoot(this.wrapper);
-
-    this.on('resize', () => {
-      root.render(
-        <ContentIdContext.Provider value={contentId}>
-          <L10nContext.Provider value={l10n}>
-            <H5PContext.Provider value={this}>
-              <App
-                params={paramsWithFallbacks}
-                title={title}
-                toggleIPhoneFullscreen={this.toggleIPhoneFullscreen}
-                instance={this}
-              />
-            </H5PContext.Provider>
-          </L10nContext.Provider>
-        </ContentIdContext.Provider>,
-      );
-    });
+    // The React tree is rendered exactly once; it is only ever updated
+    // through React's own state. 'resize' is a plain notification that
+    // components subscribe to via stable, single subscriptions.
+    this.root = createRoot(this.wrapper);
+    this.root.render(
+      <ContentIdContext.Provider value={this.contentId}>
+        <L10nContext.Provider value={this.l10n}>
+          <H5PContext.Provider value={this}>
+            <App
+              params={this.params}
+              title={this.title}
+              // TODO: Check if this is still required
+              toggleIPhoneFullscreen={this.toggleIPhoneFullscreen}
+              instance={this}
+            />
+          </H5PContext.Provider>
+        </L10nContext.Provider>
+      </ContentIdContext.Provider>,
+    );
 
     // React components require 'resize' once H5P container attached to DOM
     this.observer = new IntersectionObserver(
@@ -154,14 +174,30 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     }
 
     if (typeof newState !== 'boolean') {
-      newState = !H5P.isFullscreen;
+      newState = !H5P?.isFullscreen;
     }
 
     if (newState === true) {
-      H5P.fullScreen(H5P.jQuery(this.containerElement), this);
+      H5P?.fullScreen(H5P.jQuery(this.containerElement), this);
     }
     else {
-      H5P.exitFullScreen();
+      H5P?.exitFullScreen();
+    }
+  }
+
+  /**
+   * Remove everything this content type added.
+   */
+  destroy(): void {
+    this.root.unmount();
+    this.observer.disconnect();
+    this.off('resize');
+    this.off('enterFullScreen');
+    this.off('exitFullScreen');
+
+    if (this.isIPhoneFullscreenActive) {
+      document.body.style.overflow = this.savedBodyOverflow ?? 'auto';
+      this.isIPhoneFullscreenActive = false;
     }
   }
 

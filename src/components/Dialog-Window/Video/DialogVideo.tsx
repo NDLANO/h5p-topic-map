@@ -43,12 +43,9 @@ export const DialogVideo: React.FC<DialogVideoProps> = ({ sources }) => {
       <div ref={videoWrapperRef} />
 
       {sources[0]?.copyright ? (
-        <p
-          className={styles.copyright}
-          dangerouslySetInnerHTML={{
-            __html: formatCopyright(t('copyrightVideo'), sources[0].copyright),
-          }}
-        />
+        <p className={styles.copyright}>
+          {formatCopyright(t('copyrightVideo'), sources[0].copyright)}
+        </p>
       ) : null}
     </div>
   );

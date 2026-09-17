@@ -95,7 +95,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
 
   const saveCustomLink = (newLink: string): void => {
     const tempNewLink: Link = {
-      id: H5P.createUUID(),
+      id: H5P!.createUUID(),
       url: newLink,
       label: newLink,
     };

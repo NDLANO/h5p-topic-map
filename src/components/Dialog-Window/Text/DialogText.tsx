@@ -39,13 +39,12 @@ export const DialogText: React.FC<DialogTextProps> = ({
           {topicImage?.copyright ? (
             <div
               className={styles.copyright}
-              dangerouslySetInnerHTML={{
-                __html: formatCopyright(
-                  t('copyrightPhoto'),
-                  topicImage.copyright,
-                ),
-              }}
-            />
+            >
+              {formatCopyright(
+                t('copyrightPhoto'),
+                topicImage.copyright,
+              )}
+            </div>
           ) : null}
         </>
       ) : null}

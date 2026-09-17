@@ -109,7 +109,7 @@ export const DialogNote: React.FC<NoteProps> = ({
     setUserData(userData);
   };
 
-  const resizeMirroredTextarea = (): void => {
+  const resizeMirroredTextarea = React.useCallback((): void => {
     if (!textAreaRef.current || !mirroredTextareaWrapperRef.current || !mirroredTextareaRef.current) {
       return;
     }
@@ -120,7 +120,7 @@ export const DialogNote: React.FC<NoteProps> = ({
     mirroredTextarea.style.height = `${textArea.scrollHeight}px`;
     mirroredTextareaWrapper.style.width = `${textArea.clientWidth}px`;
     mirroredTextareaWrapper.style.height = `${textArea.clientHeight}px`;
-  };
+  }, []);
 
   const updateMirroredTextarea = (): void => {
     if (!textAreaRef.current || !mirroredTextareaRef.current) {
@@ -164,11 +164,21 @@ export const DialogNote: React.FC<NoteProps> = ({
     }
   }, [textAreaRef]);
 
-  h5pInstance?.on('resize', () => {
-    window.requestAnimationFrame(() => {
-      resizeMirroredTextarea();
-    });
-  });
+  // Single stable 'resize' subscription; the listener identity never
+  // changes, so it can be cleaned up reliably.
+  const handleResize = React.useCallback((): void => {
+    window.requestAnimationFrame(resizeMirroredTextarea);
+  }, [resizeMirroredTextarea]);
+
+  React.useEffect(() => {
+    if (!h5pInstance) {
+      return undefined;
+    }
+    h5pInstance.on('resize', handleResize);
+    return () => {
+      h5pInstance.off('resize', handleResize);
+    };
+  }, [handleResize, h5pInstance]);
 
   return (
     <form>
