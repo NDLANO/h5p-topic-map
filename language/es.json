@@ -367,6 +367,15 @@
           "default": "Agregar"
         },
         {
+          "label": "Etiquetas de recursos de diálogo: Quitar enlace",
+          "description": "Se usa como nombre accesible del botón que elimina un enlace. @url se sustituye por el enlace que se va a eliminar",
+          "default": "Quitar el enlace @url"
+        },
+        {
+          "label": "Etiquetas de recursos de diálogo: Entrada de URL",
+          "default": "Añade un enlace (p. ej. www.example.com)"
+        },
+        {
           "label": "Etiqueta de botón de pantalla completa - ingresar",
           "default": "Entrar en modo de pantalla completa"
         },

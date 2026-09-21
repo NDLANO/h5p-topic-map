@@ -453,6 +453,19 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         type: 'text',
       },
       {
+        name: 'dialogResourcesRemoveLink',
+        type: 'text',
+        label: 'Dialog resources labels: Remove link',
+        description: '@url is a placeholder and will be replaced with the link being removed',
+        default: 'Remove link @url'
+      },
+      {
+        name: 'dialogResourcesUrlLabel',
+        type: 'text',
+        label: 'Dialog resources labels: URL input',
+        default: 'Add a link'
+      },
+      {
         label: 'Fullscreen button label - enter',
         name: 'fullscreenButtonLabelEnter',
         default: 'Enter fullscreen mode',

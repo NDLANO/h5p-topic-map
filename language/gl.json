@@ -367,6 +367,15 @@
           "default": "Engadir"
         },
         {
+          "label": "Etiquetas de recursos de diálogo: Eliminar ligazón",
+          "description": "Úsase como nome accesible do botón que elimina unha ligazón. @url sustitúese pola ligazón que se vai eliminar",
+          "default": "Eliminar a ligazón @url"
+        },
+        {
+          "label": "Etiquetas de recursos de diálogo: Campo de URL",
+          "default": "Engade unha ligazón (p. ex. www.example.com)"
+        },
+        {
           "label": "Etiqueta do botón de paso a pantalla completa",
           "default": "Pasar a pantalla completa"
         },
@@ -416,8 +425,8 @@
           "default": "Imprimir"
         },
         {
-          "label": "Navbar notes copy button label",
-          "default": "Copy"
+          "label": "Etiqueta do botón de copiar notas da barra de navegación",
+          "default": "Copiar"
         },
         {
           "label": "Etiqueta para borrar todas as notas na barra de navegación",
@@ -444,8 +453,8 @@
           "default": "Progreso da nota: @markedNotes das notas de @totalNotes marcadas como feitas"
         },
         {
-          "label": "Descriptive text for the progress bar",
-          "default": "Note progress: @markedNotes of @totalNotes notes marked as done"
+          "label": "Texto descritivo para a barra de progreso",
+          "default": "Progreso da nota: @markedNotes das notas de @totalNotes marcadas como feitas"
         },
         {
           "label": "Etiqueta para o botón de envío de todos os datos das notas na barra de navegación",

@@ -13,16 +13,16 @@
                 "label": "Id"
               },
               {
-                "label": "X-position as a percentage of the container width"
+                "label": "X-posisjon som en prosentandel av beholderbredden"
               },
               {
-                "label": "Y-position as a percentage of the container height"
+                "label": "Y-posisjon som en prosentandel av beholderhøyden"
               },
               {
-                "label": "Width as a percentage of the container width"
+                "label": "Bredde som en prosentandel av beholderbredden"
               },
               {
-                "label": "Height as a percentage of the container height"
+                "label": "Høyde som en prosentandel av beholderhøyden"
               },
               {
                 "label": "Tittel"
@@ -106,54 +106,54 @@
                 "label": "Id"
               },
               {
-                "label": "Percentage position of start element",
+                "label": "Prosentvis posisjon for startelement",
                 "fields": [
                   {
-                    "label": "X-position as a percentage of the container width"
+                    "label": "X-posisjon som en prosentandel av beholderbredden"
                   },
                   {
-                    "label": "Y-position as a percentage of the container height"
+                    "label": "Y-posisjon som en prosentandel av beholderhøyden"
                   }
                 ]
               },
               {
-                "label": "Percentage position of start element",
+                "label": "Prosentvis posisjon for startelement",
                 "fields": [
                   {
-                    "label": "X-position as a percentage of the container width"
+                    "label": "X-posisjon som en prosentandel av beholderbredden"
                   },
                   {
-                    "label": "Y-position as a percentage of the container height"
+                    "label": "Y-posisjon som en prosentandel av beholderhøyden"
                   }
                 ]
               },
               {
-                "label": "Grid position of start element",
+                "label": "Rutenettposisjon for startelement",
                 "fields": [
                   {
-                    "label": "X-position as a grid coordinate"
+                    "label": "X-posisjon som et rutenettkoordinat"
                   },
                   {
-                    "label": "Y-position as a grid coordinate"
+                    "label": "Y-posisjon som et rutenettkoordinat"
                   }
                 ]
               },
               {
-                "label": "Grid position of start element",
+                "label": "Rutenettposisjon for startelement",
                 "fields": [
                   {
-                    "label": "X-position as a grid coordinate"
+                    "label": "X-posisjon som et rutenettkoordinat"
                   },
                   {
-                    "label": "Y-position as a grid coordinate"
+                    "label": "Y-posisjon som et rutenettkoordinat"
                   }
                 ]
               },
               {
-                "label": "Id of start element"
+                "label": "Id for startelement"
               },
               {
-                "label": "Id of end element"
+                "label": "Id for sluttelement"
               },
               {
                 "label": "Tittel",
@@ -161,7 +161,7 @@
               },
               {
                 "label": "Ingress",
-                "description": "The description is shown on top of the background image, below the label"
+                "description": "Beskrivelsen vises øverst på bakgrunnsbildet, under etiketten"
               },
               {
                 "label": "Temabilde",
@@ -175,18 +175,18 @@
                 "label": "Piltype",
                 "options": [
                   {
-                    "label": "Directional"
+                    "label": "Retningsbestemt"
                   },
                   {
-                    "label": "Bi-directional"
+                    "label": "To-veis"
                   },
                   {
-                    "label": "Non-directional"
+                    "label": "Ikke-retningsbestemt"
                   }
                 ]
               },
               {
-                "label": "Show end arrow-head"
+                "label": "Vis slutt-pilspiss"
               },
               {
                 "label": "Dialog",
@@ -243,31 +243,31 @@
                 "label": "Indeks"
               },
               {
-                "label": "Arrow breakpoints",
+                "label": "Pil-brytingspunkter",
                 "entity": "breakpoint",
                 "field": {
-                  "label": "Breakpoint",
+                  "label": "Brytingspunkt",
                   "fields": [
                     {
-                      "label": "X-position as grid index"
+                      "label": "X-posisjon som rutenettindeks"
                     },
                     {
-                      "label": "Y-position as grid index"
+                      "label": "Y-posisjon som rutenettindeks"
                     }
                   ]
                 }
               },
               {
-                "label": "Arrow Relative breakpoints",
+                "label": "Relative pil-brytingspunkter",
                 "entity": "breakpoint",
                 "field": {
-                  "label": "Breakpoint",
+                  "label": "Brytingspunkt",
                   "fields": [
                     {
-                      "label": "X-position as a percentage of the container width"
+                      "label": "X-posisjon som en prosentandel av beholderbredden"
                     },
                     {
-                      "label": "Y-position as a percentage of the container height"
+                      "label": "Y-posisjon som en prosentandel av beholderhøyden"
                     }
                   ]
                 }
@@ -367,6 +367,15 @@
           "default": "Legg til"
         },
         {
+          "label": "Dialogressursetiketter: Fjern lenke",
+          "description": "@url er en plassholder som erstattes med lenken som fjernes",
+          "default": "Fjern lenke @url"
+        },
+        {
+          "label": "Dialogressursetikett: URL-inndata",
+          "default": "Legg til en lenke"
+        },
+        {
           "label": "Tittel på fullskjerm-knapp - på",
           "default": "Slå på fullskjerm"
         },
@@ -445,7 +454,7 @@
         },
         {
           "label": "Beskrivende tekst for fremdriftsindikatoren",
-          "default": "Fremdrift i notater: @markedNotes av @totalNotes notater markert som ferdig"
+          "default": "Framdrift i notater: @markedNotes av @totalNotes notater markert som ferdig"
         },
         {
           "label": "Send inn alle data-knapp",
@@ -461,7 +470,7 @@
         },
         {
           "label": "Avbryt",
-          "default": "Cancel"
+          "default": "Avbryt"
         },
         {
           "label": "Beskrivende tekst for enveis pil",

@@ -72,6 +72,14 @@ export const DialogNote: React.FC<NoteProps> = ({
 
   const setSavingText = (): void => {
     setDynamicSavingText(t('dialogNoteSaving'));
+
+    // Cancel any pending save from a previous keystroke so the timeout —
+    // and the xAPI 'answered' event it fires — only runs once the user
+    // stops typing.
+    if (savingTextTimeout !== undefined) {
+      window.clearTimeout(savingTextTimeout);
+    }
+
     setSavingTextTimeout(
       window.setTimeout(() => {
         const timestamp = new Date();

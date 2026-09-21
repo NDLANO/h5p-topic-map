@@ -16,6 +16,8 @@ export const defaultTranslations: Translations = {
   dialogResourcesRelevantLinks: 'Relevant links',
   dialogResourcesCustomLinks: 'Your links',
   dialogResourcesAdd: 'Add',
+  dialogResourcesRemoveLink: 'Remove link @url',
+  dialogResourcesUrlLabel: 'Add a link (e.g. www.example.com)',
   fullscreenButtonLabelEnter: 'Enter fullscreen mode',
   fullscreenButtonLabelExit: 'Exit fullscreen mode',
   navbarTabsListAriaLabel: 'Navigation bar',

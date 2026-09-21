@@ -1,6 +1,5 @@
 import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
-import { useEffectOnce } from 'react-use';
 import { H5P } from '../../../h5p/H5P.util';
 import { useContentId } from '../../../hooks/useContentId';
 import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData';
@@ -23,24 +22,47 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
   const contentId = useContentId();
   const [userData, setUserData] = useLocalStorageUserData();
   const [link, setLink] = React.useState('');
-  const [customLinks, setCustomLinks] = React.useState<React.ReactNode[]>([]);
+  const [customLinks, setCustomLinks] = React.useState<Link[]>(
+    () => userData[contentId]?.dialogs[id]?.links ?? [],
+  );
   const inputFieldRef = React.useRef<HTMLInputElement>(null);
   const { t } = useTranslation();
 
-  const removeCustomLink = (linkToRemove: string): void => {
-    userData[contentId].dialogs[id].links = userData[contentId]?.dialogs[
-      id
-    ].links?.filter((item: Link) => item.id !== linkToRemove);
+  const updateDialogLinks = (updatedLinks: Link[]): void => {
+    const contentUserData = userData[contentId] ?? { dialogs: {} };
 
-    setUserData(userData);
-    populateCustomLinks();
+    setCustomLinks(updatedLinks);
+    setUserData({
+      ...userData,
+      [contentId]: {
+        ...contentUserData,
+        dialogs: {
+          ...contentUserData.dialogs,
+          [id]: {
+            ...contentUserData.dialogs[id],
+            links: updatedLinks,
+          },
+        },
+      },
+    });
+  };
+
+  const removeCustomLink = (linkToRemove: string): void => {
+    const updatedLinks =
+      userData[contentId]?.dialogs[id]?.links?.filter(
+        (item: Link) => item.id !== linkToRemove,
+      ) ?? [];
+
+    updateDialogLinks(updatedLinks);
   };
 
   const getRootUrl = (linkPath: string): string => {
     const normalizedLink = normalizeLinkPath(linkPath);
-    const url = new URL(normalizedLink);
+    if (!URL.canParse(normalizedLink)) {
+      return '';
+    }
 
-    let rootUrl = url.hostname;
+    let rootUrl = new URL(normalizedLink).hostname;
     if (rootUrl.startsWith('www.')) {
       rootUrl = rootUrl.replace('www.', '');
     }
@@ -49,49 +71,24 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
 
   const relevantItems =
     relevantLinks != null
-      ? relevantLinks.map((item: Link) =>
-        item.url ? (
-          <li key={item.id} className={styles.li}>
-            <a
-              href={normalizeLinkPath(item.url)}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              {item.label} ({getRootUrl(item.url)})
-            </a>
-          </li>
-        ) : null,
-      )
+      ? relevantLinks.map((item: Link) => {
+          const rootUrl = item.url ? getRootUrl(item.url) : '';
+          if (!item.url || !rootUrl) {
+            return null;
+          }
+          return (
+            <li key={item.id} className={styles.li}>
+              <a
+                href={normalizeLinkPath(item.url)}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {item.label} ({rootUrl})
+              </a>
+            </li>
+          );
+        })
       : null;
-
-  // extract the generation of custom links list to separate function
-  const populateCustomLinks = (): void => {
-    const { links } = userData[contentId]?.dialogs[id] ?? {};
-    if (!links) {
-      return;
-    }
-
-    const updatedLinks = links.map((item) => (
-      <li key={item.id} className={styles.li}>
-        <a
-          href={normalizeLinkPath(item.url)}
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          {item.url}
-        </a>
-        <button
-          className={styles.removeButton}
-          type="button"
-          onClick={() => removeCustomLink(item.id)}
-        >
-          <Cross2Icon />
-        </button>
-      </li>
-    ));
-
-    setCustomLinks(updatedLinks);
-  };
 
   const saveCustomLink = (newLink: string): void => {
     const tempNewLink: Link = {
@@ -100,23 +97,12 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
       label: newLink,
     };
 
-    if (!userData[contentId]) {
-      userData[contentId] = { dialogs: {} };
-    }
+    const updatedLinks = [
+      ...(userData[contentId]?.dialogs[id]?.links ?? []),
+      tempNewLink,
+    ];
 
-    if (!userData[contentId]?.dialogs[id]) {
-      userData[contentId].dialogs[id] = {};
-    }
-
-    const dialogData = userData[contentId]?.dialogs[id];
-    if (!dialogData.links) {
-      dialogData.links = [];
-    }
-
-    dialogData.links.push(tempNewLink);
-
-    setUserData(userData);
-    populateCustomLinks();
+    updateDialogLinks(updatedLinks);
   };
 
   const updateCustomList = (): void => {
@@ -131,11 +117,6 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
       inputFieldRef.current.value = '';
     }
   };
-
-  // build a list of custom links for the first render
-  useEffectOnce(() => {
-    populateCustomLinks();
-  });
 
   return (
     <form
@@ -153,11 +134,35 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
       {showAddLinks ? (
         <>
           <p>{t('dialogResourcesCustomLinks')}:</p>
-          <ul className={styles.ul}>{customLinks}</ul>
+          <ul className={styles.ul}>
+            {customLinks.map((item: Link) => (
+              <li key={item.id} className={styles.li}>
+                <a
+                  href={normalizeLinkPath(item.url)}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {item.url}
+                </a>
+                <button
+                  className={styles.removeButton}
+                  type="button"
+                  aria-label={t('dialogResourcesRemoveLink').replace(
+                    '@url',
+                    item.url,
+                  )}
+                  onClick={() => removeCustomLink(item.id)}
+                >
+                  <Cross2Icon />
+                </button>
+              </li>
+            ))}
+          </ul>
           <div className={styles.inputContainer}>
             <input
               className={styles.input}
               type="text"
+              aria-label={t('dialogResourcesUrlLabel')}
               placeholder="www.example.com"
               onChange={(e) => setLink(e.target.value)}
               ref={inputFieldRef}
