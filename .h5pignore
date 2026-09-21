@@ -2,15 +2,13 @@
 build_info
 node_modules
 src
-.babelrc
-.eslintignore
-.eslintrc.json
 .gitignore
 .h5pignore
 babel.config.js
+eslint.config.js
 generate-semantics.ts
 jest.config.ts
-nodemon.json
+__mocks__
 package-lock.json
 package.json
 README.md

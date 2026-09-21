@@ -32,7 +32,6 @@ export const defaultTranslations: Translations = {
   navbarNotesSectionPrintLabel: 'Print',
   navbarNotesSectionCopyLabel: 'Copy',
   navbarNotesSectionDeleteLabel: 'Delete all notes',
-  navbarNotesEmptyListLabel: 'No dialogue notes available in this topic map.',
   navbarNotesMissingNoteLabel: '━ No notes have been added yet',
   deleteNotesConfirmationWindowLabel: 'Are you sure you want to delete all your notes?',
   deleteNotesConfirmLabel: 'Delete',

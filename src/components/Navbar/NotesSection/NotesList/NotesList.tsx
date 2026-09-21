@@ -69,7 +69,7 @@ export const NotesList: React.FC<NotesListProps> = ({
         <div className={styles.mainBodyHeaderForPrint}>
           <p>{navbarTitle}</p>
         </div>
-        {userDataEntries || t('navbarNotesEmptyListLabel')}
+        {userDataEntries}
       </div>
     </div>
   );

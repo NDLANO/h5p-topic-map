@@ -17,15 +17,15 @@ export const findItem = (
 export const getDescriptiveText = (
   arrowItem: ArrowItemType,
   items: Array<TopicMapItemType>,
-  t: (key: TranslationKey) => string,
+  t: (
+    key: TranslationKey,
+    values?: Record<string, string | number>,
+  ) => string,
 ): string => {
   const { startElementId, endElementId, arrowType } = arrowItem;
 
   const startItem = findItem(startElementId, items);
   const endItem = findItem(endElementId, items);
-
-  const directionalLabel = t('directionalArrowDescriptiveText');
-  const biDirectionalLabel = t('biDirectionalArrowDescriptiveText');
 
   if (!startItem) {
     throw new Error('Start item not found');
@@ -34,9 +34,14 @@ export const getDescriptiveText = (
     throw new Error('End item not found');
   }
 
+  const itemLabels = {
+    startItem: startItem.label,
+    endItem: endItem.label,
+  };
+
   if (arrowType === ArrowType.Directional) {
-    return directionalLabel.replace('@startItem', startItem.label).replace('@endItem', endItem.label);
+    return t('directionalArrowDescriptiveText', itemLabels);
   }
 
-  return biDirectionalLabel.replace('@startItem', startItem.label).replace('@endItem', endItem.label);
+  return t('biDirectionalArrowDescriptiveText', itemLabels);
 };

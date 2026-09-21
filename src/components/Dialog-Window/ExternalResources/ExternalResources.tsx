@@ -13,7 +13,6 @@ export const DialogExternalResources: React.FC<
     <iframe
       className={styles.externalResources}
       src={url}
-      frameBorder="0"
       title={label}
     />
   );

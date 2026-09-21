@@ -433,10 +433,6 @@
           "default": "Eliminar todas las notas"
         },
         {
-          "label": "Etiqueta de lista de notas vacía en la barra de navegación",
-          "default": "No hay notas de diálogo disponibles en este mapa temático."
-        },
-        {
           "label": "Etiqueta de nota no presente en barra de navegación",
           "default": "━ Aún no se han añadido notas"
         },

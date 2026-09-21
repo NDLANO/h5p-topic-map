@@ -6,6 +6,21 @@ export const useTranslation = () => {
 
   return {
     ...useH5PTranslation,
-    t: (key: TranslationKey) => t(key),
+    t: (
+      key: TranslationKey,
+      values?: Record<string, string | number>,
+    ): string => {
+      const translation = t(key);
+
+      if (!values) {
+        return translation;
+      }
+
+      // Replaces every `@placeholder` in the translation with its value.
+      return Object.entries(values).reduce(
+        (text, [name, value]) => text.split(`@${name}`).join(String(value)),
+        translation,
+      );
+    },
   };
 };

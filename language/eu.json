@@ -433,10 +433,6 @@
           "default": "Ezabatu oharrak guztiak"
         },
         {
-          "label": "Nabigazio-barren oharrik gabeko zerrendaren etiketa",
-          "default": "Ez dago gai-map honetan elkarrizketa-oharrik erabilgarri."
-        },
-        {
           "label": "Nabigazio-barren oharrik gabeko etiketa",
           "default": "━ Oraindik ez da gehitu oharririk"
         },
