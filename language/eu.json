@@ -1,11 +1,11 @@
 {
   "semantics": [
     {
-      "label": "Topic map editor",
+      "label": "Gai-mapen editorea",
       "fields": [
         {
-          "label": "Topic map items",
-          "entity": "Topic map item",
+          "label": "Gai-mapen elementuak",
+          "entity": "Gai-mapen elementua",
           "field": {
             "label": "Elementua",
             "fields": [
@@ -13,261 +13,261 @@
                 "label": "Id"
               },
               {
-                "label": "X-position as a percentage of the container width"
+                "label": "Kontenadaren zabalera ehunekokoan kokatutako X posizioa"
               },
               {
-                "label": "Y-position as a percentage of the container height"
+                "label": "Kontenadaren altuera ehunekokoan kokatutako Y posizioa"
               },
               {
-                "label": "Width as a percentage of the container width"
+                "label": "Kontenadaren zabalera ehunekokoan"
               },
               {
-                "label": "Height as a percentage of the container height"
+                "label": "Kontenadaren altuera ehunekokoan"
               },
               {
-                "label": "Label"
+                "label": "Etiqueta"
               },
               {
-                "label": "Description"
+                "label": "Deskribapena"
               },
               {
-                "label": "Topic image",
-                "description": "Background image for card and image above text in dialog"
+                "label": "Gai-irudia",
+                "description": "Txartelaren atzeko planoa eta elkarrizketako testuaren gaineko irudia"
               },
               {
-                "label": "Topic image alt text",
-                "description": "Alternative text for the image that is used by screen readers"
+                "label": "Gai-irudiaren testu alternatiboa",
+                "description": "Irakurle pantailentzat irudiaren testu alternatiboa"
               },
               {
-                "label": "Dialog",
+                "label": "Elkarrizketa",
                 "fields": [
                   {
-                    "label": "Show notes textarea"
+                    "label": "Erakutsi oharraren testu-eremua"
                   },
                   {
-                    "label": "Maximum number of characters",
-                    "description": "Specifies the maximum number of characters for the note."
+                    "label": "Karaktere kopuru maximoa",
+                    "description": "Oharrarako karaktere kopuru maximoa zehazten du."
                   },
                   {
-                    "label": "Text"
+                    "label": "Testua"
                   },
                   {
-                    "label": "Video"
+                    "label": "Bideoa"
                   },
                   {
-                    "label": "Audio",
+                    "label": "Audioa",
                     "fields": [
                       {
-                        "label": "Audio"
+                        "label": "Audioa"
                       },
                       {
-                        "label": "Subtext"
+                        "label": "Azpittestua"
                       }
                     ]
                   },
                   {
-                    "label": "Links",
-                    "description": "These links are as auxiliary links for the user in the element's modal window",
-                    "entity": "linkItem",
+                    "label": "Estekak",
+                    "description": "Esteka hauek elementuaren leiho modalean erabiltzailearentzako esteka laguntzaileak dira",
+                    "entity": "estekaElementua",
                     "field": {
-                      "label": "Link",
+                      "label": "Esteka",
                       "fields": [
                         {
                           "label": "Id"
                         },
                         {
-                          "label": "Label"
+                          "label": "Etiqueta"
                         },
                         {
-                          "label": "Url"
+                          "label": "URLa"
                         }
                       ]
                     }
                   },
                   {
-                    "label": "Show add links option"
+                    "label": "Erakutsi estekak gehitzeko aukera"
                   }
                 ]
               },
               {
-                "label": "Index",
-                "description": "⚠️ Advanced feature: Used for manually setting tab order."
+                "label": "Indizea",
+                "description": "⚠️ Aurreratu ezaugarria: fitxa ordena eskuz ezartzeko erabiltzen da."
               }
             ]
           }
         },
         {
-          "label": "Arrows",
-          "entity": "arrowItem",
+          "label": "Geziak",
+          "entity": "geziElementua",
           "field": {
-            "label": "Arrow",
+            "label": "Gezia",
             "fields": [
               {
                 "label": "Id"
               },
               {
-                "label": "Percentage position of start element",
+                "label": "Hasierako elementuaren posizio ehunekoa",
                 "fields": [
                   {
-                    "label": "X-position as a percentage of the container width"
+                    "label": "Kontenadaren zabalera ehunekokoan kokatutako X posizioa"
                   },
                   {
-                    "label": "Y-position as a percentage of the container height"
+                    "label": "Kontenadaren altuera ehunekokoan kokatutako Y posizioa"
                   }
                 ]
               },
               {
-                "label": "Percentage position of start element",
+                "label": "Hasierako elementuaren posizio ehunekoa",
                 "fields": [
                   {
-                    "label": "X-position as a percentage of the container width"
+                    "label": "Kontenadaren zabalera ehunekokoan kokatutako X posizioa"
                   },
                   {
-                    "label": "Y-position as a percentage of the container height"
+                    "label": "Kontenadaren altuera ehunekokoan kokatutako Y posizioa"
                   }
                 ]
               },
               {
-                "label": "Grid position of start element",
+                "label": "Hasierako elementuaren kokapena sareta",
                 "fields": [
                   {
-                    "label": "X-position as a grid coordinate"
+                    "label": "Saretako koordenatetan X posizioa"
                   },
                   {
-                    "label": "Y-position as a grid coordinate"
+                    "label": "Saretako koordenatetan Y posizioa"
                   }
                 ]
               },
               {
-                "label": "Grid position of start element",
+                "label": "Hasierako elementuaren kokapena sareta",
                 "fields": [
                   {
-                    "label": "X-position as a grid coordinate"
+                    "label": "Saretako koordenatetan X posizioa"
                   },
                   {
-                    "label": "Y-position as a grid coordinate"
+                    "label": "Saretako koordenatetan Y posizioa"
                   }
                 ]
               },
               {
-                "label": "Id of start element"
+                "label": "Hasierako elementuaren IDa"
               },
               {
-                "label": "Id of end element"
+                "label": "Amaierako elementuaren IDa"
               },
               {
-                "label": "Label",
-                "description": "The label is used by screen readers and on the summary page"
+                "label": "Etiqueta",
+                "description": "Etiqueta hau irakurle pantailentzat eta laburpen-orrian erabiltzen da"
               },
               {
-                "label": "Description",
-                "description": "The description is shown on top of the background image, below the label"
+                "label": "Deskribapena",
+                "description": "Deskribapena atzeko planoko goiko aldean erakusten da, etiketaren azpian"
               },
               {
-                "label": "Topic image",
-                "description": "Image above text in dialog"
+                "label": "Gai-irudia",
+                "description": "Elkarrizketako testuaren gaineko irudia"
               },
               {
-                "label": "Topic image alt text",
-                "description": "Alternative text for the image that is used by screen readers"
+                "label": "Gai-irudiaren testu alternatiboa",
+                "description": "Irakurle pantailentzat irudiaren testu alternatiboa"
               },
               {
-                "label": "Arrow type",
+                "label": "Gezi mota",
                 "options": [
                   {
-                    "label": "Directional"
+                    "label": "Norabideko"
                   },
                   {
-                    "label": "Bi-directional"
+                    "label": "Bi-norabideko"
                   },
                   {
-                    "label": "Non-directional"
+                    "label": "Norabiderik gabe"
                   }
                 ]
               },
               {
-                "label": "Show end arrow-head"
+                "label": "Erakutsi amaierako gezi-burua"
               },
               {
-                "label": "Dialog",
+                "label": "Elkarrizketa",
                 "fields": [
                   {
-                    "label": "Show notes textarea"
+                    "label": "Erakutsi oharraren testu-eremua"
                   },
                   {
-                    "label": "Maximum number of characters",
-                    "description": "Specifies the maximum number of characters for the note"
+                    "label": "Karaktere kopuru maximoa",
+                    "description": "Oharrarako karaktere kopuru maximoa zehazten du."
                   },
                   {
-                    "label": "Text"
+                    "label": "Testua"
                   },
                   {
-                    "label": "Video"
+                    "label": "Bideoa"
                   },
                   {
-                    "label": "Audio",
+                    "label": "Audioa",
                     "fields": [
                       {
-                        "label": "Audio"
+                        "label": "Audioa"
                       },
                       {
-                        "label": "Subtext"
+                        "label": "Azpittestua"
                       }
                     ]
                   },
                   {
-                    "label": "Links",
-                    "description": "These links are as auxiliary links for the user in the element's modal window",
-                    "entity": "linkItem",
+                    "label": "Estekak",
+                    "description": "Esteka hauek elementuaren leiho modalean erabiltzailearentzako esteka laguntzaileak dira",
+                    "entity": "estekaElementua",
                     "field": {
-                      "label": "Link",
+                      "label": "Esteka",
                       "fields": [
                         {
                           "label": "Id"
                         },
                         {
-                          "label": "Label"
+                          "label": "Etiqueta"
                         },
                         {
-                          "label": "Url"
+                          "label": "URLa"
                         }
                       ]
                     }
                   },
                   {
-                    "label": "Show add links option"
+                    "label": "Erakutsi estekak gehitzeko aukera"
                   }
                 ]
               },
               {
-                "label": "Index"
+                "label": "Indizea"
               },
               {
-                "label": "Arrow breakpoints",
-                "entity": "breakpoint",
+                "label": "Gezi-puntu hautestaiak",
+                "entity": "puntuHautestai",
                 "field": {
-                  "label": "Breakpoint",
+                  "label": "Puntu hautestai",
                   "fields": [
                     {
-                      "label": "X-position as grid index"
+                      "label": "Saretako indizean X posizioa"
                     },
                     {
-                      "label": "Y-position as grid index"
+                      "label": "Saretako indizean Y posizioa"
                     }
                   ]
                 }
               },
               {
-                "label": "Arrow Relative breakpoints",
-                "entity": "breakpoint",
+                "label": "Gezi-puntu hautestai erlatiboak",
+                "entity": "puntuHautestai",
                 "field": {
-                  "label": "Breakpoint",
+                  "label": "Puntu hautestai",
                   "fields": [
                     {
-                      "label": "X-position as a percentage of the container width"
+                      "label": "Kontenadaren zabalera ehunekokoan kokatutako X posizioa"
                     },
                     {
-                      "label": "Y-position as a percentage of the container height"
+                      "label": "Kontenadaren altuera ehunekokoan kokatutako Y posizioa"
                     }
                   ]
                 }
@@ -276,220 +276,229 @@
           }
         },
         {
-          "label": "Background image"
+          "label": "Atzeko planoa"
         },
         {
-          "label": "Color theme",
+          "label": "Kolore gaia",
           "options": [
             {
-              "label": "Blue"
+              "label": "Urdina"
             },
             {
-              "label": "Green"
+              "label": "Berdea"
             },
             {
-              "label": "Red"
+              "label": "Gorria"
             },
             {
-              "label": "Gray"
+              "label": "Grisa"
             }
           ]
         },
         {
-          "label": "Grid",
+          "label": "Sareta",
           "fields": [
             {
-              "label": "Number of columns"
+              "label": "Zutabe kopurua"
             },
             {
-              "label": "Number of rows"
+              "label": "Errenkada kopurua"
             }
           ]
         }
       ]
     },
     {
-      "label": "Behavioral settings"
+      "label": "Portaera ezarpenak"
     },
     {
-      "label": "Localize",
+      "label": "Lokalizatu",
       "fields": [
         {
-          "label": "Close dialog",
-          "description": "Used by screen readers",
-          "default": "Close dialog"
+          "label": "Itxi elkarrizketa",
+          "description": "Irakurle pantailentzat",
+          "default": "Itxi elkarrizketa"
         },
         {
-          "label": "Audio",
-          "description": "Shown in front of copyright statements",
-          "default": "Audio"
+          "label": "Audioa",
+          "description": "Egile-eskubide adierazpenen aurrean erakusten da",
+          "default": "Audioa"
         },
         {
-          "label": "Photo",
-          "description": "Shown in front of copyright statements",
-          "default": "Photo"
+          "label": "Argazkia",
+          "description": "Egile-eskubide adierazpenen aurrean erakusten da",
+          "default": "Argazkia"
         },
         {
-          "label": "Video",
-          "description": "Shown in front of copyright statements",
-          "default": "Video"
+          "label": "Bideoa",
+          "description": "Egile-eskubide adierazpenen aurrean erakusten da",
+          "default": "Bideoa"
         },
         {
-          "label": "Saving note label",
-          "default": "Saving…"
+          "label": "Gordetzen ari den etiketa",
+          "default": "Gordetzen…"
         },
         {
-          "label": "Saved note label",
-          "default": "Saved"
+          "label": "Gordetako oharraren etiketa",
+          "default": "Gordeta"
         },
         {
-          "label": "Character limit exceeded label",
-          "default": "Character limit exceeded"
+          "label": "Karaktere-muga gaindituaren etiketa",
+          "default": "Karaktere-muga gaindituta"
         },
         {
-          "label": "Note placeholder",
-          "default": "Write your notes here…"
+          "label": "Oharraren marka-lekua",
+          "default": "Idatzi zure oharrak hemen…"
         },
         {
-          "label": "Mark note as done",
-          "default": "Mark as done"
+          "label": "Oharra egina gisa markatzeko",
+          "default": "Markatu egina"
         },
         {
-          "label": "Dialog resources labels: Relevant links",
-          "default": "Relevant links"
+          "label": "Elkarrizketa-baliabideen etiketak: Esteka garrantzitsuak",
+          "default": "Esteka garrantzitsuak"
         },
         {
-          "label": "Dialog resources labels: Custom links",
-          "default": "Your links"
+          "label": "Elkarrizketa-baliabideen etiketak: Esteka pertsonalizatuak",
+          "default": "Zure estekak"
         },
         {
-          "label": "Dialog resources labels: Add",
-          "default": "Add"
+          "label": "Elkarrizketa-baliabideen etiketak: Gehitu",
+          "default": "Gehitu"
         },
         {
-          "label": "Fullscreen button label - enter",
-          "default": "Enter fullscreen mode"
+          "label": "Elkarrizketa-baliabideen etiketak: Kendu esteka",
+          "description": "Esteka bat ezabatzeko botoiaren izen accesible gisa erabiltzen da. @url esteka ezabatzen denarekin ordezkatuko da",
+          "default": "Kendu @url esteka"
         },
         {
-          "label": "Fullscreen button label - exit",
-          "default": "Exit fullscreen mode"
+          "label": "Elkarrizketa-baliabideen etiketak: URL sarrera",
+          "default": "Gehitu esteka bat (adib. www.adibidea.com)"
         },
         {
-          "label": "Navbar tabs list label",
-          "description": "Used by screen readers",
-          "default": "Navigation bar"
+          "label": "Pantaila osoaren botoiaren etiketa - sartu",
+          "default": "Sartu pantaila oso moduan"
         },
         {
-          "label": "Navbar topic map section label",
-          "default": "Topic map"
+          "label": "Pantaila osoaren botoiaren etiketa - irten",
+          "default": "Irten pantaila oso modutik"
         },
         {
-          "label": "Navbar notes section label",
-          "default": "My notes"
+          "label": "Nabigazio-barren fitxen zerrendaren etiketa",
+          "description": "Irakurle pantailentzat",
+          "default": "Nabigazio-barra"
         },
         {
-          "label": "Dialog resources labels",
-          "default": "Resources"
+          "label": "Nabigazio-barren gai-mapen atalaren etiketa",
+          "default": "Gai-mapa"
         },
         {
-          "label": "Text",
-          "default": "Text"
+          "label": "Nabigazio-barren oharraren atalaren etiketa",
+          "default": "Nire oharrak"
         },
         {
-          "label": "Note",
-          "default": "Note"
+          "label": "Elkarrizketa-baliabideen etiketak",
+          "default": "Baliabideak"
         },
         {
-          "label": "Tabs list",
-          "default": "Tabs list"
+          "label": "Testua",
+          "default": "Testua"
         },
         {
-          "label": "Navbar notes section title",
-          "default": "My notes"
+          "label": "Oharra",
+          "default": "Oharra"
         },
         {
-          "label": "Navbar notes section body",
-          "default": "This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document."
+          "label": "Fitxen zerrenda",
+          "default": "Fitxen zerrenda"
         },
         {
-          "label": "Navbar notes print button label",
-          "default": "Print"
+          "label": "Nabigazio-barren oharraren atalaren titulua",
+          "default": "Nire oharrak"
         },
         {
-          "label": "Navbar notes copy button label",
-          "default": "Copy"
+          "label": "Nabigazio-barren oharraren atalaren gorputza",
+          "default": "Hau zure oharraren berri ematen du. Nabigatzaile lokalean gordetzen dira. Inprimatu edo kopiatu ditzakezu dokumentu batean."
         },
         {
-          "label": "Navbar notes delete all notes button label",
-          "default": "Delete all notes"
+          "label": "Nabigazio-barren oharren inprimaketa botoiaren etiketa",
+          "default": "Inprimatu"
         },
         {
-          "label": "Navbar notes empty list label",
-          "default": "No dialogue notes available in this topic map."
+          "label": "Nabigazio-barren oharren kopiatze botoiaren etiketa",
+          "default": "Kopiatu"
         },
         {
-          "label": "Navbar notes missing note label",
-          "default": "━ No notes have been added yet"
+          "label": "Nabigazio-barren oharrak guztiak ezabatzeko botoiaren etiketa",
+          "default": "Ezabatu oharrak guztiak"
         },
         {
-          "label": "Delete all notes confirmation window label",
-          "default": "Are you sure you want to delete all your notes?"
+          "label": "Nabigazio-barren oharrik gabeko zerrendaren etiketa",
+          "default": "Ez dago gai-map honetan elkarrizketa-oharrik erabilgarri."
         },
         {
-          "label": "Delete all notes confirm deletion label",
-          "default": "Delete"
+          "label": "Nabigazio-barren oharrik gabeko etiketa",
+          "default": "━ Oraindik ez da gehitu oharririk"
         },
         {
-          "label": "Delete all notes deny deletion label",
-          "default": "Cancel"
+          "label": "Oharrak guztiak ezabatzeko berrespen-leihoaren etiketa",
+          "default": "Ziur zaude zure oharrak guztiak ezabatu nahi dituztela?"
         },
         {
-          "label": "Descriptive text for the progress bar",
-          "default": "Note progress: @markedNotes of @totalNotes notes marked as done"
+          "label": "Oharrak guztiak ezabatzeko berrespenaren etiketa",
+          "default": "Ezabatu"
         },
         {
-          "label": "Navbar notes submit all data button label",
-          "default": "Submit all data"
+          "label": "Oharrak guztiak ezabatzeko ukatzeko etiketa",
+          "default": "Utzi"
         },
         {
-          "label": "Submit all notes confirmation window label",
-          "default": "Are you sure you want to submit all your data?"
+          "label": "Aurrerapen-barra deskribapen testua",
+          "default": "Oharren aurrerapena: @totalNotesetatik @markedNotes markatuak egina"
         },
         {
-          "label": "Submit all data confirm label",
-          "default": "Submit"
+          "label": "Nabigazio-barren datu guztiak bidaltzeko botoiaren etiketa",
+          "default": "Bidali datu guztiak"
         },
         {
-          "label": "Submit all data deny label",
-          "default": "Cancel"
+          "label": "Datu guztiak bidaltzeko berrespen-leihoaren etiketa",
+          "default": "Ziur zaude zure datu guztiak bidali nahi dituztela?"
         },
         {
-          "label": "Descriptive text for directional arrow",
-          "default": "Arrow from @startItem to @endItem"
+          "label": "Datu guztiak bidaltzeko berrespenaren etiketa",
+          "default": "Bidali"
         },
         {
-          "label": "Descriptive text for bi-directional arrow",
-          "default": "Arrow between @startItem and @endItem"
+          "label": "Datu guztiak bidaltzeko ukatzeko etiketa",
+          "default": "Utzi"
         },
         {
-          "label": "Descriptive text for note status done",
-          "default": "Note marked as done"
+          "label": "Norabideko geziaren deskribapen testua",
+          "default": "@startItem-tik @endItem-ra doan gezi"
         },
         {
-          "label": "Descriptive text for note status started",
-          "default": "Note started"
+          "label": "Bi-norabideko geziaren deskribapen testua",
+          "default": "@startItem eta @endItem arteko gezi"
         },
         {
-          "label": "Descriptive text for note status default",
-          "default": "Note empty"
+          "label": "Oharren egina egoeraren deskribapen testua",
+          "default": "Oharra egina gisa markatuta"
         },
         {
-          "label": "Descriptive text for note textarea",
-          "default": "Textarea with @max character limit."
+          "label": "Oharren hasita egoeraren deskribapen testua",
+          "default": "Oharra hasita"
         },
         {
-          "label": "Descriptive text for note character count",
-          "default": "@count of @max characters"
+          "label": "Oharren lehenetsitako egoeraren deskribapen testua",
+          "default": "Hutsik dagoen oharra"
+        },
+        {
+          "label": "Oharraren testu-eremuaren deskribapen testua",
+          "default": "@max karaktere-mugako testu-eremua."
+        },
+        {
+          "label": "Oharraren karaktere-kopuruaren deskribapen testua",
+          "default": "@maxetatik @count karaktere"
         }
       ]
     }

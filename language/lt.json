@@ -19,37 +19,37 @@
                 "label": "Y-padėtis procentais nuo konteinerio aukščio"
               },
               {
-                "label": "Width as a percentage of the container width"
+                "label": "Plotis kaip konteinerio pločio procentas"
               },
               {
-                "label": "Height as a percentage of the container height"
+                "label": "Aukštis kaip konteinerio aukščio procentas"
               },
               {
-                "label": "Label"
+                "label": "Etiketė"
               },
               {
-                "label": "Description"
+                "label": "Aprašymas"
               },
               {
                 "label": "Temos paveikslėlis",
-                "description": "Background image for card and image above text in dialog"
+                "description": "Fono paveikslėlis kortelei ir paveikslėlis virš teksto dialogo lange"
               },
               {
-                "label": "Topic image alt text",
-                "description": "Alternative text for the image that is used by screen readers"
+                "label": "Temos paveikslėlio alternatyvusis tekstas",
+                "description": "Alternatyvusis paveikslėlio tekstas, naudojamas ekrano skaitytuvų"
               },
               {
-                "label": "Dialog",
+                "label": "Dialogas",
                 "fields": [
                   {
-                    "label": "Show notes textarea"
+                    "label": "Rodyti pastabų teksto lauką"
                   },
                   {
                     "label": "Didžiausias simbolių skaičius",
                     "description": "Nurodomas didžiausias pastabos simbolių skaičius."
                   },
                   {
-                    "label": "Text"
+                    "label": "Tekstas"
                   },
                   {
                     "label": "Video"
@@ -61,145 +61,145 @@
                         "label": "Audio"
                       },
                       {
-                        "label": "Subtext"
+                        "label": "Antraštė"
                       }
                     ]
                   },
                   {
-                    "label": "Links",
-                    "description": "These links are as auxiliary links for the user in the element's modal window",
+                    "label": "Nuorodos",
+                    "description": "Šios nuorodos yra papildomos nuorodos vartotojui elemento šoniniame lange",
                     "entity": "linkItem",
                     "field": {
-                      "label": "Link",
+                      "label": "Nuoroda",
                       "fields": [
                         {
                           "label": "Id"
                         },
                         {
-                          "label": "Label"
+                          "label": "Etiketė"
                         },
                         {
-                          "label": "Url"
+                          "label": "URL"
                         }
                       ]
                     }
                   },
                   {
-                    "label": "Show add links option"
+                    "label": "Rodyti nuorodų pridėjimo parinktį"
                   }
                 ]
               },
               {
-                "label": "Index",
-                "description": "⚠️ Advanced feature: Used for manually setting tab order."
+                "label": "Indeksas",
+                "description": "⚠️ Išplėstinė funkcija: naudojama skirtukų tvarkai nustatyti rankiniu būdu."
               }
             ]
           }
         },
         {
-          "label": "Arrows",
+          "label": "Rodyklės",
           "entity": "arrowItem",
           "field": {
-            "label": "Arrow",
+            "label": "Rodyklė",
             "fields": [
               {
                 "label": "Id"
               },
               {
-                "label": "Percentage position of start element",
+                "label": "Pradinio elemento procentinė padėtis",
                 "fields": [
                   {
-                    "label": "X-position as a percentage of the container width"
+                    "label": "X-padėtis kaip konteinerio pločio procentas"
                   },
                   {
-                    "label": "Y-position as a percentage of the container height"
+                    "label": "Y-padėtis kaip konteinerio aukščio procentas"
                   }
                 ]
               },
               {
-                "label": "Percentage position of start element",
+                "label": "Pradinio elemento procentinė padėtis",
                 "fields": [
                   {
-                    "label": "X-position as a percentage of the container width"
+                    "label": "X-padėtis kaip konteinerio pločio procentas"
                   },
                   {
-                    "label": "Y-position as a percentage of the container height"
+                    "label": "Y-padėtis kaip konteinerio aukščio procentas"
                   }
                 ]
               },
               {
-                "label": "Grid position of start element",
+                "label": "Pradinio elemento pozicija tinklelyje",
                 "fields": [
                   {
-                    "label": "X-position as a grid coordinate"
+                    "label": "X-padėtis kaip tinklelio koordinatė"
                   },
                   {
-                    "label": "Y-position as a grid coordinate"
+                    "label": "Y-padėtis kaip tinklelio koordinatė"
                   }
                 ]
               },
               {
-                "label": "Grid position of start element",
+                "label": "Pradinio elemento pozicija tinklelyje",
                 "fields": [
                   {
-                    "label": "X-position as a grid coordinate"
+                    "label": "X-padėtis kaip tinklelio koordinatė"
                   },
                   {
-                    "label": "Y-position as a grid coordinate"
+                    "label": "Y-padėtis kaip tinklelio koordinatė"
                   }
                 ]
               },
               {
-                "label": "Id of start element"
+                "label": "Pradinio elemento ID"
               },
               {
-                "label": "Id of end element"
+                "label": "Pabaigos elemento ID"
               },
               {
-                "label": "Label",
-                "description": "The label is used by screen readers and on the summary page"
+                "label": "Etiketė",
+                "description": "Etiketė naudojama ekrano skaitytuvų ir santraukos puslapyje"
               },
               {
-                "label": "Description",
-                "description": "The description is shown on top of the background image, below the label"
+                "label": "Aprašymas",
+                "description": "Aprašymas rodomas viršuje fono paveikslėlio, žemiau etiketės"
               },
               {
-                "label": "Topic image",
-                "description": "Image above text in dialog"
+                "label": "Temos paveikslėlis",
+                "description": "Paveikslėlis virš teksto dialogo lange"
               },
               {
-                "label": "Topic image alt text",
-                "description": "Alternative text for the image that is used by screen readers"
+                "label": "Temos paveikslėlio alternatyvusis tekstas",
+                "description": "Alternatyvusis paveikslėlio tekstas, naudojamas ekrano skaitytuvų"
               },
               {
-                "label": "Arrow type",
+                "label": "Rodyklės tipas",
                 "options": [
                   {
-                    "label": "Directional"
+                    "label": "Kryptinė"
                   },
                   {
-                    "label": "Bi-directional"
+                    "label": "Abiakryptė"
                   },
                   {
-                    "label": "Non-directional"
+                    "label": "Krypties neturinti"
                   }
                 ]
               },
               {
-                "label": "Show end arrow-head"
+                "label": "Rodyti rodyklės pabaigos galvutę"
               },
               {
-                "label": "Dialog",
+                "label": "Dialogas",
                 "fields": [
                   {
-                    "label": "Show notes textarea"
+                    "label": "Rodyti pastabų teksto lauką"
                   },
                   {
                     "label": "Didžiausias simbolių skaičius",
                     "description": "Nurodomas didžiausias pastabos simbolių skaičius."
                   },
                   {
-                    "label": "Text"
+                    "label": "Tekstas"
                   },
                   {
                     "label": "Video"
@@ -211,63 +211,63 @@
                         "label": "Audio"
                       },
                       {
-                        "label": "Subtext"
+                        "label": "Antraštė"
                       }
                     ]
                   },
                   {
-                    "label": "Links",
-                    "description": "These links are as auxiliary links for the user in the element's modal window",
+                    "label": "Nuorodos",
+                    "description": "Šios nuorodos yra papildomos nuorodos vartotojui elemento šoniniame lange",
                     "entity": "linkItem",
                     "field": {
-                      "label": "Link",
+                      "label": "Nuoroda",
                       "fields": [
                         {
                           "label": "Id"
                         },
                         {
-                          "label": "Label"
+                          "label": "Etiketė"
                         },
                         {
-                          "label": "Url"
+                          "label": "URL"
                         }
                       ]
                     }
                   },
                   {
-                    "label": "Show add links option"
+                    "label": "Rodyti nuorodų pridėjimo parinktį"
                   }
                 ]
               },
               {
-                "label": "Index"
+                "label": "Indeksas"
               },
               {
-                "label": "Arrow breakpoints",
+                "label": "Rodyklių lūžio taškai",
                 "entity": "breakpoint",
                 "field": {
-                  "label": "Breakpoint",
+                  "label": "Lūžio taškas",
                   "fields": [
                     {
-                      "label": "X-position as grid index"
+                      "label": "X-padėtis kaip tinklelio indeksas"
                     },
                     {
-                      "label": "Y-position as grid index"
+                      "label": "Y-padėtis kaip tinklelio indeksas"
                     }
                   ]
                 }
               },
               {
-                "label": "Arrow Relative breakpoints",
+                "label": "Rodyklių santykiniai lūžio taškai",
                 "entity": "breakpoint",
                 "field": {
-                  "label": "Breakpoint",
+                  "label": "Lūžio taškas",
                   "fields": [
                     {
-                      "label": "X-position as a percentage of the container width"
+                      "label": "X-padėtis kaip konteinerio pločio procentas"
                     },
                     {
-                      "label": "Y-position as a percentage of the container height"
+                      "label": "Y-padėtis kaip konteinerio aukščio procentas"
                     }
                   ]
                 }
@@ -276,119 +276,128 @@
           }
         },
         {
-          "label": "Background image"
+          "label": "Fono paveikslėlis"
         },
         {
-          "label": "Color theme",
+          "label": "Spalvų tema",
           "options": [
             {
-              "label": "Blue"
+              "label": "Mėlyna"
             },
             {
-              "label": "Green"
+              "label": "Žalia"
             },
             {
-              "label": "Red"
+              "label": "Raudona"
             },
             {
-              "label": "Gray"
+              "label": "Pilka"
             }
           ]
         },
         {
-          "label": "Grid",
+          "label": "Tinklas",
           "fields": [
             {
-              "label": "Number of columns"
+              "label": "Stulpelių skaičius"
             },
             {
-              "label": "Number of rows"
+              "label": "Eilučių skaičius"
             }
           ]
         }
       ]
     },
     {
-      "label": "Behavioral settings"
+      "label": "Elgsenos nustatymai"
     },
     {
-      "label": "Localize",
+      "label": "Lokalizacija",
       "fields": [
         {
-          "label": "Close dialog",
-          "description": "Used by screen readers",
-          "default": "Close dialog"
+          "label": "Uždaryti dialogą",
+          "description": "Naudojama ekrano skaitytuvų",
+          "default": "Uždaryti dialogą"
         },
         {
           "label": "Audio",
-          "description": "Shown in front of copyright statements",
+          "description": "Rodoma prieš autorių teisių pareiškimus",
           "default": "Audio"
         },
         {
-          "label": "Photo",
-          "description": "Shown in front of copyright statements",
-          "default": "Photo"
+          "label": "Nuotrauka",
+          "description": "Rodoma prieš autorių teisių pareiškimus",
+          "default": "Nuotrauka"
         },
         {
           "label": "Video",
-          "description": "Shown in front of copyright statements",
+          "description": "Rodoma prieš autorių teisių pareiškimus",
           "default": "Video"
         },
         {
-          "label": "Saving note label",
-          "default": "Saving…"
+          "label": "Įrašoma pastabos etiketė",
+          "default": "Įrašoma…"
         },
         {
-          "label": "Saved note label",
-          "default": "Saved"
+          "label": "Įrašytos pastabos etiketė",
+          "default": "Įrašyta"
         },
         {
-          "label": "Character limit exceeded label",
-          "default": "Character limit exceeded"
+          "label": "Viršytas simbolių limito žymėjimas",
+          "default": "Viršytas simbolių limitas"
         },
         {
-          "label": "Note placeholder",
-          "default": "Write your notes here…"
+          "label": "Pastabos užpildas",
+          "default": "Rašykite savo pastabas čia…"
         },
         {
-          "label": "Mark note as done",
-          "default": "Mark as done"
+          "label": "Pažymėti pastabą kaip atliktą",
+          "default": "Pažymėti kaip atlikta"
         },
         {
-          "label": "Dialog resources labels: Relevant links",
-          "default": "Relevant links"
+          "label": "Dialogo išteklių etiketės: Reikšmingos nuorodos",
+          "default": "Reikšmingos nuorodos"
         },
         {
-          "label": "Dialog resources labels: Custom links",
-          "default": "Your links"
+          "label": "Dialogo išteklių etiketės: Pasirinktinės nuorodos",
+          "default": "Jūsų nuorodos"
         },
         {
-          "label": "Dialog resources labels: Add",
-          "default": "Add"
+          "label": "Dialogo išteklių etiketės: Pridėti",
+          "default": "Pridėti"
         },
         {
-          "label": "Fullscreen button label - enter",
+          "label": "Dialogo išteklių etiketės: Pašalinti nuorodą",
+          "description": "Naudojama kaip nuorodos šalinimo mygtuko pasiekiamasis pavadinimas. @url pakeičiama šalinama nuoroda",
+          "default": "Pašalinti nuorodą @url"
+        },
+        {
+          "label": "Dialogo išteklių etiketės: URL įvestis",
+          "default": "Pridėti nuorodą (pvz., www.example.com)"
+        },
+        {
+          "label": "Viso ekrano mygtuko etiketė - įeiti",
           "default": "Pereiti į viso ekrano režimą"
         },
         {
-          "label": "Fullscreen button label - exit",
+          "label": "Viso ekrano mygtuko etiketė - išeiti",
           "default": "Išeiti iš viso ekrano režimo"
         },
         {
-          "label": "Navbar tabs list label",
-          "description": "Used by screen readers",
+          "label": "Navigacijos skirtukų sąrašo etiketė",
+          "description": "Naudojama ekrano skaitytuvų",
           "default": "Navigacijos juosta"
         },
         {
-          "label": "Navbar topic map section label",
-          "default": "Topic map"
+          "label": "Navigacijos temos žemėlapio skilties etiketė",
+          "default": "Temos žemėlapis"
         },
         {
-          "label": "Navbar notes section label",
+          "label": "Navigacijos pastabų skilties etiketė",
           "default": "Mano pastabos"
         },
         {
-          "label": "Dialog resources labels",
+          "label": "Dialogo išteklių etiketės",
           "default": "Ištekliai"
         },
         {
@@ -404,92 +413,92 @@
           "default": "Skirtukų sąrašas"
         },
         {
-          "label": "Navbar notes section title",
+          "label": "Navigacijos pastabų skilties pavadinimas",
           "default": "Mano pastabos"
         },
         {
-          "label": "Navbar notes section body",
-          "default": "This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document."
+          "label": "Navigacijos pastabų skilties turinys",
+          "default": "Tai yra jūsų pastabų apžvalga. Jos saugomos vietoje naršyklėje. Galite spausdinti arba nukopijuoti pastabas į dokumentą."
         },
         {
-          "label": "Navbar notes print button label",
-          "default": "Print"
+          "label": "Navigacijos pastabų spausdinimo mygtuko etiketė",
+          "default": "Spausdinti"
         },
         {
-          "label": "Navbar notes copy button label",
-          "default": "Copy"
+          "label": "Navigacijos pastabų kopijavimo mygtuko etiketė",
+          "default": "Kopijuoti"
         },
         {
-          "label": "Navbar notes delete all notes button label",
-          "default": "Delete all notes"
+          "label": "Navigacijos visų pastabų šalinimo mygtuko etiketė",
+          "default": "Ištrinti visas pastabas"
         },
         {
-          "label": "Navbar notes empty list label",
-          "default": "No dialogue notes available in this topic map."
+          "label": "Navigacijos tuščios sąrašo etiketė",
+          "default": "Šioje temos žemėlapyje nėra dialogų pastabų."
         },
         {
-          "label": "Navbar notes missing note label",
-          "default": "━ No notes have been added yet"
+          "label": "Navigacijos trūkstamos pastabos etiketė",
+          "default": "━ Dar nepridėta jokių pastabų"
         },
         {
-          "label": "Delete all notes confirmation window label",
-          "default": "Are you sure you want to delete all your notes?"
+          "label": "Visų pastabų ištrynimo patvirtinimo lango etiketė",
+          "default": "Ar tikrai norite ištrinti visas savo pastabas?"
         },
         {
-          "label": "Delete all notes confirm deletion label",
-          "default": "Delete"
+          "label": "Visų pastabų ištrynimo patvirtinimo etiketė",
+          "default": "Ištrinti"
         },
         {
-          "label": "Delete all notes deny deletion label",
-          "default": "Cancel"
+          "label": "Visų pastabų ištrynimo atmetimo etiketė",
+          "default": "Atšaukti"
         },
         {
-          "label": "Descriptive text for the progress bar",
-          "default": "Note progress: @markedNotes of @totalNotes notes marked as done"
+          "label": "Pažangos juostos aprašomasis tekstas",
+          "default": "Pastabų pažanga: @markedNotes iš @totalNotes pažymėtos kaip atliktos"
         },
         {
-          "label": "Navbar notes submit all data button label",
-          "default": "Submit all data"
+          "label": "Navigacijos visų duomenų pateikimo mygtuko etiketė",
+          "default": "Pateikti visus duomenis"
         },
         {
-          "label": "Submit all notes confirmation window label",
-          "default": "Are you sure you want to submit all your data?"
+          "label": "Visų pastabų pateikimo patvirtinimo lango etiketė",
+          "default": "Ar tikrai norite pateikti visus savo duomenis?"
         },
         {
-          "label": "Submit all data confirm label",
-          "default": "Submit"
+          "label": "Visų duomenų pateikimo patvirtinimo etiketė",
+          "default": "Pateikti"
         },
         {
-          "label": "Submit all data deny label",
-          "default": "Cancel"
+          "label": "Visų duomenų pateikimo atmetimo etiketė",
+          "default": "Atšaukti"
         },
         {
-          "label": "Descriptive text for directional arrow",
-          "default": "Arrow from @startItem to @endItem"
+          "label": "Kryptinės rodyklės aprašomasis tekstas",
+          "default": "Rodyklė nuo @startItem iki @endItem"
         },
         {
-          "label": "Descriptive text for bi-directional arrow",
-          "default": "Arrow between @startItem and @endItem"
+          "label": "Abiakryptės rodyklės aprašomasis tekstas",
+          "default": "Rodyklė tarp @startItem ir @endItem"
         },
         {
-          "label": "Descriptive text for note status done",
-          "default": "Note marked as done"
+          "label": "Pastabos būsenos atlikta aprašomasis tekstas",
+          "default": "Pastaba pažymėta kaip atlikta"
         },
         {
-          "label": "Descriptive text for note status started",
-          "default": "Note started"
+          "label": "Pastabos būsenos pradėta aprašomasis tekstas",
+          "default": "Pastaba pradėta"
         },
         {
-          "label": "Descriptive text for note status default",
-          "default": "Note empty"
+          "label": "Pastabos būsenos numatytoji aprašomasis tekstas",
+          "default": "Tuščia pastaba"
         },
         {
-          "label": "Descriptive text for note textarea",
-          "default": "Textarea with @max character limit."
+          "label": "Pastabos teksto lauko aprašomasis tekstas",
+          "default": "Teksto laukas su @max simbolių limitu."
         },
         {
-          "label": "Descriptive text for note character count",
-          "default": "@count of @max characters"
+          "label": "Pastabų simbolių skaičiaus aprašomasis tekstas",
+          "default": "@count iš @max simbolių"
         }
       ]
     }

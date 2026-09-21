@@ -13,16 +13,16 @@
                 "label": "Id"
               },
               {
-                "label": "X-position as a percentage of the container width"
+                "label": "X-posisjon som ein prosentandel av behaldarbreidda"
               },
               {
-                "label": "Y-position as a percentage of the container height"
+                "label": "Y-posisjon som ein prosentandel av behaldarhusna"
               },
               {
-                "label": "Width as a percentage of the container width"
+                "label": "Breidd som ein prosentandel av behaldarbreidda"
               },
               {
-                "label": "Height as a percentage of the container height"
+                "label": "Høgd som ein prosentandel av behaldarhusna"
               },
               {
                 "label": "Tittel"
@@ -106,54 +106,54 @@
                 "label": "Id"
               },
               {
-                "label": "Percentage position of start element",
+                "label": "Prosentvis posisjon av startelement",
                 "fields": [
                   {
-                    "label": "X-position as a percentage of the container width"
+                    "label": "X-posisjon som ein prosentandel av behaldarbreidda"
                   },
                   {
-                    "label": "Y-position as a percentage of the container height"
+                    "label": "Y-posisjon som ein prosentandel av behaldarhusna"
                   }
                 ]
               },
               {
-                "label": "Percentage position of start element",
+                "label": "Prosentvis posisjon av startelement",
                 "fields": [
                   {
-                    "label": "X-position as a percentage of the container width"
+                    "label": "X-posisjon som ein prosentandel av behaldarbreidda"
                   },
                   {
-                    "label": "Y-position as a percentage of the container height"
+                    "label": "Y-posisjon som ein prosentandel av behaldarhusna"
                   }
                 ]
               },
               {
-                "label": "Grid position of start element",
+                "label": "Rutenettposisjon av startelement",
                 "fields": [
                   {
-                    "label": "X-position as a grid coordinate"
+                    "label": "X-posisjon som eit rutenettkoordinat"
                   },
                   {
-                    "label": "Y-position as a grid coordinate"
+                    "label": "Y-posisjon som eit rutenettkoordinat"
                   }
                 ]
               },
               {
-                "label": "Grid position of start element",
+                "label": "Rutenettposisjon av startelement",
                 "fields": [
                   {
-                    "label": "X-position as a grid coordinate"
+                    "label": "X-posisjon som eit rutenettkoordinat"
                   },
                   {
-                    "label": "Y-position as a grid coordinate"
+                    "label": "Y-posisjon som eit rutenettkoordinat"
                   }
                 ]
               },
               {
-                "label": "Id of start element"
+                "label": "Id for startelement"
               },
               {
-                "label": "Id of end element"
+                "label": "Id for sluttelement"
               },
               {
                 "label": "Tittel",
@@ -161,7 +161,7 @@
               },
               {
                 "label": "Ingress",
-                "description": "The description is shown on top of the background image, below the label"
+                "description": "Skildringa visst øvst på bakgrunnsbiletet, under etiketten"
               },
               {
                 "label": "Temabilde",
@@ -175,18 +175,18 @@
                 "label": "Piltype",
                 "options": [
                   {
-                    "label": "Directional"
+                    "label": "Retningsbestemt"
                   },
                   {
-                    "label": "Bi-directional"
+                    "label": "To-veis"
                   },
                   {
-                    "label": "Non-directional"
+                    "label": "Ikkje-retningsbestemt"
                   }
                 ]
               },
               {
-                "label": "Show end arrow-head"
+                "label": "Vis slutt-pilspiss"
               },
               {
                 "label": "Dialog",
@@ -243,31 +243,31 @@
                 "label": "Indeks"
               },
               {
-                "label": "Arrow breakpoints",
+                "label": "Pil-brytingspunkt",
                 "entity": "breakpoint",
                 "field": {
-                  "label": "Breakpoint",
+                  "label": "Brytingspunkt",
                   "fields": [
                     {
-                      "label": "X-position as grid index"
+                      "label": "X-posisjon som rutenettindeks"
                     },
                     {
-                      "label": "Y-position as grid index"
+                      "label": "Y-posisjon som rutenettindeks"
                     }
                   ]
                 }
               },
               {
-                "label": "Arrow Relative breakpoints",
+                "label": "Relative pil-brytingspunkt",
                 "entity": "breakpoint",
                 "field": {
-                  "label": "Breakpoint",
+                  "label": "Brytingspunkt",
                   "fields": [
                     {
-                      "label": "X-position as a percentage of the container width"
+                      "label": "X-posisjon som ein prosentandel av behaldarbreidda"
                     },
                     {
-                      "label": "Y-position as a percentage of the container height"
+                      "label": "Y-posisjon som ein prosentandel av behaldarhusna"
                     }
                   ]
                 }
@@ -336,11 +336,11 @@
         },
         {
           "label": "Notat lagres",
-          "default": "Lagrer…"
+          "default": "Lagrar…"
         },
         {
           "label": "Notat ferdig lagret",
-          "default": "Lagret"
+          "default": "Lagra"
         },
         {
           "label": "Tekst som blir vist når talet på teikn er overskride",
@@ -348,7 +348,7 @@
         },
         {
           "label": "Forslagstekst i notatfelt",
-          "default": "Skriv notatene dine her…"
+          "default": "Skriv notata di her…"
         },
         {
           "label": "Markér notat som ferdig",
@@ -365,6 +365,15 @@
         {
           "label": "Legg til lenke",
           "default": "Legg til"
+        },
+        {
+          "label": "Fjern lenke",
+          "description": "Brukt som tilgjengeleg namn på knappen som fjernar ei lenke. @url vert bytta ut med lenka som skal fjernast",
+          "default": "Fjern lenka @url"
+        },
+        {
+          "label": "Lenke-URL",
+          "default": "Legg til ei lenke (t.d. www.example.com)"
         },
         {
           "label": "Tittel på fullskjerm-knapp - på",
@@ -385,7 +394,7 @@
         },
         {
           "label": "Navigasjonslinje-valg: Mine notater",
-          "default": "My notes"
+          "default": "Mine notater"
         },
         {
           "label": "Fanetittel i dialog: Ressurser",
@@ -425,7 +434,7 @@
         },
         {
           "label": "Ingen notater",
-          "default": "Du har ikke skrevet noen notater ennå"
+          "default": "Du har ikkje skrive nokre notater enno"
         },
         {
           "label": "Boks eller pil mangler notat",
@@ -461,11 +470,11 @@
         },
         {
           "label": "Avbryt",
-          "default": "Cancel"
+          "default": "Avbryt"
         },
         {
           "label": "Beskrivande tekst for enveis pil",
-          "default": "Pil fra @startItem til @endItem"
+          "default": "Pil frå @startItem til @endItem"
         },
         {
           "label": "Beskrivande tekst for toveis pil",
