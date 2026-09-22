@@ -11,7 +11,7 @@ import { exportAllUserData } from '../../utils/user-data.utils';
 import { FullscreenButton } from '../FullscreenButton/FullscreenButton';
 import { Grid } from '../Grid/Grid';
 import { NotesSection } from './NotesSection/NotesSection';
-import * as styles from './Navbar.module.scss';
+import './Navbar.scss';
 
 export type NavbarProps = {
   navbarTitle: string;
@@ -36,7 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [progressPercentage, setProgressPercentage] =
     useState(progressBarValue);
 
-  const sizeClassNames = useSizeClassNames(styles);
+  const sizeClassNames = useSizeClassNames();
 
   const allItems = React.useMemo(
     () =>
@@ -124,13 +124,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   const progressBar = (
-    <div className={styles.progressBarWrapper}>
+    <div className="progressBarWrapper">
       <div
-        className={styles.progressPercentage}
+        className="progressPercentage"
         aria-hidden="true"
       >{`${progressPercentage}%`}</div>
       <progress
-        className={styles.progress}
+        className="progress"
         aria-label={t('progressBarDescriptiveText', {
           markedNotes: progressBarValue,
           totalNotes: totalNotesToComplete,
@@ -151,12 +151,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         }}
       >
         <div ref={navbarRef}>
-          <div className={styles.navbarWrapper}>
-            <div className={styles.navbarTitle}>
+          <div className="navbarWrapper">
+            <div className="navbarTitle">
               {navbarTitle}
             </div>
             {hasNotes && (
-              <div className={styles.sectionsMenu}>
+              <div className="sectionsMenu">
                 <NotesSection
                   confirmSubmitAll={submitAllNotes}
                   confirmDeletion={deleteAllNotes}
@@ -169,7 +169,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {progressBar}
               </div>
             )}
-            <div className={styles.fullscreenButton}>
+            <div className="fullscreenButtonWrapper">
               <FullscreenButton
                 toggleIOSFullscreen={toggleIPhoneFullscreen}
                 isIOSFullscreenActive={isIPhoneFullscreenActive}
@@ -178,7 +178,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        <div className={styles.sectionsWrapper}>
+        <div className="sectionsWrapper">
           <div ref={gridRef}>
             <Grid
               items={params.topicMap?.topicMapItems ?? []}

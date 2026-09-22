@@ -142,7 +142,9 @@ $note-btn-padding: 0.75rem;
   text-align: center;
 }
 
-.description {
+// Scoped under .topicMapItem so it does not leak onto DialogText's
+// same-named .description element.
+.topicMapItem .description {
   font-size: 0.813em;
   margin-top: 0.5em;
   overflow: hidden;

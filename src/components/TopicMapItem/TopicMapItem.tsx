@@ -8,7 +8,7 @@ import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { GridDimensions } from '../Grid/Grid';
 import { NoteButton } from '../NoteButton/NoteButton';
-import * as styles from './TopicMapItem.module.scss';
+import './TopicMapItem.scss';
 import { getNoteStateText } from '../../utils/note.utils';
 import { useTranslation } from '../../hooks/useTranslation';
 import { Portal, Root, Trigger } from '@radix-ui/react-dialog';
@@ -35,8 +35,8 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
   const buttonElement = React.useRef<HTMLButtonElement>(null);
   const [strokeWidth, setStrokeWidth] = React.useState(4);
 
-  const sizeClassNames = useSizeClassNames(styles);
-  const className = [styles.topicMapItem, sizeClassNames].join(' ');
+  const sizeClassNames = useSizeClassNames();
+  const className = ['topicMapItem', sizeClassNames].join(' ');
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
 
@@ -66,7 +66,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
   }
 
   return (
-    <div className={styles.topicMapItemContainer}>
+    <div className="topicMapItemContainer">
       <Root open={dialogOpen} onOpenChange={setDialogOpen}>
         <Trigger asChild>
           <button
@@ -77,7 +77,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
           >
             {item.topicImage?.path && (
               <img
-                className={styles.image}
+                className="image"
                 src={item.topicImage.path}
                 alt={item.topicImageAltText ?? ''}
                 width={item.topicImage.width}
@@ -86,22 +86,22 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
             )}
 
             <div
-              className={`${styles.inner} ${item.topicImage?.path ? '' : styles.noImage
-              } ${item.dialog?.hasNote ? styles.withNote : ''}`}
+              className={`inner ${item.topicImage?.path ? '' : 'noImage'
+              } ${item.dialog?.hasNote ? 'withNote' : ''}`}
               style={{ paddingTop: strokeWidth * 0.66 }}
             >
-              <div className={styles.label}>{item.label}</div>
+              <div className="label">{item.label}</div>
               {item.description && (
-                <div className={styles.description}>{item.description}</div>
+                <div className="description">{item.description}</div>
               )}
-              {item.dialog?.hasNote && <span className={styles.visuallyHidden}>{getNoteStateText(btnState, t)}</span>}
+              {item.dialog?.hasNote && <span className="visuallyHidden">{getNoteStateText(btnState, t)}</span>}
             </div>
           </button>
         </Trigger>
 
         {item.dialog?.hasNote ? (
-          <div className={styles.topicMapItemIconEdit}>
-            <div className={styles.icon}>
+          <div className="topicMapItemIconEdit">
+            <div className="icon">
               <NoteButton
                 backgroundColor="var(--theme-color-3)"
                 borderColor="white"

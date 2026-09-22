@@ -75,7 +75,9 @@ p.mainBodyTextWrapper {
   @include modal-overlay;
 }
 
-.dialogContent {
+// Renamed from .dialogContent: DialogWindow defines an unscoped .dialogContent
+// (width: 40vw) with the same name, which would otherwise leak onto this dialog.
+.notesDialogContent {
   @include modal-content;
   max-width: 45rem;
 }

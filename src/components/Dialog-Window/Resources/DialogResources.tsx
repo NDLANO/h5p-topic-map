@@ -6,7 +6,7 @@ import { useLocalStorageUserData } from '../../../hooks/useLocalStorageUserData'
 import { useTranslation } from '../../../hooks/useTranslation';
 import { Link } from '../../../types/Link';
 import { normalizeLinkPath } from '../../../utils/link.utils';
-import * as styles from './DialogResources.module.scss';
+import './DialogResources.scss';
 
 export type DialogResourceProps = {
   relevantLinks: Link[] | undefined;
@@ -77,7 +77,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
             return null;
           }
           return (
-            <li key={item.id} className={styles.li}>
+            <li key={item.id} className="li">
               <a
                 href={normalizeLinkPath(item.url)}
                 target="_blank"
@@ -128,15 +128,15 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
       {relevantItems ? (
         <>
           <p>{t('dialogResourcesRelevantLinks')}:</p>
-          <ul className={styles.ul}>{relevantItems}</ul>
+          <ul className="ul">{relevantItems}</ul>
         </>
       ) : null}
       {showAddLinks ? (
         <>
           <p>{t('dialogResourcesCustomLinks')}:</p>
-          <ul className={styles.ul}>
+          <ul className="ul">
             {customLinks.map((item: Link) => (
-              <li key={item.id} className={styles.li}>
+              <li key={item.id} className="li">
                 <a
                   href={normalizeLinkPath(item.url)}
                   target="_blank"
@@ -145,7 +145,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
                   {item.url}
                 </a>
                 <button
-                  className={styles.removeButton}
+                  className="removeButton"
                   type="button"
                   aria-label={t('dialogResourcesRemoveLink').replace(
                     '@url',
@@ -158,9 +158,9 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
               </li>
             ))}
           </ul>
-          <div className={styles.inputContainer}>
+          <div className="inputContainer">
             <input
-              className={styles.input}
+              className="input"
               type="text"
               aria-label={t('dialogResourcesUrlLabel')}
               placeholder="www.example.com"
@@ -168,7 +168,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
               ref={inputFieldRef}
             />
             <button
-              className={styles.inputButton}
+              className="inputButton"
               type="button"
               onClick={() => updateCustomList()}
             >

@@ -5,7 +5,7 @@ import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { useH5PInstance } from '../../../hooks/useH5PInstance';
 import { createLinksFromString } from '../../../utils/link.utils';
-import * as styles from './DialogNote.module.scss';
+import './DialogNote.scss';
 
 export type NoteProps = {
   maxLength: number | undefined;
@@ -206,15 +206,15 @@ export const DialogNote: React.FC<NoteProps> = ({
 
   return (
     <form>
-      <div className={styles.topGroup}>
+      <div className="topGroup">
         <label htmlFor={noteTextareaID}>
-          <p className={!smallScreen ? styles.noteLabel : styles.visuallyHidden}>{t('dialogNoteLabel')}</p>
+          <p className={!smallScreen ? 'noteLabel' : 'visuallyHidden'}>{t('dialogNoteLabel')}</p>
         </label>
-        <p className={styles.dynamicSavingText}>{dynamicSavingText}</p>
+        <p className="dynamicSavingText">{dynamicSavingText}</p>
       </div>
-      <div className={`${styles.textAreaWrapper} ${maxLengthExceeded ? styles.lengthExceeded : ''}`}>
+      <div className={`textAreaWrapper ${maxLengthExceeded ? 'lengthExceeded' : ''}`}>
         <textarea
-          className={styles.textArea}
+          className="textArea"
           id={noteTextareaID}
           ref={textAreaRef}
           aria-describedby={maxLength ? noteTextareaDescriptionID : undefined}
@@ -226,18 +226,18 @@ export const DialogNote: React.FC<NoteProps> = ({
         />
         <div
           ref={mirroredTextareaWrapperRef}
-          className={styles.textareaMirrorWrapper}
+          className="textareaMirrorWrapper"
         >
           <div
             ref={mirroredTextareaRef}
-            className={styles.textareaMirror}
+            className="textareaMirror"
           />
         </div>
         {maxLength && (
-          <span id={noteTextareaDescriptionID} className={styles.visuallyHidden}>{textareaDescription}</span>
+          <span id={noteTextareaDescriptionID} className="visuallyHidden">{textareaDescription}</span>
         )}
-        <div className={styles.bottomGroup}>
-          <div className={styles.markAsDoneCheckbox}>
+        <div className="bottomGroup">
+          <div className="markAsDoneCheckbox">
             <label htmlFor={noteCheckboxID}>
               <input
                 id={noteCheckboxID}
@@ -249,15 +249,15 @@ export const DialogNote: React.FC<NoteProps> = ({
             </label>
           </div>
           {maxLength && (
-            <div className={`${styles.counter} ${maxLengthExceeded ? styles.redText : ''}`}>
+            <div className={`counter ${maxLengthExceeded ? 'redText' : ''}`}>
               <span data-testid={`testId-note-characterCount_${id}`} aria-hidden="true">{characterCount}</span>
               <span aria-hidden="true"> / </span>
               <span data-testid={`testId-note-maximum_${id}`} aria-hidden="true">{maxLength}</span>
-              <span className={styles.visuallyHidden}>{characterCountText}</span>
+              <span className="visuallyHidden">{characterCountText}</span>
             </div>
           )}
         </div>
-        <div aria-live="polite" className={styles.visuallyHidden}>
+        <div aria-live="polite" className="visuallyHidden">
           {maxLengthExceeded ? t('dialogNoteLimitExceeded') : ''}
         </div>
       </div>

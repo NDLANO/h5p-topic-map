@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './ExternalResources.module.scss';
+import './ExternalResources.scss';
 
 export type DialogExternalResourcesProps = {
   url: string;
@@ -11,7 +11,7 @@ export const DialogExternalResources: React.FC<
 > = ({ url, label }) => {
   return (
     <iframe
-      className={styles.externalResources}
+      className="externalResources"
       src={url}
       title={label}
     />

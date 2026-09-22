@@ -30,7 +30,9 @@
   display: none;
 }
 
-.fullscreenButton {
+// Renamed from .fullscreenButton: FullscreenButton defines an unscoped
+// .fullscreenButton for the button itself, and this div wraps it.
+.fullscreenButtonWrapper {
   transform: scale(1);
 }
 

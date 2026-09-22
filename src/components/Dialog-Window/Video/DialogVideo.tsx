@@ -4,7 +4,7 @@ import { H5P } from '../../../h5p/H5P.util';
 import { useContentId } from '../../../hooks/useContentId';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
-import * as styles from './DialogVideo.module.scss';
+import './DialogVideo.scss';
 
 export type DialogVideoProps = {
   sources: Array<H5PVideo>;
@@ -39,11 +39,11 @@ export const DialogVideo: React.FC<DialogVideoProps> = ({ sources }) => {
   }, [contentId, sources]);
 
   return (
-    <div className={styles.dialogVideo}>
+    <div className="dialogVideo">
       <div ref={videoWrapperRef} />
 
       {sources[0]?.copyright ? (
-        <p className={styles.copyright}>
+        <p className="copyright">
           {formatCopyright(t('copyrightVideo'), sources[0].copyright)}
         </p>
       ) : null}

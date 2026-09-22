@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useTranslation } from 'use-h5p';
 import { H5P } from '../../h5p/H5P.util';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
-import * as styles from './FullscreenButton.module.scss';
+import './FullscreenButton.scss';
 
 export type FullscreenButtonProps = {
   toggleIOSFullscreen: () => void;
@@ -36,13 +36,13 @@ export const FullscreenButton: React.FC<FullscreenButtonProps> = ({
 
   return (
     <button
-      className={styles.fullscreenButton}
+      className="fullscreenButton"
       type="button"
       aria-label={isFullscreen ? fullscreenButtonLabelExit : fullscreenButtonLabelEnter}
       onClick={handleFullscreen}
     >
       <svg
-        className={styles.fullscreenButtonSvg}
+        className="fullscreenButtonSvg"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 14 14"
       >

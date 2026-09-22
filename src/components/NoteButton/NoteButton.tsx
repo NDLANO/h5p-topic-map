@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSizeClassNames } from '../../hooks/useSizeClassNames';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { DoneIcon, EditIcon, IconProps, NoteIcon } from '../Icons/Icons';
-import * as styles from './NoteButton.module.scss';
+import './NoteButton.scss';
 
 const icons: Record<NoteButtonIconState, React.FC<IconProps>> = {
   [NoteButtonIconState.Done]: DoneIcon,
@@ -37,9 +37,9 @@ export const NoteButton: React.FC<NoteButtonProps> = ({
   buttonState,
   strokeWidth,
 }): React.ReactElement => {
-  const sizeClassNames = useSizeClassNames(styles);
+  const sizeClassNames = useSizeClassNames();
 
-  const classNames = `${styles.button} ${strokeWidth ? '' : styles.fixed_size}`;
+  const classNames = `button ${strokeWidth ? '' : 'fixed_size'}`;
   const minSize = strokeWidth ? strokeWidth * 1.5 : 0;
 
   const className = [classNames, sizeClassNames].join(' ');
