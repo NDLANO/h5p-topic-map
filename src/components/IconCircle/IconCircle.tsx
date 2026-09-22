@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useSizeClassNames } from '../../hooks/useSizeClassNames';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import './IconCircle.scss';
 
@@ -12,8 +11,6 @@ export const IconCircle: React.FC<IconCircleProps> = ({
   buttonState,
   strokeWidth,
 }): React.ReactElement => {
-  const sizeClassNames = useSizeClassNames();
-
   let iconClass = 'edit';
   if (buttonState === NoteButtonIconState.Done) {
     iconClass = 'done';
@@ -22,9 +19,7 @@ export const IconCircle: React.FC<IconCircleProps> = ({
     iconClass = 'note';
   }
 
-  const classNames = `icon-circle ${iconClass}`;
-
-  const className = [classNames, sizeClassNames].join(' ');
+  const className = `icon-circle ${iconClass}`;
 
   return (
     <div

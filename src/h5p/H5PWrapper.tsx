@@ -109,7 +109,6 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
               title={this.title}
               // TODO: Check if this is still required
               toggleIPhoneFullscreen={this.toggleIPhoneFullscreen}
-              instance={this}
             />
           </H5PContext.Provider>
         </L10nContext.Provider>

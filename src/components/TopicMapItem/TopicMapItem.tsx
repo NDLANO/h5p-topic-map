@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { FC } from 'react';
-import { useAppWidth } from '../../hooks/useAppWidth';
 import { useContentId } from '../../hooks/useContentId';
 import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
-import { useSizeClassNames } from '../../hooks/useSizeClassNames';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
-import { GridDimensions } from '../Grid/Grid';
 import { IconCircle } from '../IconCircle/IconCircle';
 import './TopicMapItem.scss';
 import { getNoteStateText } from '../../utils/note.utils';
@@ -17,37 +14,19 @@ import { useH5PInstance } from '../../hooks/useH5PInstance';
 
 export type TopicMapItemProps = {
   item: TopicMapItemType;
-  grid?: GridDimensions;
-  gridRef?: React.RefObject<HTMLDivElement | null>;
+  strokeWidth: number;
 };
 
 export const TopicMapItem: FC<TopicMapItemProps> = ({
   item,
-  grid,
-  gridRef,
+  strokeWidth,
 }) => {
   const { t } = useTranslation();
   const h5pInstance = useH5PInstance();
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
 
-  const appWidth = useAppWidth();
-  const buttonElement = React.useRef<HTMLButtonElement>(null);
-  const [strokeWidth, setStrokeWidth] = React.useState(4);
-
-  const sizeClassNames = useSizeClassNames();
-  const className = ['topicMapItem', sizeClassNames].join(' ');
-
   const [dialogOpen, setDialogOpen] = React.useState(false);
-
-  React.useEffect(() => {
-    if (gridRef) {
-      const gridElement = gridRef.current;
-      if (grid && gridElement) {
-        setStrokeWidth((gridElement.clientWidth / grid.numberOfColumns) * 0.66);
-      }
-    }
-  }, [appWidth, grid, gridRef, buttonElement]);
 
   let btnState: NoteButtonIconState = NoteButtonIconState.Default;
   if (item.dialog?.hasNote) {
@@ -71,9 +50,8 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
         <Trigger asChild>
           <button
             type="button"
-            className={className}
+            className="topicMapItem"
             onClick={() => setDialogOpen(true)}
-            ref={buttonElement}
           >
             {item.topicImage?.path && (
               <img

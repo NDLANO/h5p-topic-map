@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useContentId } from '../../hooks/useContentId';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
-import { useSizeClassNames } from '../../hooks/useSizeClassNames';
 import { useTranslation } from '../../hooks/useTranslation';
 import { CommonItemType } from '../../types/CommonItemType';
 import { Params } from '../../types/Params';
@@ -36,8 +35,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [progressPercentage, setProgressPercentage] =
     useState(progressBarValue);
 
-  const sizeClassNames = useSizeClassNames();
-
   const allItems = React.useMemo(
     () =>
       ((params.topicMap?.topicMapItems ?? []) as CommonItemType[]).concat(
@@ -52,7 +49,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   );
   const hasNotes = totalNotesToComplete > 0;
 
-  const gridRef = React.useRef<HTMLDivElement>(null);
   const navbarRef = React.useRef<HTMLDivElement>(null);
 
   const navbarHeight = navbarRef.current?.getBoundingClientRect().height ?? 0;
@@ -144,7 +140,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <div
-        className={sizeClassNames}
         style={{
           // @ts-expect-error Custom properties are allowed
           '--h5p-tm-navbar-height': `${navbarHeight}px`,
@@ -179,14 +174,12 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         <div className="sectionsWrapper">
-          <div ref={gridRef}>
-            <Grid
-              items={params.topicMap?.topicMapItems ?? []}
-              arrowItems={params.topicMap?.arrowItems ?? []}
-              backgroundImage={params.topicMap?.gridBackgroundImage}
-              grid={params.topicMap?.grid}
-            />
-          </div>
+          <Grid
+            items={params.topicMap?.topicMapItems ?? []}
+            arrowItems={params.topicMap?.arrowItems ?? []}
+            backgroundImage={params.topicMap?.gridBackgroundImage}
+            grid={params.topicMap?.grid}
+          />
         </div>
       </div>
     </>

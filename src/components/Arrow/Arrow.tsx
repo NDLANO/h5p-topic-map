@@ -6,7 +6,6 @@ import { ArrowItemType } from '../../types/ArrowItemType';
 import { ArrowType } from '../../types/ArrowType';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { Position } from '../../types/Position';
-import { GridDimensions } from '../Grid/Grid';
 import './Arrow.scss';
 import { ArrowNoteButton } from './ArrowNoteButton';
 import { getNoteStateText } from '../../utils/note.utils';
@@ -18,11 +17,11 @@ import { useH5PInstance } from '../../hooks/useH5PInstance';
 
 export type ArrowProps = {
   item: ArrowItemType;
-  grid?: GridDimensions;
   descriptiveText: string;
+  strokeWidth: number;
 };
 
-const calculateIsHorizontal = (
+export const calculateIsHorizontal = (
   startPosition: Position,
   endPosition: Position,
 ): boolean => {
@@ -34,8 +33,8 @@ const calculateIsHorizontal = (
 
 export const Arrow: FC<ArrowProps> = ({
   item,
-  grid,
   descriptiveText,
+  strokeWidth,
 }) => {
   const { t } = useTranslation();
   const h5pInstance = useH5PInstance();
@@ -46,17 +45,12 @@ export const Arrow: FC<ArrowProps> = ({
   const arrowTailID = H5P!.createUUID();
 
   const [pathDef, setPathDef] = React.useState<string>('');
-  const [strokeWidth, setStrokeWidth] = React.useState<number>(4);
   const [buttonState, setButtonState] = React.useState<NoteButtonIconState>(
     NoteButtonIconState.None,
   );
   const [middleX, setMiddleX] = React.useState(2);
   const [middleY, setMiddleY] = React.useState(2);
   const arrowContainerRef = React.createRef<HTMLDivElement>();
-  const isHorizontal = calculateIsHorizontal(
-    item.startPosition,
-    item.endPosition,
-  );
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
 
@@ -110,17 +104,6 @@ export const Arrow: FC<ArrowProps> = ({
     if (arrowContainerRef.current) {
       const gridElement = arrowContainerRef.current;
 
-      if (grid) {
-        if (isHorizontal) {
-          setStrokeWidth((gridElement.clientHeight / grid.numberOfRows) * 0.66);
-        }
-        else {
-          setStrokeWidth(
-            (gridElement.clientWidth / grid.numberOfColumns) * 0.66,
-          );
-        }
-      }
-
       const startx = (item.startPosition.x / 100) * gridElement.clientWidth;
       const starty = (item.startPosition.y / 100) * gridElement.clientHeight;
       const endx = (item.endPosition.x / 100) * gridElement.clientWidth;
@@ -150,7 +133,7 @@ export const Arrow: FC<ArrowProps> = ({
       setMiddleY(middlePoint.y);
       setPathDef(path);
     }
-  }, [arrowContainerRef, item, grid, buttonState, isHorizontal]);
+  }, [arrowContainerRef, item]);
 
   return (
     <div className="arrow">

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { H5PIntegration } from '../../../h5p/H5P.util';
-import { useSizeClassNames } from '../../../hooks/useSizeClassNames';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { ConfirmWindow } from '../../ConfirmWindow/ConfirmWindow';
 import { Close, Content, Description, Overlay, Portal, Root, Title, Trigger } from '@radix-ui/react-dialog';
@@ -37,8 +36,6 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
   const copyText = t('navbarNotesSectionCopyLabel');
   const exportAllUserDataText = t('navbarNotesSectionSubmitAllLabel');
   const deleteText = t('navbarNotesSectionDeleteLabel');
-
-  const sizeClassNames = useSizeClassNames();
 
   let navbarTitleForPrint = '';
   const updateNavbarTitleForPrint = (): Promise<void> => {
@@ -102,7 +99,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
         <Overlay className="overlay" />
         <Content aria-modal="true" className="notesDialogContent">
           <div className="contentWrapper">
-            <div className={`mainBody ${sizeClassNames}`}>
+            <div className="mainBody">
               <Title asChild>
                 <p className="mainBodyTitle">
                   {t('navbarNotesSectionTitle')}
