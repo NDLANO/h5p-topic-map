@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FC } from 'react';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { Position } from '../../types/Position';
-import { NoteButton } from '../NoteButton/NoteButton';
+import { IconCircle } from '../IconCircle/IconCircle';
 
 export type ArrowNoteButtonProps = {
   buttonState: NoteButtonIconState;
@@ -38,10 +38,7 @@ export const ArrowNoteButton: FC<ArrowNoteButtonProps> = ({
     >
       {buttonState !== NoteButtonIconState.None && (
         <div ref={buttonElement}>
-          <NoteButton
-            backgroundColor="var(--theme-color-3)"
-            borderColor="white"
-            iconColor="white"
+          <IconCircle
             buttonState={buttonState}
             strokeWidth={strokeWidth}
           />

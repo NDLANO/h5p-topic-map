@@ -37,6 +37,11 @@
       "machineName": "H5P.Video",
       "majorVersion": 1,
       "minorVersion": 6
+    },
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 5
     }
   ]
 }
