@@ -36,7 +36,7 @@
   transform: scale(1);
 }
 
-.xSmallUp {
+@container h5p-topic-map (width > 560px) {
   .navbarWrapper {
     padding: 0.5rem;
   }
@@ -95,5 +95,4 @@
       /* Transition is not working in Firefox */
     }
   }
-
 }

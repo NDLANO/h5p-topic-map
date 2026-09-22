@@ -4,7 +4,7 @@ import { useLocalStorageUserData } from '../../../../hooks/useLocalStorageUserDa
 import { useTranslation } from '../../../../hooks/useTranslation';
 import { CommonItemType } from '../../../../types/CommonItemType';
 import { NoteButtonIconState } from '../../../../types/NoteButtonIconState';
-import { NoteButton } from '../../../NoteButton/NoteButton';
+import { IconCircle } from '../../../IconCircle/IconCircle';
 import { createLinksFromString } from '../../../../utils/link.utils';
 import './NotesList.scss';
 
@@ -36,19 +36,14 @@ export const NotesList: React.FC<NotesListProps> = ({
           <div className="mainBodyListElementWrapper">
             <div className="pageBreak" />
             <div className="mainBodyListElement">
-              <div>
-                <NoteButton
-                  backgroundColor="var(--theme-color-2)"
-                  borderColor="var(--theme-color-3)"
-                  iconColor="#ffffff"
-                  buttonState={
-                    doesNoteExist && isNoteDone
-                      ? NoteButtonIconState.Done
-                      : NoteButtonIconState.Default
-                  }
-                  strokeWidth={undefined}
-                />
-              </div>
+              <IconCircle
+                buttonState={
+                  doesNoteExist && isNoteDone
+                    ? NoteButtonIconState.Done
+                    : NoteButtonIconState.Default
+                }
+                strokeWidth={undefined}
+              />
               <div>
                 <p className="mainBodyListElementHeader">{item.label}</p>
                 <div

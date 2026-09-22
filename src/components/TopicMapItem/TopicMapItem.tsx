@@ -7,7 +7,7 @@ import { useSizeClassNames } from '../../hooks/useSizeClassNames';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { GridDimensions } from '../Grid/Grid';
-import { NoteButton } from '../NoteButton/NoteButton';
+import { IconCircle } from '../IconCircle/IconCircle';
 import './TopicMapItem.scss';
 import { getNoteStateText } from '../../utils/note.utils';
 import { useTranslation } from '../../hooks/useTranslation';
@@ -101,10 +101,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
         {item.dialog?.hasNote ? (
           <div className="topicMapItemIconEdit">
             <div className="icon">
-              <NoteButton
-                backgroundColor="var(--theme-color-3)"
-                borderColor="white"
-                iconColor="white"
+              <IconCircle
                 buttonState={btnState}
                 strokeWidth={strokeWidth}
               />
