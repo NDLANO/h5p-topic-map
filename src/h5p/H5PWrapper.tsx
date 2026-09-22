@@ -6,7 +6,7 @@ import { App } from '../components/App/App';
 import { ContentIdContext } from '../contexts/ContentIdContext';
 import { H5PContext } from '../contexts/H5PContext';
 import { Params } from '../types/Params';
-import { sanitizeRecord } from '../utils/h5p.utils';
+import { callOnceVisible, sanitizeRecord } from '../utils/h5p.utils';
 import { getEmptyParams } from '../utils/semantics.utils';
 import { defaultTranslations } from '../constants/defaultTranslations';
 import {
@@ -28,7 +28,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
   private toggleIPhoneFullscreen: () => void;
 
-  private observer: IntersectionObserver;
+  private observer: IntersectionObserver | undefined;
 
   private root: Root;
 
@@ -116,26 +116,6 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
       </ContentIdContext.Provider>,
     );
 
-    // React components require 'resize' once the H5P container is attached
-    // to the DOM. `threshold: 0` instead of `[1]`: the container only needs
-    // to be *partially* visible. A tall container never reaches 100%
-    // intersection in a short viewport/iframe, so `[1]` would keep the
-    // observer silent — and the map blank — until some resize event.
-    // TODO: Use common onceVisible helper function
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          this.observer.unobserve(this.containerElement as Element); // Only need instantiate once.
-          window.requestAnimationFrame(() => {
-            this.trigger('resize');
-          });
-        }
-      },
-      {
-        root: document.documentElement,
-        threshold: 0,
-      },
-    );
   }
 
   /**
@@ -160,7 +140,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
    */
   destroy(): void {
     this.root.unmount();
-    this.observer.disconnect();
+    this.observer?.disconnect();
     this.off('resize');
     this.off('enterFullScreen');
     this.off('exitFullScreen');
@@ -183,7 +163,21 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     this.containerElement.appendChild(this.wrapper);
     this.containerElement.classList.add('h5p-topic-map');
 
-    this.observer.observe(this.containerElement as Element);
+    // React components require 'resize' once the H5P container is attached
+    // to the DOM. `threshold: 0` instead of `[1]`: the container only needs
+    // to be *partially* visible. A tall container never reaches 100%
+    // intersection in a short viewport/iframe, so `[1]` would keep the
+    // observer silent — and the map blank — until some resize event.
+    void callOnceVisible(this.containerElement, () => {
+      window.requestAnimationFrame(() => {
+        this.trigger('resize');
+      });
+    }, {
+      root: document.documentElement,
+      threshold: 0,
+    }).then((observer) => {
+      this.observer = observer;
+    });
   }
 
   // TODO: What is this good for?! Overengineering
