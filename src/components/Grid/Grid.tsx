@@ -2,12 +2,13 @@ import type { H5PImage } from 'h5p-types';
 import * as React from 'react';
 import { ArrowItemType } from '../../types/ArrowItemType';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
-import { Arrow } from '../Arrow/Arrow';
+import { Arrow, calculateIsHorizontal } from '../Arrow/Arrow';
 import { TopicMapItem } from '../TopicMapItem/TopicMapItem';
 import './Grid.scss';
 import { H5P } from '../../h5p/H5P.util';
 import { getDescriptiveText } from '../../utils/arrow.utils';
 import { useTranslation } from '../../hooks/useTranslation';
+import { useH5PInstance } from '../../hooks/useH5PInstance';
 
 export type GridDimensions = {
   numberOfColumns: number;
@@ -28,7 +29,38 @@ export const Grid: React.FC<GridProps> = ({
   grid,
 }) => {
   const { t } = useTranslation();
-  const gridContainerRef = React.createRef<HTMLDivElement>();
+  const h5pInstance = useH5PInstance();
+  const gridContainerRef = React.useRef<HTMLDivElement>(null);
+  const [strokeWidth, setStrokeWidth] = React.useState(4);
+  const [horizontalStrokeWidth, setHorizontalStrokeWidth] =
+    React.useState(4);
+
+  const updateStrokeWidth = React.useCallback((): void => {
+    const gridElement = gridContainerRef.current;
+    if (grid && gridElement) {
+      setStrokeWidth((gridElement.clientWidth / grid.numberOfColumns) * 0.66);
+      setHorizontalStrokeWidth(
+        (gridElement.clientHeight / grid.numberOfRows) * 0.66,
+      );
+    }
+  }, [grid]);
+
+  // H5P triggers 'resize' for window resizes and fullscreen changes, so no
+  // window-level listener is needed.
+  const handleResize = React.useCallback((): void => {
+    window.requestAnimationFrame(updateStrokeWidth);
+  }, [updateStrokeWidth]);
+
+  React.useEffect(() => {
+    if (!h5pInstance) {
+      return;
+    }
+    h5pInstance.on('resize', handleResize);
+    updateStrokeWidth();
+    return (): void => {
+      h5pInstance.off('resize', handleResize);
+    };
+  }, [h5pInstance, handleResize, updateStrokeWidth]);
 
   const isArrow = (
     item: ArrowItemType | TopicMapItemType,
@@ -103,12 +135,16 @@ export const Grid: React.FC<GridProps> = ({
 
     return allItems.map((item) => {
       if (isArrow(item)) {
+        const horizontal = calculateIsHorizontal(
+          item.startPosition,
+          item.endPosition,
+        );
         return (
           <Arrow
             key={item.id}
             item={item}
-            grid={grid}
             descriptiveText={getDescriptiveText(item, items, t)}
+            strokeWidth={horizontal ? horizontalStrokeWidth : strokeWidth}
           />
         );
       }
@@ -127,18 +163,17 @@ export const Grid: React.FC<GridProps> = ({
         >
           <TopicMapItem
             item={item}
-            grid={grid}
-            gridRef={gridContainerRef}
+            strokeWidth={strokeWidth}
           />
         </div>
       );
     });
   }, [
     arrowItems,
-    grid,
     items,
     sortArrowItems,
-    gridContainerRef,
+    strokeWidth,
+    horizontalStrokeWidth,
   ]);
 
   const bgImageStyle: string | undefined = backgroundImage?.path

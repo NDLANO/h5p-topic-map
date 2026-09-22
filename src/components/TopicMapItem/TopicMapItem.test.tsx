@@ -24,7 +24,7 @@ describe(TopicMapItem.name, () => {
     };
 
     const { container } = render(
-      <TopicMapItem item={item} />,
+      <TopicMapItem item={item} strokeWidth={8} />,
     );
 
     expect(container.querySelector('button')).toBeTruthy();
