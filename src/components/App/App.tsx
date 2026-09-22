@@ -7,7 +7,7 @@ import { useH5PInstance } from '../../hooks/useH5PInstance';
 import { Params } from '../../types/Params';
 import { defaultTheme } from '../../utils/semantics.utils';
 import { Navbar } from '../Navbar/Navbar';
-import * as styles from './App.module.scss';
+import './App.scss';
 
 export type AppProps = {
   params: Params;
@@ -66,18 +66,18 @@ export const App: React.FC<AppProps> = ({
   return (
     <div
       className={
-        isIPhoneFullscreenActive ? styles.iPhoneFullscreenStyle : undefined
+        isIPhoneFullscreenActive ? 'iPhoneFullscreenStyle' : undefined
       }
     >
       <AppWidthContext.Provider value={width}>
         <div
-          className={isIPhoneFullscreenActive ? styles.iPhoneFullscreenThemeStyle : ''}
+          className={isIPhoneFullscreenActive ? 'iPhoneFullscreenThemeStyle' : ''}
         >
           <FullScreen
-            className={styles.fullscreenStyle}
+            className="fullscreenStyle"
             handle={fullscreenHandle}
           >
-            <div className={styles.navbarWrapper} ref={containerRef}>
+            <div className="appNavbarWrapper" ref={containerRef}>
               <Navbar
                 navbarTitle={title ?? ''}
                 params={params}

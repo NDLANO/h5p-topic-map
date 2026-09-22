@@ -1,4 +1,6 @@
-.mainBody {
+// Renamed from .mainBody: NotesSection defines an unscoped .mainBody with
+// the same name, which would otherwise leak onto this element.
+.notesListMainBody {
   display: flex;
   height: 100%;
   width: 100%;

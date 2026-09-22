@@ -5,7 +5,7 @@ import { FC } from 'react';
 import { useMedia } from 'react-use';
 import { useTranslation } from '../../hooks/useTranslation';
 import { CommonItemType } from '../../types/CommonItemType';
-import * as styles from './DialogWindow.module.scss';
+import './DialogWindow.scss';
 import { DialogNote } from './Notes/DialogNote';
 import { DialogTabs } from './Tabs/DialogTabs';
 
@@ -38,13 +38,13 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
   const hasNote = item.dialog?.hasNote;
 
   let content = smallScreen ? (
-    <Content aria-modal="true" className={styles.dialogContentSmallScreen}>
-      <Description className={styles.visuallyHidden} aria-hidden="true" />
-      <div className={styles.contentWrapperSmallScreen}>
-        <Title className={styles.dialogTitle}>{item.label}</Title>
+    <Content aria-modal="true" className="dialogContentSmallScreen">
+      <Description className="visuallyHidden" aria-hidden="true" />
+      <div className="contentWrapperSmallScreen">
+        <Title className="dialogTitle">{item.label}</Title>
         {!noTabItems && <DialogTabs item={item} />}
         {noTabItems && hasNote && (
-          <div className={`${styles.noteWrapper} ${styles.fullWidth}`}>
+          <div className="noteWrapper fullWidth">
             <DialogNote
               maxLength={item.dialog.maxLength}
               id={item.id}
@@ -52,18 +52,18 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
           </div>
         )}
       </div>
-      <Close className={styles.closeButton} aria-label={ariaLabel}>
+      <Close className="closeButton" aria-label={ariaLabel}>
         <Cross2Icon />
       </Close>
     </Content>
   ) : (
-    <Content aria-modal="true" className={styles.dialogContent}>
-      <Description className={styles.visuallyHidden} aria-hidden="true" />
-      <div className={styles.contentWrapper}>
-        <Title className={styles.dialogTitle}>{item.label}</Title>
+    <Content aria-modal="true" className="dialogContent">
+      <Description className="visuallyHidden" aria-hidden="true" />
+      <div className="contentWrapper">
+        <Title className="dialogTitle">{item.label}</Title>
         {!noTabItems && <DialogTabs item={item} />}
       </div>
-      <Close className={styles.closeButton} aria-label={ariaLabel}>
+      <Close className="closeButton" aria-label={ariaLabel}>
         <Cross2Icon />
       </Close>
     </Content>
@@ -73,18 +73,18 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
     content = (
       <Content
         aria-modal="true"
-        className={noTabItems ? styles.dialogContent : styles.dialogContentWide}
+        className={noTabItems ? 'dialogContent' : 'dialogContentWide'}
       >
-        <Description className={styles.visuallyHidden} aria-hidden="true" />
-        <div className={styles.contentWrapper}>
-          <Title className={styles.dialogTitle}>{item.label}</Title>
+        <Description className="visuallyHidden" aria-hidden="true" />
+        <div className="contentWrapper">
+          <Title className="dialogTitle">{item.label}</Title>
           {!noTabItems && (
-            <div className={styles.tabWrapper}>
+            <div className="tabWrapper">
               <DialogTabs item={item} />
             </div>
           )}
           <div
-            className={`${styles.noteWrapper} ${noTabItems ? styles.fullWidth : ''
+            className={`noteWrapper ${noTabItems ? 'fullWidth' : ''
             }`}
           >
             <DialogNote
@@ -93,7 +93,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
             />
           </div>
         </div>
-        <Close className={styles.closeButton} aria-label={ariaLabel}>
+        <Close className="closeButton" aria-label={ariaLabel}>
           <Cross2Icon />
         </Close>
       </Content>
@@ -102,7 +102,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
 
   return (
     <div ref={forwardedRef}>
-      <Overlay className={styles.overlay} />
+      <Overlay className="overlay" />
       {content}
     </div>
   );

@@ -3,7 +3,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { FC, ReactNode } from 'react';
 import { useTranslation } from '../../hooks/useTranslation';
-import * as styles from './ConfirmWindow.module.scss';
+import './ConfirmWindow.scss';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 
 export type ConfirmWindowProps = {
@@ -44,30 +44,30 @@ export const ConfirmWindow: FC<ConfirmWindowProps> = ({
         </button>
       </Trigger>
       <Portal container={h5pInstance?.containerElement}>
-        <Overlay className={styles.overlay} />
-        <Content aria-modal="true" className={styles.confirmWindowContent}>
-          <Description className={styles.visuallyHidden} aria-hidden="true" />
-          <div className={styles.contentWrapper}>
-            <Title className={styles.dialogTitle}>{title}</Title>
+        <Overlay className="overlay" />
+        <Content aria-modal="true" className="confirmWindowContent">
+          <Description className="visuallyHidden" aria-hidden="true" />
+          <div className="contentWrapper">
+            <Title className="dialogTitle">{title}</Title>
             {children}
-            <div className={styles.confirmationButtons}>
+            <div className="confirmationButtons">
               <button
                 type="button"
-                className={styles.confirmButton}
+                className="confirmButton"
                 onClick={handleConfirm}
               >
                 {confirmWindow.confirmText}
               </button>
               <button
                 type="button"
-                className={styles.denyButton}
+                className="denyButton"
                 onClick={() => setWindowOpen(false)}
               >
                 {confirmWindow.denyText}
               </button>
             </div>
           </div>
-          <Close className={styles.closeButton} aria-label={ariaLabel}>
+          <Close className="closeButton" aria-label={ariaLabel}>
             <Cross2Icon />
           </Close>
         </Content>

@@ -54,6 +54,8 @@
   }
 }
 
-.noteWrapper {
+// Renamed from .noteWrapper: DialogWindow defines an unscoped .noteWrapper
+// with the same name, which would otherwise leak onto this tab panel.
+.noteWrapperTab {
   height: 100%;
 }

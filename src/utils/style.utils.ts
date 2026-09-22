@@ -1,15 +1,12 @@
 import { BreakpointSize } from '../types/BreakpointSize';
 
-export const getSizeClassNames = (
-  styles: Record<string, string>,
-  size: BreakpointSize,
-): string => {
+export const getSizeClassNames = (size: BreakpointSize): string => {
   const sizeClassname = {
-    [BreakpointSize.Large]: `${styles.large} ${styles.largeUp} ${styles.mediumUp} ${styles.smallUp} ${styles.xSmallUp} ${styles.xxSmallUp}`,
-    [BreakpointSize.Medium]: `${styles.medium} ${styles.mediumUp} ${styles.smallUp} ${styles.xSmallUp} ${styles.xxSmallUp}`,
-    [BreakpointSize.Small]: `${styles.small} ${styles.smallUp} ${styles.xSmallUp} ${styles.xxSmallUp}`,
-    [BreakpointSize.XSmall]: `${styles.xSmall} ${styles.xSmallUp} ${styles.xxSmallUp}`,
-    [BreakpointSize.XXSmall]: `${styles.xxSmall} ${styles.xxSmallUp}`,
+    [BreakpointSize.Large]: 'large largeUp mediumUp smallUp xSmallUp xxSmallUp',
+    [BreakpointSize.Medium]: 'medium mediumUp smallUp xSmallUp xxSmallUp',
+    [BreakpointSize.Small]: 'small smallUp xSmallUp xxSmallUp',
+    [BreakpointSize.XSmall]: 'xSmall xSmallUp xxSmallUp',
+    [BreakpointSize.XXSmall]: 'xxSmall xxSmallUp',
   };
 
   return sizeClassname[size];

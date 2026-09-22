@@ -8,7 +8,7 @@ import { DialogNote } from '../Notes/DialogNote';
 import { DialogResources } from '../Resources/DialogResources';
 import { DialogText } from '../Text/DialogText';
 import { DialogVideo } from '../Video/DialogVideo';
-import * as styles from './DialogTabs.module.scss';
+import './DialogTabs.scss';
 
 export type TabProps = {
   item: CommonItemType;
@@ -55,28 +55,28 @@ const tabLabelItems = (
 
   if (hasText) {
     items.push(
-      <Trigger key="Text" value="Text" className={styles.trigger}>
+      <Trigger key="Text" value="Text" className="trigger">
         {translation.text}
       </Trigger>,
     );
   }
   if (hasLinks) {
     items.push(
-      <Trigger key="links" className={styles.trigger} value="Resources">
+      <Trigger key="links" className="trigger" value="Resources">
         {translation.links}
       </Trigger>,
     );
   }
   if (hasVideo) {
     items.push(
-      <Trigger key="video" className={styles.trigger} value="Video">
+      <Trigger key="video" className="trigger" value="Video">
         {translation.video}
       </Trigger>,
     );
   }
   if (hasAudio) {
     items.push(
-      <Trigger key="audio" className={styles.trigger} value="Audio">
+      <Trigger key="audio" className="trigger" value="Audio">
         {translation.audio}
       </Trigger>,
     );
@@ -224,30 +224,30 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
 
   return (
     <Root
-      className={styles.tabs}
+      className="tabs"
       defaultValue={defaultTabValue(item)}
       orientation="horizontal"
     >
       {showTabs && (
         <List
-          className={styles.list}
+          className="list"
           aria-label={t('dialogTabListAriaLabel')}
         >
           {tabLabelItems(dialogContentInfo, translation)}
           {showNote ? (
-            <Trigger key="notes" className={styles.trigger} value="notes">
+            <Trigger key="notes" className="trigger" value="notes">
               {t('dialogNoteLabel')}
             </Trigger>
           ) : null}
         </List>
       )}
       <div
-        className={`${styles.tabItemWrapper} ${!showTabs ? styles.marginTop : ''
+        className={`tabItemWrapper ${!showTabs ? 'marginTop' : ''
         }`}
       >
         {dialogContent(dialogContentInfo, item, showTabs)}
         {showNote && (showTabs ? (
-          <Content key="notes" value="notes" className={styles.noteWrapper}>
+          <Content key="notes" value="notes" className="noteWrapperTab">
             {dialogNote}
           </Content>) : (
           dialogNote

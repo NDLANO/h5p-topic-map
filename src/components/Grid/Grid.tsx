@@ -4,7 +4,7 @@ import { ArrowItemType } from '../../types/ArrowItemType';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { Arrow } from '../Arrow/Arrow';
 import { TopicMapItem } from '../TopicMapItem/TopicMapItem';
-import * as styles from './Grid.module.scss';
+import './Grid.scss';
 import { H5P } from '../../h5p/H5P.util';
 import { getDescriptiveText } from '../../utils/arrow.utils';
 import { useTranslation } from '../../hooks/useTranslation';
@@ -117,7 +117,7 @@ export const Grid: React.FC<GridProps> = ({
         <div
           key={item.id}
           id={item.id}
-          className={styles.itemWrapper}
+          className="itemWrapper"
           style={{
             left: `${item.xPercentagePosition}%`,
             top: `${item.yPercentagePosition}%`,
@@ -148,8 +148,8 @@ export const Grid: React.FC<GridProps> = ({
   const gridWrapperClasses = React.useCallback(
     () =>
       [
-        styles.gridWrapper,
-        H5P?.isFullscreen ? styles.gridWrapperFullscreen : undefined,
+        'gridWrapper',
+        H5P?.isFullscreen ? 'gridWrapperFullscreen' : undefined,
       ]
         .filter(Boolean)
         .join(' '),
@@ -163,7 +163,7 @@ export const Grid: React.FC<GridProps> = ({
         backgroundImage: bgImageStyle,
       }}
     >
-      <div className={styles.grid} ref={gridContainerRef}>
+      <div className="grid" ref={gridContainerRef}>
         {allMapItems}
       </div>
     </div>

@@ -9,7 +9,7 @@ import { useH5PInstance } from '../../../hooks/useH5PInstance';
 import { NotesList } from './NotesList/NotesList';
 import { CommonItemType } from '../../../types/CommonItemType';
 import { useReactToPrint } from 'react-to-print';
-import * as styles from './NotesSection.module.scss';
+import './NotesSection.scss';
 
 export type NotesSectionProps = {
   confirmSubmitAll: () => void;
@@ -38,7 +38,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
   const exportAllUserDataText = t('navbarNotesSectionSubmitAllLabel');
   const deleteText = t('navbarNotesSectionDeleteLabel');
 
-  const sizeClassNames = useSizeClassNames(styles);
+  const sizeClassNames = useSizeClassNames();
 
   let navbarTitleForPrint = '';
   const updateNavbarTitleForPrint = (): Promise<void> => {
@@ -62,7 +62,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
         denyText: t('submitDataDenyLabel'),
       }}
       button={{
-        className: styles.mainBodyButton,
+        className: 'mainBodyButton',
         label: exportAllUserDataText,
       }}
     />
@@ -77,7 +77,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
         denyText: t('deleteNotesDenyLabel'),
       }}
       button={{
-        className: styles.mainBodyButton,
+        className: 'mainBodyButton',
         label: deleteText,
       }}
     />
@@ -91,8 +91,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
     <Root open={notesOpen} onOpenChange={setNotesOpen}>
       <Trigger asChild>
         <button
-          className={`${styles.sectionTitle} ${notesOpen && styles.active
-          }`}
+          className={`sectionTitle ${notesOpen && 'active'}`}
           type="button"
           onClick={() => setNotesOpen(true)}
         >
@@ -100,21 +99,21 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
         </button>
       </Trigger>
       <Portal container={h5pInstance?.containerElement}>
-        <Overlay className={styles.overlay} />
-        <Content aria-modal="true" className={styles.dialogContent}>
-          <div className={styles.contentWrapper}>
-            <div className={`${styles.mainBody} ${sizeClassNames}`}>
+        <Overlay className="overlay" />
+        <Content aria-modal="true" className="notesDialogContent">
+          <div className="contentWrapper">
+            <div className={`mainBody ${sizeClassNames}`}>
               <Title asChild>
-                <p className={styles.mainBodyTitle}>
+                <p className="mainBodyTitle">
                   {t('navbarNotesSectionTitle')}
                 </p>
               </Title>
-              <Description className={styles.mainBodyTextWrapper}>
+              <Description className="mainBodyTextWrapper">
                 {t('navbarNotesSectionBody')}
               </Description>
-              <div className={styles.mainBodyButtons}>
+              <div className="mainBodyButtons">
                 <button
-                  className={styles.mainBodyButton}
+                  className="mainBodyButton"
                   type="button"
                   onClick={handlePrint}
                 >
@@ -122,7 +121,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
                 </button>
                 {showCopyButton && (
                   <button
-                    className={styles.mainBodyButton}
+                    className="mainBodyButton"
                     type="button"
                     onClick={onCopy}
                   >
@@ -136,14 +135,14 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
               </div>
             </div>
             <div
-              className={styles.notesList}
+              className="notesList"
               ref={notesListRef}
               title={navbarTitleForPrint}
             >
               <NotesList topicMapItems={allItems} navbarTitle={navbarTitle} />
             </div>
           </div>
-          <Close className={styles.closeButton} aria-label={t('closeDialog')}>
+          <Close className="closeButton" aria-label={t('closeDialog')}>
             <Cross2Icon />
           </Close>
         </Content>

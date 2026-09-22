@@ -17,7 +17,9 @@
   font-weight: 600;
 }
 
-.description {
+// Scoped under .dialogText so it does not leak onto TopicMapItem's
+// same-named .description element.
+.dialogText .description {
   font-weight: 700;
   margin: 0;
   padding-bottom: 1rem;

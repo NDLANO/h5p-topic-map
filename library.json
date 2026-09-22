@@ -15,6 +15,11 @@
       "path": "dist/vendor.js"
     }
   ],
+  "preloadedCss": [
+    {
+      "path": "dist/h5p-topic-map.css"
+    }
+  ],
   "editorDependencies": [
     {
       "machineName": "H5PEditor.TopicMap",

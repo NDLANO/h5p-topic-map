@@ -7,7 +7,7 @@ import { ArrowType } from '../../types/ArrowType';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { Position } from '../../types/Position';
 import { GridDimensions } from '../Grid/Grid';
-import * as styles from './Arrow.module.scss';
+import './Arrow.scss';
 import { ArrowNoteButton } from './ArrowNoteButton';
 import { getNoteStateText } from '../../utils/note.utils';
 import { useTranslation } from '../../hooks/useTranslation';
@@ -153,13 +153,13 @@ export const Arrow: FC<ArrowProps> = ({
   }, [arrowContainerRef, item, grid, buttonState, isHorizontal]);
 
   return (
-    <div className={styles.arrow}>
+    <div className="arrow">
       <Root open={dialogOpen} onOpenChange={setDialogOpen}>
         <div
           ref={arrowContainerRef}
-          className={`arrow-item ${styles.arrow}`}
+          className="arrow-item arrow"
         >
-          <svg className={styles.arrowSvg}>
+          <svg className="arrowSvg">
             <defs>
               <marker
                 id={arrowHeadID}
@@ -169,7 +169,7 @@ export const Arrow: FC<ArrowProps> = ({
                 refY="1"
                 orient="auto"
               >
-                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className={styles.path} />
+                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className="path" />
               </marker>
               <marker
                 id={arrowTailID}
@@ -179,13 +179,13 @@ export const Arrow: FC<ArrowProps> = ({
                 refY="1"
                 orient="auto-start-reverse"
               >
-                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className={styles.path} />
+                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className="path" />
               </marker>
             </defs>
             <Trigger asChild>
               <polyline
                 aria-label={`${descriptiveText} ${getNoteStateText(buttonState, t)}`}
-                className={`${item.dialog ? styles.polyline : ''}`}
+                className={item.dialog ? 'polyline' : ''}
                 points={pathDef}
                 fill="transparent"
                 stroke="var(--theme-color-4)"

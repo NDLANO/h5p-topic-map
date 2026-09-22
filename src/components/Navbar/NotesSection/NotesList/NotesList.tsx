@@ -6,7 +6,7 @@ import { CommonItemType } from '../../../../types/CommonItemType';
 import { NoteButtonIconState } from '../../../../types/NoteButtonIconState';
 import { NoteButton } from '../../../NoteButton/NoteButton';
 import { createLinksFromString } from '../../../../utils/link.utils';
-import * as styles from './NotesList.module.scss';
+import './NotesList.scss';
 
 export type NotesListProps = {
   topicMapItems: CommonItemType[];
@@ -33,9 +33,9 @@ export const NotesList: React.FC<NotesListProps> = ({
     return (
       item.dialog?.hasNote && (
         <React.Fragment key={item.id}>
-          <div className={styles.mainBodyListElementWrapper}>
-            <div className={styles.pageBreak} />
-            <div className={styles.mainBodyListElement}>
+          <div className="mainBodyListElementWrapper">
+            <div className="pageBreak" />
+            <div className="mainBodyListElement">
               <div>
                 <NoteButton
                   backgroundColor="var(--theme-color-2)"
@@ -50,9 +50,9 @@ export const NotesList: React.FC<NotesListProps> = ({
                 />
               </div>
               <div>
-                <p className={styles.mainBodyListElementHeader}>{item.label}</p>
+                <p className="mainBodyListElementHeader">{item.label}</p>
                 <div
-                  className={styles.mainBodyListElementContent}
+                  className="mainBodyListElementContent"
                   dangerouslySetInnerHTML={{ __html: noteContent }}
                 />
               </div>
@@ -64,9 +64,9 @@ export const NotesList: React.FC<NotesListProps> = ({
   });
 
   return (
-    <div className={styles.mainBody}>
-      <div className={styles.mainBodyContent}>
-        <div className={styles.mainBodyHeaderForPrint}>
+    <div className="notesListMainBody">
+      <div className="mainBodyContent">
+        <div className="mainBodyHeaderForPrint">
           <p>{navbarTitle}</p>
         </div>
         {userDataEntries}
