@@ -20,17 +20,17 @@ export const DialogText: React.FC<DialogTextProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className="dialogText">
+    <div className="h5p-topic-map-dialog-text">
       {introduction ? (
         <div
-          className="description"
+          className="h5p-topic-map-dialog-text-description"
           dangerouslySetInnerHTML={{ __html: introduction }}
         />
       ) : null}
       {topicImage ? (
         <>
           <img
-            className="topicImage"
+            className="h5p-topic-map-dialog-text-image"
             src={topicImage.path}
             alt={topicImageAltText ?? ''}
             width={topicImage.width}
@@ -38,7 +38,7 @@ export const DialogText: React.FC<DialogTextProps> = ({
           />
           {topicImage?.copyright ? (
             <div
-              className="copyright"
+              className="h5p-topic-map-dialog-copyright"
             >
               {formatCopyright(
                 t('copyrightPhoto'),
@@ -51,7 +51,7 @@ export const DialogText: React.FC<DialogTextProps> = ({
 
       {bodyText ? (
         <div
-          className="bodyText"
+          className="h5p-topic-map-dialog-text-body"
           dangerouslySetInnerHTML={{ __html: bodyText }}
         />
       ) : null}

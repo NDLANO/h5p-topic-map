@@ -49,7 +49,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
     <>
       {item.topicImage?.path && (
         <img
-          className="image"
+          className="h5p-topic-map-topic-map-item-image"
           src={item.topicImage.path}
           alt={item.topicImageAltText ?? ''}
           width={item.topicImage.width}
@@ -58,22 +58,26 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
       )}
 
       <div
-        className={`inner ${item.topicImage?.path ? '' : 'noImage'} ${item.dialog?.hasNote ? 'withNote' : ''}`}
+        className={`h5p-topic-map-topic-map-item-content ${item.topicImage?.path
+          ? ''
+          : 'h5p-topic-map-topic-map-item-content-no-image'} ${item.dialog?.hasNote
+          ? 'h5p-topic-map-topic-map-item-content-with-note'
+          : ''}`}
         style={{ paddingTop: strokeWidth * 0.66 }}
       >
-        <div className="label">{item.label}</div>
+        <div className="h5p-topic-map-topic-map-item-label">{item.label}</div>
         {item.description && (
-          <div className="description">{item.description}</div>
+          <div className="h5p-topic-map-topic-map-item-description">{item.description}</div>
         )}
-        {item.dialog?.hasNote && <span className="visuallyHidden">{getNoteStateText(btnState, t)}</span>}
+        {item.dialog?.hasNote && <span className="h5p-topic-map-visually-hidden">{getNoteStateText(btnState, t)}</span>}
       </div>
     </>
   );
 
   if (!dialogHasContent(item)) {
     return (
-      <div className="topicMapItemContainer">
-        <div className="topicMapItem">
+      <div className="h5p-topic-map-topic-map-item-container">
+        <div className="h5p-topic-map-topic-map-item">
           {topicMapItemContent}
         </div>
       </div>
@@ -81,12 +85,12 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
   }
 
   return (
-    <div className="topicMapItemContainer">
+    <div className="h5p-topic-map-topic-map-item-container">
       <DialogRoot open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogTrigger asChild>
           <button
             type="button"
-            className="topicMapItem"
+            className="h5p-topic-map-topic-map-item"
             onClick={() => setDialogOpen(true)}
           >
             {topicMapItemContent}
@@ -94,8 +98,8 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
         </DialogTrigger>
 
         {item.dialog?.hasNote ? (
-          <div className="topicMapItemIconEdit">
-            <div className="icon">
+          <div className="h5p-topic-map-topic-map-item-note-icon">
+            <div className="h5p-topic-map-icon">
               <IconCircle
                 buttonState={btnState}
                 strokeWidth={strokeWidth}

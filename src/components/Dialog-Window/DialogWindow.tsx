@@ -5,7 +5,6 @@ import {
   Overlay as DialogOverlay,
   Title as DialogTitle,
 } from '@radix-ui/react-dialog';
-import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { FC } from 'react';
 import { useMedia } from 'react-use';
@@ -44,13 +43,13 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
   const hasNote = item.dialog?.hasNote;
 
   let content = smallScreen ? (
-    <DialogContent aria-modal="true" className="dialogContentSmallScreen">
-      <DialogDescription className="visuallyHidden" aria-hidden="true" />
-      <div className="contentWrapperSmallScreen">
-        <DialogTitle className="dialogTitle">{item.label}</DialogTitle>
+    <DialogContent aria-modal="true" className="h5p-topic-map-dialog-content-small-screen">
+      <DialogDescription className="h5p-topic-map-visually-hidden" aria-hidden="true" />
+      <div className="h5p-topic-map-modal-wrapper-small-screen">
+        <DialogTitle className="h5p-topic-map-modal-title">{item.label}</DialogTitle>
         {!noTabItems && <DialogTabs item={item} />}
         {noTabItems && hasNote && (
-          <div className="noteWrapper fullWidth">
+          <div className="h5p-topic-map-dialog-note-wrapper h5p-topic-map-dialog-note-wrapper-full-width">
             <DialogNote
               maxLength={item.dialog.maxLength}
               id={item.id}
@@ -58,19 +57,17 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
           </div>
         )}
       </div>
-      <DialogClose className="closeButton" aria-label={ariaLabel}>
-        <Cross2Icon />
+      <DialogClose className="h5p-topic-map-modal-close-button" aria-label={ariaLabel}>
       </DialogClose>
     </DialogContent>
   ) : (
-    <DialogContent aria-modal="true" className="dialogContent">
-      <DialogDescription className="visuallyHidden" aria-hidden="true" />
-      <div className="contentWrapper">
-        <DialogTitle className="dialogTitle">{item.label}</DialogTitle>
+    <DialogContent aria-modal="true" className="h5p-topic-map-dialog-content">
+      <DialogDescription className="h5p-topic-map-visually-hidden" aria-hidden="true" />
+      <div className="h5p-topic-map-modal-wrapper">
+        <DialogTitle className="h5p-topic-map-modal-title">{item.label}</DialogTitle>
         {!noTabItems && <DialogTabs item={item} />}
       </div>
-      <DialogClose className="closeButton" aria-label={ariaLabel}>
-        <Cross2Icon />
+      <DialogClose className="h5p-topic-map-modal-close-button" aria-label={ariaLabel}>
       </DialogClose>
     </DialogContent>
   );
@@ -79,19 +76,20 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
     content = (
       <DialogContent
         aria-modal="true"
-        className={noTabItems ? 'dialogContent' : 'dialogContentWide'}
+        className={noTabItems ? 'h5p-topic-map-dialog-content' : 'h5p-topic-map-dialog-content-wide'}
       >
-        <DialogDescription className="visuallyHidden" aria-hidden="true" />
-        <div className="contentWrapper">
-          <DialogTitle className="dialogTitle">{item.label}</DialogTitle>
+        <DialogDescription className="h5p-topic-map-visually-hidden" aria-hidden="true" />
+        <div className="h5p-topic-map-modal-wrapper">
+          <DialogTitle className="h5p-topic-map-modal-title">{item.label}</DialogTitle>
           {!noTabItems && (
-            <div className="tabWrapper">
+            <div className="h5p-topic-map-dialog-tab-wrapper">
               <DialogTabs item={item} />
             </div>
           )}
           <div
-            className={`noteWrapper ${noTabItems ? 'fullWidth' : ''
-            }`}
+            className={
+              `h5p-topic-map-dialog-note-wrapper ${noTabItems ? 'h5p-topic-map-dialog-note-wrapper-full-width' : ''}`
+            }
           >
             <DialogNote
               maxLength={item.dialog.maxLength}
@@ -99,8 +97,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
             />
           </div>
         </div>
-        <DialogClose className="closeButton" aria-label={ariaLabel}>
-          <Cross2Icon />
+        <DialogClose className="h5p-topic-map-modal-close-button" aria-label={ariaLabel}>
         </DialogClose>
       </DialogContent>
     );
@@ -108,7 +105,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
 
   return (
     <div ref={forwardedRef}>
-      <DialogOverlay className="overlay" />
+      <DialogOverlay className="h5p-topic-map-modal-overlay" />
       {content}
     </div>
   );

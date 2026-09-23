@@ -1,41 +1,39 @@
-// Renamed from .mainBody: NotesSection defines an unscoped .mainBody with
-// the same name, which would otherwise leak onto this element.
-.notesListMainBody {
+.h5p-topic-map-notes-list {
   display: flex;
   height: 100%;
   width: 100%;
   padding: 1rem 0;
 }
 
-.mainBodyContent {
+.h5p-topic-map-notes-list-content {
   width: 75%;
 }
 
-.mainBodyListElementWrapper {
+.h5p-topic-map-notes-list-element-wrapper {
   display: inline-block;
   width: 100%;
   gap: 1rem;
 }
 
-.mainBodyListElement {
+.h5p-topic-map-notes-list-element {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 1rem;
 }
 
-.mainBodyListElementHeader {
+.h5p-topic-map-notes-list-element-header {
   font-weight: bold;
   margin-block-start: 1rem;
 }
 
-.mainBodyListElementContent {
+.h5p-topic-map-notes-list-element-content {
   a {
     color: rgba(31, 103, 199, 1);
   }
 }
 
-.mainBodyHeaderForPrint {
+.h5p-topic-map-notes-list-header-for-print {
   font-size: large;
   font-weight: bold;
   overflow: hidden;
@@ -43,7 +41,7 @@
 }
 
 @media all {
-  .pageBreak {
+  .h5p-topic-map-notes-list-page-break {
     overflow: hidden;
     height: 0;
   }
@@ -61,13 +59,13 @@
 }
 
 @media print {
-  .pageBreak {
+  .h5p-topic-map-notes-list-page-break {
     margin-top: 1rem;
     display: block;
     page-break-before: auto;
   }
 
-  .mainBodyHeaderForPrint {
+  .h5p-topic-map-notes-list-header-for-print {
     overflow: visible;
     height: auto;
   }

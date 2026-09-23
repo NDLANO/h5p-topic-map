@@ -1,4 +1,4 @@
-.icon-circle {
+.h5p-topic-map-icon-circle {
   --circle-background-color: var(--theme-color-3);
   --circle-border-color: hsl(0, 0%, 100%);
   --circle-color: hsl(0, 0%, 100%);
@@ -28,21 +28,21 @@
     transform: translate(-50%, -50%);
   }
 
-  &.edit::before {
+  &.h5p-topic-map-icon-circle-edit::before {
     content: var(--icon-fontawesome-edit);
   }
 
-  &.note::before {
+  &.h5p-topic-map-icon-circle-note::before {
     content: var(--icon-fontawesome-left-aligned);
   }
 
-  &.done::before {
+  &.h5p-topic-map-icon-circle-done::before {
     content: var(--icon-fontawesome-check);
   }
 }
 
 @container h5p-topic-map (width < 560px) {
-  .icon-circle {
+  .h5p-topic-map-icon-circle {
     display: none;
   }
 }

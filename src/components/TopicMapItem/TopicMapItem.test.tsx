@@ -7,6 +7,7 @@ describe(TopicMapItem.name, () => {
     const item = {
       id: '1',
       topicImage: {
+        // eslint-disable-next-line @stylistic/ts/max-len
         path: 'https://images.unsplash.com/photo-1569587112025-0d460e81a126?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80',
         alt: '',
       },

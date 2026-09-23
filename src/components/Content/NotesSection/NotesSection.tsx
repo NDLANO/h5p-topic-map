@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Cross2Icon } from '@radix-ui/react-icons';
 import { H5PIntegration } from '../../../h5p/H5P.util';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { ConfirmWindow } from '../../ConfirmWindow/ConfirmWindow';
@@ -68,7 +67,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
         denyText: t('submitDataDenyLabel'),
       }}
       button={{
-        className: 'mainBodyButton',
+        className: 'h5p-topic-map-notes-section-main-body-button',
         label: exportAllUserDataText,
       }}
     />
@@ -83,7 +82,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
         denyText: t('deleteNotesDenyLabel'),
       }}
       button={{
-        className: 'mainBodyButton',
+        className: 'h5p-topic-map-notes-section-main-body-button',
         label: deleteText,
       }}
     />
@@ -97,7 +96,9 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
     <DialogRoot open={notesOpen} onOpenChange={setNotesOpen}>
       <DialogTrigger asChild>
         <button
-          className={`h5p-topic-map-navigation-bar-notes-button ${notesOpen && 'active'}`}
+          className={`h5p-topic-map-navigation-bar-notes-button ${notesOpen
+            ? 'h5p-topic-map-navigation-bar-notes-button-active'
+            : ''}`}
           type="button"
           onClick={() => setNotesOpen(true)}
         >
@@ -105,21 +106,21 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
         </button>
       </DialogTrigger>
       <DialogPortal container={h5pInstance?.containerElement}>
-        <DialogOverlay className="overlay" />
-        <DialogContent aria-modal="true" className="notesDialogContent">
-          <div className="contentWrapper">
-            <div className="mainBody">
+        <DialogOverlay className="h5p-topic-map-modal-overlay" />
+        <DialogContent aria-modal="true" className="h5p-topic-map-notes-section-dialog">
+          <div className="h5p-topic-map-modal-wrapper">
+            <div className="h5p-topic-map-notes-section-main-body">
               <DialogTitle asChild>
-                <p className="mainBodyTitle">
+                <p className="h5p-topic-map-notes-section-main-body-title">
                   {t('navbarNotesSectionTitle')}
                 </p>
               </DialogTitle>
-              <DialogDescription className="mainBodyTextWrapper">
+              <DialogDescription className="h5p-topic-map-notes-section-main-body-text">
                 {t('navbarNotesSectionBody')}
               </DialogDescription>
-              <div className="mainBodyButtons">
+              <div className="h5p-topic-map-notes-section-main-body-buttons">
                 <button
-                  className="mainBodyButton"
+                  className="h5p-topic-map-notes-section-main-body-button"
                   type="button"
                   onClick={handlePrint}
                 >
@@ -127,7 +128,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
                 </button>
                 {showCopyButton && (
                   <button
-                    className="mainBodyButton"
+                    className="h5p-topic-map-notes-section-main-body-button"
                     type="button"
                     onClick={onCopy}
                   >
@@ -141,15 +142,14 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
               </div>
             </div>
             <div
-              className="notesList"
+              className="h5p-topic-map-notes-section-list"
               ref={notesListRef}
               title={navbarTitleForPrint}
             >
               <NotesList topicMapItems={allItems} navbarTitle={navbarTitle} />
             </div>
           </div>
-          <DialogClose className="closeButton" aria-label={t('closeDialog')}>
-            <Cross2Icon />
+          <DialogClose className="h5p-topic-map-modal-close-button" aria-label={t('closeDialog')}>
           </DialogClose>
         </DialogContent>
       </DialogPortal>

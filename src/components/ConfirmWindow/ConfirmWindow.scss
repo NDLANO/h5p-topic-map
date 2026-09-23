@@ -1,19 +1,8 @@
-@use "./../../abstracts/mixins" as *;
-
-.overlay {
-  @include modal-overlay;
+.h5p-topic-map-confirm-window-overlay {
   z-index: var(--confirm-overlay-z-index);
 }
 
-.contentWrapper {
-  @include modal-wrapper;
-}
-
-.closeButton {
-  @include modal-close-button;
-}
-
-.dialogTitle {
+.h5p-topic-map-modal-title {
   margin: 0;
   font-weight: bold;
   color: black;
@@ -21,8 +10,7 @@
   line-height: 1.2;
 }
 
-.confirmWindowContent {
-  @include modal-content;
+.h5p-topic-map-confirm-window-content {
   height: auto;
   width: 52vw;
   max-height: 85vh;
@@ -34,8 +22,8 @@
   }
 }
 
-.confirmButton,
-.denyButton {
+.h5p-topic-map-confirm-button,
+.h5p-topic-map-deny-button {
   background-color: #fff;
   border-radius: 0.25em;
   border: 2px solid var(--theme-color-2);
@@ -55,7 +43,7 @@
   }
 }
 
-.confirmButton {
+.h5p-topic-map-confirm-button {
   background-color: var(--theme-color-2);
   color: #fff;
 
@@ -66,16 +54,12 @@
   }
 }
 
-.confirmationButtons {
+.h5p-topic-map-confirmation-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 1rem;
   margin: 1rem 0 0;
-}
-
-.visuallyHidden {
-  @include visually-hidden;
 }
 
 @keyframes show-overlay {

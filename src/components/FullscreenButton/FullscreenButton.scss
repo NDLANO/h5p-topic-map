@@ -1,4 +1,4 @@
-.fullscreenButton {
+.h5p-topic-map-fullscreen-button {
   aspect-ratio: 1;
   align-items: center;
   cursor: pointer;
@@ -18,13 +18,13 @@
 }
 
 .h5p-container.h5p-fullscreen {
-  .fullscreenButton::before {
+  .h5p-topic-map-fullscreen-button::before {
     content: var(--icon-h5ptheme-exit-fullscreen);
   }
 }
 
 .h5p-container:not(.h5p-fullscreen) {
-  .fullscreenButton::before {
+  .h5p-topic-map-fullscreen-button::before {
     content: var(--icon-h5ptheme-enter-fullscreen);
   }
 }

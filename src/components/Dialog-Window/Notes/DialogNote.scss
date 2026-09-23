@@ -1,5 +1,3 @@
-@use "./../../../abstracts/mixins" as *;
-
 form {
   display: flex;
   flex-direction: column;
@@ -9,8 +7,8 @@ form {
   height: 100%;
 }
 
-.textArea,
-.textareaMirror {
+.h5p-topic-map-dialog-note-textarea,
+.h5p-topic-map-dialog-note-textarea-mirror {
   border: none;
   font-family: inherit;
   font-size: inherit;
@@ -28,7 +26,7 @@ form {
   word-wrap: break-word;
 }
 
-.textArea {
+.h5p-topic-map-dialog-note-textarea {
   resize: none;
   flex-grow: 1;
   overflow-y: scroll;
@@ -38,12 +36,12 @@ form {
   position: relative;
 }
 
-.dynamicSavingText,
-.counter {
+.h5p-topic-map-dialog-note-saving-text,
+.h5p-topic-map-dialog-note-character-counter {
   color: #555555;
 }
 
-.textAreaWrapper {
+.h5p-topic-map-dialog-note-textarea-wrapper {
   border: 2px solid #eeeeee;
   border-radius: 0.25rem;
   display: flex;
@@ -56,14 +54,14 @@ form {
     border: 2px solid #2360c5;
   }
 
-  &.lengthExceeded {
+  &.h5p-topic-map-dialog-note-textarea-wrapper-length-exceeded {
     &:focus-within {
       border: 2px solid #cd2026;
     }
   }
 }
 
-.dynamicSavingText {
+.h5p-topic-map-dialog-note-saving-text {
   line-height: 1.2;
   margin-block-start: 0;
   margin-block-end: 0.2rem;
@@ -71,7 +69,7 @@ form {
   order: 1;
 }
 
-.markAsDoneCheckbox {
+.h5p-topic-map-dialog-note-mark-as-done-checkbox {
   color: #555555;
 
   input[type="checkbox"] {
@@ -83,30 +81,30 @@ form {
   }
 }
 
-.topGroup {
+.h5p-topic-map-dialog-note-top-group {
   align-items: flex-end;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.bottomGroup {
+.h5p-topic-map-dialog-note-bottom-group {
   align-items: flex-end;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem;
 }
 
-.counter {
+.h5p-topic-map-dialog-note-character-counter {
   vertical-align: middle;
   white-space: nowrap;
 
-  &.redText {
+  &.h5p-topic-map-dialog-note-character-counter-exceeded {
     color: #cd2026;
   }
 }
 
-.noteLabel {
+.h5p-topic-map-dialog-note-label {
   line-height: 1.2;
   margin-block-start: 0.8rem;
   margin-block-end: 0.2rem;
@@ -115,7 +113,7 @@ form {
   order: 2;
 }
 
-.textareaMirrorWrapper {
+.h5p-topic-map-dialog-note-textarea-mirror-wrapper {
   border-color: transparent;
   position: absolute;
   top: 0;
@@ -127,13 +125,9 @@ form {
   pointer-events: none;
 }
 
-.textareaMirror {
+.h5p-topic-map-dialog-note-textarea-mirror {
   a {
     color: rgba(31, 103, 199, 1);
     pointer-events: auto;
   }
-}
-
-.visuallyHidden {
-  @include visually-hidden;
 }

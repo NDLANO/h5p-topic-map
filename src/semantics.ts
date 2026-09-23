@@ -530,6 +530,7 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Navbar notes section body',
         name: 'navbarNotesSectionBody',
         default:
+          // eslint-disable-next-line @stylistic/ts/max-len
           'This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document.',
         type: 'text',
       },

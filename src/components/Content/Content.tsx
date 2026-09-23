@@ -9,8 +9,8 @@ import { Params } from '../../types/Params';
 import { exportAllUserData } from '../../utils/user-data.utils';
 import { FullscreenButton } from '../FullscreenButton/FullscreenButton';
 import { Grid } from '../Grid/Grid';
+import { NavigationBar } from './NavigationBar/NavigationBar';
 import { NotesSection } from './NotesSection/NotesSection';
-import './Content.scss';
 import { H5P } from '../../h5p/H5P.util';
 
 export type ContentProps = {
@@ -47,9 +47,7 @@ export const Content: React.FC<ContentProps> = ({
   );
   const hasNotes = totalNotesToComplete > 0;
 
-  const navbarRef = React.useRef<HTMLDivElement>(null);
-
-  const navbarHeight = navbarRef.current?.getBoundingClientRect().height ?? 0;
+  const [navbarHeight, setNavbarHeight] = useState(0);
 
   React.useEffect(() => {
     const newProgressBarValue = allItems.filter(
@@ -141,13 +139,13 @@ export const Content: React.FC<ContentProps> = ({
         className="h5p-topic-map-content"
         style={{
           // @ts-expect-error Custom properties are allowed
-          '--h5p-tm-navbar-height': `${navbarHeight}px`,
+          '--h5p-topic-map-navigation-bar-height': `${navbarHeight}px`,
         }}
       >
-        <div className="h5p-topic-map-navigation-bar" ref={navbarRef}>
-          <div className="h5p-topic-map-navigation-bar-title">
-            {navbarTitle}
-          </div>
+        <NavigationBar
+          navbarTitle={navbarTitle}
+          onHeightChange={setNavbarHeight}
+        >
           {hasNotes && (
             <div className="h5p-topic-map-navigation-bar-sections-menu">
               <NotesSection
@@ -162,10 +160,10 @@ export const Content: React.FC<ContentProps> = ({
               {progressBar}
             </div>
           )}
-          {fullScreenSupported &&
-            <FullscreenButton/>
-          }
-        </div>
+          {fullScreenSupported && (
+            <FullscreenButton />
+          )}
+        </NavigationBar>
 
         <Grid
           items={params.topicMap?.topicMapItems ?? []}

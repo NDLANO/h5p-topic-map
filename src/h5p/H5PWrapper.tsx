@@ -117,7 +117,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     this.containerElement.classList.add('h5p-topic-map');
     this.containerElement.classList.add(
-      `theme-${this.params.topicMap?.colorTheme ?? defaultTheme}`,
+      `h5p-topic-map-theme-${this.params.topicMap?.colorTheme ?? defaultTheme}`,
     );
 
     // The React tree is rendered exactly once; it is only ever updated

@@ -136,13 +136,13 @@ export const Arrow: FC<ArrowProps> = ({
   }, [arrowContainerRef, item]);
 
   return (
-    <div className="arrow">
+    <div className="h5p-topic-map-arrow">
       <DialogRoot open={dialogOpen} onOpenChange={setDialogOpen}>
         <div
           ref={arrowContainerRef}
-          className="arrow-item arrow"
+          className="h5p-topic-map-arrow-item h5p-topic-map-arrow"
         >
-          <svg className="arrowSvg">
+          <svg className="h5p-topic-map-arrow-svg">
             <defs>
               <marker
                 id={arrowHeadID}
@@ -152,7 +152,7 @@ export const Arrow: FC<ArrowProps> = ({
                 refY="1"
                 orient="auto"
               >
-                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className="path" />
+                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className="h5p-topic-map-arrow-path" />
               </marker>
               <marker
                 id={arrowTailID}
@@ -162,13 +162,13 @@ export const Arrow: FC<ArrowProps> = ({
                 refY="1"
                 orient="auto-start-reverse"
               >
-                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className="path" />
+                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className="h5p-topic-map-arrow-path" />
               </marker>
             </defs>
             <DialogTrigger asChild>
               <polyline
                 aria-label={`${descriptiveText} ${getNoteStateText(buttonState, t)}`}
-                className={item.dialog ? 'polyline' : ''}
+                className={item.dialog ? 'h5p-topic-map-arrow-polyline' : ''}
                 points={pathDef}
                 fill="transparent"
                 stroke="var(--theme-color-4)"

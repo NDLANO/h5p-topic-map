@@ -28,6 +28,7 @@ export const defaultTranslations: Translations = {
   dialogNoteLabel: 'Note',
   dialogTabListAriaLabel: 'Tabs List',
   navbarNotesSectionTitle: 'My notes',
+  // eslint-disable-next-line @stylistic/ts/max-len
   navbarNotesSectionBody: 'This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document.',
   navbarNotesSectionPrintLabel: 'Print',
   navbarNotesSectionCopyLabel: 'Copy',

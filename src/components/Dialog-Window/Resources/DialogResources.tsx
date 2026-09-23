@@ -1,4 +1,3 @@
-import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { H5P } from '../../../h5p/H5P.util';
 import { useContentId } from '../../../hooks/useContentId';
@@ -72,22 +71,22 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
   const relevantItems =
     relevantLinks != null
       ? relevantLinks.map((item: Link) => {
-          const rootUrl = item.url ? getRootUrl(item.url) : '';
-          if (!item.url || !rootUrl) {
-            return null;
-          }
-          return (
-            <li key={item.id} className="li">
-              <a
-                href={normalizeLinkPath(item.url)}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                {item.label} ({rootUrl})
-              </a>
-            </li>
-          );
-        })
+        const rootUrl = item.url ? getRootUrl(item.url) : '';
+        if (!item.url || !rootUrl) {
+          return null;
+        }
+        return (
+          <li key={item.id} className="h5p-topic-map-dialog-resource-list-item">
+            <a
+              href={normalizeLinkPath(item.url)}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {item.label} ({rootUrl})
+            </a>
+          </li>
+        );
+      })
       : null;
 
   const saveCustomLink = (newLink: string): void => {
@@ -128,15 +127,15 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
       {relevantItems ? (
         <>
           <p>{t('dialogResourcesRelevantLinks')}:</p>
-          <ul className="ul">{relevantItems}</ul>
+          <ul className="h5p-topic-map-dialog-resource-list">{relevantItems}</ul>
         </>
       ) : null}
       {showAddLinks ? (
         <>
           <p>{t('dialogResourcesCustomLinks')}:</p>
-          <ul className="ul">
+          <ul className="h5p-topic-map-dialog-resource-list">
             {customLinks.map((item: Link) => (
-              <li key={item.id} className="li">
+              <li key={item.id} className="h5p-topic-map-dialog-resource-list-item">
                 <a
                   href={normalizeLinkPath(item.url)}
                   target="_blank"
@@ -145,7 +144,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
                   {item.url}
                 </a>
                 <button
-                  className="removeButton"
+                  className="h5p-topic-map-dialog-resource-remove-button"
                   type="button"
                   aria-label={t('dialogResourcesRemoveLink').replace(
                     '@url',
@@ -153,14 +152,13 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
                   )}
                   onClick={() => removeCustomLink(item.id)}
                 >
-                  <Cross2Icon />
                 </button>
               </li>
             ))}
           </ul>
-          <div className="inputContainer">
+          <div className="h5p-topic-map-dialog-resource-input-container">
             <input
-              className="input"
+              className="h5p-topic-map-dialog-resource-url-input"
               type="text"
               aria-label={t('dialogResourcesUrlLabel')}
               placeholder="www.example.com"
@@ -168,7 +166,7 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
               ref={inputFieldRef}
             />
             <button
-              className="inputButton"
+              className="h5p-topic-map-dialog-resource-add-button"
               type="button"
               onClick={() => updateCustomList()}
             >
