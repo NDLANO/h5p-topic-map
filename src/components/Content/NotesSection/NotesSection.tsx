@@ -97,7 +97,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
     <DialogRoot open={notesOpen} onOpenChange={setNotesOpen}>
       <DialogTrigger asChild>
         <button
-          className={`sectionTitle ${notesOpen && 'active'}`}
+          className={`h5p-topic-map-navigation-bar-notes-button ${notesOpen && 'active'}`}
           type="button"
           onClick={() => setNotesOpen(true)}
         >

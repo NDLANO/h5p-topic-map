@@ -118,13 +118,13 @@ export const Content: React.FC<ContentProps> = ({
   };
 
   const progressBar = (
-    <div className="progressBarWrapper">
+    <div className="h5p-topic-map-navigation-bar-progress-bar">
       <div
-        className="progressPercentage"
+        className="h5p-topic-map-navigation-bar-progress-bar-percentage"
         aria-hidden="true"
       >{`${progressPercentage}%`}</div>
       <progress
-        className="progress"
+        className="h5p-topic-map-navigation-bar-progress-bar-progress"
         aria-label={t('progressBarDescriptiveText', {
           markedNotes: progressBarValue,
           totalNotes: totalNotesToComplete,
@@ -144,12 +144,12 @@ export const Content: React.FC<ContentProps> = ({
           '--h5p-tm-navbar-height': `${navbarHeight}px`,
         }}
       >
-        <div className="navbarWrapper" ref={navbarRef}>
-          <div className="navbarTitle">
+        <div className="h5p-topic-map-navigation-bar" ref={navbarRef}>
+          <div className="h5p-topic-map-navigation-bar-title">
             {navbarTitle}
           </div>
           {hasNotes && (
-            <div className="sectionsMenu">
+            <div className="h5p-topic-map-navigation-bar-sections-menu">
               <NotesSection
                 confirmSubmitAll={submitAllNotes}
                 confirmDeletion={deleteAllNotes}
