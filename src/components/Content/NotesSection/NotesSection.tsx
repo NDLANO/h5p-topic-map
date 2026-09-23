@@ -3,7 +3,16 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import { H5PIntegration } from '../../../h5p/H5P.util';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { ConfirmWindow } from '../../ConfirmWindow/ConfirmWindow';
-import { Close as DialogClose, Content as DialogContent, Description as DialogDescription, Overlay as DialogOverlay, Portal as DialogPortal, Root as DialogRoot, Title as DialogTitle, Trigger as DialogTrigger } from '@radix-ui/react-dialog';
+import {
+  Close as DialogClose,
+  Content as DialogContent,
+  Description as DialogDescription,
+  Overlay as DialogOverlay,
+  Portal as DialogPortal,
+  Root as DialogRoot,
+  Title as DialogTitle,
+  Trigger as DialogTrigger,
+} from '@radix-ui/react-dialog';
 import { useH5PInstance } from '../../../hooks/useH5PInstance';
 import { NotesList } from './NotesList/NotesList';
 import { CommonItemType } from '../../../types/CommonItemType';

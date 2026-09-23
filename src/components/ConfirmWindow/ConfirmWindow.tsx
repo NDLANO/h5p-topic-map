@@ -1,4 +1,13 @@
-import { Close as DialogClose, Content as DialogContent, Description as DialogDescription, Overlay as DialogOverlay, Portal as DialogPortal, Root as DialogRoot, Title as DialogTitle, Trigger as DialogTrigger } from '@radix-ui/react-dialog';
+import {
+  Close as DialogClose,
+  Content as DialogContent,
+  Description as DialogDescription,
+  Overlay as DialogOverlay,
+  Portal as DialogPortal,
+  Root as DialogRoot,
+  Title as DialogTitle,
+  Trigger as DialogTrigger,
+} from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { FC, ReactNode } from 'react';
