@@ -7,6 +7,7 @@ import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { IconCircle } from '../IconCircle/IconCircle';
 import './TopicMapItem.scss';
 import { getNoteStateText } from '../../utils/note.utils';
+import { dialogHasContent } from '../../utils/dialog.utils';
 import { useTranslation } from '../../hooks/useTranslation';
 import { Portal as DialogPortal, Root as DialogRoot, Trigger as DialogTrigger } from '@radix-ui/react-dialog';
 import { DialogWindow } from '../Dialog-Window/DialogWindow';
@@ -44,6 +45,41 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
     }
   }
 
+  const topicMapItemContent = (
+    <>
+      {item.topicImage?.path && (
+        <img
+          className="image"
+          src={item.topicImage.path}
+          alt={item.topicImageAltText ?? ''}
+          width={item.topicImage.width}
+          height={item.topicImage.height}
+        />
+      )}
+
+      <div
+        className={`inner ${item.topicImage?.path ? '' : 'noImage'} ${item.dialog?.hasNote ? 'withNote' : ''}`}
+        style={{ paddingTop: strokeWidth * 0.66 }}
+      >
+        <div className="label">{item.label}</div>
+        {item.description && (
+          <div className="description">{item.description}</div>
+        )}
+        {item.dialog?.hasNote && <span className="visuallyHidden">{getNoteStateText(btnState, t)}</span>}
+      </div>
+    </>
+  );
+
+  if (!dialogHasContent(item)) {
+    return (
+      <div className="topicMapItemContainer">
+        <div className="topicMapItem">
+          {topicMapItemContent}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="topicMapItemContainer">
       <DialogRoot open={dialogOpen} onOpenChange={setDialogOpen}>
@@ -53,26 +89,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
             className="topicMapItem"
             onClick={() => setDialogOpen(true)}
           >
-            {item.topicImage?.path && (
-              <img
-                className="image"
-                src={item.topicImage.path}
-                alt={item.topicImageAltText ?? ''}
-                width={item.topicImage.width}
-                height={item.topicImage.height}
-              />
-            )}
-
-            <div
-              className={`inner ${item.topicImage?.path ? '' : 'noImage'} ${item.dialog?.hasNote ? 'withNote' : ''}`}
-              style={{ paddingTop: strokeWidth * 0.66 }}
-            >
-              <div className="label">{item.label}</div>
-              {item.description && (
-                <div className="description">{item.description}</div>
-              )}
-              {item.dialog?.hasNote && <span className="visuallyHidden">{getNoteStateText(btnState, t)}</span>}
-            </div>
+            {topicMapItemContent}
           </button>
         </DialogTrigger>
 

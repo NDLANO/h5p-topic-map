@@ -1,4 +1,4 @@
-.navbarWrapper {
+.h5p-topic-map-navigation-bar {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
@@ -7,7 +7,7 @@
   padding: 0.25rem;
   background-color: var(--theme-color-2);
 
-  .navbarTitle {
+  .h5p-topic-map-navigation-bar-title {
     background-color: transparent;
     border: none;
     border-radius: 0;
@@ -17,22 +17,22 @@
     text-align: left;
   }
 
-  .sectionsMenu {
+  .h5p-topic-map-navigation-bar-sections-menu {
     display: flex;
     flex-direction: row;
   }
 }
 
-.progressBarWrapper {
+.h5p-topic-map-navigation-bar-progress-bar {
   display: none;
 }
 
 @container h5p-topic-map (width > 560px) {
-  .navbarWrapper {
+  .h5p-topic-map-navigation-bar {
     padding: 0.5rem;
   }
 
-  .progressBarWrapper {
+  .h5p-topic-map-navigation-bar-progress-bar {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -44,14 +44,14 @@
   /**
    * {1} The width of the text when it says "100%"
    */
-  .progressPercentage {
+  .h5p-topic-map-navigation-bar-progress-bar-percentage {
     color: var(--theme-color-4);
     cursor: default;
     min-width: 2.625rem; /* {1} */
     text-align: right;
   }
 
-  .progress[value] {
+  .h5p-topic-map-navigation-bar-progress-bar-progress[value] {
     /* Reset the default appearance */
     -webkit-appearance: none;
     -moz-appearance: none;
