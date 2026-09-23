@@ -1,5 +1,3 @@
-$h5p-navbar-z-index: 600;
-
 :root {
   --item-z-index: 1;
   --notesection-z-index: calc(var(--item-z-index) + 1);
@@ -13,6 +11,8 @@ $h5p-navbar-z-index: 600;
   --icon-fontawesome-check: "\f00c";
   --icon-fontawesome-edit: "\f040";
   --icon-fontawesome-left-aligned: "\f036";
+  --icon-h5ptheme-enter-fullscreen: "\e915";
+  --icon-h5ptheme-exit-fullscreen: "\e914";
 
   background-color: var(--theme-color-1);
   container-name: h5p-topic-map;
@@ -67,8 +67,4 @@ $h5p-navbar-z-index: 600;
   --theme-color-3: #6B777B;
   --theme-color-4: #C0C4C8;
   --theme-color-5: #DFE2E2;
-}
-
-.iPhoneFullscreenStyle {
-  z-index: $h5p-navbar-z-index + 1;
 }

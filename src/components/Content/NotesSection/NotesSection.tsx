@@ -3,7 +3,7 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import { H5PIntegration } from '../../../h5p/H5P.util';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { ConfirmWindow } from '../../ConfirmWindow/ConfirmWindow';
-import { Close, Content, Description, Overlay, Portal, Root, Title, Trigger } from '@radix-ui/react-dialog';
+import { Close as DialogClose, Content as DialogContent, Description as DialogDescription, Overlay as DialogOverlay, Portal as DialogPortal, Root as DialogRoot, Title as DialogTitle, Trigger as DialogTrigger } from '@radix-ui/react-dialog';
 import { useH5PInstance } from '../../../hooks/useH5PInstance';
 import { NotesList } from './NotesList/NotesList';
 import { CommonItemType } from '../../../types/CommonItemType';
@@ -85,8 +85,8 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
   const showCopyButton = 'clipboard' in navigator;
 
   return (
-    <Root open={notesOpen} onOpenChange={setNotesOpen}>
-      <Trigger asChild>
+    <DialogRoot open={notesOpen} onOpenChange={setNotesOpen}>
+      <DialogTrigger asChild>
         <button
           className={`sectionTitle ${notesOpen && 'active'}`}
           type="button"
@@ -94,20 +94,20 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
         >
           {t('navbarNotesSectionLabel')}
         </button>
-      </Trigger>
-      <Portal container={h5pInstance?.containerElement}>
-        <Overlay className="overlay" />
-        <Content aria-modal="true" className="notesDialogContent">
+      </DialogTrigger>
+      <DialogPortal container={h5pInstance?.containerElement}>
+        <DialogOverlay className="overlay" />
+        <DialogContent aria-modal="true" className="notesDialogContent">
           <div className="contentWrapper">
             <div className="mainBody">
-              <Title asChild>
+              <DialogTitle asChild>
                 <p className="mainBodyTitle">
                   {t('navbarNotesSectionTitle')}
                 </p>
-              </Title>
-              <Description className="mainBodyTextWrapper">
+              </DialogTitle>
+              <DialogDescription className="mainBodyTextWrapper">
                 {t('navbarNotesSectionBody')}
-              </Description>
+              </DialogDescription>
               <div className="mainBodyButtons">
                 <button
                   className="mainBodyButton"
@@ -139,11 +139,11 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
               <NotesList topicMapItems={allItems} navbarTitle={navbarTitle} />
             </div>
           </div>
-          <Close className="closeButton" aria-label={t('closeDialog')}>
+          <DialogClose className="closeButton" aria-label={t('closeDialog')}>
             <Cross2Icon />
-          </Close>
-        </Content>
-      </Portal>
-    </Root>
+          </DialogClose>
+        </DialogContent>
+      </DialogPortal>
+    </DialogRoot>
   );
 };

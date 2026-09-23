@@ -1,11 +1,30 @@
 .fullscreenButton {
+  aspect-ratio: 1;
   align-items: center;
   cursor: pointer;
   display: flex;
-  height: 28px;
-  margin-left: 0.25rem;
+  height: max(24px, calc(1.25rem + 0.5rem));
+  position: relative;
+
+  &::before {
+    color: hsl(0, 0%, 0%);
+    font-family: "h5p-theme", sans-serif;
+    font-size: 1.25rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
-.fullscreenButtonSvg {
-  width: 14px;
+.h5p-container.h5p-fullscreen {
+  .fullscreenButton::before {
+    content: var(--icon-h5ptheme-exit-fullscreen);
+  }
+}
+
+.h5p-container:not(.h5p-fullscreen) {
+  .fullscreenButton::before {
+    content: var(--icon-h5ptheme-enter-fullscreen);
+  }
 }
