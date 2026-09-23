@@ -1,39 +1,30 @@
 .navbarWrapper {
   display: flex;
   flex-direction: row;
+  gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
   padding: 0.25rem;
   background-color: var(--theme-color-2);
-}
 
-.navbarTitle {
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
-  color: #ffffff;
-  flex-grow: 1;
-  padding-left: 0.25rem;
-  text-align: left;
-}
+  .navbarTitle {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: #ffffff;
+    flex-grow: 1;
+    padding-left: 0.25rem;
+    text-align: left;
+  }
 
-.sectionsWrapper {
-  position: relative;
-}
-
-.sectionsMenu {
-  display: flex;
-  flex-direction: row;
+  .sectionsMenu {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 .progressBarWrapper {
   display: none;
-}
-
-// Renamed from .fullscreenButton: FullscreenButton defines an unscoped
-// .fullscreenButton for the button itself, and this div wraps it.
-.fullscreenButtonWrapper {
-  transform: scale(1);
 }
 
 @container h5p-topic-map (width > 560px) {

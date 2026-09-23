@@ -8,7 +8,7 @@ import { IconCircle } from '../IconCircle/IconCircle';
 import './TopicMapItem.scss';
 import { getNoteStateText } from '../../utils/note.utils';
 import { useTranslation } from '../../hooks/useTranslation';
-import { Portal, Root, Trigger } from '@radix-ui/react-dialog';
+import { Portal as DialogPortal, Root as DialogRoot, Trigger as DialogTrigger } from '@radix-ui/react-dialog';
 import { DialogWindow } from '../Dialog-Window/DialogWindow';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 
@@ -46,8 +46,8 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
 
   return (
     <div className="topicMapItemContainer">
-      <Root open={dialogOpen} onOpenChange={setDialogOpen}>
-        <Trigger asChild>
+      <DialogRoot open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogTrigger asChild>
           <button
             type="button"
             className="topicMapItem"
@@ -74,7 +74,7 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
               {item.dialog?.hasNote && <span className="visuallyHidden">{getNoteStateText(btnState, t)}</span>}
             </div>
           </button>
-        </Trigger>
+        </DialogTrigger>
 
         {item.dialog?.hasNote ? (
           <div className="topicMapItemIconEdit">
@@ -88,10 +88,10 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
         ) : (
           ''
         )}
-        <Portal container={h5pInstance?.containerElement}>
+        <DialogPortal container={h5pInstance?.containerElement}>
           <DialogWindow item={item} />
-        </Portal>
-      </Root>
+        </DialogPortal>
+      </DialogRoot>
     </div>
   );
 };

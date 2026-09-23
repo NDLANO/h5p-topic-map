@@ -11,7 +11,7 @@ import { ArrowNoteButton } from './ArrowNoteButton';
 import { getNoteStateText } from '../../utils/note.utils';
 import { useTranslation } from '../../hooks/useTranslation';
 import { H5P } from '../../h5p/H5P.util';
-import { Portal, Root, Trigger } from '@radix-ui/react-dialog';
+import { Portal as DialogPortal, Root as DialogRoot, Trigger as DialogTrigger } from '@radix-ui/react-dialog';
 import { DialogWindow } from '../Dialog-Window/DialogWindow';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 
@@ -137,7 +137,7 @@ export const Arrow: FC<ArrowProps> = ({
 
   return (
     <div className="arrow">
-      <Root open={dialogOpen} onOpenChange={setDialogOpen}>
+      <DialogRoot open={dialogOpen} onOpenChange={setDialogOpen}>
         <div
           ref={arrowContainerRef}
           className="arrow-item arrow"
@@ -165,7 +165,7 @@ export const Arrow: FC<ArrowProps> = ({
                 <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className="path" />
               </marker>
             </defs>
-            <Trigger asChild>
+            <DialogTrigger asChild>
               <polyline
                 aria-label={`${descriptiveText} ${getNoteStateText(buttonState, t)}`}
                 className={item.dialog ? 'polyline' : ''}
@@ -200,7 +200,7 @@ export const Arrow: FC<ArrowProps> = ({
                   }
                 }}
               />
-            </Trigger>
+            </DialogTrigger>
           </svg>
         </div>
         <ArrowNoteButton
@@ -208,10 +208,10 @@ export const Arrow: FC<ArrowProps> = ({
           buttonState={buttonState}
           strokeWidth={strokeWidth}
         />
-        <Portal container={h5pInstance?.containerElement}>
+        <DialogPortal container={h5pInstance?.containerElement}>
           <DialogWindow item={item} />
-        </Portal>
-      </Root>
+        </DialogPortal>
+      </DialogRoot>
     </div>
   );
 };

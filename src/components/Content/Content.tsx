@@ -10,26 +10,24 @@ import { exportAllUserData } from '../../utils/user-data.utils';
 import { FullscreenButton } from '../FullscreenButton/FullscreenButton';
 import { Grid } from '../Grid/Grid';
 import { NotesSection } from './NotesSection/NotesSection';
-import './Navbar.scss';
+import './Content.scss';
+import { H5P } from '../../h5p/H5P.util';
 
-export type NavbarProps = {
+export type ContentProps = {
   navbarTitle: string;
   params: Params;
-  toggleIPhoneFullscreen: () => void;
-  isIPhoneFullscreenActive: boolean;
 };
 
-export const Navbar: React.FC<NavbarProps> = ({
+export const Content: React.FC<ContentProps> = ({
   navbarTitle,
   params,
-  toggleIPhoneFullscreen,
-  isIPhoneFullscreenActive,
 }) => {
   const contentId = useContentId();
   const h5pInstance = useH5PInstance();
   const { t } = useTranslation();
   const [userData, setUserData] = useLocalStorageUserData();
   const [notesOpen, setNotesOpen] = useState(false);
+  const fullScreenSupported = h5pInstance?.isRoot() && H5P.fullscreenSupported;
 
   const [progressBarValue, setProgressBarValue] = useState(0);
   const [progressPercentage, setProgressPercentage] =
@@ -140,47 +138,41 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <div
+        className="h5p-topic-map-content"
         style={{
           // @ts-expect-error Custom properties are allowed
           '--h5p-tm-navbar-height': `${navbarHeight}px`,
         }}
       >
-        <div ref={navbarRef}>
-          <div className="navbarWrapper">
-            <div className="navbarTitle">
-              {navbarTitle}
-            </div>
-            {hasNotes && (
-              <div className="sectionsMenu">
-                <NotesSection
-                  confirmSubmitAll={submitAllNotes}
-                  confirmDeletion={deleteAllNotes}
-                  onCopy={handleCopy}
-                  notesOpen={notesOpen}
-                  setNotesOpen={setNotesOpen}
-                  navbarTitle={navbarTitle}
-                  allItems={allItems}
-                />
-                {progressBar}
-              </div>
-            )}
-            <div className="fullscreenButtonWrapper">
-              <FullscreenButton
-                toggleIOSFullscreen={toggleIPhoneFullscreen}
-                isIOSFullscreenActive={isIPhoneFullscreenActive}
-              />
-            </div>
+        <div className="navbarWrapper" ref={navbarRef}>
+          <div className="navbarTitle">
+            {navbarTitle}
           </div>
+          {hasNotes && (
+            <div className="sectionsMenu">
+              <NotesSection
+                confirmSubmitAll={submitAllNotes}
+                confirmDeletion={deleteAllNotes}
+                onCopy={handleCopy}
+                notesOpen={notesOpen}
+                setNotesOpen={setNotesOpen}
+                navbarTitle={navbarTitle}
+                allItems={allItems}
+              />
+              {progressBar}
+            </div>
+          )}
+          {fullScreenSupported &&
+            <FullscreenButton/>
+          }
         </div>
 
-        <div className="sectionsWrapper">
-          <Grid
-            items={params.topicMap?.topicMapItems ?? []}
-            arrowItems={params.topicMap?.arrowItems ?? []}
-            backgroundImage={params.topicMap?.gridBackgroundImage}
-            grid={params.topicMap?.grid}
-          />
-        </div>
+        <Grid
+          items={params.topicMap?.topicMapItems ?? []}
+          arrowItems={params.topicMap?.arrowItems ?? []}
+          backgroundImage={params.topicMap?.gridBackgroundImage}
+          grid={params.topicMap?.grid}
+        />
       </div>
     </>
   );

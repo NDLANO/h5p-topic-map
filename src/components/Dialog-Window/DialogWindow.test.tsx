@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getByText, render } from '@testing-library/react';
 import { DialogWindow } from './DialogWindow';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
-import { Root } from '@radix-ui/react-dialog';
+import { Root as DialogRoot } from '@radix-ui/react-dialog';
 
 Object.defineProperty(window, 'matchMedia', {
   value: jest.fn().mockImplementation((query) => ({
@@ -39,9 +39,9 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <Root open={true}>
+      <DialogRoot open={true}>
         <DialogWindow item={item} />
-      </Root>,
+      </DialogRoot>,
     ).container;
 
     setTimeout(() => {
@@ -71,9 +71,9 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <Root open={true}>
+      <DialogRoot open={true}>
         <DialogWindow item={item} />
-      </Root>,
+      </DialogRoot>,
     ).container;
 
     setTimeout(() => {
@@ -102,9 +102,9 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <Root open={true}>
+      <DialogRoot open={true}>
         <DialogWindow item={item} />
-      </Root>,
+      </DialogRoot>,
     ).container;
 
     expect(dialogWindow.querySelector('h2')?.textContent).toBe('Sheep in the distance');

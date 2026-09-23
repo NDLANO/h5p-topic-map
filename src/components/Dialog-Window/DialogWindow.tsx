@@ -1,4 +1,4 @@
-import { Close, Content, Description, Overlay, Title } from '@radix-ui/react-dialog';
+import { Close as DialogClose, Content as DialogContent, Description as DialogDescription, Overlay as DialogOverlay, Title as DialogTitle } from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { FC } from 'react';
@@ -38,10 +38,10 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
   const hasNote = item.dialog?.hasNote;
 
   let content = smallScreen ? (
-    <Content aria-modal="true" className="dialogContentSmallScreen">
-      <Description className="visuallyHidden" aria-hidden="true" />
+    <DialogContent aria-modal="true" className="dialogContentSmallScreen">
+      <DialogDescription className="visuallyHidden" aria-hidden="true" />
       <div className="contentWrapperSmallScreen">
-        <Title className="dialogTitle">{item.label}</Title>
+        <DialogTitle className="dialogTitle">{item.label}</DialogTitle>
         {!noTabItems && <DialogTabs item={item} />}
         {noTabItems && hasNote && (
           <div className="noteWrapper fullWidth">
@@ -52,32 +52,32 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
           </div>
         )}
       </div>
-      <Close className="closeButton" aria-label={ariaLabel}>
+      <DialogClose className="closeButton" aria-label={ariaLabel}>
         <Cross2Icon />
-      </Close>
-    </Content>
+      </DialogClose>
+    </DialogContent>
   ) : (
-    <Content aria-modal="true" className="dialogContent">
-      <Description className="visuallyHidden" aria-hidden="true" />
+    <DialogContent aria-modal="true" className="dialogContent">
+      <DialogDescription className="visuallyHidden" aria-hidden="true" />
       <div className="contentWrapper">
-        <Title className="dialogTitle">{item.label}</Title>
+        <DialogTitle className="dialogTitle">{item.label}</DialogTitle>
         {!noTabItems && <DialogTabs item={item} />}
       </div>
-      <Close className="closeButton" aria-label={ariaLabel}>
+      <DialogClose className="closeButton" aria-label={ariaLabel}>
         <Cross2Icon />
-      </Close>
-    </Content>
+      </DialogClose>
+    </DialogContent>
   );
 
   if (hasNote && !smallScreen) {
     content = (
-      <Content
+      <DialogContent
         aria-modal="true"
         className={noTabItems ? 'dialogContent' : 'dialogContentWide'}
       >
-        <Description className="visuallyHidden" aria-hidden="true" />
+        <DialogDescription className="visuallyHidden" aria-hidden="true" />
         <div className="contentWrapper">
-          <Title className="dialogTitle">{item.label}</Title>
+          <DialogTitle className="dialogTitle">{item.label}</DialogTitle>
           {!noTabItems && (
             <div className="tabWrapper">
               <DialogTabs item={item} />
@@ -93,16 +93,16 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
             />
           </div>
         </div>
-        <Close className="closeButton" aria-label={ariaLabel}>
+        <DialogClose className="closeButton" aria-label={ariaLabel}>
           <Cross2Icon />
-        </Close>
-      </Content>
+        </DialogClose>
+      </DialogContent>
     );
   }
 
   return (
     <div ref={forwardedRef}>
-      <Overlay className="overlay" />
+      <DialogOverlay className="overlay" />
       {content}
     </div>
   );

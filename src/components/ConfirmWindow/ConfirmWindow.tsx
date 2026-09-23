@@ -1,4 +1,4 @@
-import { Close, Content, Description, Overlay, Portal, Root, Title, Trigger } from '@radix-ui/react-dialog';
+import { Close as DialogClose, Content as DialogContent, Description as DialogDescription, Overlay as DialogOverlay, Portal as DialogPortal, Root as DialogRoot, Title as DialogTitle, Trigger as DialogTrigger } from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { FC, ReactNode } from 'react';
@@ -37,18 +37,18 @@ export const ConfirmWindow: FC<ConfirmWindowProps> = ({
   };
 
   return (
-    <Root open={windowOpen} onOpenChange={setWindowOpen}>
-      <Trigger asChild>
+    <DialogRoot open={windowOpen} onOpenChange={setWindowOpen}>
+      <DialogTrigger asChild>
         <button type="button" className={button.className} onClick={() => setWindowOpen(true)}>
           {button.label}
         </button>
-      </Trigger>
-      <Portal container={h5pInstance?.containerElement}>
-        <Overlay className="overlay" />
-        <Content aria-modal="true" className="confirmWindowContent">
-          <Description className="visuallyHidden" aria-hidden="true" />
+      </DialogTrigger>
+      <DialogPortal container={h5pInstance?.containerElement}>
+        <DialogOverlay className="overlay" />
+        <DialogContent aria-modal="true" className="confirmWindowContent">
+          <DialogDescription className="visuallyHidden" aria-hidden="true" />
           <div className="contentWrapper">
-            <Title className="dialogTitle">{title}</Title>
+            <DialogTitle className="dialogTitle">{title}</DialogTitle>
             {children}
             <div className="confirmationButtons">
               <button
@@ -67,11 +67,11 @@ export const ConfirmWindow: FC<ConfirmWindowProps> = ({
               </button>
             </div>
           </div>
-          <Close className="closeButton" aria-label={ariaLabel}>
+          <DialogClose className="closeButton" aria-label={ariaLabel}>
             <Cross2Icon />
-          </Close>
-        </Content>
-      </Portal>
-    </Root>
+          </DialogClose>
+        </DialogContent>
+      </DialogPortal>
+    </DialogRoot>
   );
 };
