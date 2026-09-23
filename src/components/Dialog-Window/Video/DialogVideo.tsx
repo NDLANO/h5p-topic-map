@@ -39,11 +39,11 @@ export const DialogVideo: React.FC<DialogVideoProps> = ({ sources }) => {
   }, [contentId, sources]);
 
   return (
-    <div className="dialogVideo">
+    <div className="h5p-topic-map-dialog-video">
       <div ref={videoWrapperRef} />
 
       {sources[0]?.copyright ? (
-        <p className="copyright">
+        <p className="h5p-topic-map-dialog-copyright">
           {formatCopyright(t('copyrightVideo'), sources[0].copyright)}
         </p>
       ) : null}

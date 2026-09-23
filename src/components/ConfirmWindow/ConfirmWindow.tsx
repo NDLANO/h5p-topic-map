@@ -8,7 +8,6 @@ import {
   Title as DialogTitle,
   Trigger as DialogTrigger,
 } from '@radix-ui/react-dialog';
-import { Cross2Icon } from '@radix-ui/react-icons';
 import * as React from 'react';
 import { FC, ReactNode } from 'react';
 import { useTranslation } from '../../hooks/useTranslation';
@@ -53,31 +52,30 @@ export const ConfirmWindow: FC<ConfirmWindowProps> = ({
         </button>
       </DialogTrigger>
       <DialogPortal container={h5pInstance?.containerElement}>
-        <DialogOverlay className="overlay" />
-        <DialogContent aria-modal="true" className="confirmWindowContent">
-          <DialogDescription className="visuallyHidden" aria-hidden="true" />
-          <div className="contentWrapper">
-            <DialogTitle className="dialogTitle">{title}</DialogTitle>
+        <DialogOverlay className="h5p-topic-map-modal-overlay h5p-topic-map-confirm-window-overlay" />
+        <DialogContent aria-modal="true" className="h5p-topic-map-confirm-window-content">
+          <DialogDescription className="h5p-topic-map-visually-hidden" aria-hidden="true" />
+          <div className="h5p-topic-map-modal-wrapper">
+            <DialogTitle className="h5p-topic-map-modal-title">{title}</DialogTitle>
             {children}
-            <div className="confirmationButtons">
+            <div className="h5p-topic-map-confirmation-buttons">
               <button
                 type="button"
-                className="confirmButton"
+                className="h5p-topic-map-confirm-button"
                 onClick={handleConfirm}
               >
                 {confirmWindow.confirmText}
               </button>
               <button
                 type="button"
-                className="denyButton"
+                className="h5p-topic-map-deny-button"
                 onClick={() => setWindowOpen(false)}
               >
                 {confirmWindow.denyText}
               </button>
             </div>
           </div>
-          <DialogClose className="closeButton" aria-label={ariaLabel}>
-            <Cross2Icon />
+          <DialogClose className="h5p-topic-map-modal-close-button" aria-label={ariaLabel}>
           </DialogClose>
         </DialogContent>
       </DialogPortal>

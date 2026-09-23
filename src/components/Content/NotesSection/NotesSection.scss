@@ -1,6 +1,4 @@
-@use "./../../../abstracts/mixins" as *;
-
-.mainBody {
+.h5p-topic-map-notes-section-main-body {
   border-bottom: 2px solid #eee;
   line-height: 1.5;
   padding-bottom: 1.5625rem;
@@ -11,17 +9,17 @@
   }
 }
 
-.mainBodyTitle {
+.h5p-topic-map-notes-section-main-body-title {
   font-size: 20px;
   font-weight: bold;
   position: relative;
 }
 
-p.mainBodyTextWrapper {
+p.h5p-topic-map-notes-section-main-body-text {
   margin-top: 1rem;
 }
 
-.mainBodyButtons {
+.h5p-topic-map-notes-section-main-body-buttons {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -30,12 +28,12 @@ p.mainBodyTextWrapper {
 }
 
 @container h5p-topic-map (width > 560px) {
-  .mainBodyButtons {
+  .h5p-topic-map-notes-section-main-body-buttons {
     flex-direction: row;
   }
 }
 
-.mainBodyButton {
+.h5p-topic-map-notes-section-main-body-button {
   background-color: var(--theme-color-2);
   border: none;
   border-radius: 1rem;
@@ -62,32 +60,17 @@ p.mainBodyTextWrapper {
     background-color: var(--theme-color-3);
   }
 
-  &.active {
+  &.h5p-topic-map-navigation-bar-notes-button-active {
     text-decoration: underline;
   }
 }
 
-.notesList {
+.h5p-topic-map-notes-section-list {
   @media print {
     max-height: unset !important;
   }
 }
 
-.overlay {
-  @include modal-overlay;
-}
-
-// Renamed from .dialogContent: DialogWindow defines an unscoped .dialogContent
-// (width: 40vw) with the same name, which would otherwise leak onto this dialog.
-.notesDialogContent {
-  @include modal-content;
+.h5p-topic-map-notes-section-dialog {
   max-width: 45rem;
-}
-
-.closeButton {
-  @include modal-close-button;
-}
-
-.contentWrapper {
-  @include modal-wrapper;
 }

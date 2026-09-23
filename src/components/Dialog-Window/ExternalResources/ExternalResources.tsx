@@ -11,7 +11,7 @@ export const DialogExternalResources: React.FC<
 > = ({ url, label }) => {
   return (
     <iframe
-      className="externalResources"
+      className="h5p-topic-map-dialog-external-resource"
       src={url}
       title={label}
     />

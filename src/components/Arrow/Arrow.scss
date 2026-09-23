@@ -1,22 +1,22 @@
-.arrow {
+.h5p-topic-map-arrow {
   position: absolute;
   width: 100%;
   height: 100%;
   pointer-events: none;
 
   &:hover {
-    .path {
+    .h5p-topic-map-arrow-path {
       fill: var(--theme-color-5);
     }
   }
 }
 
-.arrowSvg {
+.h5p-topic-map-arrow-svg {
   width: 100%;
   height: 100%;
 }
 
-.polyline {
+.h5p-topic-map-arrow-polyline {
   pointer-events: painted;
   cursor: pointer;
 

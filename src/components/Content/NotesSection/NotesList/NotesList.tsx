@@ -33,9 +33,9 @@ export const NotesList: React.FC<NotesListProps> = ({
     return (
       item.dialog?.hasNote && (
         <React.Fragment key={item.id}>
-          <div className="mainBodyListElementWrapper">
-            <div className="pageBreak" />
-            <div className="mainBodyListElement">
+          <div className="h5p-topic-map-notes-list-element-wrapper">
+            <div className="h5p-topic-map-notes-list-page-break" />
+            <div className="h5p-topic-map-notes-list-element">
               <IconCircle
                 buttonState={
                   doesNoteExist && isNoteDone
@@ -45,9 +45,9 @@ export const NotesList: React.FC<NotesListProps> = ({
                 strokeWidth={undefined}
               />
               <div>
-                <p className="mainBodyListElementHeader">{item.label}</p>
+                <p className="h5p-topic-map-notes-list-element-header">{item.label}</p>
                 <div
-                  className="mainBodyListElementContent"
+                  className="h5p-topic-map-notes-list-element-content"
                   dangerouslySetInnerHTML={{ __html: noteContent }}
                 />
               </div>
@@ -59,9 +59,9 @@ export const NotesList: React.FC<NotesListProps> = ({
   });
 
   return (
-    <div className="notesListMainBody">
-      <div className="mainBodyContent">
-        <div className="mainBodyHeaderForPrint">
+    <div className="h5p-topic-map-notes-list">
+      <div className="h5p-topic-map-notes-list-content">
+        <div className="h5p-topic-map-notes-list-header-for-print">
           <p>{navbarTitle}</p>
         </div>
         {userDataEntries}

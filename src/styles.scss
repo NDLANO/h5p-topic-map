@@ -13,6 +13,7 @@
   --icon-fontawesome-left-aligned: "\f036";
   --icon-h5ptheme-enter-fullscreen: "\e915";
   --icon-h5ptheme-exit-fullscreen: "\e914";
+  --icon-h5ptheme-x-close: "\e910";
 
   background-color: var(--theme-color-1);
   container-name: h5p-topic-map;
@@ -20,6 +21,7 @@
   font-family: sans-serif;
   font-size: 1rem;
 
+  /* TODO: Add these to classes where required */
   &,
   *,
   *::before,
@@ -27,6 +29,7 @@
     box-sizing: border-box;
   }
 
+  /* TODO: Add these to classes where required */
   button,
   input,
   option,
@@ -37,7 +40,7 @@
   }
 }
 
-.theme-1 {
+.h5p-topic-map-theme-1 {
   --theme-color-1: #2f4050;
   --theme-color-2: #40586f;
   --theme-color-3: #567B95;
@@ -45,7 +48,7 @@
   --theme-color-5: #DAE2EC;
 }
 
-.theme-2 {
+.h5p-topic-map-theme-2 {
   --theme-color-1: #2f5050;
   --theme-color-2: #3d6060;
   --theme-color-3: #4E7E7E;
@@ -53,7 +56,7 @@
   --theme-color-5: #CBE7E7;
 }
 
-.theme-3 {
+.h5p-topic-map-theme-3 {
   --theme-color-1: #7a1719;
   --theme-color-2: #981b1e;
   --theme-color-3: #D7282A;
@@ -61,10 +64,84 @@
   --theme-color-5: #FBDADA;
 }
 
-.theme-4 {
+.h5p-topic-map-theme-4 {
   --theme-color-1: #131516;
   --theme-color-2: #373d3f;
   --theme-color-3: #6B777B;
   --theme-color-4: #C0C4C8;
   --theme-color-5: #DFE2E2;
+}
+
+.h5p-topic-map-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0,0,0,.7);
+  z-index: var(--overlay-z-index);
+}
+
+.h5p-topic-map-modal-content,
+.h5p-topic-map-dialog-content,
+.h5p-topic-map-dialog-content-wide,
+.h5p-topic-map-dialog-content-small-screen,
+.h5p-topic-map-confirm-window-content,
+.h5p-topic-map-notes-section-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 0.375rem;
+  height: 80vh;
+  width: 90vw;
+  padding: 0;
+  z-index: var(--dialog-z-index);
+}
+
+.h5p-topic-map-modal-wrapper,
+.h5p-topic-map-modal-wrapper-small-screen {
+  height: 100%;
+  overflow-y: auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+.h5p-topic-map-modal-close-button {
+  aspect-ratio: 1;
+  background-color: #ebebeb;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 1em 0 rgba(0,0,0,.2);
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  padding: 0;
+  position: fixed;
+  right: -1rem;
+  top: -1rem;
+  width: 2rem;
+
+  &::before {
+    content: var(--icon-h5ptheme-x-close);
+    font-family: "h5p-theme", sans-serif;
+    font-size: 1rem;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover {
+    background-color: #d6d6d6;
+  }
+}
+
+.h5p-topic-map-visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
 }

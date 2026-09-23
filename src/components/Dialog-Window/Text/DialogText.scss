@@ -1,31 +1,29 @@
-.dialogText {
+.h5p-topic-map-dialog-text {
   display: flex;
   flex-direction: column;
   line-height: 1.6;
 }
 
-.copyright {
+.h5p-topic-map-dialog-copyright {
   margin-top: 0.5em;
   margin-bottom: 1em;
 }
 
-.bodyText {
+.h5p-topic-map-dialog-text-body {
   margin-bottom: 1em;
 }
 
-.introduction {
+.h5p-topic-map-dialog-text-introduction {
   font-weight: 600;
 }
 
-// Scoped under .dialogText so it does not leak onto TopicMapItem's
-// same-named .description element.
-.dialogText .description {
+.h5p-topic-map-dialog-text .h5p-topic-map-dialog-text-description {
   font-weight: 700;
   margin: 0;
   padding-bottom: 1rem;
 }
 
-.topicImage {
+.h5p-topic-map-dialog-text-image {
   width: 100%;
   height: auto;
 }

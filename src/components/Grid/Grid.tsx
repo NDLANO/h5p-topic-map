@@ -153,7 +153,7 @@ export const Grid: React.FC<GridProps> = ({
         <div
           key={item.id}
           id={item.id}
-          className="itemWrapper"
+          className="h5p-topic-map-grid-item-wrapper"
           style={{
             left: `${item.xPercentagePosition}%`,
             top: `${item.yPercentagePosition}%`,
@@ -183,8 +183,8 @@ export const Grid: React.FC<GridProps> = ({
   const gridWrapperClasses = React.useCallback(
     () =>
       [
-        'gridWrapper',
-        H5P?.isFullscreen ? 'gridWrapperFullscreen' : undefined,
+        'h5p-topic-map-grid-wrapper',
+        H5P?.isFullscreen ? 'h5p-topic-map-grid-wrapper-fullscreen' : undefined,
       ]
         .filter(Boolean)
         .join(' '),
@@ -198,7 +198,7 @@ export const Grid: React.FC<GridProps> = ({
         backgroundImage: bgImageStyle,
       }}
     >
-      <div className="grid" ref={gridContainerRef}>
+      <div className="h5p-topic-map-grid" ref={gridContainerRef}>
         {allMapItems}
       </div>
     </div>

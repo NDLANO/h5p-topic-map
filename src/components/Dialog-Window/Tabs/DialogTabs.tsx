@@ -55,28 +55,28 @@ const tabLabelItems = (
 
   if (hasText) {
     items.push(
-      <Trigger key="Text" value="Text" className="trigger">
+      <Trigger key="Text" value="Text" className="h5p-topic-map-dialog-tab">
         {translation.text}
       </Trigger>,
     );
   }
   if (hasLinks) {
     items.push(
-      <Trigger key="links" className="trigger" value="Resources">
+      <Trigger key="links" className="h5p-topic-map-dialog-tab" value="Resources">
         {translation.links}
       </Trigger>,
     );
   }
   if (hasVideo) {
     items.push(
-      <Trigger key="video" className="trigger" value="Video">
+      <Trigger key="video" className="h5p-topic-map-dialog-tab" value="Video">
         {translation.video}
       </Trigger>,
     );
   }
   if (hasAudio) {
     items.push(
-      <Trigger key="audio" className="trigger" value="Audio">
+      <Trigger key="audio" className="h5p-topic-map-dialog-tab" value="Audio">
         {translation.audio}
       </Trigger>,
     );
@@ -224,30 +224,31 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
 
   return (
     <Root
-      className="tabs"
+      className="h5p-topic-map-dialog-tabs"
       defaultValue={defaultTabValue(item)}
       orientation="horizontal"
     >
       {showTabs && (
         <List
-          className="list"
+          className="h5p-topic-map-dialog-tab-list"
           aria-label={t('dialogTabListAriaLabel')}
         >
           {tabLabelItems(dialogContentInfo, translation)}
           {showNote ? (
-            <Trigger key="notes" className="trigger" value="notes">
+            <Trigger key="notes" className="h5p-topic-map-dialog-tab" value="notes">
               {t('dialogNoteLabel')}
             </Trigger>
           ) : null}
         </List>
       )}
       <div
-        className={`tabItemWrapper ${!showTabs ? 'marginTop' : ''
-        }`}
+        className={`h5p-topic-map-dialog-content-wrapper ${!showTabs
+          ? 'h5p-topic-map-dialog-content-wrapper-no-tabs'
+          : ''}`}
       >
         {dialogContent(dialogContentInfo, item, showTabs)}
         {showNote && (showTabs ? (
-          <Content key="notes" value="notes" className="noteWrapperTab">
+          <Content key="notes" value="notes" className="h5p-topic-map-dialog-tab-note">
             {dialogNote}
           </Content>) : (
           dialogNote

@@ -1,73 +1,48 @@
-@use "./../../abstracts/mixins" as *;
-
-.overlay {
-  @include modal-overlay;
-}
-
-.closeButton {
-  @include modal-close-button;
-}
-
-.contentWrapper {
-  @include modal-wrapper;
-}
-
-.contentWrapperSmallScreen {
-  @include modal-wrapper;
+.h5p-topic-map-modal-wrapper-small-screen {
   display: flex;
   flex-direction: column;
 }
 
-.dialogContent,
-.dialogContentWide,
-.dialogContentSmallScreen {
-  @include modal-content;
-}
-
-.dialogContent {
+.h5p-topic-map-dialog-content {
   width: 40vw;
 }
 
-.dialogContentWide {
+.h5p-topic-map-dialog-content-wide {
   width: 70vw;
 }
 
-.dialogContentSmallScreen {
+.h5p-topic-map-dialog-content-small-screen {
   width: 90vw;
 }
 
-.tabWrapper {
+.h5p-topic-map-dialog-tab-wrapper {
   width: 47%;
   display: inline-block;
   height: 90%;
 }
 
-.noteWrapper {
+.h5p-topic-map-dialog-note-wrapper {
   float: right;
   width: 47%;
   height: 90%;
 
-  &.fullWidth {
+  &.h5p-topic-map-dialog-note-wrapper-full-width {
     float: left;
     width: 100%;
   }
 }
 
-.dialogContent:focus,
-.dialogContentWide:focus {
+.h5p-topic-map-dialog-content:focus,
+.h5p-topic-map-dialog-content-wide:focus {
   outline: none;
 }
 
-.dialogTitle {
+.h5p-topic-map-modal-title {
   margin: 0;
   font-weight: bold;
   color: black;
   font-size: 1.25rem;
   line-height: 1.2;
-}
-
-.visuallyHidden {
-  @include visually-hidden;
 }
 
 @keyframes show-overlay {

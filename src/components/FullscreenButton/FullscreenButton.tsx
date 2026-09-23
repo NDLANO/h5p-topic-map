@@ -20,14 +20,9 @@ export const FullscreenButton: React.FC = () => {
     }, 300); // Some devices don't register user gesture before call to to requestFullscreen
   };
 
-  /*
-   * Instead of adding an SVG, use a pseudo before element on .fullscreenButton, visually centered,
-   * using font-family: "h5p-theme" and content: "" when not in fullscreen mode and
-   * content: "" when in fullscreen mode
-   */
   return (
     <button
-      className="fullscreenButton"
+      className="h5p-topic-map-fullscreen-button"
       type="button"
       aria-label={isFullscreen ? fullscreenButtonLabelExit : fullscreenButtonLabelEnter}
       onClick={handleFullscreen}

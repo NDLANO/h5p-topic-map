@@ -1,16 +1,16 @@
-.li {
+.h5p-topic-map-dialog-resource-list-item {
   a {
     color: rgba(31, 103, 199, 1);
     margin-right: 0.5rem;
   }
 }
 
-.ul {
+.h5p-topic-map-dialog-resource-list {
   list-style: disc outside;
   padding: 0 0 0.25em 2.5em;
 }
 
-.removeButton {
+.h5p-topic-map-dialog-resource-remove-button {
   background: none;
   border: none;
   border-radius: 2rem;
@@ -19,25 +19,27 @@
   position: relative;
   top: 0.2rem;
 
+  &::before {
+    content: var(--icon-h5ptheme-x-close);
+    font-family: "h5p-theme", sans-serif;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   &:hover {
     background-color: #eee;
   }
-
-  svg {
-    display: block;
-    margin: auto;
-    height: 1.2rem;
-    width: 1.2rem;
-  }
 }
 
-.inputContainer {
+.h5p-topic-map-dialog-resource-input-container {
   display: flex;
   margin-bottom: 1rem;
   max-width: 19.5rem;
 }
 
-.input {
+.h5p-topic-map-dialog-resource-url-input {
   flex-grow: 1;
   border: 2px solid #eee;
   border-radius: 0.25rem 0 0 0.25rem;
@@ -49,7 +51,7 @@
   }
 }
 
-.inputButton {
+.h5p-topic-map-dialog-resource-add-button {
   padding: 0 1rem;
   background-color: #eee;
   border: none;

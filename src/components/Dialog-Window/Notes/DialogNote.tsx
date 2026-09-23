@@ -206,15 +206,21 @@ export const DialogNote: React.FC<NoteProps> = ({
 
   return (
     <form>
-      <div className="topGroup">
+      <div className="h5p-topic-map-dialog-note-top-group">
         <label htmlFor={noteTextareaID}>
-          <p className={!smallScreen ? 'noteLabel' : 'visuallyHidden'}>{t('dialogNoteLabel')}</p>
+          <p
+            className={!smallScreen ? 'h5p-topic-map-dialog-note-label' : 'h5p-topic-map-visually-hidden'}
+          >{t('dialogNoteLabel')}</p>
         </label>
-        <p className="dynamicSavingText">{dynamicSavingText}</p>
+        <p className="h5p-topic-map-dialog-note-saving-text">{dynamicSavingText}</p>
       </div>
-      <div className={`textAreaWrapper ${maxLengthExceeded ? 'lengthExceeded' : ''}`}>
+      <div
+        className={`h5p-topic-map-dialog-note-textarea-wrapper ${maxLengthExceeded
+          ? 'h5p-topic-map-dialog-note-textarea-wrapper-length-exceeded'
+          : ''}`}
+      >
         <textarea
-          className="textArea"
+          className="h5p-topic-map-dialog-note-textarea"
           id={noteTextareaID}
           ref={textAreaRef}
           aria-describedby={maxLength ? noteTextareaDescriptionID : undefined}
@@ -226,18 +232,18 @@ export const DialogNote: React.FC<NoteProps> = ({
         />
         <div
           ref={mirroredTextareaWrapperRef}
-          className="textareaMirrorWrapper"
+          className="h5p-topic-map-dialog-note-textarea-mirror-wrapper"
         >
           <div
             ref={mirroredTextareaRef}
-            className="textareaMirror"
+            className="h5p-topic-map-dialog-note-textarea-mirror"
           />
         </div>
         {maxLength && (
-          <span id={noteTextareaDescriptionID} className="visuallyHidden">{textareaDescription}</span>
+          <span id={noteTextareaDescriptionID} className="h5p-topic-map-visually-hidden">{textareaDescription}</span>
         )}
-        <div className="bottomGroup">
-          <div className="markAsDoneCheckbox">
+        <div className="h5p-topic-map-dialog-note-bottom-group">
+          <div className="h5p-topic-map-dialog-note-mark-as-done-checkbox">
             <label htmlFor={noteCheckboxID}>
               <input
                 id={noteCheckboxID}
@@ -249,15 +255,19 @@ export const DialogNote: React.FC<NoteProps> = ({
             </label>
           </div>
           {maxLength && (
-            <div className={`counter ${maxLengthExceeded ? 'redText' : ''}`}>
+            <div
+              className={`h5p-topic-map-dialog-note-character-counter ${maxLengthExceeded
+                ? 'h5p-topic-map-dialog-note-character-counter-exceeded'
+                : ''}`}
+            >
               <span data-testid={`testId-note-characterCount_${id}`} aria-hidden="true">{characterCount}</span>
               <span aria-hidden="true"> / </span>
               <span data-testid={`testId-note-maximum_${id}`} aria-hidden="true">{maxLength}</span>
-              <span className="visuallyHidden">{characterCountText}</span>
+              <span className="h5p-topic-map-visually-hidden">{characterCountText}</span>
             </div>
           )}
         </div>
-        <div aria-live="polite" className="visuallyHidden">
+        <div aria-live="polite" className="h5p-topic-map-visually-hidden">
           {maxLengthExceeded ? t('dialogNoteLimitExceeded') : ''}
         </div>
       </div>
