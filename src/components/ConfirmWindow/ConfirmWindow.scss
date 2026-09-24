@@ -62,15 +62,6 @@
   margin: 1rem 0 0;
 }
 
-@keyframes show-overlay {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes show-dialog {
   from {
     opacity: 0;

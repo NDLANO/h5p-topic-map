@@ -1,7 +1,6 @@
 import type { H5PField } from 'h5p-types';
 import { ColorTheme } from '../types/ColorTheme';
-import { defaultTranslations } from '../constants/defaultTranslations';
-import { Params } from '../types/Params';
+import semantics from '../../semantics.json';
 
 export const itemDialog: Array<H5PField> = [
   {
@@ -106,13 +105,50 @@ export const colorThemes: Array<{ label: string; value: string }> =
 
 export const defaultTheme = ColorTheme.Blue;
 
-export const getEmptyParams = (): Required<Params> => {
-  return {
-    topicMap: {
-      topicMapItems: [],
-      colorTheme: defaultTheme,
-    },
-    behaviour: null,
-    l10n: defaultTranslations,
-  };
+type SemanticsEntry = {
+  name?: unknown;
+  default?: unknown;
+  type?: unknown;
+  fields?: SemanticsEntry[];
+};
+
+/**
+ * Get default values from semantics fields.
+ * @param start Start semantics field.
+ * @returns Default values from semantics.
+ */
+export const getSemanticsDefaults = (
+  start: SemanticsEntry[] = semantics as SemanticsEntry[],
+): Record<string, unknown> => {
+  const defaults: Record<string, unknown> = {};
+
+  if (!Array.isArray(start)) {
+    return defaults; // Must be array, root or list
+  }
+
+  start.forEach((entry) => {
+    if (typeof entry.name !== 'string') {
+      return;
+    }
+
+    if (typeof entry.default !== 'undefined') {
+      defaults[entry.name] = entry.default;
+    }
+    if (entry.type === 'list') {
+      defaults[entry.name] = []; // Does not set defaults within list items!
+    }
+    else if (entry.type === 'group' && entry.fields) {
+      const groupDefaults = getSemanticsDefaults(entry.fields);
+      // Workaround for H5P core treating groups with one child as the
+      // child itself
+      if (Object.keys(groupDefaults).length === 1) {
+        defaults[entry.name] = Object.values(groupDefaults)[0];
+      }
+      else if (Object.keys(groupDefaults).length > 1) {
+        defaults[entry.name] = groupDefaults;
+      }
+    }
+  });
+
+  return defaults;
 };
