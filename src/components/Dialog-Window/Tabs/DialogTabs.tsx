@@ -10,7 +10,7 @@ import { DialogText } from '../Text/DialogText';
 import { DialogVideo } from '../Video/DialogVideo';
 import './DialogTabs.scss';
 
-export type TabProps = {
+type TabProps = {
   item: CommonItemType;
 };
 

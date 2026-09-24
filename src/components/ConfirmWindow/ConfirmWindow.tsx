@@ -14,7 +14,7 @@ import { useTranslation } from '../../hooks/useTranslation';
 import './ConfirmWindow.scss';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 
-export type ConfirmWindowProps = {
+type ConfirmWindowProps = {
   title: string;
   confirmWindow: {
     confirmAction: () => void;

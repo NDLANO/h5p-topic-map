@@ -18,7 +18,7 @@ export const H5P = window.H5P;
  */
 export const H5PIntegration = window.H5PIntegration;
 
-export const normalizeAssetPath = (path: string, contentId: string): string => {
+const normalizeAssetPath = (path: string, contentId: string): string => {
   const pathAlreadyAbsolute =
     path.startsWith('http://') || path.startsWith('https://');
 
@@ -34,7 +34,7 @@ export const normalizeAssetPath = (path: string, contentId: string): string => {
  * @param items An array with Topic Map Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
-export const makeBackgroundImagePathsAbsolute = (
+const makeBackgroundImagePathsAbsolute = (
   items: Array<TopicMapItemType> | undefined,
   contentId: string,
 ): Array<TopicMapItemType> | undefined => {
@@ -59,7 +59,7 @@ export const makeBackgroundImagePathsAbsolute = (
  * @param items An array with Arrow Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
-export const makeArrowImagePathsAbsolute = (
+const makeArrowImagePathsAbsolute = (
   items: Array<ArrowItemType> | undefined,
   contentId: string,
 ): Array<ArrowItemType> | undefined => {
@@ -188,7 +188,7 @@ export const normalizeSizes = (params: Required<Params>): Required<Params> => {
  * @param items An array with Audio Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
-export const makeAudioPathsAbsolute = (
+const makeAudioPathsAbsolute = (
   items: Array<H5PAudio> | undefined,
   contentId: string,
 ): Array<H5PAudio> | undefined => {
@@ -210,7 +210,7 @@ export const makeAudioPathsAbsolute = (
  * @param items An array with Topic Map Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
-export const makeDialogAudioPathsAbsolute = (
+const makeDialogAudioPathsAbsolute = (
   items: Array<TopicMapItemType> | undefined,
   contentId: string,
 ): Array<TopicMapItemType> | undefined => {
@@ -264,7 +264,7 @@ export const normalizeDialogAudioPaths = <Type extends Params>(
  * @param items An array with Arrow Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
-export const makeArrowDialogAudioPathsAbsolute = (
+const makeArrowDialogAudioPathsAbsolute = (
   items: Array<ArrowItemType> | undefined,
   contentId: string,
 ): Array<ArrowItemType> | undefined => {

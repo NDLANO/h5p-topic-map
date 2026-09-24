@@ -3,7 +3,7 @@ import type { EventDispatcher, XAPIDefinition, XAPIVerb } from 'h5p-types';
 /**
  * Get the xAPI definition for the xAPI object
  */
-export const getxAPIDefinition = (): XAPIDefinition => {
+const getxAPIDefinition = (): XAPIDefinition => {
   const definition: XAPIDefinition = {
     name: {
       'en-US': 'Name',

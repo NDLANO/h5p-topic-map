@@ -13,7 +13,7 @@ import { Portal as DialogPortal, Root as DialogRoot, Trigger as DialogTrigger } 
 import { DialogWindow } from '../Dialog-Window/DialogWindow';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 
-export type TopicMapItemProps = {
+type TopicMapItemProps = {
   item: TopicMapItemType;
   strokeWidth: number;
 };

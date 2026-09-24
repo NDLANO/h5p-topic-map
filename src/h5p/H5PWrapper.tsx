@@ -28,6 +28,8 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
   public contentId: string;
 
+  public isVisible: boolean;
+
   public params: Required<Params>;
 
   public extras: H5PExtras | undefined;
@@ -55,6 +57,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     this.l10n = sanitizeRecord({ ...defaultTranslations, ...params.l10n });
     this.extras = extras;
     this.title = extras?.metadata.title;
+    this.isVisible = false;
 
     this.on('enterFullScreen', () => {
       setTimeout(() => {
@@ -147,6 +150,8 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     void callOnceVisible(this.containerElement, () => {
       window.requestAnimationFrame(() => {
         this.trigger('resize');
+        this.isVisible = true;
+        this.trigger('visible');
       });
     }, {
       root: document.documentElement,

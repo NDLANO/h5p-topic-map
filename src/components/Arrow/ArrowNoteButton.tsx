@@ -4,7 +4,7 @@ import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { Position } from '../../types/Position';
 import { IconCircle } from '../IconCircle/IconCircle';
 
-export type ArrowNoteButtonProps = {
+type ArrowNoteButtonProps = {
   buttonState: NoteButtonIconState;
   position: Position;
   strokeWidth: number;

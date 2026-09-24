@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ReactNode } from 'react';
 import './NavigationBar.scss';
 
-export type NavigationBarProps = {
+type NavigationBarProps = {
   navbarTitle: string;
   onHeightChange: (height: number) => void;
   children?: ReactNode;

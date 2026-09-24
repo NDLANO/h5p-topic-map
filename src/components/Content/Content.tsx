@@ -13,7 +13,7 @@ import { NavigationBar } from './NavigationBar/NavigationBar';
 import { NotesSection } from './NotesSection/NotesSection';
 import { H5P } from '../../h5p/H5P.util';
 
-export type ContentProps = {
+type ContentProps = {
   navbarTitle: string;
   params: Params;
 };

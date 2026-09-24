@@ -15,7 +15,7 @@ import { Portal as DialogPortal, Root as DialogRoot, Trigger as DialogTrigger } 
 import { DialogWindow } from '../Dialog-Window/DialogWindow';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 
-export type ArrowProps = {
+type ArrowProps = {
   item: ArrowItemType;
   descriptiveText: string;
   strokeWidth: number;

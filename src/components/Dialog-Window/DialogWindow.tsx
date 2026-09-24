@@ -14,7 +14,7 @@ import './DialogWindow.scss';
 import { DialogNote } from './Notes/DialogNote';
 import { DialogTabs } from './Tabs/DialogTabs';
 
-export type DialogWindowProps = {
+type DialogWindowProps = {
   item: CommonItemType;
 };
 
