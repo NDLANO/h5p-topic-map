@@ -8,38 +8,36 @@ First install dependencies:
 npm install
 ```
 
-To run in hot module reloading mode:
-
-```sh
-npm start
-```
-
 To create a production build:
 
 ```sh
-npm run build:prod
+npm run build
 ```
 
 To create a development build:
 
 ```sh
-npm run build:dev
+npm run watch
 ```
 
 ## Semantics
 
 When adding new fields to H5P's `semantics.json`, never change `semantics.json` itself, but rather update `./src/semantics.ts` and run `npm run generate-semantics` afterwards. This ensures strict typing of semantics.
 
-## Running
+## Linting
 
-Open the file `dist/index.html` in your browser
+To lint the code:
+
+```sh
+npm run lint
+```
 
 ## Testing
 
 To run unit tests:
 
 ```sh
-npm test
+npm run test
 ```
 
 ## Credits
