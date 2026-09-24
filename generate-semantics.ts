@@ -30,13 +30,13 @@ async function createTranslationKeys(): Promise<void> {
   const translationKeysString = translationKeys.join('"\n  | "');
 
   const textContent = `// --------- ⚠️  WARNING  ⚠️ ---------
-// This file is generated from the values within \`semantics.json\`'s l10n group. 
+// This file is generated from the values within \`semantics.json\`'s l10n group.
 // Do not change it manually, but rather change \`semantics.ts\` and run
 // \`npm run generate-semantics\`.
 // -----------------------------------
 
 export type TranslationKey =
-  | "${translationKeysString}";
+  | '${translationKeysString}';
 `;
 
   await fs.promises.writeFile(translationKeyPath, textContent);
