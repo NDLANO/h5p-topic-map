@@ -11,12 +11,12 @@ export const IconCircle: React.FC<IconCircleProps> = ({
   buttonState,
   strokeWidth,
 }): React.ReactElement => {
-  let iconClass = 'h5p-topic-map-icon-circle-edit';
+  let iconClass = 'edit';
   if (buttonState === NoteButtonIconState.Done) {
-    iconClass = 'h5p-topic-map-icon-circle-done';
+    iconClass = 'done';
   }
   else if (buttonState === NoteButtonIconState.Notes || buttonState === NoteButtonIconState.Text) {
-    iconClass = 'h5p-topic-map-icon-circle-note';
+    iconClass = 'note';
   }
 
   const className = `h5p-topic-map-icon-circle ${iconClass}`;

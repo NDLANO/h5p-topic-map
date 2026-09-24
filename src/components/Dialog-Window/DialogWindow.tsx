@@ -43,13 +43,13 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
   const hasNote = item.dialog?.hasNote;
 
   let content = smallScreen ? (
-    <DialogContent aria-modal="true" className="h5p-topic-map-dialog-content-small-screen">
+    <DialogContent aria-modal="true" className="h5p-topic-map-dialog-content small-screen">
       <DialogDescription className="h5p-topic-map-visually-hidden" aria-hidden="true" />
-      <div className="h5p-topic-map-modal-wrapper-small-screen">
+      <div className="h5p-topic-map-modal-wrapper small-screen">
         <DialogTitle className="h5p-topic-map-modal-title">{item.label}</DialogTitle>
         {!noTabItems && <DialogTabs item={item} />}
         {noTabItems && hasNote && (
-          <div className="h5p-topic-map-dialog-note-wrapper h5p-topic-map-dialog-note-wrapper-full-width">
+          <div className="h5p-topic-map-dialog-note-wrapper full-width">
             <DialogNote
               maxLength={item.dialog.maxLength}
               id={item.id}
@@ -76,7 +76,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
     content = (
       <DialogContent
         aria-modal="true"
-        className={noTabItems ? 'h5p-topic-map-dialog-content' : 'h5p-topic-map-dialog-content-wide'}
+        className={`h5p-topic-map-dialog-content ${noTabItems ? '' : 'wide'}`}
       >
         <DialogDescription className="h5p-topic-map-visually-hidden" aria-hidden="true" />
         <div className="h5p-topic-map-modal-wrapper">
@@ -88,7 +88,7 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
           )}
           <div
             className={
-              `h5p-topic-map-dialog-note-wrapper ${noTabItems ? 'h5p-topic-map-dialog-note-wrapper-full-width' : ''}`
+              `h5p-topic-map-dialog-note-wrapper ${noTabItems ? 'full-width' : ''}`
             }
           >
             <DialogNote

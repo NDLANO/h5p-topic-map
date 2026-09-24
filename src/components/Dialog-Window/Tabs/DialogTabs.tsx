@@ -243,7 +243,7 @@ export const DialogTabs: React.FC<TabProps> = ({ item }) => {
       )}
       <div
         className={`h5p-topic-map-dialog-content-wrapper ${!showTabs
-          ? 'h5p-topic-map-dialog-content-wrapper-no-tabs'
+          ? 'no-tabs'
           : ''}`}
       >
         {dialogContent(dialogContentInfo, item, showTabs)}

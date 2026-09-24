@@ -28,15 +28,15 @@
     transform: translate(-50%, -50%);
   }
 
-  &.h5p-topic-map-icon-circle-edit::before {
+  &.edit::before {
     content: var(--icon-fontawesome-edit);
   }
 
-  &.h5p-topic-map-icon-circle-note::before {
+  &.note::before {
     content: var(--icon-fontawesome-left-aligned);
   }
 
-  &.h5p-topic-map-icon-circle-done::before {
+  &.done::before {
     content: var(--icon-fontawesome-check);
   }
 }
