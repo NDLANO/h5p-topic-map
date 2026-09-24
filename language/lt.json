@@ -343,10 +343,6 @@
           "default": "Įrašyta"
         },
         {
-          "label": "Viršytas simbolių limito žymėjimas",
-          "default": "Viršytas simbolių limitas"
-        },
-        {
           "label": "Pastabos užpildas",
           "default": "Rašykite savo pastabas čia…"
         },
@@ -382,15 +378,6 @@
         {
           "label": "Viso ekrano mygtuko etiketė - išeiti",
           "default": "Išeiti iš viso ekrano režimo"
-        },
-        {
-          "label": "Navigacijos skirtukų sąrašo etiketė",
-          "description": "Naudojama ekrano skaitytuvų",
-          "default": "Navigacijos juosta"
-        },
-        {
-          "label": "Navigacijos temos žemėlapio skilties etiketė",
-          "default": "Temos žemėlapis"
         },
         {
           "label": "Navigacijos pastabų skilties etiketė",

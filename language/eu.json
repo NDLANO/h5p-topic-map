@@ -343,10 +343,6 @@
           "default": "Gordeta"
         },
         {
-          "label": "Karaktere-muga gaindituaren etiketa",
-          "default": "Karaktere-muga gaindituta"
-        },
-        {
           "label": "Oharraren marka-lekua",
           "default": "Idatzi zure oharrak hemen…"
         },
@@ -382,15 +378,6 @@
         {
           "label": "Pantaila osoaren botoiaren etiketa - irten",
           "default": "Irten pantaila oso modutik"
-        },
-        {
-          "label": "Nabigazio-barren fitxen zerrendaren etiketa",
-          "description": "Irakurle pantailentzat",
-          "default": "Nabigazio-barra"
-        },
-        {
-          "label": "Nabigazio-barren gai-mapen atalaren etiketa",
-          "default": "Gai-mapa"
         },
         {
           "label": "Nabigazio-barren oharraren atalaren etiketa",
