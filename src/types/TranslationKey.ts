@@ -1,48 +1,48 @@
 // --------- ⚠️  WARNING  ⚠️ ---------
-// This file is generated from the values within `semantics.json`'s l10n group. 
+// This file is generated from the values within `semantics.json`'s l10n group.
 // Do not change it manually, but rather change `semantics.ts` and run
 // `npm run generate-semantics`.
 // -----------------------------------
 
 export type TranslationKey =
-  | "closeDialog"
-  | "copyrightAudio"
-  | "copyrightPhoto"
-  | "copyrightVideo"
-  | "dialogNoteSaving"
-  | "dialogNoteSaved"
-  | "dialogNotePlaceholder"
-  | "dialogNoteMarkAsDone"
-  | "dialogResourcesRelevantLinks"
-  | "dialogResourcesCustomLinks"
-  | "dialogResourcesAdd"
-  | "dialogResourcesRemoveLink"
-  | "dialogResourcesUrlLabel"
-  | "fullscreenButtonLabelEnter"
-  | "fullscreenButtonLabelExit"
-  | "navbarNotesSectionLabel"
-  | "dialogResourcesLabel"
-  | "dialogTextLabel"
-  | "dialogNoteLabel"
-  | "dialogTabListAriaLabel"
-  | "navbarNotesSectionTitle"
-  | "navbarNotesSectionBody"
-  | "navbarNotesSectionPrintLabel"
-  | "navbarNotesSectionCopyLabel"
-  | "navbarNotesSectionDeleteLabel"
-  | "navbarNotesMissingNoteLabel"
-  | "deleteNotesConfirmationWindowLabel"
-  | "deleteNotesConfirmLabel"
-  | "deleteNotesDenyLabel"
-  | "progressBarDescriptiveText"
-  | "navbarNotesSectionSubmitAllLabel"
-  | "submitDataConfirmationWindowLabel"
-  | "submitDataConfirmLabel"
-  | "submitDataDenyLabel"
-  | "directionalArrowDescriptiveText"
-  | "biDirectionalArrowDescriptiveText"
-  | "noteStatusDoneDescriptiveText"
-  | "noteStatusStartedDescriptiveText"
-  | "noteStatusDefaultDescriptiveText"
-  | "noteTextareaDescriptiveText"
-  | "noteCharacterCountDescriptiveText";
+  | 'closeDialog'
+  | 'copyrightAudio'
+  | 'copyrightPhoto'
+  | 'copyrightVideo'
+  | 'dialogNoteSaving'
+  | 'dialogNoteSaved'
+  | 'dialogNotePlaceholder'
+  | 'dialogNoteMarkAsDone'
+  | 'dialogResourcesRelevantLinks'
+  | 'dialogResourcesCustomLinks'
+  | 'dialogResourcesAdd'
+  | 'dialogResourcesRemoveLink'
+  | 'dialogResourcesUrlLabel'
+  | 'fullscreenButtonLabelEnter'
+  | 'fullscreenButtonLabelExit'
+  | 'navbarNotesSectionLabel'
+  | 'dialogResourcesLabel'
+  | 'dialogTextLabel'
+  | 'dialogNoteLabel'
+  | 'dialogTabListAriaLabel'
+  | 'navbarNotesSectionTitle'
+  | 'navbarNotesSectionBody'
+  | 'navbarNotesSectionPrintLabel'
+  | 'navbarNotesSectionCopyLabel'
+  | 'navbarNotesSectionDeleteLabel'
+  | 'navbarNotesMissingNoteLabel'
+  | 'deleteNotesConfirmationWindowLabel'
+  | 'deleteNotesConfirmLabel'
+  | 'deleteNotesDenyLabel'
+  | 'progressBarDescriptiveText'
+  | 'navbarNotesSectionSubmitAllLabel'
+  | 'submitDataConfirmationWindowLabel'
+  | 'submitDataConfirmLabel'
+  | 'submitDataDenyLabel'
+  | 'directionalArrowDescriptiveText'
+  | 'biDirectionalArrowDescriptiveText'
+  | 'noteStatusDoneDescriptiveText'
+  | 'noteStatusStartedDescriptiveText'
+  | 'noteStatusDefaultDescriptiveText'
+  | 'noteTextareaDescriptiveText'
+  | 'noteCharacterCountDescriptiveText';
