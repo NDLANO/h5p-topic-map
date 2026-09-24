@@ -1,6 +1,4 @@
-// Minimal stand-in for H5P core's EventDispatcher (h5p-php-library/js/h5p-event-dispatcher.js),
-// needed because content types extend `H5P.EventDispatcher`, which is normally provided by the
-// H5P core runtime and is otherwise unavailable in the jsdom test environment.
+// Minimal H5P core EventDispatcher stand-in (h5p-php-library/js/h5p-event-dispatcher.js), unavailable in jsdom.
 class MockEventDispatcher {
   private listeners: Record<string, Array<(...args: unknown[]) => void>> = {};
 

@@ -40,10 +40,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
   constructor(params: Params, contentId: string, extras?: H5PExtras) {
     super();
 
-    // Defaults are read from semantics.json, the single source of truth,
-    // instead of being duplicated in a constants file. l10n is merged per
-    // key so content authored before a translation key was added keeps
-    // working.
+    // Defaults come from semantics.json (single source of truth); l10n merges per key so older content keeps working.
     const defaults = getSemanticsDefaults();
     let paramsWithFallbacks = {
       ...defaults,
@@ -83,7 +80,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
   }
 
   /**
-   * Workaround for H5P core mutating prototype to inject its isRoot, but ES6 inheritance here.
+   * Workaround for H5P core mutating prototype to inject isRoot, but ES6 inheritance here.
    * @returns {boolean} True, if content type is root. Else false.
    */
   isRoot(): boolean {
@@ -132,11 +129,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
       `h5p-topic-map-theme-${this.params.topicMap?.colorTheme ?? defaultTheme}`,
     );
 
-    // The React tree is rendered exactly once; it is only ever updated
-    // through React's own state. 'resize' is a plain notification that
-    // components subscribe to via stable, single subscriptions. React renders
-    // directly into the H5P container so the content type adds no wrapper
-    // element of its own.
+    // React tree renders once directly into H5P container; 'resize' notifies subscribed components.
     this.root = createRoot(this.containerElement);
     this.root.render(
       <ContentIdContext.Provider value={this.contentId}>
@@ -151,12 +144,8 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
       </ContentIdContext.Provider>,
     );
 
-    // React components require 'resize' once the H5P container is attached
-    // to the DOM. `threshold: 0` instead of `[1]`: the container only needs
-    // to be *partially* visible. A tall container never reaches 100%
-    // intersection in a short viewport/iframe, so `[1]` would keep the
-    // observer silent — and the map blank — until some resize event.
-    void callOnceVisible(this.containerElement, () => {
+    // Fire 'resize' once container is visible.
+    callOnceVisible(this.containerElement, () => {
       window.requestAnimationFrame(() => {
         this.trigger('resize');
         this.isVisible = true;

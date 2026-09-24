@@ -46,8 +46,7 @@ export const Grid: React.FC<GridProps> = ({
     }
   }, [grid]);
 
-  // H5P triggers 'resize' for window resizes and fullscreen changes, so no
-  // window-level listener is needed.
+  // H5P triggers 'resize' for window resizes and fullscreen changes, so no window-level listener is needed.
   const handleResize = React.useCallback((): void => {
     window.requestAnimationFrame(updateStrokeWidth);
   }, [updateStrokeWidth]);
@@ -59,8 +58,7 @@ export const Grid: React.FC<GridProps> = ({
     h5pInstance.on('resize', handleResize);
     const handleVisible = (): void => setVisible(true);
     h5pInstance.on('visible', handleVisible);
-    // The container may already have been visible before this component
-    // mounted and subscribed.
+    // The container may already be visible before this component mounted and subscribed.
     if (h5pInstance.isVisible) {
       setVisible(true);
     }

@@ -4,17 +4,12 @@ import type { Params } from '../types/Params';
 import type { TopicMapItemType } from '../types/TopicMapItemType';
 
 /**
- * The H5P core runtime object.
- *
- * Both properties are global, so both can change.
+ * H5P core runtime object. Both properties are global, so both can change.
  */
 export const H5P = window.H5P;
 
 /**
- * The H5P integration object, injected by H5P core into the global scope.
- *
- * This is **not** part of `window.H5P` — it is a separate global
- * (`window.H5PIntegration`). It is undefined outside an H5P core environment.
+ * H5P integration object injected by H5P core; separate global, undefined outside an H5P core environment.
  */
 export const H5PIntegration = window.H5PIntegration;
 
@@ -29,8 +24,7 @@ const normalizeAssetPath = (path: string, contentId: string): string => {
 };
 
 /**
- * Replace relative paths to image(s) in Topic Map Item(s) with absolute paths
- *
+ * Replace relative paths to image(s) in Topic Map Item(s) with absolute paths.
  * @param items An array with Topic Map Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
@@ -54,8 +48,7 @@ const makeBackgroundImagePathsAbsolute = (
 };
 
 /**
- * Replace relative paths to image(s) in Arrow Item(s) with absolute paths
- *
+ * Replace relative paths to image(s) in Arrow Item(s) with absolute paths.
  * @param items An array with Arrow Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
@@ -146,10 +139,7 @@ export const normalizeGridBackgroundImagePath = <Type extends Params>(
 };
 
 /**
- * It is in the nature of the grid to create sizes that doesn't
- * necessarily fit. Therefore, this function changes the sizes of
- * elements touching the positive edges to fit a 100*100
- * normalized grid.
+ * Grid sizes often don't fit exactly; adjust items touching the edges to fit a 100*100 grid.
  */
 export const normalizeSizes = (params: Required<Params>): Required<Params> => {
   const topicMapItems: Array<TopicMapItemType> | undefined =
@@ -183,8 +173,7 @@ export const normalizeSizes = (params: Required<Params>): Required<Params> => {
 };
 
 /**
- * Replace relative paths to audio(s) in Dialog(s) with absolute paths
- *
+ * Replace relative paths to audio(s) in Dialog(s) with absolute paths.
  * @param items An array with Audio Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
@@ -205,8 +194,7 @@ const makeAudioPathsAbsolute = (
 };
 
 /**
- * Replace relative paths to audio(s) in Topic Map Item(s) with absolute paths
- *
+ * Replace relative paths to audio(s) in Topic Map Item(s) with absolute paths.
  * @param items An array with Topic Map Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
@@ -259,8 +247,7 @@ export const normalizeDialogAudioPaths = <Type extends Params>(
 };
 
 /**
- * Replace relative paths to audio(s) in Arrow Item(s) with absolute paths
- *
+ * Replace relative paths to audio(s) in Arrow Item(s) with absolute paths.
  * @param items An array with Arrow Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */

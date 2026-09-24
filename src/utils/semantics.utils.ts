@@ -139,8 +139,7 @@ export const getSemanticsDefaults = (
     }
     else if (entry.type === 'group' && entry.fields) {
       const groupDefaults = getSemanticsDefaults(entry.fields);
-      // Workaround for H5P core treating groups with one child as the
-      // child itself
+      // Workaround for H5P core treating groups with one child as the child itself
       if (Object.keys(groupDefaults).length === 1) {
         defaults[entry.name] = Object.values(groupDefaults)[0];
       }

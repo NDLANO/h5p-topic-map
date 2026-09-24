@@ -1,8 +1,4 @@
-/**
- * {1} The max- sizes are based on the aspect ratio (100 / 60) of the grid.
- *     (100 / 60) * 100vh = 166.67vh
- *     (60 / 100) * 100vw = 60vw
- */
+/* {1} max- sizes from grid aspect ratio (100/60): (100/60)*100vh = 166.67vh; (60/100)*100vw = 60vw. */
 .h5p-topic-map-grid-wrapper {
   background-blend-mode: soft-light;
   background-color: var(--theme-color-1);

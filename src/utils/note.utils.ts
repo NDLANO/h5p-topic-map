@@ -5,8 +5,7 @@ export const getNoteStateText = (
   state: NoteButtonIconState, 
   t: (key: TranslationKey) => string,
 ): string => {
-  // We add a punctuation mark at the start of the string, to make sure there's
-  // a reading pause before the note status text is read.
+  // Prepend punctuation to force a reading pause before screen readers announce the note status text.
   switch (state) {
     case NoteButtonIconState.Done:
       return `. ${t('noteStatusDoneDescriptiveText')}`;

@@ -15,9 +15,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 }) => {
   const navigationBarRef = React.useRef<HTMLDivElement>(null);
 
-  // Observe the bar itself instead of reading its height during render,
-  // so the height is correct on first paint and stays current when the
-  // bar resizes (e.g. the container-width padding breakpoint).
+  // Observe the bar itself, so its height is correct on first paint and stays current on resize.
   React.useEffect(() => {
     const element = navigationBarRef.current;
     if (!element) {

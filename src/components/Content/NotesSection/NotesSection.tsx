@@ -88,8 +88,7 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
     />
   );
 
-  // Only show the copy button if the browser supports it.
-  // Available only in secure contexts (HTTPS), in some or all supporting browsers.
+  // Only show copy button if the browser supports it (secure contexts only, in some or all supporting browsers).
   const showCopyButton = 'clipboard' in navigator;
 
   return (
