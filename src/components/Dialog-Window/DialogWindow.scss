@@ -16,15 +16,15 @@
 }
 
 .h5p-topic-map-dialog-tab-wrapper {
-  width: 47%;
   display: inline-block;
   height: 90%;
+  width: 47%;
 }
 
 .h5p-topic-map-dialog-note-wrapper {
   float: right;
-  width: 47%;
   height: 90%;
+  width: 47%;
 
   &.full-width {
     float: left;
@@ -37,11 +37,11 @@
 }
 
 .h5p-topic-map-modal-title {
-  margin: 0;
-  font-weight: bold;
   color: black;
   font-size: 1.25rem;
+  font-weight: bold;
   line-height: 1.2;
+  margin: 0;
 }
 
 @keyframes show-overlay {

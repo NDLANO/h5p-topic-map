@@ -27,13 +27,13 @@ form {
 }
 
 .h5p-topic-map-dialog-note-textarea {
-  resize: none;
-  flex-grow: 1;
-  overflow-y: scroll;
   background: transparent;
   caret-color: rgb(0, 0, 0);
   color: transparent;
+  flex-grow: 1;
+  overflow-y: scroll;
   position: relative;
+  resize: none;
 }
 
 .h5p-topic-map-dialog-note-saving-text,
@@ -63,8 +63,8 @@ form {
 
 .h5p-topic-map-dialog-note-saving-text {
   line-height: 1.2;
-  margin-block-start: 0;
   margin-block-end: 0.2rem;
+  margin-block-start: 0;
   min-height: 1.2rem; // Should be equal to line-height
   order: 1;
 }
@@ -105,24 +105,24 @@ form {
 }
 
 .h5p-topic-map-dialog-note-label {
-  line-height: 1.2;
-  margin-block-start: 0.8rem;
-  margin-block-end: 0.2rem;
   font-size: 1rem;
   font-weight: 700;
+  line-height: 1.2;
+  margin-block-end: 0.2rem;
+  margin-block-start: 0.8rem;
   order: 2;
 }
 
 .h5p-topic-map-dialog-note-textarea-mirror-wrapper {
   border-color: transparent;
-  position: absolute;
-  top: 0;
-  left: 0;
   height: 100%;
-  width: 100%;
-  user-select: none;
+  left: 0;
   overflow: hidden;
   pointer-events: none;
+  position: absolute;
+  top: 0;
+  user-select: none;
+  width: 100%;
 }
 
 .h5p-topic-map-dialog-note-textarea-mirror {

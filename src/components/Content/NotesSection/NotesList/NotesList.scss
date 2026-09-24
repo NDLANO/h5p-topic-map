@@ -1,8 +1,8 @@
 .h5p-topic-map-notes-list {
   display: flex;
   height: 100%;
-  width: 100%;
   padding: 1rem 0;
+  width: 100%;
 }
 
 .h5p-topic-map-notes-list-content {
@@ -11,14 +11,14 @@
 
 .h5p-topic-map-notes-list-element-wrapper {
   display: inline-block;
-  width: 100%;
   gap: 1rem;
+  width: 100%;
 }
 
 .h5p-topic-map-notes-list-element {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
   gap: 1rem;
 }
 
@@ -36,14 +36,14 @@
 .h5p-topic-map-notes-list-header-for-print {
   font-size: large;
   font-weight: bold;
-  overflow: hidden;
   height: 0;
+  overflow: hidden;
 }
 
 @media all {
   .h5p-topic-map-notes-list-page-break {
-    overflow: hidden;
     height: 0;
+    overflow: hidden;
   }
 }
 
@@ -60,14 +60,14 @@
 
 @media print {
   .h5p-topic-map-notes-list-page-break {
-    margin-top: 1rem;
     display: block;
+    margin-top: 1rem;
     page-break-before: auto;
   }
 
   .h5p-topic-map-notes-list-header-for-print {
-    overflow: visible;
     height: auto;
+    overflow: visible;
   }
 }
 
