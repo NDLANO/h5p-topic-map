@@ -184,7 +184,7 @@ export const Grid: React.FC<GridProps> = ({
     () =>
       [
         'h5p-topic-map-grid-wrapper',
-        H5P?.isFullscreen ? 'h5p-topic-map-grid-wrapper-fullscreen' : undefined,
+        H5P?.isFullscreen ? 'fullscreen' : undefined,
       ]
         .filter(Boolean)
         .join(' '),

@@ -11,13 +11,14 @@
 }
 
 .h5p-topic-map-dialog-resource-remove-button {
+  aspect-ratio: 1;
   background: none;
   border: none;
   border-radius: 2rem;
   cursor: pointer;
-  padding: 0.25rem;
   position: relative;
-  top: 0.2rem;
+  height: 1rem;
+
 
   &::before {
     content: var(--icon-h5ptheme-x-close);

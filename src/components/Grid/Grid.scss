@@ -15,7 +15,7 @@
   position: relative;
 }
 
-.h5p-topic-map-grid-wrapper-fullscreen {
+.h5p-topic-map-grid-wrapper.fullscreen {
   height: calc(100vh - var(--h5p-topic-map-navigation-bar-height));
   padding-top: 0;
   width: 100vw;

@@ -60,7 +60,7 @@ p.h5p-topic-map-notes-section-main-body-text {
     background-color: var(--theme-color-3);
   }
 
-  &.h5p-topic-map-navigation-bar-notes-button-active {
+  &.active {
     text-decoration: underline;
   }
 }

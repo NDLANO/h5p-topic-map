@@ -78,8 +78,6 @@
 }
 
 .h5p-topic-map-dialog-content,
-.h5p-topic-map-dialog-content-wide,
-.h5p-topic-map-dialog-content-small-screen,
 .h5p-topic-map-confirm-window-content,
 .h5p-topic-map-notes-section-dialog {
   position: absolute;
@@ -94,8 +92,7 @@
   z-index: var(--dialog-z-index);
 }
 
-.h5p-topic-map-modal-wrapper,
-.h5p-topic-map-modal-wrapper-small-screen {
+.h5p-topic-map-modal-wrapper {
   height: 100%;
   overflow-y: auto;
   padding: 2rem;

@@ -1,4 +1,4 @@
-.h5p-topic-map-modal-wrapper-small-screen {
+.h5p-topic-map-modal-wrapper.small-screen {
   display: flex;
   flex-direction: column;
 }
@@ -7,11 +7,11 @@
   width: 40vw;
 }
 
-.h5p-topic-map-dialog-content-wide {
+.h5p-topic-map-dialog-content.wide {
   width: 70vw;
 }
 
-.h5p-topic-map-dialog-content-small-screen {
+.h5p-topic-map-dialog-content.small-screen {
   width: 90vw;
 }
 
@@ -26,14 +26,13 @@
   width: 47%;
   height: 90%;
 
-  &.h5p-topic-map-dialog-note-wrapper-full-width {
+  &.full-width {
     float: left;
     width: 100%;
   }
 }
 
-.h5p-topic-map-dialog-content:focus,
-.h5p-topic-map-dialog-content-wide:focus {
+.h5p-topic-map-dialog-content:focus {
   outline: none;
 }
 

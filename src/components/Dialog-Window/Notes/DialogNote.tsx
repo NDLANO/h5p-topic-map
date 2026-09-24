@@ -216,7 +216,7 @@ export const DialogNote: React.FC<NoteProps> = ({
       </div>
       <div
         className={`h5p-topic-map-dialog-note-textarea-wrapper ${maxLengthExceeded
-          ? 'h5p-topic-map-dialog-note-textarea-wrapper-length-exceeded'
+          ? 'length-exceeded'
           : ''}`}
       >
         <textarea
@@ -257,7 +257,7 @@ export const DialogNote: React.FC<NoteProps> = ({
           {maxLength && (
             <div
               className={`h5p-topic-map-dialog-note-character-counter ${maxLengthExceeded
-                ? 'h5p-topic-map-dialog-note-character-counter-exceeded'
+                ? 'exceeded'
                 : ''}`}
             >
               <span data-testid={`testId-note-characterCount_${id}`} aria-hidden="true">{characterCount}</span>
