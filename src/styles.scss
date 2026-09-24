@@ -21,7 +21,6 @@
   font-family: sans-serif;
   font-size: 1rem;
 
-  /* TODO: Add these to classes where required */
   &,
   *,
   *::before,
@@ -29,7 +28,6 @@
     box-sizing: border-box;
   }
 
-  /* TODO: Add these to classes where required */
   button,
   input,
   option,
@@ -79,7 +77,6 @@
   z-index: var(--overlay-z-index);
 }
 
-.h5p-topic-map-modal-content,
 .h5p-topic-map-dialog-content,
 .h5p-topic-map-dialog-content-wide,
 .h5p-topic-map-dialog-content-small-screen,
