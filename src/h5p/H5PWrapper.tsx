@@ -7,8 +7,7 @@ import { ContentIdContext } from '../contexts/ContentIdContext';
 import { H5PContext } from '../contexts/H5PContext';
 import { Params } from '../types/Params';
 import { callOnceVisible, sanitizeRecord } from '../utils/h5p.utils';
-import { defaultTheme, getEmptyParams } from '../utils/semantics.utils';
-import { defaultTranslations } from '../constants/defaultTranslations';
+import { defaultTheme, getSemanticsDefaults } from '../utils/semantics.utils';
 import {
   H5P,
   normalizeArrowDialogAudioPaths,
@@ -41,10 +40,20 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
   constructor(params: Params, contentId: string, extras?: H5PExtras) {
     super();
 
-    let paramsWithFallbacks: Required<Params> = {
-      ...getEmptyParams(),
+    // Defaults are read from semantics.json, the single source of truth,
+    // instead of being duplicated in a constants file. l10n is merged per
+    // key so content authored before a translation key was added keeps
+    // working.
+    const defaults = getSemanticsDefaults();
+    let paramsWithFallbacks = {
+      ...defaults,
       ...params,
-    };
+      l10n: {
+        ...(defaults.l10n as Record<string, string>),
+        ...params.l10n,
+      },
+    } as Required<Params>;
+
     paramsWithFallbacks = normalizeTopicMapItemPaths(paramsWithFallbacks, contentId);
     paramsWithFallbacks = normalizeArrowItemPaths(paramsWithFallbacks, contentId);
     paramsWithFallbacks = normalizeGridBackgroundImagePath(paramsWithFallbacks, contentId);
@@ -54,7 +63,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
 
     this.contentId = contentId;
     this.params = paramsWithFallbacks;
-    this.l10n = sanitizeRecord({ ...defaultTranslations, ...params.l10n });
+    this.l10n = sanitizeRecord(this.params.l10n);
     this.extras = extras;
     this.title = extras?.metadata.title;
     this.isVisible = false;
