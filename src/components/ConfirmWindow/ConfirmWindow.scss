@@ -3,18 +3,18 @@
 }
 
 .h5p-topic-map-modal-title {
-  margin: 0;
-  font-weight: bold;
   color: black;
   font-size: 1.25rem;
+  font-weight: bold;
   line-height: 1.2;
+  margin: 0;
 }
 
 .h5p-topic-map-confirm-window-content {
   height: auto;
-  width: 52vw;
   max-height: 85vh;
   max-width: 35rem;
+  width: 52vw;
   z-index: var(--confirm-dialog-z-index);
 
   @media (prefers-reduced-motion: no-preference) {
@@ -25,8 +25,8 @@
 .h5p-topic-map-confirm-button,
 .h5p-topic-map-deny-button {
   background-color: #fff;
-  border-radius: 0.25em;
   border: 2px solid var(--theme-color-2);
+  border-radius: 0.25em;
   box-sizing: border-box;
   color: var(--theme-color-2);
   cursor: pointer;
@@ -57,8 +57,8 @@
 .h5p-topic-map-confirmation-buttons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
   gap: 1rem;
+  justify-content: flex-end;
   margin: 1rem 0 0;
 }
 

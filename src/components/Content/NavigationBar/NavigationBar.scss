@@ -1,11 +1,11 @@
 .h5p-topic-map-navigation-bar {
+  align-items: center;
+  background-color: var(--theme-color-2);
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
   justify-content: space-between;
-  align-items: center;
   padding: 0.25rem;
-  background-color: var(--theme-color-2);
 
   .h5p-topic-map-navigation-bar-title {
     background-color: transparent;
@@ -33,11 +33,11 @@
   }
 
   .h5p-topic-map-navigation-bar-progress-bar {
+    align-items: center;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
     gap: 0.3rem;
+    justify-content: center;
     margin-right: 0.5rem;
   }
 
@@ -53,20 +53,20 @@
 
   .h5p-topic-map-navigation-bar-progress-bar-progress[value] {
     /* Reset the default appearance */
-    -webkit-appearance: none;
     -moz-appearance: none;
+    -webkit-appearance: none;
     appearance: none;
+
+    /* For Firefox */
+    background-color: var(--theme-color-1);
+    border-radius: 0.625rem;
 
     /* Get rid of default border in Firefox. */
     border: none;
 
     /* Set dimensions */
-    width: 10rem;
     height: 1.25rem;
-
-    /* For Firefox */
-    background-color: var(--theme-color-1);
-    border-radius: 0.625rem;
+    width: 10rem;
 
     &::-webkit-progress-bar {
       background-color: var(--theme-color-1);

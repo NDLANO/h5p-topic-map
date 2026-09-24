@@ -37,10 +37,10 @@ p.h5p-topic-map-notes-section-main-body-text {
   background-color: var(--theme-color-2);
   border: none;
   border-radius: 1rem;
-  cursor: pointer;
   color: #ffffff;
-  padding: 0.5rem 1rem;
+  cursor: pointer;
   outline-offset: 2px;
+  padding: 0.5rem 1rem;
 
   &:hover {
     background-color: var(--theme-color-3);
@@ -51,8 +51,8 @@ p.h5p-topic-map-notes-section-main-body-text {
   background-color: transparent;
   border: none;
   border-radius: 2rem;
-  cursor: pointer;
   color: #ffffff;
+  cursor: pointer;
   padding: 0.5rem 1rem;
   white-space: nowrap;
 

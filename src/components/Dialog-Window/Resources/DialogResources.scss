@@ -16,8 +16,8 @@
   border: none;
   border-radius: 2rem;
   cursor: pointer;
-  position: relative;
   height: 1rem;
+  position: relative;
 
   &::before {
     content: var(--icon-h5ptheme-x-close);
@@ -40,10 +40,10 @@
 }
 
 .h5p-topic-map-dialog-resource-url-input {
-  flex-grow: 1;
   border: 2px solid #eee;
   border-radius: 0.25rem 0 0 0.25rem;
   box-sizing: border-box;
+  flex-grow: 1;
   padding: 0.5rem;
 
   &:focus {
@@ -52,11 +52,11 @@
 }
 
 .h5p-topic-map-dialog-resource-add-button {
-  padding: 0 1rem;
   background-color: #eee;
   border: none;
   border-radius: 0 0.25rem 0.25rem 0;
   cursor: pointer;
+  padding: 0 1rem;
 
   &:hover {
     background-color: #ddd;
