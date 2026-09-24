@@ -343,10 +343,6 @@
           "default": "Saved"
         },
         {
-          "label": "Character limit exceeded label",
-          "default": "Character limit exceeded"
-        },
-        {
           "label": "Note placeholder",
           "default": "Write your notes here…"
         },
@@ -382,15 +378,6 @@
         {
           "label": "Fullscreen button label - exit",
           "default": "Exit fullscreen mode"
-        },
-        {
-          "label": "Navbar tabs list label",
-          "description": "Used by screen readers",
-          "default": "Navigation bar"
-        },
-        {
-          "label": "Navbar topic map section label",
-          "default": "Topic map"
         },
         {
           "label": "Navbar notes section label",

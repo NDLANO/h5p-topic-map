@@ -343,10 +343,6 @@
           "default": "Lagret"
         },
         {
-          "label": "Tekst som vises når maks antall tegn er overskredet",
-          "default": "Tegngrensen er overskredet"
-        },
-        {
           "label": "Forslagstekst i notatfelt",
           "default": "Skriv notatene dine her…"
         },
@@ -382,15 +378,6 @@
         {
           "label": "Tittel på fullskjerm-knapp - av",
           "default": "Slå av fullskjerm"
-        },
-        {
-          "label": "Navigasjonslinje",
-          "description": "Brukes av skjermlesere",
-          "default": "Navigasjonslinje"
-        },
-        {
-          "label": "Navigasjonslinje-valg: Temakart",
-          "default": "Temakart"
         },
         {
           "label": "Navigasjonslinje-valg: Mine notater",

@@ -343,10 +343,6 @@
           "default": "Gardado"
         },
         {
-          "label": "Etiqueta de límite de caracteres excedido",
-          "default": "Límite de caracteres excedido"
-        },
-        {
           "label": "Marcador de posición de nota",
           "default": "Escribe aquí as túas notas…"
         },
@@ -382,15 +378,6 @@
         {
           "label": "Etiqueta do botón de saída de pantalla completa",
           "default": "Saír de pantalla completa"
-        },
-        {
-          "label": "Etiqueta da lista de pestanas da barra de navegación",
-          "description": "Usado polos lectores de pantalla",
-          "default": "Barra de navegación"
-        },
-        {
-          "label": "Etiqueta da sección do mapa temático da barra de navegación",
-          "default": "Mapa temático"
         },
         {
           "label": "Etiqueta da sección de notas da barra de navegación",

@@ -417,12 +417,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         type: 'text',
       },
       {
-        label: 'Character limit exceeded label',
-        name: 'dialogNoteLimitExceeded',
-        default: 'Character limit exceeded',
-        type: 'text',
-      },
-      {
         label: 'Note placeholder',
         name: 'dialogNotePlaceholder',
         default: 'Write your notes here…',
@@ -475,19 +469,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Fullscreen button label - exit',
         name: 'fullscreenButtonLabelExit',
         default: 'Exit fullscreen mode',
-        type: 'text',
-      },
-      {
-        label: 'Navbar tabs list label',
-        description: 'Used by screen readers',
-        name: 'navbarTabsListAriaLabel',
-        default: 'Navigation bar',
-        type: 'text',
-      },
-      {
-        label: 'Navbar topic map section label',
-        name: 'navbarTopicMapSectionLabel',
-        default: 'Topic map',
         type: 'text',
       },
       {
