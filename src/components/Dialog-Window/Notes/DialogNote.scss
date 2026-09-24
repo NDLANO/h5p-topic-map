@@ -53,12 +53,6 @@ form {
   &:focus-within {
     border: 2px solid #2360c5;
   }
-
-  &.length-exceeded {
-    &:focus-within {
-      border: 2px solid #cd2026;
-    }
-  }
 }
 
 .h5p-topic-map-dialog-note-saving-text {
@@ -98,10 +92,6 @@ form {
 .h5p-topic-map-dialog-note-character-counter {
   vertical-align: middle;
   white-space: nowrap;
-
-  &.exceeded {
-    color: #cd2026;
-  }
 }
 
 .h5p-topic-map-dialog-note-label {

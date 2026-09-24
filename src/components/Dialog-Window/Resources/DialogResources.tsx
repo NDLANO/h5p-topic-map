@@ -7,7 +7,7 @@ import { Link } from '../../../types/Link';
 import { normalizeLinkPath } from '../../../utils/link.utils';
 import './DialogResources.scss';
 
-export type DialogResourceProps = {
+type DialogResourceProps = {
   relevantLinks: Link[] | undefined;
   showAddLinks: boolean;
   id: string;

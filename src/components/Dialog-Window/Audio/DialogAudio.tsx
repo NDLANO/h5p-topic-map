@@ -4,7 +4,7 @@ import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
 import './DialogAudio.scss';
 
-export type DialogAudioProps = {
+type DialogAudioProps = {
   audioTrack: H5PAudio;
   subtext?: string;
 };

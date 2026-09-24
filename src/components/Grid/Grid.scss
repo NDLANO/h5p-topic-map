@@ -13,12 +13,23 @@
   max-width: calc(166.67vh - (var(--h5p-topic-map-navigation-bar-height) * 1.67));
   padding-top: 60%;
   position: relative;
-}
+  transition: opacity 0.1s ease-in;
 
-.h5p-topic-map-grid-wrapper.fullscreen {
-  height: calc(100vh - var(--h5p-topic-map-navigation-bar-height));
-  padding-top: 0;
-  width: 100vw;
+  &:not(.transparent) {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.transparent {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &.fullscreen {
+    height: calc(100vh - var(--h5p-topic-map-navigation-bar-height));
+    padding-top: 0;
+    width: 100vw;
+  }
 }
 
 .h5p-topic-map-grid {

@@ -18,7 +18,7 @@ import { CommonItemType } from '../../../types/CommonItemType';
 import { useReactToPrint } from 'react-to-print';
 import './NotesSection.scss';
 
-export type NotesSectionProps = {
+type NotesSectionProps = {
   confirmSubmitAll: () => void;
   confirmDeletion: () => void;
   onCopy: () => void;

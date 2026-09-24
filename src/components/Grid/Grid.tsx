@@ -15,7 +15,7 @@ export type GridDimensions = {
   numberOfRows: number;
 };
 
-export type GridProps = {
+type GridProps = {
   items: Array<TopicMapItemType>;
   arrowItems: Array<ArrowItemType>;
   backgroundImage: H5PImage | undefined;
@@ -34,6 +34,7 @@ export const Grid: React.FC<GridProps> = ({
   const [strokeWidth, setStrokeWidth] = React.useState(4);
   const [horizontalStrokeWidth, setHorizontalStrokeWidth] =
     React.useState(4);
+  const [visible, setVisible] = React.useState(false);
 
   const updateStrokeWidth = React.useCallback((): void => {
     const gridElement = gridContainerRef.current;
@@ -56,9 +57,17 @@ export const Grid: React.FC<GridProps> = ({
       return;
     }
     h5pInstance.on('resize', handleResize);
+    const handleVisible = (): void => setVisible(true);
+    h5pInstance.on('visible', handleVisible);
+    // The container may already have been visible before this component
+    // mounted and subscribed.
+    if (h5pInstance.isVisible) {
+      setVisible(true);
+    }
     updateStrokeWidth();
     return (): void => {
       h5pInstance.off('resize', handleResize);
+      h5pInstance.off('visible', handleVisible);
     };
   }, [h5pInstance, handleResize, updateStrokeWidth]);
 
@@ -185,10 +194,11 @@ export const Grid: React.FC<GridProps> = ({
       [
         'h5p-topic-map-grid-wrapper',
         H5P?.isFullscreen ? 'fullscreen' : undefined,
+        visible ? undefined : 'transparent',
       ]
         .filter(Boolean)
         .join(' '),
-    [],
+    [visible],
   );
 
   return (

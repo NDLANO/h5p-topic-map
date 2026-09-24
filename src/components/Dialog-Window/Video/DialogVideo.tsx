@@ -6,7 +6,7 @@ import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
 import './DialogVideo.scss';
 
-export type DialogVideoProps = {
+type DialogVideoProps = {
   sources: Array<H5PVideo>;
 };
 

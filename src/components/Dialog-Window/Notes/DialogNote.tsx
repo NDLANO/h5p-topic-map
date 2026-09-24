@@ -7,7 +7,7 @@ import { useH5PInstance } from '../../../hooks/useH5PInstance';
 import { createLinksFromString } from '../../../utils/link.utils';
 import './DialogNote.scss';
 
-export type NoteProps = {
+type NoteProps = {
   maxLength: number | undefined;
   id: string;
   smallScreen?: boolean;
@@ -32,7 +32,6 @@ export const DialogNote: React.FC<NoteProps> = ({
     userData[contentId]?.dialogs[id]?.noteDone ?? false,
   );
   const [characterCount, setCharacterCount] = React.useState(0);
-  const maxLengthExceeded = maxLength ? characterCount > maxLength : false;
   const characterCountText = t('noteCharacterCountDescriptiveText', {
     count: characterCount,
     max: maxLength ?? '',
@@ -214,11 +213,7 @@ export const DialogNote: React.FC<NoteProps> = ({
         </label>
         <p className="h5p-topic-map-dialog-note-saving-text">{dynamicSavingText}</p>
       </div>
-      <div
-        className={`h5p-topic-map-dialog-note-textarea-wrapper ${maxLengthExceeded
-          ? 'length-exceeded'
-          : ''}`}
-      >
+      <div className="h5p-topic-map-dialog-note-textarea-wrapper">
         <textarea
           className="h5p-topic-map-dialog-note-textarea"
           id={noteTextareaID}
@@ -255,20 +250,13 @@ export const DialogNote: React.FC<NoteProps> = ({
             </label>
           </div>
           {maxLength && (
-            <div
-              className={`h5p-topic-map-dialog-note-character-counter ${maxLengthExceeded
-                ? 'exceeded'
-                : ''}`}
-            >
+            <div className="h5p-topic-map-dialog-note-character-counter">
               <span data-testid={`testId-note-characterCount_${id}`} aria-hidden="true">{characterCount}</span>
               <span aria-hidden="true"> / </span>
               <span data-testid={`testId-note-maximum_${id}`} aria-hidden="true">{maxLength}</span>
               <span className="h5p-topic-map-visually-hidden">{characterCountText}</span>
             </div>
           )}
-        </div>
-        <div aria-live="polite" className="h5p-topic-map-visually-hidden">
-          {maxLengthExceeded ? t('dialogNoteLimitExceeded') : ''}
         </div>
       </div>
     </form>

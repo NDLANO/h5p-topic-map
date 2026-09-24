@@ -8,7 +8,7 @@ import { IconCircle } from '../../../IconCircle/IconCircle';
 import { createLinksFromString } from '../../../../utils/link.utils';
 import './NotesList.scss';
 
-export type NotesListProps = {
+type NotesListProps = {
   topicMapItems: CommonItemType[];
   navbarTitle: string;
 };

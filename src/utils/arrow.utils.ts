@@ -3,7 +3,7 @@ import { ArrowType } from '../types/ArrowType';
 import { TopicMapItemType } from '../types/TopicMapItemType';
 import { TranslationKey } from '../types/TranslationKey';
 
-export const findItem = (
+const findItem = (
   id: string,
   items: Array<TopicMapItemType>,
 ): TopicMapItemType | null => {

@@ -4,7 +4,7 @@ import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
 import './DialogText.scss';
 
-export type DialogTextProps = {
+type DialogTextProps = {
   topicImage: H5PImage | undefined;
   introduction: string | undefined;
   bodyText: string | undefined;
