@@ -27,7 +27,7 @@ async function createTranslationKeys(): Promise<void> {
     );
   }
 
-  const translationKeysString = translationKeys.join('"\n  | "');
+  const translationKeysString = translationKeys.join('\'\n  | \'');
 
   const textContent = `// --------- ⚠️  WARNING  ⚠️ ---------
 // This file is generated from the values within \`semantics.json\`'s l10n group.
