@@ -79,9 +79,7 @@ export const DialogNote: React.FC<NoteProps> = ({
   const setSavingText = (): void => {
     setDynamicSavingText(t('dialogNoteSaving'));
 
-    // Cancel any pending save from a previous keystroke so the timeout —
-    // and the xAPI 'answered' event it fires — only runs once the user
-    // stops typing.
+    // Cancel save from previous keystroke so the timeout (and its xAPI 'answered' event) fires only when typing stops.
     if (savingTextTimeout !== undefined) {
       window.clearTimeout(savingTextTimeout);
     }
@@ -178,17 +176,14 @@ export const DialogNote: React.FC<NoteProps> = ({
     mirroredTextareaWrapper.scrollLeft = textArea.scrollLeft;
   };
 
-  // Runs once on mount: the mirror needs to be synced after the textarea
-  // first renders. `textAreaRef` is stable across renders, so it is not
-  // a dependency.
+  // Runs once on mount: sync the mirror after the textarea first renders; stable textAreaRef is not a dependency.
   React.useEffect(() => {
     if (textAreaRef.current) {
       updateMirroredTextarea();
     }
   }, []);
 
-  // Single stable 'resize' subscription; the listener identity never
-  // changes, so it can be cleaned up reliably.
+  // Single stable 'resize' subscription; the listener identity never changes, so it can be cleaned up reliably.
   const handleResize = React.useCallback((): void => {
     window.requestAnimationFrame(resizeMirroredTextarea);
   }, [resizeMirroredTextarea]);

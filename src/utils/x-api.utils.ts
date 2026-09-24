@@ -1,7 +1,7 @@
 import type { EventDispatcher, XAPIDefinition, XAPIVerb } from 'h5p-types';
 
 /**
- * Get the xAPI definition for the xAPI object
+ * Get the xAPI definition for the xAPI object.
  */
 const getxAPIDefinition = (): XAPIDefinition => {
   const definition: XAPIDefinition = {
