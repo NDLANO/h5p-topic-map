@@ -126,13 +126,13 @@ export const DialogResources: React.FC<DialogResourceProps> = ({
     >
       {relevantItems ? (
         <>
-          <p>{t('dialogResourcesRelevantLinks')}:</p>
+          <p className="h5p-topic-map-dialog-resource-category">{t('dialogResourcesRelevantLinks')}:</p>
           <ul className="h5p-topic-map-dialog-resource-list">{relevantItems}</ul>
         </>
       ) : null}
       {showAddLinks ? (
         <>
-          <p>{t('dialogResourcesCustomLinks')}:</p>
+          <p className="h5p-topic-map-dialog-resource-category">{t('dialogResourcesCustomLinks')}:</p>
           <ul className="h5p-topic-map-dialog-resource-list">
             {customLinks.map((item: Link) => (
               <li key={item.id} className="h5p-topic-map-dialog-resource-list-item">

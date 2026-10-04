@@ -34,7 +34,7 @@
 }
 
 .h5p-topic-map-grid-item-wrapper {
-  border-radius: 0.25rem;
+  border-radius: var(--h5p-theme-border-radius-small);
   position: absolute;
   z-index: var(--item-z-index);
 }

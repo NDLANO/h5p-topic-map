@@ -282,6 +282,9 @@
           "label": "Tema de color",
           "options": [
             {
+              "label": "Default"
+            },
+            {
               "label": "Azul"
             },
             {

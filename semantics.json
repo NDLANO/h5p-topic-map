@@ -538,8 +538,12 @@
         "label": "Color theme",
         "name": "colorTheme",
         "type": "select",
-        "default": "1",
+        "default": "0",
         "options": [
+          {
+            "label": "Default",
+            "value": "0"
+          },
           {
             "label": "Blue",
             "value": "1"

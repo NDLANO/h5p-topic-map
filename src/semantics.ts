@@ -336,7 +336,7 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Color theme',
         name: 'colorTheme',
         type: 'select',
-        default: ColorTheme.Blue,
+        default: ColorTheme.Default,
         options: [...colorThemes],
         widget: 'none',
       },

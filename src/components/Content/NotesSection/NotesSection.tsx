@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { H5PIntegration } from '../../../h5p/H5P.util';
+import { H5P, H5PIntegration } from '../../../h5p/H5P.util';
 import { useTranslation } from '../../../hooks/useTranslation';
-import { ConfirmWindow } from '../../ConfirmWindow/ConfirmWindow';
 import {
   Close as DialogClose,
   Content as DialogContent,
@@ -14,9 +13,14 @@ import {
 } from '@radix-ui/react-dialog';
 import { useH5PInstance } from '../../../hooks/useH5PInstance';
 import { NotesList } from './NotesList/NotesList';
+import { H5PButton } from './H5PButton';
 import { CommonItemType } from '../../../types/CommonItemType';
 import { useReactToPrint } from 'react-to-print';
 import './NotesSection.scss';
+
+// The H5P dialog falls back to a generic core body string whenever dialogText
+// is falsy, so a single space renders a blank body instead of that fallback.
+const BLANK_BODY = ' ';
 
 type NotesSectionProps = {
   confirmSubmitAll: () => void;
@@ -58,35 +62,45 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
     onAfterPrint: updateNavbarTitleForPrint,
   });
 
-  const exportAllButtonAndWindow = (
-    <ConfirmWindow
-      title={t('submitDataConfirmationWindowLabel')}
-      confirmWindow={{
-        confirmAction: confirmSubmitAll,
-        confirmText: t('submitDataConfirmLabel'),
-        denyText: t('submitDataDenyLabel'),
-      }}
-      button={{
-        className: 'h5p-topic-map-notes-section-main-body-button',
-        label: exportAllUserDataText,
-      }}
-    />
-  );
+  const showConfirmDialog = ({
+    headerText,
+    confirmText,
+    cancelText,
+    onConfirm,
+  }: {
+    headerText: string;
+    confirmText: string;
+    cancelText: string;
+    onConfirm: () => void;
+  }): void => {
+    const containerElement = h5pInstance?.containerElement;
+    if (!containerElement || !H5P?.ConfirmationDialog) {
+      return;
+    }
 
-  const deleteButtonAndWindow = (
-    <ConfirmWindow
-      title={t('deleteNotesConfirmationWindowLabel')}
-      confirmWindow={{
-        confirmAction: confirmDeletion,
-        confirmText: t('deleteNotesConfirmLabel'),
-        denyText: t('deleteNotesDenyLabel'),
-      }}
-      button={{
-        className: 'h5p-topic-map-notes-section-main-body-button',
-        label: deleteText,
-      }}
-    />
-  );
+    const dialog = new H5P.ConfirmationDialog({
+      instance: h5pInstance,
+      headerText,
+      dialogText: BLANK_BODY,
+      confirmText,
+      cancelText,
+      theme: true,
+    }).appendTo(containerElement);
+
+    // The notes dialog is hidden while the confirmation dialog is shown, then
+    // re-opened once the user confirms or cancels.
+    dialog.on('confirmed', () => {
+      onConfirm();
+      setNotesOpen(true);
+    });
+
+    dialog.on('canceled', () => {
+      setNotesOpen(true);
+    });
+
+    setNotesOpen(false);
+    dialog.show();
+  };
 
   // Only show copy button if the browser supports it (secure contexts only, in some or all supporting browsers).
   const showCopyButton = 'clipboard' in navigator;
@@ -118,26 +132,30 @@ export const NotesSection: React.FC<NotesSectionProps> = ({
                 {t('navbarNotesSectionBody')}
               </DialogDescription>
               <div className="h5p-topic-map-notes-section-main-body-buttons">
-                <button
-                  className="h5p-topic-map-notes-section-main-body-button"
-                  type="button"
-                  onClick={handlePrint}
-                >
-                  {printText}
-                </button>
-                {showCopyButton && (
-                  <button
-                    className="h5p-topic-map-notes-section-main-body-button"
-                    type="button"
-                    onClick={onCopy}
-                  >
-                    {copyText}
-                  </button>
+                <H5PButton icon={'print'} label={printText} onClick={handlePrint} />
+                {showCopyButton && <H5PButton icon={'copy'} label={copyText} onClick={onCopy} />}
+                {H5PIntegration?.reportingIsEnabled && (
+                  <H5PButton
+                    icon={'show-results'}
+                    label={exportAllUserDataText}
+                    onClick={() => showConfirmDialog({
+                      headerText: t('submitDataConfirmationWindowLabel'),
+                      confirmText: t('submitDataConfirmLabel'),
+                      cancelText: t('submitDataDenyLabel'),
+                      onConfirm: confirmSubmitAll,
+                    })}
+                  />
                 )}
-                {H5PIntegration?.reportingIsEnabled ? (
-                  exportAllButtonAndWindow
-                ) : null}
-                {deleteButtonAndWindow}
+                <H5PButton
+                  icon={'delete'}
+                  label={deleteText}
+                  onClick={() => showConfirmDialog({
+                    headerText: t('deleteNotesConfirmationWindowLabel'),
+                    confirmText: t('deleteNotesConfirmLabel'),
+                    cancelText: t('deleteNotesDenyLabel'),
+                    onConfirm: confirmDeletion,
+                  })}
+                />
               </div>
             </div>
             <div

@@ -43,9 +43,9 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
   const hasNote = item.dialog?.hasNote;
 
   let content = smallScreen ? (
-    <DialogContent aria-modal="true" className="h5p-topic-map-dialog-content small-screen">
+    <DialogContent aria-modal="true" className="h5p-topic-map-dialog-content">
       <DialogDescription className="h5p-topic-map-visually-hidden" aria-hidden="true" />
-      <div className="h5p-topic-map-modal-wrapper small-screen">
+      <div className="h5p-topic-map-modal-wrapper">
         <DialogTitle className="h5p-topic-map-modal-title">{item.label}</DialogTitle>
         {!noTabItems && <DialogTabs item={item} />}
         {noTabItems && hasNote && (
@@ -76,25 +76,27 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
     content = (
       <DialogContent
         aria-modal="true"
-        className={`h5p-topic-map-dialog-content ${noTabItems ? '' : 'wide'}`}
+        className={'h5p-topic-map-dialog-content'}
       >
         <DialogDescription className="h5p-topic-map-visually-hidden" aria-hidden="true" />
         <div className="h5p-topic-map-modal-wrapper">
           <DialogTitle className="h5p-topic-map-modal-title">{item.label}</DialogTitle>
-          {!noTabItems && (
-            <div className="h5p-topic-map-dialog-tab-wrapper">
-              <DialogTabs item={item} />
+          <div className="h5p-topic-map-modal-content">
+            {!noTabItems && (
+              <div className="h5p-topic-map-dialog-tab-wrapper">
+                <DialogTabs item={item} />
+              </div>
+            )}
+            <div
+              className={
+                `h5p-topic-map-dialog-note-wrapper ${noTabItems ? 'full-width' : ''}`
+              }
+            >
+              <DialogNote
+                maxLength={item.dialog.maxLength}
+                id={item.id}
+              />
             </div>
-          )}
-          <div
-            className={
-              `h5p-topic-map-dialog-note-wrapper ${noTabItems ? 'full-width' : ''}`
-            }
-          >
-            <DialogNote
-              maxLength={item.dialog.maxLength}
-              id={item.id}
-            />
           </div>
         </div>
         <DialogClose className="h5p-topic-map-modal-close-button" aria-label={ariaLabel}>
