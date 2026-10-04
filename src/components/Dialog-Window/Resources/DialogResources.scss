@@ -9,6 +9,11 @@
     a {
       color: var(--theme-color-2);
       margin-right: var(--h5p-theme-spacing-xxs);
+
+      &:focus-visible {
+        outline: 2px ridge var(--theme-color-1);
+        outline-offset: 2px;
+      }
     }
   }
 
@@ -33,6 +38,11 @@
     &:hover {
       background-color: var(--theme-color-alternative-base);
     }
+
+    &:focus-visible {
+      outline: 2px ridge var(--theme-color-1);
+      outline-offset: 2px;
+    }
   }
 }
 
@@ -50,6 +60,11 @@
   &:focus {
     border-color: var(--theme-color-2);
   }
+
+  &:focus-visible {
+    outline: 2px ridge var(--theme-color-1);
+    outline-offset: 2px;
+  }
 }
 
 .h5p-topic-map-dialog-resource-add-button {
@@ -63,5 +78,10 @@
   &:hover {
     background-color: var(--theme-color-2);
     color: var(--theme-color-base);
+  }
+
+  &:focus-visible {
+    outline: 2px ridge var(--theme-color-1);
+    outline-offset: 2px;
   }
 }

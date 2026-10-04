@@ -63,8 +63,9 @@ p.h5p-topic-map-notes-section-main-body-text {
     background-color: var(--theme-color-3);
   }
 
-  &.active {
-    text-decoration: underline;
+  &:focus-visible {
+    outline: 2px ridge var(--theme-color-4);
+    outline-offset: 2px;
   }
 }
 
