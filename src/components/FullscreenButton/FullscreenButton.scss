@@ -1,15 +1,17 @@
 .h5p-topic-map-fullscreen-button {
   align-items: center;
   aspect-ratio: 1;
+  background-color: var(--theme-color-base);
+  border: none;
   cursor: pointer;
   display: flex;
-  height: max(24px, calc(1.25rem + 0.5rem));
+  height: max(24px, calc(var(--h5p-theme-font-size-xl) + var(--h5p-theme-spacing-xxs)));
   position: relative;
 
   &::before {
-    color: hsl(0, 0%, 0%);
+    color: var(--h5p-theme-text-primary);
     font-family: "h5p-theme", sans-serif;
-    font-size: 1.25rem;
+    font-size: var(--h5p-theme-font-size-xl);
     left: 50%;
     position: absolute;
     top: 50%;

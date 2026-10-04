@@ -1,34 +1,21 @@
-.h5p-topic-map-modal-wrapper.small-screen {
-  display: flex;
-  flex-direction: column;
-}
-
 .h5p-topic-map-dialog-content {
-  width: 40vw;
+  width: 90%;
 }
 
-.h5p-topic-map-dialog-content.wide {
-  width: 70vw;
-}
+.h5p-topic-map-modal-content {
+  display: grid;
+  gap: var(--h5p-theme-spacing-s);
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  height: 100%;
 
-.h5p-topic-map-dialog-content.small-screen {
-  width: 90vw;
-}
+  .h5p-topic-map-dialog-tab-wrapper {
+    display: inline-block;
+    height: 100%;
+  }
 
-.h5p-topic-map-dialog-tab-wrapper {
-  display: inline-block;
-  height: 90%;
-  width: 47%;
-}
-
-.h5p-topic-map-dialog-note-wrapper {
-  float: right;
-  height: 90%;
-  width: 47%;
-
-  &.full-width {
-    float: left;
-    width: 100%;
+  .h5p-topic-map-dialog-note-wrapper {
+    float: right;
+    height: 100%;
   }
 }
 
@@ -38,7 +25,7 @@
 
 .h5p-topic-map-modal-title {
   color: black;
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* TODO */
   font-weight: bold;
   line-height: 1.2;
   margin: 0;

@@ -63,7 +63,6 @@ export const TopicMapItem: FC<TopicMapItemProps> = ({
           : 'no-image'} ${item.dialog?.hasNote
           ? 'h5p-topic-map-topic-map-item-content-with-note'
           : ''}`}
-        style={{ paddingTop: strokeWidth * 0.66 }}
       >
         <div className="h5p-topic-map-topic-map-item-label">{item.label}</div>
         {item.description && (

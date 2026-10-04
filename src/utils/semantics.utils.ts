@@ -103,7 +103,7 @@ export const itemDialog: Array<H5PField> = [
 export const colorThemes: Array<{ label: string; value: string }> =
   Object.entries(ColorTheme).map(([label, value]) => ({ label, value }));
 
-export const defaultTheme = ColorTheme.Blue;
+export const defaultTheme = ColorTheme.Default;
 
 type SemanticsEntry = {
   name?: unknown;

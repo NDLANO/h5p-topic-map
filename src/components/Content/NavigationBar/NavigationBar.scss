@@ -3,23 +3,21 @@
   background-color: var(--theme-color-2);
   display: flex;
   flex-direction: row;
-  gap: 0.5rem;
+  gap: var(--h5p-theme-spacing-xxs);
   justify-content: space-between;
-  padding: 0.25rem;
+  padding-block: calc(0.25 * var(--h5p-theme-spacing-s));
+  padding-inline-start: var(--h5p-theme-spacing-s);
+  padding-inline-end: var(--h5p-theme-spacing-xxs);
 
   .h5p-topic-map-navigation-bar-title {
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    color: #ffffff;
+    color: var(--theme-color-base);
     flex-grow: 1;
-    padding-left: 0.25rem;
-    text-align: left;
   }
 
   .h5p-topic-map-navigation-bar-sections-menu {
     display: flex;
     flex-direction: row;
+    gap: var(--h5p-theme-spacing-xxs);
   }
 }
 
@@ -28,24 +26,18 @@
 }
 
 @container h5p-topic-map (width > 560px) {
-  .h5p-topic-map-navigation-bar {
-    padding: 0.5rem;
-  }
-
   .h5p-topic-map-navigation-bar-progress-bar {
     align-items: center;
     display: flex;
     flex-direction: row;
-    gap: 0.3rem;
+    gap: var(--h5p-theme-spacing-xxs);
     justify-content: center;
-    margin-right: 0.5rem;
   }
 
   /* {1} width of the text when it says "100%" */
   .h5p-topic-map-navigation-bar-progress-bar-percentage {
     color: var(--theme-color-4);
     cursor: default;
-    min-width: 2.625rem; /* {1} */
     text-align: right;
   }
 
@@ -57,30 +49,29 @@
 
     /* For Firefox */
     background-color: var(--theme-color-1);
-    border-radius: 0.625rem;
+    border-radius: var(--h5p-theme-border-radius-large);
 
     /* Get rid of default border in Firefox. */
     border: none;
 
     /* Set dimensions */
-    height: 1.25rem;
-    width: 10rem;
+    height: var(--h5p-theme-font-size-xl);
 
     &::-webkit-progress-bar {
       background-color: var(--theme-color-1);
-      border-radius: 0.625rem;
+      border-radius: var(--h5p-theme-border-radius-large);
     }
 
     &::-webkit-progress-value {
       background-color: var(--theme-color-4);
-      border-radius: 0.625rem;
+      border-radius: var(--h5p-theme-border-radius-large);
       transition: width 1s ease-in-out 0s;
     }
 
     /* For Firefox */
     &::-moz-progress-bar {
       background-color: var(--theme-color-4);
-      border-radius: 0.625rem;
+      border-radius: var(--h5p-theme-border-radius-large);
       /* Transition is not working in Firefox */
     }
   }

@@ -5,6 +5,10 @@
   "minorVersion": 1,
   "patchVersion": 125,
   "runnable": 1,
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 28
+  },
   "embedTypes": ["iframe"],
   "license": "MIT",
   "preloadedJs": [
@@ -33,6 +37,11 @@
     }
   ],
   "preloadedDependencies": [
+    {
+      "machineName": "H5P.Components",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
     {
       "machineName": "H5P.Video",
       "majorVersion": 1,

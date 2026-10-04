@@ -1,30 +1,47 @@
 .h5p-topic-map-notes-section-main-body {
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid var(--theme-color-2);
   line-height: 1.5;
-  padding-bottom: 1.5625rem;
+  padding-bottom: var(--h5p-theme-spacing-s);
 
   p {
-    margin-block-start: 0;
-    margin-block-end: 0;
+    margin-block: 0;
   }
 }
 
 .h5p-topic-map-notes-section-main-body-title {
-  font-size: 20px;
+  font-size: var(--h5p-theme-font-size-xxl);
   font-weight: bold;
   position: relative;
 }
 
 p.h5p-topic-map-notes-section-main-body-text {
-  margin-top: 1rem;
+  margin-top: var(--h5p-theme-spacing-s);
 }
 
 .h5p-topic-map-notes-section-main-body-buttons {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: var(--h5p-theme-spacing-s);
+  margin-top: var(--h5p-theme-spacing-s);
   width: 100%;
+
+  .h5p-theme-button {
+    &.h5p-theme-print::before {
+      content: var(--icon-h5ptheme-paper);
+    }
+
+    &.h5p-theme-copy::before {
+      content: var(--icon-h5ptheme-copy);
+    }
+
+    &.h5p-theme-delete::before {
+      content: var(--icon-h5ptheme-x-close);
+    }
+
+    &::before {
+      font-family: "h5p-theme";
+    }
+  }
 }
 
 @container h5p-topic-map (width > 560px) {
@@ -33,27 +50,13 @@ p.h5p-topic-map-notes-section-main-body-text {
   }
 }
 
-.h5p-topic-map-notes-section-main-body-button {
-  background-color: var(--theme-color-2);
-  border: none;
-  border-radius: 1rem;
-  color: #ffffff;
-  cursor: pointer;
-  outline-offset: 2px;
-  padding: 0.5rem 1rem;
-
-  &:hover {
-    background-color: var(--theme-color-3);
-  }
-}
-
 .h5p-topic-map-navigation-bar-notes-button {
   background-color: transparent;
   border: none;
-  border-radius: 2rem;
-  color: #ffffff;
+  border-radius: var(--h5p-theme-border-radius-medium);
+  color: var(--theme-color-base);
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  padding: var(--h5p-theme-spacing-xxs) var(--h5p-theme-spacing-s);
   white-space: nowrap;
 
   &:hover {
@@ -69,8 +72,4 @@ p.h5p-topic-map-notes-section-main-body-text {
   @media print {
     max-height: unset !important;
   }
-}
-
-.h5p-topic-map-notes-section-dialog {
-  max-width: 45rem;
 }

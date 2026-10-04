@@ -282,6 +282,9 @@
           "label": "Kolore gaia",
           "options": [
             {
+              "label": "Default"
+            },
+            {
               "label": "Urdina"
             },
             {

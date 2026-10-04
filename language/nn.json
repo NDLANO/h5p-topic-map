@@ -282,6 +282,9 @@
           "label": "Fargetema",
           "options": [
             {
+              "label": "Default"
+            },
+            {
               "label": "Blå"
             },
             {

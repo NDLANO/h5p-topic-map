@@ -128,6 +128,7 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
     this.containerElement.classList.add(
       `h5p-topic-map-theme-${this.params.topicMap?.colorTheme ?? defaultTheme}`,
     );
+    this.containerElement.classList.toggle('h5p-theme', this.params.topicMap?.colorTheme === defaultTheme);
 
     // React tree renders once directly into H5P container; 'resize' notifies subscribed components.
     this.root = createRoot(this.containerElement);

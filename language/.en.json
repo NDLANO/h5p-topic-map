@@ -282,6 +282,9 @@
           "label": "Color theme",
           "options": [
             {
+              "label": "Default"
+            },
+            {
               "label": "Blue"
             },
             {

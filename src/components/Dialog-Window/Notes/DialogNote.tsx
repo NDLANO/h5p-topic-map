@@ -221,6 +221,7 @@ export const DialogNote: React.FC<NoteProps> = ({
           maxLength={maxLength}
         />
         <div
+          // Used to allow clickable links
           ref={mirroredTextareaWrapperRef}
           className="h5p-topic-map-dialog-note-textarea-mirror-wrapper"
         >

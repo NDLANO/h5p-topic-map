@@ -1,8 +1,8 @@
 .h5p-topic-map-icon-circle {
   --circle-background-color: var(--theme-color-3);
-  --circle-border-color: hsl(0, 0%, 100%);
-  --circle-color: hsl(0, 0%, 100%);
-  --circle-font-size: 1rem;
+  --circle-border-color: var(--theme-color-base);
+  --circle-color: var(--theme-color-base);
+  --circle-font-size: var(--h5p-theme-font-size-m);
   --circle-to-icon-ratio: 2;
   --computed-factor: min(
     var(--font-factor, var(--circle-to-icon-ratio)),
