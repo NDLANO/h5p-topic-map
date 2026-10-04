@@ -61,9 +61,9 @@ form {
   position: relative;
 
   &:focus-within {
-    box-shadow: 0 0 0.5em 0 var(--theme-color-2);
+    box-shadow: 0 0 0.5em 0 var(--theme-color-1);
     border-color: var(--theme-color-2);
-    outline: 1px ridge var(--theme-color-2);
+    outline: 1px ridge var(--theme-color-1);
   }
 }
 
@@ -81,6 +81,11 @@ form {
     width: var(--h5p-theme-font-size-m);
     margin-right: var(--h5p-theme-spacing-xxs);
     position: relative;
+
+    &:focus-visible {
+      outline: 2px ridge var(--theme-color-1);
+      outline-offset: 2px;
+    }
   }
 }
 

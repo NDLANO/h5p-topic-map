@@ -17,6 +17,11 @@
     top: 50%;
     transform: translate(-50%, -50%);
   }
+
+  &:focus-visible {
+    outline: 2px ridge var(--theme-color-4);
+    outline-offset: 2px;
+  }
 }
 
 .h5p-container.h5p-fullscreen {

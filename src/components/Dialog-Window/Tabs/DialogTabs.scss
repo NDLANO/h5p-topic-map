@@ -27,6 +27,10 @@
   &:hover {
     border-bottom: 2px solid var(--theme-color-1);
   }
+
+  &:focus-visible {
+    outline: 2px ridge var(--theme-color-1);
+  }
 }
 
 .h5p-topic-map-dialog-tab-list {
@@ -48,6 +52,11 @@
 
   &.no-tabs {
     margin-top: var(--h5p-theme-spacing-l);
+  }
+
+  &>*:focus-visible {
+    outline: 2px ridge var(--theme-color-1);
+    outline-offset: 2px;
   }
 }
 
