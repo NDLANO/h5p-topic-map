@@ -1,5 +1,3 @@
-import type { H5PObject } from 'h5p-types';
-
 /**
  * Params accepted by the H5P.Components.Button factory
  * (H5P.Components-1.0/src/components/h5p-button.js).
