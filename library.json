@@ -2,8 +2,8 @@
   "title": "NDLA Topic Map",
   "machineName": "H5P.TopicMap",
   "majorVersion": 0,
-  "minorVersion": 1,
-  "patchVersion": 125,
+  "minorVersion": 2,
+  "patchVersion": 0,
   "runnable": 1,
   "coreApi": {
     "majorVersion": 1,
@@ -28,7 +28,7 @@
     {
       "machineName": "H5PEditor.TopicMap",
       "majorVersion": 0,
-      "minorVersion": 1
+      "minorVersion": 2
     },
     {
       "machineName": "H5PEditor.UUIDWidget",
