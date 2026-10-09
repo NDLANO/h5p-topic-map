@@ -2,7 +2,7 @@ import type { H5PImage } from 'h5p-types';
 import * as React from 'react';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
-import './DialogText.scss';
+import './DialogText.css';
 
 type DialogTextProps = {
   topicImage: H5PImage | undefined;

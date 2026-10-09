@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
-import './NavigationBar.scss';
+import './NavigationBar.css';
 
 type NavigationBarProps = {
   navbarTitle: string;

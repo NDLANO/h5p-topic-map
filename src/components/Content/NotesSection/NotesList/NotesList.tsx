@@ -6,7 +6,7 @@ import { CommonItemType } from '../../../../types/CommonItemType';
 import { NoteButtonIconState } from '../../../../types/NoteButtonIconState';
 import { IconCircle } from '../../../IconCircle/IconCircle';
 import { createLinksFromString } from '../../../../utils/link.utils';
-import './NotesList.scss';
+import './NotesList.css';
 
 type NotesListProps = {
   topicMapItems: CommonItemType[];

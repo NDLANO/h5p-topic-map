@@ -9,4 +9,4 @@ interface Window {
   H5PIntegration: import('h5p-types').H5PIntegrationObject | undefined;
 }
 
-declare module '*.scss';
+declare module '*.css';

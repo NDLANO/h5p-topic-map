@@ -46,16 +46,13 @@ export default {
         exclude: /node_modules/,
       },
       {
-        test: /\.s?css$/,
+        test: /\.css$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
           },
           {
             loader: 'css-loader',
-          },
-          {
-            loader: 'sass-loader',
           },
         ],
       },
