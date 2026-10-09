@@ -2,7 +2,7 @@ import type { H5PAudio } from 'h5p-types';
 import * as React from 'react';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
-import './DialogAudio.scss';
+import './DialogAudio.css';
 
 type DialogAudioProps = {
   audioTrack: H5PAudio;

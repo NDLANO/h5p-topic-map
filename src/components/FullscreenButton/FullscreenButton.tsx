@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTranslation } from 'use-h5p';
 import { H5P } from '../../h5p/H5P.util';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
-import './FullscreenButton.scss';
+import './FullscreenButton.css';
 
 export const FullscreenButton: React.FC = () => {
   const h5pInstance = useH5PInstance();

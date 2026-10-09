@@ -4,7 +4,7 @@ import { H5P } from '../../../h5p/H5P.util';
 import { useContentId } from '../../../hooks/useContentId';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
-import './DialogVideo.scss';
+import './DialogVideo.css';
 
 type DialogVideoProps = {
   sources: Array<H5PVideo>;

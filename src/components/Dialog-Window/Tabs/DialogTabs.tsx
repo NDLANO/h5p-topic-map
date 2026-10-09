@@ -8,7 +8,7 @@ import { DialogNote } from '../Notes/DialogNote';
 import { DialogResources } from '../Resources/DialogResources';
 import { DialogText } from '../Text/DialogText';
 import { DialogVideo } from '../Video/DialogVideo';
-import './DialogTabs.scss';
+import './DialogTabs.css';
 
 type TabProps = {
   item: CommonItemType;

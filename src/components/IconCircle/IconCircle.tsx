@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
-import './IconCircle.scss';
+import './IconCircle.css';
 
 type IconCircleProps = {
   buttonState: NoteButtonIconState;

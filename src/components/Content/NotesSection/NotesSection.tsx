@@ -16,7 +16,7 @@ import { NotesList } from './NotesList/NotesList';
 import { H5PButton } from './H5PButton';
 import { CommonItemType } from '../../../types/CommonItemType';
 import { useReactToPrint } from 'react-to-print';
-import './NotesSection.scss';
+import './NotesSection.css';
 
 // The H5P dialog falls back to a generic core body string whenever dialogText
 // is falsy, so a single space renders a blank body instead of that fallback.

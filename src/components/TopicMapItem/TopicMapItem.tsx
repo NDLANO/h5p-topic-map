@@ -5,7 +5,7 @@ import { useLocalStorageUserData } from '../../hooks/useLocalStorageUserData';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { IconCircle } from '../IconCircle/IconCircle';
-import './TopicMapItem.scss';
+import './TopicMapItem.css';
 import { getNoteStateText } from '../../utils/note.utils';
 import { dialogHasContent } from '../../utils/dialog.utils';
 import { useTranslation } from '../../hooks/useTranslation';

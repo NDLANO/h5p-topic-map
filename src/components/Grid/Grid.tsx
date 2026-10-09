@@ -4,7 +4,7 @@ import { ArrowItemType } from '../../types/ArrowItemType';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
 import { Arrow, calculateIsHorizontal } from '../Arrow/Arrow';
 import { TopicMapItem } from '../TopicMapItem/TopicMapItem';
-import './Grid.scss';
+import './Grid.css';
 import { H5P } from '../../h5p/H5P.util';
 import { getDescriptiveText } from '../../utils/arrow.utils';
 import { useTranslation } from '../../hooks/useTranslation';

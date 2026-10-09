@@ -10,7 +10,7 @@ import { FC } from 'react';
 import { useMedia } from 'react-use';
 import { useTranslation } from '../../hooks/useTranslation';
 import { CommonItemType } from '../../types/CommonItemType';
-import './DialogWindow.scss';
+import './DialogWindow.css';
 import { DialogNote } from './Notes/DialogNote';
 import { DialogTabs } from './Tabs/DialogTabs';
 
