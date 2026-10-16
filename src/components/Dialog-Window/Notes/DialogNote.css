@@ -51,7 +51,7 @@ form {
 }
 
 .h5p-topic-map-dialog-note-textarea-wrapper {
-  background-color: var(--h5p-theme-ui-base);
+  background-color: var(--theme-color-base);
   border: 2px solid var(--h5p-theme-alternative-darker);
   border-radius: var(--h5p-theme-border-radius-medium);
   display: flex;

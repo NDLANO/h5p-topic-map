@@ -1,6 +1,6 @@
 .h5p-topic-map-dialog-tab {
   align-items: center;
-  background-color: var(--h5p-theme-ui-base);
+  background-color: var(--theme-color-base);
   border-bottom: 2px solid var(--h5p-theme-alternative-darker);
   border-left: none;
   border-right: none;
