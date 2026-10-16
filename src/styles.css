@@ -152,7 +152,7 @@
 
 .h5p-topic-map-dialog-content,
 .h5p-topic-map-notes-section-dialog {
-  background-color: var(--h5p-theme-ui-base);
+  background-color: var(--theme-color-base);
   border-radius: var(--h5p-theme-border-radius-large);
   color: var(--h5p-theme-text-primary);
   height: 80%;
@@ -182,8 +182,8 @@
 
 .h5p-topic-map-modal-close-button {
   aspect-ratio: 1;
-  background-color: var(--h5p-theme-ui-base);
-  border: var(--h5p-theme-font-size-s) solid var(--h5p-theme-ui-base);
+  background-color: var(--theme-color-base);
+  border: var(--h5p-theme-font-size-s) solid var(--theme-color-base);
   border-radius: 50%;
   box-sizing: border-box;
   color: var(--h5p-theme-text-primary);
@@ -205,7 +205,7 @@
   }
 
   &:hover {
-    background-color: var(--h5p-theme-alternative-base);
+    background-color: var(--theme-color-alternative-base);
   }
 
   &:focus-visible {
