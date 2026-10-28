@@ -3,8 +3,7 @@ import { UserData } from '../types/UserData';
 import { userDataLocalStorageKey } from '../utils/user-data.utils';
 
 /**
- * Read the stored data from local storage based on the current default storage key.
- * Return a UserData object with correct types and a function to update it.
+ * Read typed UserData from localStorage (kept for compatibility; cannot move to H5P's resume feature).
  */
 export const useLocalStorageUserData = (): [
   UserData,

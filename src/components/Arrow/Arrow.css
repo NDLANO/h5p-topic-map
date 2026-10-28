@@ -1,0 +1,31 @@
+.h5p-topic-map-arrow {
+  height: 100%;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+
+  &:hover {
+    .h5p-topic-map-arrow-path {
+      fill: var(--theme-color-5);
+    }
+  }
+
+  &:focus-within :focus-visible {
+    outline: 2px ridge var(--theme-color-4);
+    outline-offset: 2px;
+  }
+}
+
+.h5p-topic-map-arrow-svg {
+  height: 100%;
+  width: 100%;
+}
+
+.h5p-topic-map-arrow-polyline {
+  cursor: pointer;
+  pointer-events: painted;
+
+  &:hover {
+    stroke: var(--theme-color-5);
+  }
+}

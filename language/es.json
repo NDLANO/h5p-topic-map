@@ -282,6 +282,9 @@
           "label": "Tema de color",
           "options": [
             {
+              "label": "Default"
+            },
+            {
               "label": "Azul"
             },
             {
@@ -343,10 +346,6 @@
           "default": "Guardada"
         },
         {
-          "label": "Etiqueta de límite de caracteres excedido",
-          "default": "Límite de caracteres excedido"
-        },
-        {
           "label": "Marcador de posición de nota",
           "default": "Escribe tus notas aquí…"
         },
@@ -367,21 +366,21 @@
           "default": "Agregar"
         },
         {
+          "label": "Etiquetas de recursos de diálogo: Quitar enlace",
+          "description": "Se usa como nombre accesible del botón que elimina un enlace. @url se sustituye por el enlace que se va a eliminar",
+          "default": "Quitar el enlace @url"
+        },
+        {
+          "label": "Etiquetas de recursos de diálogo: Entrada de URL",
+          "default": "Añade un enlace (p. ej. www.example.com)"
+        },
+        {
           "label": "Etiqueta de botón de pantalla completa - ingresar",
           "default": "Entrar en modo de pantalla completa"
         },
         {
           "label": "Etiqueta de botón de pantalla completa - salir",
           "default": "Salir del modo de pantalla completa"
-        },
-        {
-          "label": "Etiqueta de la lista de pestañas de la barra de navegación",
-          "description": "Utilizado por lectores de pantalla",
-          "default": "Barra de navegación"
-        },
-        {
-          "label": "Etiqueta de la sección del mapa de temas de la barra de navegación",
-          "default": "Mapa temático"
         },
         {
           "label": "Etiqueta de la sección de notas de la barra de navegación",
@@ -422,10 +421,6 @@
         {
           "label": "Etiqueta de borrado de todas las notas en la barra de navegación",
           "default": "Eliminar todas las notas"
-        },
-        {
-          "label": "Etiqueta de lista de notas vacía en la barra de navegación",
-          "default": "No hay notas de diálogo disponibles en este mapa temático."
         },
         {
           "label": "Etiqueta de nota no presente en barra de navegación",

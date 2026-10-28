@@ -5,6 +5,7 @@ import { DialogText } from './DialogText';
 
 describe(DialogText.name, () => {
   it('Should have rendered', () => {
+    /* eslint-disable @stylistic/ts/max-len */
     const topicImage: H5PImage = {
       path: 'https://images.unsplash.com/photo-1643114673614-55af01ec8dfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
     };
@@ -14,6 +15,7 @@ describe(DialogText.name, () => {
     You can spend all day playing with mountains. Follow the lay of the land. It's most important. Poor old tree. Little short strokes.
     
     In this world, everything can be happy. Have fun with it. Nothing's gonna make your husband or wife madder than coming home and having a snow-covered dinner. When things happen - enjoy them. They're little gifts.`;
+    /* eslint-enable @stylistic/ts/max-len */
     const topicImageAltText = 'Flying king eagle holding a fish in paws.';
 
     const { container } = render(

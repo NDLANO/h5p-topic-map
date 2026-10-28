@@ -282,6 +282,9 @@
           "label": "Color theme",
           "options": [
             {
+              "label": "Default"
+            },
+            {
               "label": "Blue"
             },
             {
@@ -343,10 +346,6 @@
           "default": "Saved"
         },
         {
-          "label": "Character limit exceeded label",
-          "default": "Character limit exceeded"
-        },
-        {
           "label": "Note placeholder",
           "default": "Write your notes here…"
         },
@@ -367,21 +366,21 @@
           "default": "Add"
         },
         {
+          "label": "Dialog resources labels: Remove link",
+          "description": "@url is a placeholder and will be replaced with the link being removed",
+          "default": "Remove link @url"
+        },
+        {
+          "label": "Dialog resources labels: URL input",
+          "default": "Add a link"
+        },
+        {
           "label": "Fullscreen button label - enter",
           "default": "Enter fullscreen mode"
         },
         {
           "label": "Fullscreen button label - exit",
           "default": "Exit fullscreen mode"
-        },
-        {
-          "label": "Navbar tabs list label",
-          "description": "Used by screen readers",
-          "default": "Navigation bar"
-        },
-        {
-          "label": "Navbar topic map section label",
-          "default": "Topic map"
         },
         {
           "label": "Navbar notes section label",
@@ -422,10 +421,6 @@
         {
           "label": "Navbar notes delete all notes button label",
           "default": "Delete all notes"
-        },
-        {
-          "label": "Navbar notes empty list label",
-          "default": "No dialogue notes available in this topic map."
         },
         {
           "label": "Navbar notes missing note label",

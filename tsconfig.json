@@ -8,6 +8,7 @@
     "noImplicitAny": true,
     "module": "esnext",
     "moduleResolution": "bundler",
+    "resolveJsonModule": true,
     "target": "ES2024",
     "allowJs": true,
     "jsx": "react-jsx",
@@ -15,5 +16,5 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true
   },
-  "include": ["./src/**/*", "typings.d.ts"]
+  "include": ["./src/**/*"]
 }

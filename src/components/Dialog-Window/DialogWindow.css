@@ -1,0 +1,32 @@
+.h5p-topic-map-dialog-content {
+  width: 90%;
+}
+
+.h5p-topic-map-modal-content {
+  display: grid;
+  gap: var(--h5p-theme-spacing-s);
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  height: 100%;
+
+  .h5p-topic-map-dialog-tab-wrapper {
+    display: inline-block;
+    height: 100%;
+  }
+
+  .h5p-topic-map-dialog-note-wrapper {
+    float: right;
+    height: 100%;
+  }
+}
+
+.h5p-topic-map-dialog-content:focus {
+  outline: none;
+}
+
+.h5p-topic-map-modal-title {
+  color: black;
+  font-size: 1.25rem; /* TODO */
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 0;
+}

@@ -1,13 +1,13 @@
 import type { H5PExtras, IH5PContentType } from 'h5p-types';
+import type { Root } from 'react-dom/client';
 import { createRoot } from 'react-dom/client';
 import { L10nContext } from 'use-h5p';
-import { App } from '../components/App/App';
+import { Content } from '../components/Content/Content';
 import { ContentIdContext } from '../contexts/ContentIdContext';
 import { H5PContext } from '../contexts/H5PContext';
 import { Params } from '../types/Params';
-import { sanitizeRecord } from '../utils/h5p.utils';
-import { getEmptyParams } from '../utils/semantics.utils';
-import { defaultTranslations } from '../constants/defaultTranslations';
+import { callOnceVisible, sanitizeRecord } from '../utils/h5p.utils';
+import { defaultTheme, getSemanticsDefaults } from '../utils/semantics.utils';
 import {
   H5P,
   normalizeArrowDialogAudioPaths,
@@ -21,69 +21,49 @@ import {
 export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
   public containerElement: HTMLElement | undefined;
 
-  private wrapper: HTMLElement;
+  private observer: IntersectionObserver | undefined;
 
-  private isIPhoneFullscreenActive: boolean;
+  private root: Root | undefined;
 
-  private toggleIPhoneFullscreen: () => void;
+  public contentId: string;
 
-  private observer: IntersectionObserver;
+  public isVisible: boolean;
+
+  public params: Required<Params>;
+
+  public extras: H5PExtras | undefined;
+
+  private title: string | undefined;
+
+  private l10n: Record<string, string>;
 
   constructor(params: Params, contentId: string, extras?: H5PExtras) {
     super();
 
-    this.isIPhoneFullscreenActive = false;
-
-    this.toggleIPhoneFullscreen = () => {
-      this.isIPhoneFullscreenActive = !this.isIPhoneFullscreenActive;
-      document.body.style.overflow = this.isIPhoneFullscreenActive
-        ? 'hidden'
-        : 'auto';
-      const topicMapContainer = document.querySelector('.h5p-topic-map');
-      if (this.isIPhoneFullscreenActive) {
-        topicMapContainer?.classList.add('iPhoneFullscreenStyle');
-      }
-      else {
-        topicMapContainer?.classList.remove('iPhoneFullscreenStyle');
-      }
-    };
-
-    this.wrapper = H5PWrapper.createWrapperElement();
-
-    let paramsWithFallbacks: Required<Params> = {
-      ...getEmptyParams(),
+    // Defaults come from semantics.json (single source of truth); l10n merges per key so older content keeps working.
+    const defaults = getSemanticsDefaults();
+    let paramsWithFallbacks = {
+      ...defaults,
       ...params,
-    };
+      l10n: {
+        ...(defaults.l10n as Record<string, string>),
+        ...params.l10n,
+      },
+    } as Required<Params>;
 
-    paramsWithFallbacks = normalizeTopicMapItemPaths(
-      paramsWithFallbacks,
-      contentId,
-    );
-
-    paramsWithFallbacks = normalizeArrowItemPaths(
-      paramsWithFallbacks,
-      contentId,
-    );
-
-    paramsWithFallbacks = normalizeGridBackgroundImagePath(
-      paramsWithFallbacks,
-      contentId,
-    );
-
-    paramsWithFallbacks = normalizeDialogAudioPaths(
-      paramsWithFallbacks,
-      contentId,
-    );
-
-    paramsWithFallbacks = normalizeArrowDialogAudioPaths(
-      paramsWithFallbacks,
-      contentId,
-    );
-
+    paramsWithFallbacks = normalizeTopicMapItemPaths(paramsWithFallbacks, contentId);
+    paramsWithFallbacks = normalizeArrowItemPaths(paramsWithFallbacks, contentId);
+    paramsWithFallbacks = normalizeGridBackgroundImagePath(paramsWithFallbacks, contentId);
+    paramsWithFallbacks = normalizeDialogAudioPaths(paramsWithFallbacks, contentId);
+    paramsWithFallbacks = normalizeArrowDialogAudioPaths(paramsWithFallbacks, contentId);
     paramsWithFallbacks = normalizeSizes(paramsWithFallbacks);
 
-    const l10n = sanitizeRecord({ ...defaultTranslations, ...params.l10n });
-    const title = extras?.metadata.title;
+    this.contentId = contentId;
+    this.params = paramsWithFallbacks;
+    this.l10n = sanitizeRecord(this.params.l10n);
+    this.extras = extras;
+    this.title = extras?.metadata.title;
+    this.isVisible = false;
 
     this.on('enterFullScreen', () => {
       setTimeout(() => {
@@ -97,72 +77,42 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
         this.trigger('resize');
       }, 250); // DOM might need time to change size
     });
+  }
 
-    const root = createRoot(this.wrapper);
-
-    this.on('resize', () => {
-      root.render(
-        <ContentIdContext.Provider value={contentId}>
-          <L10nContext.Provider value={l10n}>
-            <H5PContext.Provider value={this}>
-              <App
-                params={paramsWithFallbacks}
-                title={title}
-                toggleIPhoneFullscreen={this.toggleIPhoneFullscreen}
-                instance={this}
-              />
-            </H5PContext.Provider>
-          </L10nContext.Provider>
-        </ContentIdContext.Provider>,
-      );
-    });
-
-    // React components require 'resize' once H5P container attached to DOM
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].intersectionRatio === 1) {
-          this.observer.unobserve(this.containerElement as Element); // Only need instantiate once.
-          window.requestAnimationFrame(() => {
-            this.trigger('resize');
-          });
-        }
-      },
-      {
-        root: document.documentElement,
-        threshold: [1],
-      },
-    );
+  /**
+   * Workaround for H5P core mutating prototype to inject isRoot, but ES6 inheritance here.
+   * @returns {boolean} True, if content type is root. Else false.
+   */
+  isRoot(): boolean {
+    return !!this.extras?.standalone;
   }
 
   /**
    * Toggle fullscreen button.
-   * @param {string|boolean} state enter|false for enter, exit|true for exit.
    */
-  handleToggleFullscreen(state?: string | boolean): void {
+  handleToggleFullscreen(): void {
     if (!this.containerElement) {
       return;
     }
 
-    let newState: boolean | undefined;
-    if (typeof state === 'string') {
-      if (state === 'enter') {
-        newState = false;
-      }
-      else if (state === 'exit') {
-        newState = true;
-      }
-    }
-
-    if (typeof newState !== 'boolean') {
-      newState = !H5P.isFullscreen;
-    }
-
+    const newState = !H5P?.isFullscreen;
     if (newState === true) {
-      H5P.fullScreen(H5P.jQuery(this.containerElement), this);
+      H5P?.fullScreen(H5P.jQuery(this.containerElement), this);
     }
     else {
-      H5P.exitFullScreen();
+      H5P?.exitFullScreen();
     }
+  }
+
+  /**
+   * Remove everything this content type added.
+   */
+  destroy(): void {
+    this.root?.unmount();
+    this.observer?.disconnect();
+    this.off('resize');
+    this.off('enterFullScreen');
+    this.off('exitFullScreen');
   }
 
   attach($container: JQuery<HTMLElement>): void {
@@ -174,13 +124,39 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
       return;
     }
 
-    this.containerElement.appendChild(this.wrapper);
     this.containerElement.classList.add('h5p-topic-map');
+    this.containerElement.classList.add(
+      `h5p-topic-map-theme-${this.params.topicMap?.colorTheme ?? defaultTheme}`,
+    );
+    this.containerElement.classList.toggle('h5p-theme', this.params.topicMap?.colorTheme === defaultTheme);
 
-    this.observer.observe(this.containerElement as Element);
-  }
+    // React tree renders once directly into H5P container; 'resize' notifies subscribed components.
+    this.root = createRoot(this.containerElement);
+    this.root.render(
+      <ContentIdContext.Provider value={this.contentId}>
+        <L10nContext.Provider value={this.l10n}>
+          <H5PContext.Provider value={this}>
+            <Content
+              navbarTitle={this.title ?? ''}
+              params={this.params}
+            />
+          </H5PContext.Provider>
+        </L10nContext.Provider>
+      </ContentIdContext.Provider>,
+    );
 
-  private static createWrapperElement(): HTMLDivElement {
-    return document.createElement('div');
+    // Fire 'resize' once container is visible.
+    callOnceVisible(this.containerElement, () => {
+      window.requestAnimationFrame(() => {
+        this.trigger('resize');
+        this.isVisible = true;
+        this.trigger('visible');
+      });
+    }, {
+      root: document.documentElement,
+      threshold: 0,
+    }).then((observer) => {
+      this.observer = observer;
+    });
   }
 }

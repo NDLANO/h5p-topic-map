@@ -5,9 +5,9 @@ import { useSendXAPIEvent } from '../../../hooks/useSendXAPIEvent';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { useH5PInstance } from '../../../hooks/useH5PInstance';
 import { createLinksFromString } from '../../../utils/link.utils';
-import * as styles from './DialogNote.module.scss';
+import './DialogNote.css';
 
-export type NoteProps = {
+type NoteProps = {
   maxLength: number | undefined;
   id: string;
   smallScreen?: boolean;
@@ -32,11 +32,10 @@ export const DialogNote: React.FC<NoteProps> = ({
     userData[contentId]?.dialogs[id]?.noteDone ?? false,
   );
   const [characterCount, setCharacterCount] = React.useState(0);
-  const maxLengthExceeded = maxLength ? characterCount > maxLength : false;
-  const characterCountText =
-    t('noteCharacterCountDescriptiveText')
-      .replace('@count', characterCount.toString())
-      .replace('@max', maxLength?.toString() ?? ''); // We only show this text when `maxLength` is set.
+  const characterCountText = t('noteCharacterCountDescriptiveText', {
+    count: characterCount,
+    max: maxLength ?? '',
+  }); // We only show this text when `maxLength` is set.
 
   const { sendXAPIEvent } = useSendXAPIEvent();
 
@@ -47,31 +46,44 @@ export const DialogNote: React.FC<NoteProps> = ({
   const noteTextareaID = `note-textarea_${id}`;
   const noteCheckboxID = `note-checkbox_${id}`;
   const noteTextareaDescriptionID = `note-textarea-description_${id}`;
-  const textareaDescription = t('noteTextareaDescriptiveText').replace('@max', maxLength?.toString() ?? '');
+  const textareaDescription = t('noteTextareaDescriptiveText', {
+    max: maxLength ?? '',
+  });
 
   const handleNoteDone = (): void => {
-    if (!userData[contentId]) {
-      userData[contentId] = { dialogs: {} };
-    }
+    const done = !noteDone;
+    const contentUserData = userData[contentId] ?? { dialogs: {} };
 
-    if (!userData[contentId]?.dialogs[id]) {
-      userData[contentId].dialogs[id] = {};
-    }
-
-    userData[contentId].dialogs[id].noteDone = !noteDone;
-
-    setMarkedAsDone(!noteDone);
-    setUserData(userData);
+    setMarkedAsDone(done);
+    setUserData({
+      ...userData,
+      [contentId]: {
+        ...contentUserData,
+        dialogs: {
+          ...contentUserData.dialogs,
+          [id]: {
+            ...contentUserData.dialogs[id],
+            noteDone: done,
+          },
+        },
+      },
+    });
 
     sendXAPIEvent('completed', {
       itemId: id,
       note,
-      completed: userData[contentId]?.dialogs[id].noteDone ?? false,
+      completed: done,
     });
   };
 
   const setSavingText = (): void => {
     setDynamicSavingText(t('dialogNoteSaving'));
+
+    // Cancel save from previous keystroke so the timeout (and its xAPI 'answered' event) fires only when typing stops.
+    if (savingTextTimeout !== undefined) {
+      window.clearTimeout(savingTextTimeout);
+    }
+
     setSavingTextTimeout(
       window.setTimeout(() => {
         const timestamp = new Date();
@@ -98,18 +110,24 @@ export const DialogNote: React.FC<NoteProps> = ({
   }, [maxLength, note, savingTextTimeout]);
 
   const handleSetUserData = (note: string): void => {
-    if (!userData[contentId]) {
-      userData[contentId] = { dialogs: {} };
-    }
-    if (!userData[contentId]?.dialogs[id]) {
-      userData[contentId].dialogs[id] = {};
-    }
+    const contentUserData = userData[contentId] ?? { dialogs: {} };
 
-    userData[contentId].dialogs[id].note = note;
-    setUserData(userData);
+    setUserData({
+      ...userData,
+      [contentId]: {
+        ...contentUserData,
+        dialogs: {
+          ...contentUserData.dialogs,
+          [id]: {
+            ...contentUserData.dialogs[id],
+            note,
+          },
+        },
+      },
+    });
   };
 
-  const resizeMirroredTextarea = (): void => {
+  const resizeMirroredTextarea = React.useCallback((): void => {
     if (!textAreaRef.current || !mirroredTextareaWrapperRef.current || !mirroredTextareaRef.current) {
       return;
     }
@@ -120,7 +138,7 @@ export const DialogNote: React.FC<NoteProps> = ({
     mirroredTextarea.style.height = `${textArea.scrollHeight}px`;
     mirroredTextareaWrapper.style.width = `${textArea.clientWidth}px`;
     mirroredTextareaWrapper.style.height = `${textArea.clientHeight}px`;
-  };
+  }, []);
 
   const updateMirroredTextarea = (): void => {
     if (!textAreaRef.current || !mirroredTextareaRef.current) {
@@ -158,29 +176,41 @@ export const DialogNote: React.FC<NoteProps> = ({
     mirroredTextareaWrapper.scrollLeft = textArea.scrollLeft;
   };
 
+  // Runs once on mount: sync the mirror after the textarea first renders; stable textAreaRef is not a dependency.
   React.useEffect(() => {
     if (textAreaRef.current) {
       updateMirroredTextarea();
     }
-  }, [textAreaRef]);
+  }, []);
 
-  h5pInstance?.on('resize', () => {
-    window.requestAnimationFrame(() => {
-      resizeMirroredTextarea();
-    });
-  });
+  // Single stable 'resize' subscription; the listener identity never changes, so it can be cleaned up reliably.
+  const handleResize = React.useCallback((): void => {
+    window.requestAnimationFrame(resizeMirroredTextarea);
+  }, [resizeMirroredTextarea]);
+
+  React.useEffect(() => {
+    if (!h5pInstance) {
+      return undefined;
+    }
+    h5pInstance.on('resize', handleResize);
+    return () => {
+      h5pInstance.off('resize', handleResize);
+    };
+  }, [handleResize, h5pInstance]);
 
   return (
     <form>
-      <div className={styles.topGroup}>
+      <div className="h5p-topic-map-dialog-note-top-group">
         <label htmlFor={noteTextareaID}>
-          <p className={!smallScreen ? styles.noteLabel : styles.visuallyHidden}>{t('dialogNoteLabel')}</p>
+          <p
+            className={!smallScreen ? 'h5p-topic-map-dialog-note-label' : 'h5p-topic-map-visually-hidden'}
+          >{t('dialogNoteLabel')}</p>
         </label>
-        <p className={styles.dynamicSavingText}>{dynamicSavingText}</p>
+        <p className="h5p-topic-map-dialog-note-saving-text">{dynamicSavingText}</p>
       </div>
-      <div className={`${styles.textAreaWrapper} ${maxLengthExceeded ? styles.lengthExceeded : ''}`}>
+      <div className="h5p-topic-map-dialog-note-textarea-wrapper">
         <textarea
-          className={styles.textArea}
+          className="h5p-topic-map-dialog-note-textarea"
           id={noteTextareaID}
           ref={textAreaRef}
           aria-describedby={maxLength ? noteTextareaDescriptionID : undefined}
@@ -191,19 +221,20 @@ export const DialogNote: React.FC<NoteProps> = ({
           maxLength={maxLength}
         />
         <div
+          // Used to allow clickable links
           ref={mirroredTextareaWrapperRef}
-          className={styles.textareaMirrorWrapper}
+          className="h5p-topic-map-dialog-note-textarea-mirror-wrapper"
         >
           <div
             ref={mirroredTextareaRef}
-            className={styles.textareaMirror}
+            className="h5p-topic-map-dialog-note-textarea-mirror"
           />
         </div>
         {maxLength && (
-          <span id={noteTextareaDescriptionID} className={styles.visuallyHidden}>{textareaDescription}</span>
+          <span id={noteTextareaDescriptionID} className="h5p-topic-map-visually-hidden">{textareaDescription}</span>
         )}
-        <div className={styles.bottomGroup}>
-          <div className={styles.markAsDoneCheckbox}>
+        <div className="h5p-topic-map-dialog-note-bottom-group">
+          <div className="h5p-topic-map-dialog-note-mark-as-done-checkbox">
             <label htmlFor={noteCheckboxID}>
               <input
                 id={noteCheckboxID}
@@ -215,16 +246,13 @@ export const DialogNote: React.FC<NoteProps> = ({
             </label>
           </div>
           {maxLength && (
-            <div className={`${styles.counter} ${maxLengthExceeded ? styles.redText : ''}`}>
+            <div className="h5p-topic-map-dialog-note-character-counter">
               <span data-testid={`testId-note-characterCount_${id}`} aria-hidden="true">{characterCount}</span>
               <span aria-hidden="true"> / </span>
               <span data-testid={`testId-note-maximum_${id}`} aria-hidden="true">{maxLength}</span>
-              <span className={styles.visuallyHidden}>{characterCountText}</span>
+              <span className="h5p-topic-map-visually-hidden">{characterCountText}</span>
             </div>
           )}
-        </div>
-        <div aria-live="polite" className={styles.visuallyHidden}>
-          {maxLengthExceeded ? t('dialogNoteLimitExceeded') : ''}
         </div>
       </div>
     </form>

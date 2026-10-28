@@ -6,23 +6,22 @@ import { ArrowItemType } from '../../types/ArrowItemType';
 import { ArrowType } from '../../types/ArrowType';
 import { NoteButtonIconState } from '../../types/NoteButtonIconState';
 import { Position } from '../../types/Position';
-import { GridDimensions } from '../Grid/Grid';
-import * as styles from './Arrow.module.scss';
+import './Arrow.css';
 import { ArrowNoteButton } from './ArrowNoteButton';
 import { getNoteStateText } from '../../utils/note.utils';
 import { useTranslation } from '../../hooks/useTranslation';
 import { H5P } from '../../h5p/H5P.util';
-import { Portal, Root, Trigger } from '@radix-ui/react-dialog';
+import { Portal as DialogPortal, Root as DialogRoot, Trigger as DialogTrigger } from '@radix-ui/react-dialog';
 import { DialogWindow } from '../Dialog-Window/DialogWindow';
 import { useH5PInstance } from '../../hooks/useH5PInstance';
 
-export type ArrowProps = {
+type ArrowProps = {
   item: ArrowItemType;
-  grid?: GridDimensions;
   descriptiveText: string;
+  strokeWidth: number;
 };
 
-const calculateIsHorizontal = (
+export const calculateIsHorizontal = (
   startPosition: Position,
   endPosition: Position,
 ): boolean => {
@@ -34,29 +33,24 @@ const calculateIsHorizontal = (
 
 export const Arrow: FC<ArrowProps> = ({
   item,
-  grid,
   descriptiveText,
+  strokeWidth,
 }) => {
   const { t } = useTranslation();
   const h5pInstance = useH5PInstance();
   const contentId = useContentId();
   const [userData] = useLocalStorageUserData();
 
-  const arrowHeadID = H5P.createUUID();
-  const arrowTailID = H5P.createUUID();
+  const arrowHeadID = H5P!.createUUID();
+  const arrowTailID = H5P!.createUUID();
 
   const [pathDef, setPathDef] = React.useState<string>('');
-  const [strokeWidth, setStrokeWidth] = React.useState<number>(4);
   const [buttonState, setButtonState] = React.useState<NoteButtonIconState>(
     NoteButtonIconState.None,
   );
   const [middleX, setMiddleX] = React.useState(2);
   const [middleY, setMiddleY] = React.useState(2);
   const arrowContainerRef = React.createRef<HTMLDivElement>();
-  const isHorizontal = calculateIsHorizontal(
-    item.startPosition,
-    item.endPosition,
-  );
 
   const [dialogOpen, setDialogOpen] = React.useState(false);
 
@@ -110,17 +104,6 @@ export const Arrow: FC<ArrowProps> = ({
     if (arrowContainerRef.current) {
       const gridElement = arrowContainerRef.current;
 
-      if (grid) {
-        if (isHorizontal) {
-          setStrokeWidth((gridElement.clientHeight / grid.numberOfRows) * 0.66);
-        }
-        else {
-          setStrokeWidth(
-            (gridElement.clientWidth / grid.numberOfColumns) * 0.66,
-          );
-        }
-      }
-
       const startx = (item.startPosition.x / 100) * gridElement.clientWidth;
       const starty = (item.startPosition.y / 100) * gridElement.clientHeight;
       const endx = (item.endPosition.x / 100) * gridElement.clientWidth;
@@ -150,16 +133,16 @@ export const Arrow: FC<ArrowProps> = ({
       setMiddleY(middlePoint.y);
       setPathDef(path);
     }
-  }, [arrowContainerRef, item, grid, buttonState, isHorizontal]);
+  }, [arrowContainerRef, item]);
 
   return (
-    <div className={styles.arrow}>
-      <Root open={dialogOpen} onOpenChange={setDialogOpen}>
+    <div className="h5p-topic-map-arrow">
+      <DialogRoot open={dialogOpen} onOpenChange={setDialogOpen}>
         <div
           ref={arrowContainerRef}
-          className={`arrow-item ${styles.arrow}`}
+          className="h5p-topic-map-arrow-item h5p-topic-map-arrow"
         >
-          <svg className={styles.arrowSvg}>
+          <svg className="h5p-topic-map-arrow-svg">
             <defs>
               <marker
                 id={arrowHeadID}
@@ -169,7 +152,7 @@ export const Arrow: FC<ArrowProps> = ({
                 refY="1"
                 orient="auto"
               >
-                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className={styles.path} />
+                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className="h5p-topic-map-arrow-path" />
               </marker>
               <marker
                 id={arrowTailID}
@@ -179,13 +162,13 @@ export const Arrow: FC<ArrowProps> = ({
                 refY="1"
                 orient="auto-start-reverse"
               >
-                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className={styles.path} />
+                <path d="M0,0 L0,2 L1.5,1 z" fill="var(--theme-color-4)" className="h5p-topic-map-arrow-path" />
               </marker>
             </defs>
-            <Trigger asChild>
+            <DialogTrigger asChild>
               <polyline
                 aria-label={`${descriptiveText} ${getNoteStateText(buttonState, t)}`}
-                className={`${item.dialog ? styles.polyline : ''}`}
+                className={item.dialog ? 'h5p-topic-map-arrow-polyline' : ''}
                 points={pathDef}
                 fill="transparent"
                 stroke="var(--theme-color-4)"
@@ -217,7 +200,7 @@ export const Arrow: FC<ArrowProps> = ({
                   }
                 }}
               />
-            </Trigger>
+            </DialogTrigger>
           </svg>
         </div>
         <ArrowNoteButton
@@ -225,10 +208,10 @@ export const Arrow: FC<ArrowProps> = ({
           buttonState={buttonState}
           strokeWidth={strokeWidth}
         />
-        <Portal container={h5pInstance?.containerElement}>
+        <DialogPortal container={h5pInstance?.containerElement}>
           <DialogWindow item={item} />
-        </Portal>
-      </Root>
+        </DialogPortal>
+      </DialogRoot>
     </div>
   );
 };

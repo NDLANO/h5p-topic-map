@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getByText, render } from '@testing-library/react';
 import { DialogWindow } from './DialogWindow';
 import { TopicMapItemType } from '../../types/TopicMapItemType';
-import { Root } from '@radix-ui/react-dialog';
+import { Root as DialogRoot } from '@radix-ui/react-dialog';
 
 Object.defineProperty(window, 'matchMedia', {
   value: jest.fn().mockImplementation((query) => ({
@@ -22,6 +22,7 @@ describe(DialogWindow.name, () => {
     const item: TopicMapItemType = {
       id: '1',
       topicImage: {
+        // eslint-disable-next-line @stylistic/ts/max-len
         path: 'https://images.unsplash.com/photo-1569587112025-0d460e81a126?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80',
         alt: '',
       },
@@ -39,9 +40,9 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <Root open={true}>
+      <DialogRoot open={true}>
         <DialogWindow item={item} />
-      </Root>,
+      </DialogRoot>,
     ).container;
 
     setTimeout(() => {
@@ -54,6 +55,7 @@ describe(DialogWindow.name, () => {
     const item: TopicMapItemType = {
       id: '1',
       topicImage: {
+        // eslint-disable-next-line @stylistic/ts/max-len
         path: 'https://images.unsplash.com/photo-1569587112025-0d460e81a126?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80',
         alt: '',
       },
@@ -71,9 +73,9 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <Root open={true}>
+      <DialogRoot open={true}>
         <DialogWindow item={item} />
-      </Root>,
+      </DialogRoot>,
     ).container;
 
     setTimeout(() => {
@@ -85,6 +87,7 @@ describe(DialogWindow.name, () => {
     const item: TopicMapItemType = {
       id: '1',
       topicImage: {
+        // eslint-disable-next-line @stylistic/ts/max-len
         path: 'https://images.unsplash.com/photo-1569587112025-0d460e81a126?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2370&q=80',
         alt: '',
       },
@@ -102,9 +105,9 @@ describe(DialogWindow.name, () => {
     };
 
     const dialogWindow = render(
-      <Root open={true}>
+      <DialogRoot open={true}>
         <DialogWindow item={item} />
-      </Root>,
+      </DialogRoot>,
     ).container;
 
     expect(dialogWindow.querySelector('h2')?.textContent).toBe('Sheep in the distance');

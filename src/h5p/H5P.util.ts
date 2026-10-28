@@ -1,33 +1,34 @@
-import type { H5PAudio, H5PIntegrationObject, H5PObject } from 'h5p-types';
+import type { H5PAudio } from 'h5p-types';
 import type { ArrowItemType } from '../types/ArrowItemType';
 import type { Params } from '../types/Params';
 import type { TopicMapItemType } from '../types/TopicMapItemType';
 
-// TODO: Why was this not typed correctly to begin with?
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const H5P = (window as any).H5P as H5PObject;
+/**
+ * H5P core runtime object. Both properties are global, so both can change.
+ */
+export const H5P = window.H5P;
 
-// TODO: Why was this not typed correctly to begin with?
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const H5PIntegration = (window as any).H5P as H5PIntegrationObject;
+/**
+ * H5P integration object injected by H5P core; separate global, undefined outside an H5P core environment.
+ */
+export const H5PIntegration = window.H5PIntegration;
 
-export const normalizeAssetPath = (path: string, contentId: string): string => {
+const normalizeAssetPath = (path: string, contentId: string): string => {
   const pathAlreadyAbsolute =
     path.startsWith('http://') || path.startsWith('https://');
 
   if (pathAlreadyAbsolute) {
     return path;
   }
-  return H5P.getPath(path, contentId);
+  return H5P!.getPath(path, contentId);
 };
 
 /**
- * Replace relative paths to image(s) in Topic Map Item(s) with absolute paths
- *
+ * Replace relative paths to image(s) in Topic Map Item(s) with absolute paths.
  * @param items An array with Topic Map Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
-export const makeBackgroundImagePathsAbsolute = (
+const makeBackgroundImagePathsAbsolute = (
   items: Array<TopicMapItemType> | undefined,
   contentId: string,
 ): Array<TopicMapItemType> | undefined => {
@@ -47,12 +48,11 @@ export const makeBackgroundImagePathsAbsolute = (
 };
 
 /**
- * Replace relative paths to image(s) in Arrow Item(s) with absolute paths
- *
+ * Replace relative paths to image(s) in Arrow Item(s) with absolute paths.
  * @param items An array with Arrow Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
-export const makeArrowImagePathsAbsolute = (
+const makeArrowImagePathsAbsolute = (
   items: Array<ArrowItemType> | undefined,
   contentId: string,
 ): Array<ArrowItemType> | undefined => {
@@ -139,10 +139,7 @@ export const normalizeGridBackgroundImagePath = <Type extends Params>(
 };
 
 /**
- * It is in the nature of the grid to create sizes that doesn't
- * necessarily fit. Therefore, this function changes the sizes of
- * elements touching the positive edges to fit a 100*100
- * normalized grid.
+ * Grid sizes often don't fit exactly; adjust items touching the edges to fit a 100*100 grid.
  */
 export const normalizeSizes = (params: Required<Params>): Required<Params> => {
   const topicMapItems: Array<TopicMapItemType> | undefined =
@@ -176,12 +173,11 @@ export const normalizeSizes = (params: Required<Params>): Required<Params> => {
 };
 
 /**
- * Replace relative paths to audio(s) in Dialog(s) with absolute paths
- *
+ * Replace relative paths to audio(s) in Dialog(s) with absolute paths.
  * @param items An array with Audio Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
-export const makeAudioPathsAbsolute = (
+const makeAudioPathsAbsolute = (
   items: Array<H5PAudio> | undefined,
   contentId: string,
 ): Array<H5PAudio> | undefined => {
@@ -198,12 +194,11 @@ export const makeAudioPathsAbsolute = (
 };
 
 /**
- * Replace relative paths to audio(s) in Topic Map Item(s) with absolute paths
- *
+ * Replace relative paths to audio(s) in Topic Map Item(s) with absolute paths.
  * @param items An array with Topic Map Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
-export const makeDialogAudioPathsAbsolute = (
+const makeDialogAudioPathsAbsolute = (
   items: Array<TopicMapItemType> | undefined,
   contentId: string,
 ): Array<TopicMapItemType> | undefined => {
@@ -252,12 +247,11 @@ export const normalizeDialogAudioPaths = <Type extends Params>(
 };
 
 /**
- * Replace relative paths to audio(s) in Arrow Item(s) with absolute paths
- *
+ * Replace relative paths to audio(s) in Arrow Item(s) with absolute paths.
  * @param items An array with Arrow Items being used in the current H5P
  * @param contentId Content id of the H5P being shown
  */
-export const makeArrowDialogAudioPathsAbsolute = (
+const makeArrowDialogAudioPathsAbsolute = (
   items: Array<ArrowItemType> | undefined,
   contentId: string,
 ): Array<ArrowItemType> | undefined => {

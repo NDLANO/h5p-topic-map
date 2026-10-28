@@ -1,15 +1,20 @@
-import { Close, Content, Description, Overlay, Title } from '@radix-ui/react-dialog';
-import { Cross2Icon } from '@radix-ui/react-icons';
+import {
+  Close as DialogClose,
+  Content as DialogContent,
+  Description as DialogDescription,
+  Overlay as DialogOverlay,
+  Title as DialogTitle,
+} from '@radix-ui/react-dialog';
 import * as React from 'react';
 import { FC } from 'react';
 import { useMedia } from 'react-use';
 import { useTranslation } from '../../hooks/useTranslation';
 import { CommonItemType } from '../../types/CommonItemType';
-import * as styles from './DialogWindow.module.scss';
+import './DialogWindow.css';
 import { DialogNote } from './Notes/DialogNote';
 import { DialogTabs } from './Tabs/DialogTabs';
 
-export type DialogWindowProps = {
+type DialogWindowProps = {
   item: CommonItemType;
 };
 
@@ -38,13 +43,13 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
   const hasNote = item.dialog?.hasNote;
 
   let content = smallScreen ? (
-    <Content aria-modal="true" className={styles.dialogContentSmallScreen}>
-      <Description className={styles.visuallyHidden} aria-hidden="true" />
-      <div className={styles.contentWrapperSmallScreen}>
-        <Title className={styles.dialogTitle}>{item.label}</Title>
+    <DialogContent aria-modal="true" className="h5p-topic-map-dialog-content">
+      <DialogDescription className="h5p-topic-map-visually-hidden" aria-hidden="true" />
+      <div className="h5p-topic-map-modal-wrapper">
+        <DialogTitle className="h5p-topic-map-modal-title">{item.label}</DialogTitle>
         {!noTabItems && <DialogTabs item={item} />}
         {noTabItems && hasNote && (
-          <div className={`${styles.noteWrapper} ${styles.fullWidth}`}>
+          <div className="h5p-topic-map-dialog-note-wrapper full-width">
             <DialogNote
               maxLength={item.dialog.maxLength}
               id={item.id}
@@ -52,63 +57,57 @@ export const DialogWindow: FC<DialogWindowProps> = React.forwardRef<HTMLDivEleme
           </div>
         )}
       </div>
-      <Close className={styles.closeButton} aria-label={ariaLabel}>
-        <Cross2Icon />
-      </Close>
-    </Content>
+      <DialogClose className="h5p-topic-map-modal-close-button" aria-label={ariaLabel}>
+      </DialogClose>
+    </DialogContent>
   ) : (
-    <Content aria-modal="true" className={styles.dialogContent}>
-      <Description className={styles.visuallyHidden} aria-hidden="true" />
-      <div className={styles.contentWrapper}>
-        <Title
-          className={styles.dialogTitle}
-          dangerouslySetInnerHTML={{ __html: item.label }}
-        />
+    <DialogContent aria-modal="true" className="h5p-topic-map-dialog-content">
+      <DialogDescription className="h5p-topic-map-visually-hidden" aria-hidden="true" />
+      <div className="h5p-topic-map-modal-wrapper">
+        <DialogTitle className="h5p-topic-map-modal-title">{item.label}</DialogTitle>
         {!noTabItems && <DialogTabs item={item} />}
       </div>
-      <Close className={styles.closeButton} aria-label={ariaLabel}>
-        <Cross2Icon />
-      </Close>
-    </Content>
+      <DialogClose className="h5p-topic-map-modal-close-button" aria-label={ariaLabel}>
+      </DialogClose>
+    </DialogContent>
   );
 
   if (hasNote && !smallScreen) {
     content = (
-      <Content
+      <DialogContent
         aria-modal="true"
-        className={noTabItems ? styles.dialogContent : styles.dialogContentWide}
+        className={'h5p-topic-map-dialog-content'}
       >
-        <Description className={styles.visuallyHidden} aria-hidden="true" />
-        <div className={styles.contentWrapper}>
-          <Title
-            className={styles.dialogTitle}
-            dangerouslySetInnerHTML={{ __html: item.label }}
-          />
-          {!noTabItems && (
-            <div className={styles.tabWrapper}>
-              <DialogTabs item={item} />
+        <DialogDescription className="h5p-topic-map-visually-hidden" aria-hidden="true" />
+        <div className="h5p-topic-map-modal-wrapper">
+          <DialogTitle className="h5p-topic-map-modal-title">{item.label}</DialogTitle>
+          <div className="h5p-topic-map-modal-content">
+            {!noTabItems && (
+              <div className="h5p-topic-map-dialog-tab-wrapper">
+                <DialogTabs item={item} />
+              </div>
+            )}
+            <div
+              className={
+                `h5p-topic-map-dialog-note-wrapper ${noTabItems ? 'full-width' : ''}`
+              }
+            >
+              <DialogNote
+                maxLength={item.dialog.maxLength}
+                id={item.id}
+              />
             </div>
-          )}
-          <div
-            className={`${styles.noteWrapper} ${noTabItems ? styles.fullWidth : ''
-            }`}
-          >
-            <DialogNote
-              maxLength={item.dialog.maxLength}
-              id={item.id}
-            />
           </div>
         </div>
-        <Close className={styles.closeButton} aria-label={ariaLabel}>
-          <Cross2Icon />
-        </Close>
-      </Content>
+        <DialogClose className="h5p-topic-map-modal-close-button" aria-label={ariaLabel}>
+        </DialogClose>
+      </DialogContent>
     );
   }
 
   return (
     <div ref={forwardedRef}>
-      <Overlay className={styles.overlay} />
+      <DialogOverlay className="h5p-topic-map-modal-overlay" />
       {content}
     </div>
   );

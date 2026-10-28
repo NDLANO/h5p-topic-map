@@ -1,0 +1,9 @@
+video {
+  width: 100%;
+}
+
+.h5p-topic-map-dialog-video {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+}

@@ -2,9 +2,9 @@ import type { H5PImage } from 'h5p-types';
 import * as React from 'react';
 import { useTranslation } from '../../../hooks/useTranslation';
 import { formatCopyright } from '../../../utils/dialog.utils';
-import * as styles from './DialogText.module.scss';
+import './DialogText.css';
 
-export type DialogTextProps = {
+type DialogTextProps = {
   topicImage: H5PImage | undefined;
   introduction: string | undefined;
   bodyText: string | undefined;
@@ -20,17 +20,17 @@ export const DialogText: React.FC<DialogTextProps> = ({
   const { t } = useTranslation();
 
   return (
-    <div className={styles.dialogText}>
+    <div className="h5p-topic-map-dialog-text">
       {introduction ? (
         <div
-          className={styles.description}
+          className="h5p-topic-map-dialog-text-description"
           dangerouslySetInnerHTML={{ __html: introduction }}
         />
       ) : null}
       {topicImage ? (
         <>
           <img
-            className={styles.topicImage}
+            className="h5p-topic-map-dialog-text-image"
             src={topicImage.path}
             alt={topicImageAltText ?? ''}
             width={topicImage.width}
@@ -38,21 +38,20 @@ export const DialogText: React.FC<DialogTextProps> = ({
           />
           {topicImage?.copyright ? (
             <div
-              className={styles.copyright}
-              dangerouslySetInnerHTML={{
-                __html: formatCopyright(
-                  t('copyrightPhoto'),
-                  topicImage.copyright,
-                ),
-              }}
-            />
+              className="h5p-topic-map-dialog-copyright"
+            >
+              {formatCopyright(
+                t('copyrightPhoto'),
+                topicImage.copyright,
+              )}
+            </div>
           ) : null}
         </>
       ) : null}
 
       {bodyText ? (
         <div
-          className={styles.bodyText}
+          className="h5p-topic-map-dialog-text-body"
           dangerouslySetInnerHTML={{ __html: bodyText }}
         />
       ) : null}

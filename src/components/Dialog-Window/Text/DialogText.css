@@ -1,0 +1,20 @@
+.h5p-topic-map-dialog-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+}
+
+.h5p-topic-map-dialog-text-body p {
+  margin: 0;
+}
+
+.h5p-topic-map-dialog-text .h5p-topic-map-dialog-text-description {
+  font-weight: 700;
+  margin: 0;
+  padding-bottom: var(--h5p-theme-spacing-s);
+}
+
+.h5p-topic-map-dialog-text-image {
+  height: auto;
+  width: 100%;
+}

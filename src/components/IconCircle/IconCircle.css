@@ -1,0 +1,48 @@
+.h5p-topic-map-icon-circle {
+  --circle-background-color: var(--theme-color-3);
+  --circle-border-color: var(--theme-color-base);
+  --circle-color: var(--theme-color-base);
+  --circle-font-size: var(--h5p-theme-font-size-m);
+  --circle-to-icon-ratio: 2;
+  --computed-factor: min(
+    var(--font-factor, var(--circle-to-icon-ratio)),
+    var(--font-factor-max)
+  );
+  --font-factor-max: 2;
+
+  aspect-ratio: 1;
+  background-color: var(--circle-background-color);
+  border: 2px solid;
+  border-color: var(--circle-border-color);
+  border-radius: 50%;
+  position: relative;
+  width: calc(var(--circle-font-size) * var(--computed-factor));
+
+  &::before {
+    color: var(--circle-color);
+    font-family: "H5PFontAwesome4", sans-serif;
+    font-size: var(--circle-font-size);
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &.edit::before {
+    content: var(--icon-fontawesome-edit);
+  }
+
+  &.note::before {
+    content: var(--icon-fontawesome-left-aligned);
+  }
+
+  &.done::before {
+    content: var(--icon-fontawesome-check);
+  }
+}
+
+@container h5p-topic-map (width < 560px) {
+  .h5p-topic-map-icon-circle {
+    display: none;
+  }
+}

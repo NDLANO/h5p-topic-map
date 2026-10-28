@@ -1,0 +1,78 @@
+.h5p-topic-map-navigation-bar {
+  align-items: center;
+  background-color: var(--theme-color-2);
+  display: flex;
+  flex-direction: row;
+  gap: var(--h5p-theme-spacing-xxs);
+  justify-content: space-between;
+  padding-block: calc(0.25 * var(--h5p-theme-spacing-s));
+  padding-inline-start: var(--h5p-theme-spacing-s);
+  padding-inline-end: var(--h5p-theme-spacing-xxs);
+
+  .h5p-topic-map-navigation-bar-title {
+    color: var(--theme-color-base);
+    flex-grow: 1;
+  }
+
+  .h5p-topic-map-navigation-bar-sections-menu {
+    display: flex;
+    flex-direction: row;
+    gap: var(--h5p-theme-spacing-xxs);
+  }
+}
+
+.h5p-topic-map-navigation-bar-progress-bar {
+  display: none;
+}
+
+@container h5p-topic-map (width > 560px) {
+  .h5p-topic-map-navigation-bar-progress-bar {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: var(--h5p-theme-spacing-xxs);
+    justify-content: center;
+  }
+
+  /* {1} width of the text when it says "100%" */
+  .h5p-topic-map-navigation-bar-progress-bar-percentage {
+    color: var(--theme-color-4);
+    cursor: default;
+    text-align: right;
+  }
+
+  .h5p-topic-map-navigation-bar-progress-bar-progress[value] {
+    /* Reset the default appearance */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    /* For Firefox */
+    background-color: var(--theme-color-1);
+    border-radius: var(--h5p-theme-border-radius-large);
+
+    /* Get rid of default border in Firefox. */
+    border: none;
+
+    /* Set dimensions */
+    height: var(--h5p-theme-font-size-xl);
+
+    &::-webkit-progress-bar {
+      background-color: var(--theme-color-1);
+      border-radius: var(--h5p-theme-border-radius-large);
+    }
+
+    &::-webkit-progress-value {
+      background-color: var(--theme-color-4);
+      border-radius: var(--h5p-theme-border-radius-large);
+      transition: width 1s ease-in-out 0s;
+    }
+
+    /* For Firefox */
+    &::-moz-progress-bar {
+      background-color: var(--theme-color-4);
+      border-radius: var(--h5p-theme-border-radius-large);
+      /* Transition is not working in Firefox */
+    }
+  }
+}

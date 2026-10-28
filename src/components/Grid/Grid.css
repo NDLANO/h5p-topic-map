@@ -1,0 +1,40 @@
+/* {1} max- sizes from grid aspect ratio (100/60): (100/60)*100vh = 166.67vh; (60/100)*100vw = 60vw. */
+.h5p-topic-map-grid-wrapper {
+  background-blend-mode: soft-light;
+  background-color: var(--theme-color-1);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  max-height: calc(60vw - var(--h5p-topic-map-navigation-bar-height)); /* {1} */
+  max-width: calc(166.67vh - (var(--h5p-topic-map-navigation-bar-height) * 1.67));
+  padding-top: 60%;
+  position: relative;
+  transition: opacity 0.1s ease-in;
+
+  &:not(.transparent) {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.transparent {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &.fullscreen {
+    height: calc(100vh - var(--h5p-topic-map-navigation-bar-height));
+    padding-top: 0;
+    width: 100vw;
+  }
+}
+
+.h5p-topic-map-grid {
+  inset: 1rem;
+  position: absolute;
+}
+
+.h5p-topic-map-grid-item-wrapper {
+  border-radius: var(--h5p-theme-border-radius-small);
+  position: absolute;
+  z-index: var(--item-z-index);
+}

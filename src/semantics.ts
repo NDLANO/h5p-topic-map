@@ -336,7 +336,7 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Color theme',
         name: 'colorTheme',
         type: 'select',
-        default: ColorTheme.Blue,
+        default: ColorTheme.Default,
         options: [...colorThemes],
         widget: 'none',
       },
@@ -417,12 +417,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         type: 'text',
       },
       {
-        label: 'Character limit exceeded label',
-        name: 'dialogNoteLimitExceeded',
-        default: 'Character limit exceeded',
-        type: 'text',
-      },
-      {
         label: 'Note placeholder',
         name: 'dialogNotePlaceholder',
         default: 'Write your notes here…',
@@ -453,6 +447,19 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         type: 'text',
       },
       {
+        name: 'dialogResourcesRemoveLink',
+        type: 'text',
+        label: 'Dialog resources labels: Remove link',
+        description: '@url is a placeholder and will be replaced with the link being removed',
+        default: 'Remove link @url'
+      },
+      {
+        name: 'dialogResourcesUrlLabel',
+        type: 'text',
+        label: 'Dialog resources labels: URL input',
+        default: 'Add a link'
+      },
+      {
         label: 'Fullscreen button label - enter',
         name: 'fullscreenButtonLabelEnter',
         default: 'Enter fullscreen mode',
@@ -462,19 +469,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Fullscreen button label - exit',
         name: 'fullscreenButtonLabelExit',
         default: 'Exit fullscreen mode',
-        type: 'text',
-      },
-      {
-        label: 'Navbar tabs list label',
-        description: 'Used by screen readers',
-        name: 'navbarTabsListAriaLabel',
-        default: 'Navigation bar',
-        type: 'text',
-      },
-      {
-        label: 'Navbar topic map section label',
-        name: 'navbarTopicMapSectionLabel',
-        default: 'Topic map',
         type: 'text',
       },
       {
@@ -517,6 +511,7 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Navbar notes section body',
         name: 'navbarNotesSectionBody',
         default:
+          // eslint-disable-next-line @stylistic/ts/max-len
           'This is an overview of your notes. They are saved locally in this browser. You can either print or copy the notes into a document.',
         type: 'text',
       },
@@ -536,12 +531,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         label: 'Navbar notes delete all notes button label',
         name: 'navbarNotesSectionDeleteLabel',
         default: 'Delete all notes',
-        type: 'text',
-      },
-      {
-        label: 'Navbar notes empty list label',
-        name: 'navbarNotesEmptyListLabel',
-        default: 'No dialogue notes available in this topic map.',
         type: 'text',
       },
       {
