@@ -40,6 +40,7 @@
     "babel-jest": "^30.5.2",
     "babel-loader": "^10.1.1",
     "css-loader": "^7.1.5",
+    "esbuild-runner": "^2.2.2",
     "eslint-config-ndla-h5p": "github:ndlano/eslint-config-ndla-h5p",
     "h5p-types": "^5.7.0",
     "identity-obj-proxy": "^3.0.0",
