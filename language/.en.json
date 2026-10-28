@@ -433,10 +433,6 @@
           "default": "Delete all notes"
         },
         {
-          "label": "Navbar notes empty list label",
-          "default": "No dialogue notes available in this topic map."
-        },
-        {
           "label": "Navbar notes missing note label",
           "default": "━ No notes have been added yet"
         },

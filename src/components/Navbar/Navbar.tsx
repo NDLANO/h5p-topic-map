@@ -70,13 +70,30 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, [allItems, contentId, totalNotesToComplete, userData]);
 
   const deleteAllNotes = (): void => {
+    if (!userData[contentId]) {
+      return;
+    }
+
+    const contentUserData = userData[contentId];
+    const updatedDialogs = { ...contentUserData.dialogs };
+
     allItems.forEach((item) => {
-      if (userData[contentId]?.dialogs?.[item.id]) {
-        userData[contentId].dialogs[item.id].note = undefined;
-        userData[contentId].dialogs[item.id].noteDone = undefined;
+      if (updatedDialogs[item.id]) {
+        updatedDialogs[item.id] = {
+          ...updatedDialogs[item.id],
+          note: undefined,
+          noteDone: undefined,
+        };
       }
     });
-    setUserData(userData);
+
+    setUserData({
+      ...userData,
+      [contentId]: {
+        ...contentUserData,
+        dialogs: updatedDialogs,
+      },
+    });
   };
 
   const submitAllNotes = (): void => {
@@ -114,26 +131,19 @@ export const Navbar: React.FC<NavbarProps> = ({
       >{`${progressPercentage}%`}</div>
       <progress
         className={styles.progress}
-        aria-label={t('progressBarDescriptiveText').replace('@markedNotes', `${progressBarValue}`).replace('@totalNotes', `${totalNotesToComplete}`)}
+        aria-label={t('progressBarDescriptiveText', {
+          markedNotes: progressBarValue,
+          totalNotes: totalNotesToComplete,
+        })}
         value={progressPercentage}
-        aria-valuemin={0}
-        aria-valuenow={progressPercentage}
-        aria-valuemax={100}
         max={100}
-      >
-        <div className={styles.progressBar}>
-          <span style={{ width: `${progressPercentage}%` }}>
-            <span className={styles.visuallyHidden}>{progressPercentage}%</span>
-          </span>
-        </div>
-      </progress>
+      />
     </div>
   );
 
   return (
     <>
       <div
-        aria-label={t('navbarTabsListAriaLabel')}
         className={sizeClassNames}
         style={{
           // @ts-expect-error Custom properties are allowed

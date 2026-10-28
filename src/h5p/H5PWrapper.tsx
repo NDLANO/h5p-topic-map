@@ -116,11 +116,15 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
       </ContentIdContext.Provider>,
     );
 
-    // React components require 'resize' once H5P container attached to DOM
+    // React components require 'resize' once the H5P container is attached
+    // to the DOM. `threshold: 0` instead of `[1]`: the container only needs
+    // to be *partially* visible. A tall container never reaches 100%
+    // intersection in a short viewport/iframe, so `[1]` would keep the
+    // observer silent — and the map blank — until some resize event.
     // TODO: Use common onceVisible helper function
     this.observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].intersectionRatio === 1) {
+        if (entries[0].isIntersecting) {
           this.observer.unobserve(this.containerElement as Element); // Only need instantiate once.
           window.requestAnimationFrame(() => {
             this.trigger('resize');
@@ -129,34 +133,20 @@ export class H5PWrapper extends H5P.EventDispatcher implements IH5PContentType {
       },
       {
         root: document.documentElement,
-        threshold: [1],
+        threshold: 0,
       },
     );
   }
 
   /**
    * Toggle fullscreen button.
-   * @param {string|boolean} state enter|false for enter, exit|true for exit.
    */
-  handleToggleFullscreen(state?: string | boolean): void {
+  handleToggleFullscreen(): void {
     if (!this.containerElement) {
       return;
     }
 
-    let newState: boolean | undefined;
-    if (typeof state === 'string') {
-      if (state === 'enter') {
-        newState = false;
-      }
-      else if (state === 'exit') {
-        newState = true;
-      }
-    }
-
-    if (typeof newState !== 'boolean') {
-      newState = !H5P?.isFullscreen;
-    }
-
+    const newState = !H5P?.isFullscreen;
     if (newState === true) {
       H5P?.fullScreen(H5P.jQuery(this.containerElement), this);
     }

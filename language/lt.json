@@ -433,10 +433,6 @@
           "default": "Ištrinti visas pastabas"
         },
         {
-          "label": "Navigacijos tuščios sąrašo etiketė",
-          "default": "Šioje temos žemėlapyje nėra dialogų pastabų."
-        },
-        {
           "label": "Navigacijos trūkstamos pastabos etiketė",
           "default": "━ Dar nepridėta jokių pastabų"
         },

@@ -433,10 +433,6 @@
           "default": "Slett alle notater"
         },
         {
-          "label": "Ingen notater",
-          "default": "Du har ikkje skrive nokre notater enno"
-        },
-        {
           "label": "Boks eller pil mangler notat",
           "default": "━ Notat mangler"
         },

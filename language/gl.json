@@ -433,10 +433,6 @@
           "default": "Elimina todas as notas"
         },
         {
-          "label": "Etiqueta para lista de notas baleira na barra de navegación",
-          "default": "Non hai notas de diálogo dispoñibles neste mapa de temas."
-        },
-        {
           "label": "Etiqueta de nota non presente para a barra de navegación",
           "default": "━ Aínda non se engadiron notas"
         },

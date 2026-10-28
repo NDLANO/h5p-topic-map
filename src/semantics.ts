@@ -552,12 +552,6 @@ export const semantics: Readonly<[H5PFieldGroup, H5PBehaviour, H5PL10n]> = [
         type: 'text',
       },
       {
-        label: 'Navbar notes empty list label',
-        name: 'navbarNotesEmptyListLabel',
-        default: 'No dialogue notes available in this topic map.',
-        type: 'text',
-      },
-      {
         label: 'Navbar notes missing note label',
         name: 'navbarNotesMissingNoteLabel',
         default: '━ No notes have been added yet',

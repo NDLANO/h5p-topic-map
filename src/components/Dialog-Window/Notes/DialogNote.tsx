@@ -33,10 +33,10 @@ export const DialogNote: React.FC<NoteProps> = ({
   );
   const [characterCount, setCharacterCount] = React.useState(0);
   const maxLengthExceeded = maxLength ? characterCount > maxLength : false;
-  const characterCountText =
-    t('noteCharacterCountDescriptiveText')
-      .replace('@count', characterCount.toString())
-      .replace('@max', maxLength?.toString() ?? ''); // We only show this text when `maxLength` is set.
+  const characterCountText = t('noteCharacterCountDescriptiveText', {
+    count: characterCount,
+    max: maxLength ?? '',
+  }); // We only show this text when `maxLength` is set.
 
   const { sendXAPIEvent } = useSendXAPIEvent();
 
@@ -47,26 +47,33 @@ export const DialogNote: React.FC<NoteProps> = ({
   const noteTextareaID = `note-textarea_${id}`;
   const noteCheckboxID = `note-checkbox_${id}`;
   const noteTextareaDescriptionID = `note-textarea-description_${id}`;
-  const textareaDescription = t('noteTextareaDescriptiveText').replace('@max', maxLength?.toString() ?? '');
+  const textareaDescription = t('noteTextareaDescriptiveText', {
+    max: maxLength ?? '',
+  });
 
   const handleNoteDone = (): void => {
-    if (!userData[contentId]) {
-      userData[contentId] = { dialogs: {} };
-    }
+    const done = !noteDone;
+    const contentUserData = userData[contentId] ?? { dialogs: {} };
 
-    if (!userData[contentId]?.dialogs[id]) {
-      userData[contentId].dialogs[id] = {};
-    }
-
-    userData[contentId].dialogs[id].noteDone = !noteDone;
-
-    setMarkedAsDone(!noteDone);
-    setUserData(userData);
+    setMarkedAsDone(done);
+    setUserData({
+      ...userData,
+      [contentId]: {
+        ...contentUserData,
+        dialogs: {
+          ...contentUserData.dialogs,
+          [id]: {
+            ...contentUserData.dialogs[id],
+            noteDone: done,
+          },
+        },
+      },
+    });
 
     sendXAPIEvent('completed', {
       itemId: id,
       note,
-      completed: userData[contentId]?.dialogs[id].noteDone ?? false,
+      completed: done,
     });
   };
 
@@ -106,15 +113,21 @@ export const DialogNote: React.FC<NoteProps> = ({
   }, [maxLength, note, savingTextTimeout]);
 
   const handleSetUserData = (note: string): void => {
-    if (!userData[contentId]) {
-      userData[contentId] = { dialogs: {} };
-    }
-    if (!userData[contentId]?.dialogs[id]) {
-      userData[contentId].dialogs[id] = {};
-    }
+    const contentUserData = userData[contentId] ?? { dialogs: {} };
 
-    userData[contentId].dialogs[id].note = note;
-    setUserData(userData);
+    setUserData({
+      ...userData,
+      [contentId]: {
+        ...contentUserData,
+        dialogs: {
+          ...contentUserData.dialogs,
+          [id]: {
+            ...contentUserData.dialogs[id],
+            note,
+          },
+        },
+      },
+    });
   };
 
   const resizeMirroredTextarea = React.useCallback((): void => {
@@ -166,11 +179,14 @@ export const DialogNote: React.FC<NoteProps> = ({
     mirroredTextareaWrapper.scrollLeft = textArea.scrollLeft;
   };
 
+  // Runs once on mount: the mirror needs to be synced after the textarea
+  // first renders. `textAreaRef` is stable across renders, so it is not
+  // a dependency.
   React.useEffect(() => {
     if (textAreaRef.current) {
       updateMirroredTextarea();
     }
-  }, [textAreaRef]);
+  }, []);
 
   // Single stable 'resize' subscription; the listener identity never
   // changes, so it can be cleaned up reliably.
