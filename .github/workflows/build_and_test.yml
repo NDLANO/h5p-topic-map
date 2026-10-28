@@ -16,6 +16,13 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Install node modules from package.json
+        run: |
+          if [ -f "./package.json" ]
+          then
+            npm ci
+          fi
+
       - name: Build
         run: npm run build
 
@@ -30,6 +37,13 @@ jobs:
         with:
           node-version: '24'
 
+      - name: Install node modules from package.json
+        run: |
+          if [ -f "./package.json" ]
+          then
+            npm ci
+          fi
+
       - name: Lint
         run: npm run lint
 
@@ -43,6 +57,13 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '24'
+
+      - name: Install node modules from package.json
+        run: |
+          if [ -f "./package.json" ]
+          then
+            npm ci
+          fi
 
       - name: Test
         run: npm run test
